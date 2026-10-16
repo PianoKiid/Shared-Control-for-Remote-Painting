@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "created_at": "2026-09-29T10:03:49+09:00",
+  "created_at": "2026-10-16T12:59:38+09:00",
   "labels": [
     "WORK",
     "MOVE",
@@ -29,16 +29,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\12\\12-0 (1)\\12-VP\\12-01_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 25103,
-        "percent": 0.0,
+        "labeled_frames": 25103,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
-          "IDLE": 0,
-          "UNLABELED": 25103
+          "WORK": 11264,
+          "MOVE": 8481,
+          "IDLE": 5358,
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T12:08:06+09:00"
       }
     },
     {
@@ -52,16 +52,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\12\\12-0 (1)\\12-MS\\12-02_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 19030,
-        "percent": 0.0,
+        "labeled_frames": 19030,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
-          "IDLE": 0,
-          "UNLABELED": 19030
+          "WORK": 9031,
+          "MOVE": 7798,
+          "IDLE": 2201,
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T12:13:15+09:00"
       }
     },
     {
@@ -75,16 +75,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\12\\12-0 (1)\\12-VS\\12-03_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 18208,
-        "percent": 0.0,
+        "labeled_frames": 18208,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
-          "IDLE": 0,
-          "UNLABELED": 18208
+          "WORK": 11988,
+          "MOVE": 5260,
+          "IDLE": 960,
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T11:48:52+09:00"
       }
     },
     {
@@ -98,16 +98,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\12\\12-0 (1)\\12-MP\\12-04_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 12547,
-        "percent": 0.0,
+        "labeled_frames": 12547,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
-          "IDLE": 0,
-          "UNLABELED": 12547
+          "WORK": 5581,
+          "MOVE": 4202,
+          "IDLE": 2764,
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T12:03:46+09:00"
       }
     },
     {
@@ -121,16 +121,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\13\\13-MP\\13-01_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 18138,
-        "percent": 0.0,
+        "labeled_frames": 18138,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
-          "IDLE": 0,
-          "UNLABELED": 18138
+          "WORK": 12891,
+          "MOVE": 4007,
+          "IDLE": 1240,
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T12:45:26+09:00"
       }
     },
     {
@@ -144,16 +144,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\13\\13-MS\\13-02_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 12700,
-        "percent": 0.0,
+        "labeled_frames": 12700,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
-          "IDLE": 0,
-          "UNLABELED": 12700
+          "WORK": 8668,
+          "MOVE": 2695,
+          "IDLE": 1337,
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T13:05:46+09:00"
       }
     },
     {
@@ -167,16 +167,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\13\\13-VS\\13-03_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 14894,
-        "percent": 0.0,
+        "labeled_frames": 14894,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
-          "IDLE": 0,
-          "UNLABELED": 14894
+          "WORK": 8668,
+          "MOVE": 4714,
+          "IDLE": 1512,
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T13:38:08+09:00"
       }
     },
     {
@@ -190,16 +190,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\13\\13-VP\\13-04_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 3377,
-        "percent": 0.0,
+        "labeled_frames": 3377,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
+          "WORK": 1750,
+          "MOVE": 1627,
           "IDLE": 0,
-          "UNLABELED": 3377
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T14:00:59+09:00"
       }
     },
     {
@@ -213,16 +213,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\14\\14-VS\\14-01_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 8888,
-        "percent": 0.0,
+        "labeled_frames": 8888,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
-          "IDLE": 0,
-          "UNLABELED": 8888
+          "WORK": 7444,
+          "MOVE": 1111,
+          "IDLE": 333,
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T14:33:19+09:00"
       }
     },
     {
@@ -236,16 +236,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\14\\14-VP\\14-02_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 6253,
-        "percent": 0.0,
+        "labeled_frames": 6253,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
-          "IDLE": 0,
-          "UNLABELED": 6253
+          "WORK": 3545,
+          "MOVE": 610,
+          "IDLE": 2098,
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T14:28:17+09:00"
       }
     },
     {
@@ -259,16 +259,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\14\\14-MS\\14-03_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 5016,
-        "percent": 0.0,
+        "labeled_frames": 5016,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
+          "WORK": 4144,
+          "MOVE": 872,
           "IDLE": 0,
-          "UNLABELED": 5016
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T14:35:48+09:00"
       }
     },
     {
@@ -283,16 +283,16 @@
         "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\14\\14-MP-2\\14-04_2_0.mcap"
       ],
       "progress": {
-        "labeled_frames": 0,
-        "unlabeled_frames": 7559,
-        "percent": 0.0,
+        "labeled_frames": 7559,
+        "unlabeled_frames": 0,
+        "percent": 100.0,
         "counts": {
-          "WORK": 0,
-          "MOVE": 0,
-          "IDLE": 0,
-          "UNLABELED": 7559
+          "WORK": 3958,
+          "MOVE": 1603,
+          "IDLE": 1998,
+          "UNLABELED": 0
         },
-        "updated_at": null
+        "updated_at": "2026-09-29T14:46:52+09:00"
       }
     }
   ]
