@@ -1,0 +1,4 @@
+﻿interval_id,phase_id,phase,start_s,end_s,duration_s,start_index,end_index
+1,0,FREE_MOTION,0.0,0.0,0.0,0,0
+2,2,PAINTING,0.030198909,4.996672864,4.966473955,1,150
+3,0,FREE_MOTION,5.026941132,7.495204506,2.468263374,151,225

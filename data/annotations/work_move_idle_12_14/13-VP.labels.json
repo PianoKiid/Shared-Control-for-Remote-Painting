@@ -1,0 +1,88 @@
+{
+  "trial_id": "13-VP",
+  "frame_count": 3377,
+  "labels": [
+    {
+      "start_index": 0,
+      "end_index": 420,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 421,
+      "end_index": 595,
+      "label": "WORK"
+    },
+    {
+      "start_index": 596,
+      "end_index": 638,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 639,
+      "end_index": 668,
+      "label": "WORK"
+    },
+    {
+      "start_index": 669,
+      "end_index": 785,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 786,
+      "end_index": 849,
+      "label": "WORK"
+    },
+    {
+      "start_index": 850,
+      "end_index": 1008,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 1009,
+      "end_index": 1314,
+      "label": "WORK"
+    },
+    {
+      "start_index": 1315,
+      "end_index": 1604,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 1605,
+      "end_index": 1742,
+      "label": "WORK"
+    },
+    {
+      "start_index": 1743,
+      "end_index": 2124,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 2125,
+      "end_index": 2490,
+      "label": "WORK"
+    },
+    {
+      "start_index": 2491,
+      "end_index": 2599,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 2600,
+      "end_index": 2748,
+      "label": "WORK"
+    },
+    {
+      "start_index": 2749,
+      "end_index": 2854,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 2855,
+      "end_index": 3376,
+      "label": "WORK"
+    }
+  ],
+  "updated_at": "2026-09-29T14:00:59+09:00",
+  "note": "IDLE은 감사용 라벨에 남지만 모델 입력과 작업/이동 지표에서는 제외됩니다."
+}

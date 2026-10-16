@@ -1,0 +1,343 @@
+{
+  "trial_id": "12-MS",
+  "frame_count": 19030,
+  "labels": [
+    {
+      "start_index": 0,
+      "end_index": 892,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 893,
+      "end_index": 962,
+      "label": "WORK"
+    },
+    {
+      "start_index": 963,
+      "end_index": 1236,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 1237,
+      "end_index": 1275,
+      "label": "WORK"
+    },
+    {
+      "start_index": 1276,
+      "end_index": 1344,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 1345,
+      "end_index": 1391,
+      "label": "WORK"
+    },
+    {
+      "start_index": 1392,
+      "end_index": 1921,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 1922,
+      "end_index": 2306,
+      "label": "WORK"
+    },
+    {
+      "start_index": 2307,
+      "end_index": 2775,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 2776,
+      "end_index": 3811,
+      "label": "WORK"
+    },
+    {
+      "start_index": 3812,
+      "end_index": 3956,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 3957,
+      "end_index": 4191,
+      "label": "WORK"
+    },
+    {
+      "start_index": 4192,
+      "end_index": 4653,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 4654,
+      "end_index": 4921,
+      "label": "WORK"
+    },
+    {
+      "start_index": 4922,
+      "end_index": 5062,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 5063,
+      "end_index": 5289,
+      "label": "WORK"
+    },
+    {
+      "start_index": 5290,
+      "end_index": 5571,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 5572,
+      "end_index": 7218,
+      "label": "WORK"
+    },
+    {
+      "start_index": 7219,
+      "end_index": 7408,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 7409,
+      "end_index": 7607,
+      "label": "WORK"
+    },
+    {
+      "start_index": 7608,
+      "end_index": 9241,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 9242,
+      "end_index": 9416,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 9417,
+      "end_index": 9604,
+      "label": "WORK"
+    },
+    {
+      "start_index": 9605,
+      "end_index": 9868,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 9869,
+      "end_index": 9985,
+      "label": "WORK"
+    },
+    {
+      "start_index": 9986,
+      "end_index": 10396,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 10397,
+      "end_index": 11391,
+      "label": "WORK"
+    },
+    {
+      "start_index": 11392,
+      "end_index": 11532,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 11533,
+      "end_index": 11747,
+      "label": "WORK"
+    },
+    {
+      "start_index": 11748,
+      "end_index": 12056,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 12057,
+      "end_index": 12166,
+      "label": "WORK"
+    },
+    {
+      "start_index": 12167,
+      "end_index": 12217,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 12218,
+      "end_index": 12300,
+      "label": "WORK"
+    },
+    {
+      "start_index": 12301,
+      "end_index": 12426,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 12427,
+      "end_index": 12560,
+      "label": "WORK"
+    },
+    {
+      "start_index": 12561,
+      "end_index": 12787,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 12788,
+      "end_index": 12965,
+      "label": "WORK"
+    },
+    {
+      "start_index": 12966,
+      "end_index": 12998,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 12999,
+      "end_index": 13015,
+      "label": "WORK"
+    },
+    {
+      "start_index": 13016,
+      "end_index": 13119,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 13120,
+      "end_index": 13232,
+      "label": "WORK"
+    },
+    {
+      "start_index": 13233,
+      "end_index": 13456,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 13457,
+      "end_index": 14167,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 14168,
+      "end_index": 14447,
+      "label": "WORK"
+    },
+    {
+      "start_index": 14448,
+      "end_index": 14495,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 14496,
+      "end_index": 14545,
+      "label": "WORK"
+    },
+    {
+      "start_index": 14546,
+      "end_index": 14792,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 14793,
+      "end_index": 15135,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 15136,
+      "end_index": 15199,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 15200,
+      "end_index": 15351,
+      "label": "WORK"
+    },
+    {
+      "start_index": 15352,
+      "end_index": 15494,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 15495,
+      "end_index": 15813,
+      "label": "WORK"
+    },
+    {
+      "start_index": 15814,
+      "end_index": 15931,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 15932,
+      "end_index": 16492,
+      "label": "WORK"
+    },
+    {
+      "start_index": 16493,
+      "end_index": 16846,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 16847,
+      "end_index": 17066,
+      "label": "WORK"
+    },
+    {
+      "start_index": 17067,
+      "end_index": 17101,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 17102,
+      "end_index": 17728,
+      "label": "WORK"
+    },
+    {
+      "start_index": 17729,
+      "end_index": 17959,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 17960,
+      "end_index": 18162,
+      "label": "WORK"
+    },
+    {
+      "start_index": 18163,
+      "end_index": 18197,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 18198,
+      "end_index": 18236,
+      "label": "WORK"
+    },
+    {
+      "start_index": 18237,
+      "end_index": 18341,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 18342,
+      "end_index": 18450,
+      "label": "WORK"
+    },
+    {
+      "start_index": 18451,
+      "end_index": 18489,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 18490,
+      "end_index": 18657,
+      "label": "WORK"
+    },
+    {
+      "start_index": 18658,
+      "end_index": 19029,
+      "label": "MOVE"
+    }
+  ],
+  "updated_at": "2026-09-29T12:13:15+09:00",
+  "note": "IDLE은 감사용 라벨에 남지만 모델 입력과 작업/이동 지표에서는 제외됩니다."
+}

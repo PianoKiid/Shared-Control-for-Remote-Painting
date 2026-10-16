@@ -1,0 +1,328 @@
+P0001	[Normal]	Comparative Evaluation of Visual Interfaces for Remote Robotic Painting: Implications for Task-Aligned Interface Design
+P0002	[Heading 1]	Introduction
+P0003	[List Paragraph]	Motivation
+P0004	[List Paragraph]	Need for teleoperation in construction
+P0005	[List Paragraph]	Reduce worker exposure to hazardous or difficult-to-access conditions.
+P0006	[List Paragraph]	Role of visual interface design in robot teleoperation
+P0007	[List Paragraph]	How the remote scene is displayed and represented shapes the visual and spatial information available to the operator during remote operation.
+P0008	[List Paragraph]	Previous studies of visual interface configurations [1–5,8].
+P0009	[List Paragraph]	Background
+P0010	[List Paragraph]	Visual Demands in Teleoperation in Construction
+P0011	[List Paragraph]	Teleoperated construction tasks require operators to manipulate tools across spatially extended work areas while remaining physically separated from the work site.
+P0012	[List Paragraph]	Visual-interface design consequently shapes the information available for remote control and work monitoring.
+P0013	[List Paragraph]	Visual Interface Approaches for Robot Teleoperation
+P0014	[List Paragraph]	Robot teleoperation relies on visual interfaces to convey task information.
+P0015	[List Paragraph]	Two respects of visual interface: workspace representation and display modality.
+P0016	[List Paragraph]	Workspace Representation;
+P0017	[List Paragraph]	Pros/Cons of stereo imagery and point cloud reconstruction. [4–6].
+P0018	[List Paragraph]	Stereo imagery: Directly preserves the visual appearance of task environment. / Restricted spatial exploration and inspection of work areas.
+P0019	[List Paragraph]	PCD: Providing spatial context and access to alternative viewpoints. / Reduced appearance fidelity can obscure task-relevant visual information.
+P0020	[List Paragraph]	These characteristics create a trade-off between appearance fidelity and viewpoint flexibility.
+P0021	[List Paragraph]	Display Modality;
+P0022	[List Paragraph]	Pros/Cons of monitor and VR interfaces. [1–3].
+P0023	[List Paragraph]	Monitor: Stable, familiar visual reference in a fixed screen space. / Relatively limited immersion and spatial engagement.
+P0024	[List Paragraph]	VR: Provide stereoscopic viewing and can couple the displayed view to head movement. / Physical discomfort, additional workload, and usability challenges.
+P0025	[List Paragraph]	These characteristics create a trade-off between spatial engagement and interaction discomfort.
+P0026	[List Paragraph]	Problem Statement
+P0027	[List Paragraph]	Empirical evidence remains limited on how two respects of visual interfaces affect operator performance and experience in teleoperated construction tasks, such as painting.
+P0028	[List Paragraph]	Limited empirical knowledge of what visual information operators need during surface-treatment tasks. [19,20].
+P0029	[List Paragraph]	Research Objective
+P0030	[List Paragraph]	To compare image-based stereo and reconstructed point-cloud (PCD) representations as two approaches to workspace representation, and monitor and VR as two display modalities for visual-interface design in construction teleoperation.
+P0031	[List Paragraph]	Focusing on their effects on task performance and operator experience.
+P0032	[List Paragraph]	Scenario
+P0033	[List Paragraph]	Remote robotic painting was selected as a representative task for the empirical investigation.
+P0034	[List Paragraph]	Characteristics of construction surface treatment tasks, including painting [13–26].
+P0035	[List Paragraph]	Research Tasks
+P0036	[List Paragraph]	Evaluate four visual-interface conditions formed by two display modalities (Monitor and VR) and two visualization methods (Stereo and PCD): Monitor Stereo, Monitor PCD, VR Stereo, and VR PCD.
+P0037	[List Paragraph]	Compare four visual-interface conditions in remote robotic painting using task-performance measures and participant interviews.
+P0038	[List Paragraph]	Identify task-grounded visual requirements for surface-treatment teleoperation.
+P0039	[List Paragraph]	Contribution
+P0040	[List Paragraph]	Comparative evaluation of four visual-interface configurations in a remote robotic painting task.
+P0041	[List Paragraph]	Results demonstrate that visual-interface configuration can affect accuracy and operational efficiency in remote robotic painting.
+P0042	[List Paragraph]	Identification of task-grounded visual requirements for remote surface treatment task.
+P0043	[Heading 1]	Related Work
+P0044	[List Paragraph]	Teleoperation in Construction
+P0045	[List Paragraph]	Applications of teleoperation in construction
+P0046	[List Paragraph]	Construction teleoperation has been investigated across diverse task contexts [7–12,19,20].
+P0047	[List Paragraph]	Teleoperation for surface treatment tasks
+P0048	[List Paragraph]	Previous studies - teleoperated robotic systems with surface treatment tasks [19,20,25,26].
+P0049	[List Paragraph]	Visual support for surface treatment: Chotiprayanakul et al. [23,24].
+P0050	[List Paragraph]	These tasks involve continuous tool motion across an extended target surface. [13–22].
+P0051	[List Paragraph]	Visual Interfaces for Robot Teleoperation
+P0052	[List Paragraph]	Role of Visual Interfaces
+P0053	[List Paragraph]	Visual feedback is a primary source of information for robot teleoperation [10–12].
+P0054	[List Paragraph]	Two respects of visual interface: how remote workspace information is represented & how that representation is displayed to the operator.
+P0055	[List Paragraph]	Workspace Representation: Image-Based Stereo versus Reconstructed 3D Environments
+P0056	[List Paragraph]	Prior studies and comparisons of workspace representation.
+P0057	[List Paragraph]	The central trade-off is between appearance fidelity and viewpoint flexibility.
+P0058	[List Paragraph]	Display Modality: Monitor-Based versus VR/HMD Interfaces
+P0059	[List Paragraph]	Prior Studies and Comparisons of display modality.
+P0060	[List Paragraph]	The display choice therefore involves a trade-off between immersion and spatial engagement versus interaction burden and usability.
+P0061	[List Paragraph]	It remains unclear how workspace representation and display modality choices affect operator performance in construction surface treatment tasks
+P0062	[Heading 1]	Visual Interface Conditions
+P0063	[List Paragraph]	Study Overview
+P0064	[List Paragraph]	Compare the effects of Workspace Representation and Display Type on task performance and operator experience during remote robotic painting. (Fig. 1)
+P0065	[List Paragraph]	The two factors form four interface conditions.
+P0066	[List Paragraph]	Condition-comparison table (Table. 1).
+P0067	[List Paragraph]	Workspace Representation
+P0068	[List Paragraph]	Image-Based Stereo
+P0069	[List Paragraph]	Streaming pipeline of each interface.
+P0070	[List Paragraph]	Reconstructed Point Cloud
+P0071	[List Paragraph]	PCD reconstruction pipeline through backend server.
+P0072	[List Paragraph]	Viewpoint adjustment methods.
+P0073	[List Paragraph]	Display Type
+P0074	[List Paragraph]	Monitor
+P0075	[List Paragraph]	The Unity-rendered Stereo and PCD interfaces were presented on a desktop monitor.
+P0076	[List Paragraph]	VR
+P0077	[List Paragraph]	HMD connected to the streaming system.
+P0078	[Heading 1]	Experimental Setup
+P0079	[List Paragraph]	Robotic Painting System and Work Environment (Fig. 2, Fig. 3).
+P0080	[List Paragraph]	Describe the experimental device setup
+P0081	[List Paragraph]	Equipment setup
+P0082	[List Paragraph]	Paint & task surface setup
+P0083	[List Paragraph]	Visual Sensing and Operator Interface Setup
+P0084	[List Paragraph]	Camera setup & streaming system.
+P0085	[List Paragraph]	Task Surface Calibration and Feedback Setup
+P0086	[List Paragraph]	Force feedback logistics
+P0087	[Heading 1]	Evaluation
+P0088	[List Paragraph]	Research Questions
+P0089	[List Paragraph]	RQ1. How do alternative visual-interface configurations affect operator performance and experience during teleoperation of surface treatment tasks?
+P0090	[List Paragraph]	RQ2. What visual requirements are important for effective teleoperation of surface treatment tasks?
+P0091	[List Paragraph]	Participants (Table. 2)
+P0092	[List Paragraph]	Sample size justification (power analysis, previous works)
+P0093	[List Paragraph]	N=7 (six men and one woman); mean age=55 years, mean work experience=17 years; All right-handed;
+P0094	[List Paragraph]	Participants’ prior experience of teleoperation, VR.
+P0095	[List Paragraph]	IRB
+P0096	[List Paragraph]	Experimental Procedure
+P0097	[List Paragraph]	Training (5 minute) & a practice painting task.
+P0098	[List Paragraph]	One painting trial under each interface condition in a randomized order.
+P0099	[List Paragraph]	After each trial, NASA-TLX, SUS & semi-structured post-condition interview.
+P0100	[List Paragraph]	Final interview after completing all four trials.
+P0101	[List Paragraph]	Performance Measures
+P0102	[List Paragraph]	Painting performance
+P0103	[List Paragraph]	Including Error Number, Error Area, Error Time, and Painted Area.
+P0104	[List Paragraph]	Definition of each measure (Table. 3)
+P0105	[List Paragraph]	Measuring process
+P0106	[List Paragraph]	Temporal performance
+P0107	[List Paragraph]	Including Total Task Time and Working Time Rate.
+P0108	[List Paragraph]	Measuring process
+P0109	[List Paragraph]	Robot motion characteristics
+P0110	[List Paragraph]	Including Working and Moving Distance/Speed
+P0111	[List Paragraph]	Measuring process
+P0112	[List Paragraph]	Qualitative Data Collection and Analysis
+P0113	[List Paragraph]	Semi-structured post-condition and final interviews executed.
+P0114	[List Paragraph]	Asked interface-specific task experience, perceived task quality, task strategy, visual difficulties, and overall preferences.
+P0115	[List Paragraph]	All interviews are conducted in Korean.
+P0116	[List Paragraph]	Analyzed using thematic analysis
+P0117	[List Paragraph]	Each response was systematically coded and categorized according to the objectives of each questionnaire
+P0118	[List Paragraph]	Selected quotes were translated into English for inclusion in the paper.
+P0119	[List Paragraph]	Statistical Analysis
+P0120	[List Paragraph]	Two-way repeated-measures ANOVA with Workspace Representation and Display Type as within-subject factors.
+P0121	[Heading 1]	Results
+P0122	[List Paragraph]	Quantitative Results
+P0123	[List Paragraph]	Painting Accuracy and Coverage (Fig. 4; Table. 4)
+P0124	[List Paragraph]	Monitor conditions showed lower errors than VR conditions.
+P0125	[List Paragraph]	Workspace representation & interaction: no significant differences; Descriptively, mean errors were higher in PCD than Stereo conditions across the three error measures.
+P0126	[List Paragraph]	Painted Area also showed no significant effects.
+P0127	[List Paragraph]	Task Duration and Active Painting Time (Fig. 5; Table. 4)
+P0128	[List Paragraph]	Visualization method significantly affected Working Time Rate.
+P0129	[List Paragraph]	Total Time did not differ significantly by display modality, visualization method, or their interaction.
+P0130	[List Paragraph]	Robot Motion Characteristics
+P0131	[List Paragraph]	Working/Moving Distance and Speed: no significant main or interaction effects.
+P0132	[List Paragraph]	NASA-TLX & SUS
+P0133	[List Paragraph]	Not statistically significant
+P0134	[List Paragraph]	Qualitative results (Fig. 6; Table. 5)
+P0135	[List Paragraph]	Overall Evaluation of the Four Visual Interfaces
+P0136	[List Paragraph]	Figure 6A compares participant evaluations of interface-specific codes across the four conditions.
+P0137	[List Paragraph]	Counts of each code.
+P0138	[List Paragraph]	Preference ranking: Monitor Stereo (24), Monitor PCD (19), VR Stereo (17), and VR PCD (10) in overall preference.
+P0139	[List Paragraph]	Task-Related Responses during Remote Robotic Painting
+P0140	[List Paragraph]	Figure 6B shows how many participants mentioned each task-related code.
+P0141	[List Paragraph]	Counts of each code.
+P0142	[Heading 1]	Discussion
+P0143	[List Paragraph]	Summary of results
+P0144	[List Paragraph]	Effects of Visual-Interface Conditions on Operator Performance and Experience (RQ1; Table. 6)
+P0145	[List Paragraph]	Monitor Stereo
+P0146	[List Paragraph]	The most preferred condition & stable and intuitive reference for precise task execution.
+P0147	[List Paragraph]	Uncertainty in wall depth estimation & difficulty observing paint conditions.
+P0148	[List Paragraph]	VR Stereo
+P0149	[List Paragraph]	Increased presence and awareness of the work area or boundary for some participants.
+P0150	[List Paragraph]	Indirect or unfamiliar view, depth uncertainty and difficulty observing paint conditions.
+P0151	[List Paragraph]	Monitor PCD
+P0152	[List Paragraph]	Viewpoint adjustment was helpful for some participants.
+P0153	[List Paragraph]	Adjusted views often did not reveal painting defects or surface-contact cues well.
+P0154	[List Paragraph]	VR PCD
+P0155	[List Paragraph]	Control burden within robot teleoperation and viewpoint adjustment.
+P0156	[List Paragraph]	Unclear and annoying visuals (Point-cloud artifacts, robot occlusion, shadows) reduced the visibility of surface-state information.
+P0157	[List Paragraph]	Overall Interpretation
+P0158	[List Paragraph]	Monitor conditions produced fewer boundary-exceedance errors than VR, suggesting that a stable visual reference remained important for precise painting [42]
+P0159	[List Paragraph]	Lower PCD Working Time Rates may reflect viewpoint-management effort that yielded limited task-relevant information [44]
+P0160	[List Paragraph]	Task-Grounded Visual Requirements for Surface Treatment Teleoperation (RQ2; Table. 7)
+P0161	[List Paragraph]	Operator need to monitor the evolving surface state while maintaining precise work within the work boundary.
+P0162	[List Paragraph]	Painting-State and Defect Visibility
+P0163	[List Paragraph]	Operators need to see not only where painting occurs, but also how the surface condition changes during execution.
+P0164	[List Paragraph]	Global and Local Spatial Awareness
+P0165	[List Paragraph]	Awareness of both the overall work boundary and the local EOAT–surface relationship.
+P0166	[List Paragraph]	Visual Stability and Viewpoint Accessibility
+P0167	[List Paragraph]	A stable visual reference helps operators maintain orientation during continuous manipulation.
+P0168	[List Paragraph]	Together, these requirements define task-state observability: continuous awareness of the tool, work boundary, and changing surface condition, building on HRI awareness and viewpoint research [45–47].
+P0169	[List Paragraph]	Implications for Visual Interface Design in Surface Treatment Tasks
+P0170	[List Paragraph]	Surface-State-Preserving Visualization:
+P0171	[List Paragraph]	Preserve the visual appearance cues that reveal changes in the treated surface.
+P0172	[List Paragraph]	Combine geometric views with high-fidelity imagery or task-state highlighting rather than relying on geometry alone.
+P0173	[List Paragraph]	Persistent Global–Local Visual Context
+P0174	[List Paragraph]	Keep the target, boundary, tool, and local tool–surface interaction concurrently visible
+P0175	[List Paragraph]	Overview-detail layouts, overlays, or equivalent spatial cues can reduce the need to trade global orientation for local inspection.
+P0176	[List Paragraph]	Stable Primary View with Low-Cost Viewpoint Access:
+P0177	[List Paragraph]	Maintain a stable primary view while enabling local inspection without disrupting orientation or control.
+P0178	[List Paragraph]	Minimize the burden to re-establish the relationship between the tool, target region, and surface.
+P0179	[List Paragraph]	Limitations and Future Work
+P0180	[List Paragraph]	The study used a single laboratory geometry, material, EOAT, and task duration.
+P0181	[List Paragraph]	Although the tested configurations used commercially available hardware and reflected visual approaches used in recent teleoperation research [6,27], the findings apply to these implementations rather than all VR or PCD systems.
+P0182	[List Paragraph]	Future work should validate the visual requirements and proposed visual supports in varied painting conditions and related tasks.
+P0183	[List Paragraph]	Conclusion
+P0184	[List Paragraph]	Summary
+P0185	[List Paragraph]	Summary of Quantitative & Qualitative results
+P0186	[List Paragraph]	Three critical visual factors derived at discussion.
+P0187	[List Paragraph]	Corresponding design implications.
+P0188	[List Paragraph]	Contribution
+P0189	[List Paragraph]	User-centered comparison of Workspace Representation and Display Modality in a construction-relevant surface-treatment teleoperation task, where comparative evidence on visual-interface design has remained limited.
+P0190	[List Paragraph]	It contributes empirical evidence on how these visual-interface dimensions relate to task accuracy and operator experience. The findings are translated into task-grounded visual requirements for remote robotic painting.
+P0191	[List Paragraph]	The findings can guide visual-interface evaluation and design for teleoperated surface treatment tasks in construction.
+P0193	[Heading 1]	References
+P0194	[Normal]	[1] Jankowski, J., & Grabowski, A. (2015). Usability evaluation of VR interface for mobile robot teleoperation. International Journal of Human-Computer Interaction, 31(12), 882-889. https://doi.org/10.1080/10447318.2015.1039909
+P0195	[Normal]	[2] Martins, H., Oakley, I., & Ventura, R. (2015). Design and evaluation of a head-mounted display for immersive 3D teleoperation of field robots. Robotica, 33(10), 2166-2185. https://doi.org/10.1017/S026357471400126X
+P0196	[Normal]	[3] Whitney, D., Rosen, E., Phillips, E., Konidaris, G., & Tellex, S. (2020). Comparing robot grasping teleoperation across desktop and virtual reality with ROS Reality. In N. M. Amato, G. Hager, S. Thomas, & M. Torres-Torriti (Eds.), Robotics Research (Springer Proceedings in Advanced Robotics, Vol. 10, pp. 335-350). Springer. https://doi.org/10.1007/978-3-030-28619-4_28
+P0197	[Normal]	[4] Su, Y., Chen, X., Zhou, T., Pretty, C., & Chase, G. (2022). Mixed reality-integrated 3D/2D vision mapping for intuitive teleoperation of mobile manipulator. Robotics and Computer-Integrated Manufacturing, 77, Article 102332. https://doi.org/10.1016/j.rcim.2022.102332
+P0198	[Normal]	[5] Yu, S., Kim, T. Y., Park, W. W., Lee, S. H., & Han, J. (2024). Intuitive teleoperation with hand-tracking in VR: A study on master-slave system virtualization and 3D workspace visualization. The International Journal of Advanced Manufacturing Technology, 134, 2353-2372. https://doi.org/10.1007/s00170-024-14213-3
+P0199	[Normal]	[6] Kent, D., Saldanha, C., & Chernova, S. (2020). Leveraging depth data in remote robot teleoperation interfaces for general object manipulation. The International Journal of Robotics Research, 39(1), 39-53. https://doi.org/10.1177/0278364919888565
+P0200	[Normal]	[7] Liu, D., Kim, J., & Ham, Y. (2023). Multi-user immersive environment for excavator teleoperation in construction. Automation in Construction, 156, Article 105143. https://doi.org/10.1016/j.autcon.2023.105143
+P0201	[Normal]	[8] Yoon, S., Park, M., & Ahn, C. R. (2025). Comparing dynamic viewpoint control techniques for teleoperated robotic welding in construction. Automation in Construction, 172, Article 106053. https://doi.org/10.1016/j.autcon.2025.106053
+P0202	[Normal]	[9] Zhou, T., Zhu, Q., & Du, J. (2020). Intuitive robot teleoperation for civil engineering operations with virtual reality and deep learning scene reconstruction. Advanced Engineering Informatics, 46, Article 101170. https://doi.org/10.1016/j.aei.2020.101170
+P0203	[Normal]	[10] Chae, Y., Gupta, S., & Ham, Y. (2024). Divergent effects of visual interfaces on teleoperation for challenging jobsite environments. Automation in Construction, 167, Article 105683. https://doi.org/10.1016/j.autcon.2024.105683
+P0204	[Normal]	[11] Rodrigues, P. B., Lucas, G. M., Fang, Y., Wang, Z., Roll, S. C., Becerik-Gerber, B., & Soibelman, L. (2025). Understanding operators’ sensory needs for human–robot interaction in teleoperated demolition. Journal of Construction Engineering and Management, 151(12), Article 04025207. https://doi.org/10.1061/JCEMD4.COENG-16911
+P0205	[Normal]	[12] Hong, Z., Zhang, Q., Su, X., & Zhang, H. (2020). Effect of virtual annotation on performance of construction equipment teleoperation under adverse visual conditions. Automation in Construction, 118, Article 103296. https://doi.org/10.1016/j.autcon.2020.103296
+P0206	[Normal]	[13] Zhou, Y., & Skibniewski, M. J. (1994). Construction robot force control in cleaning operations. Journal of Aerospace Engineering, 7(1), 33-49. https://doi.org/10.1061/(ASCE)0893-1321(1994)7:1(33)
+P0207	[Normal]	[14] Gradetsky, V., Rachkov, M., & Pushkin, M. (2002). Adaptive control of a construction manipulator. In Proceedings of the 19th International Symposium on Automation and Robotics in Construction (ISARC) (pp. 449-454). https://doi.org/10.22260/ISARC2002/0070
+P0208	[Normal]	[15] Ercan Jenny, S., Lloret-Fritschi, E., Gramazio, F., & Kohler, M. (2020). Crafting plaster through continuous mobile robotic fabrication on-site. Construction Robotics, 4, 261-271. https://doi.org/10.1007/s41693-020-00043-8
+P0209	[Normal]	[16] Wang, Y., Xie, L., Wang, H., Zeng, W., Ding, Y., Hu, T., Zheng, T., Liao, H., & Hu, J. (2022). Intelligent spraying robot for building walls with mobility and perception. Automation in Construction, 139, Article 104270. https://doi.org/10.1016/j.autcon.2022.104270
+P0210	[Normal]	[17] Bansal, K., Du, Y., Palan, E., Quadir, M., & Jawed, M. K. (2023). Robotic painting: Mimicking human applicators. Journal of Coatings Technology and Research, 20, 1369-1381. https://doi.org/10.1007/s11998-022-00750-7
+P0211	[Normal]	[18] Zhou, Y., Li, P., Ye, Z., Yue, L., Gui, L., Jiang, X., Li, X., & Liu, Y. H. (2022). Building information modeling-based 3D reconstruction and coverage planning enabled automatic painting of interior walls using a novel painting robot in construction. Journal of Field Robotics, 39(8), 1178-1204. https://doi.org/10.1002/rob.22103
+P0212	[Normal]	[19] Lorenc, S. J., Handlon, B. E., & Bernold, L. E. (2000). Development of a robotic bridge maintenance system. Automation in Construction, 9(3), 251-258. https://doi.org/10.1016/S0926-5805(99)00040-0
+P0213	[Normal]	[20] Koh, K. H., Farhan, M., Yeung, K. P. C., Tang, D. C. H., Lau, M. P. Y., Cheung, P. K., & Lai, K. W. C. (2021). Teleoperated service robotic system for on-site surface rust removal and protection of high-rise exterior gas pipes. Automation in Construction, 125, Article 103609. https://doi.org/10.1016/j.autcon.2021.103609
+P0214	[Normal]	[21] Laofor, C., & Peansupap, V. (2012). Defect detection and quantification system to support subjective visual quality inspection via a digital image processing: A tiling work case study. Automation in Construction, 24, 160-174. https://doi.org/10.1016/j.autcon.2012.02.012
+P0215	[Normal]	[22] Loganina, V. I., Kislitsyna, S. N., Petukhova, N. A., & Ryabov, M. A. (2016). Method of assessment quality protective and decorative coating concrete cement. Case Studies in Construction Materials, 4, 81-84. https://doi.org/10.1016/j.cscm.2016.01.003
+P0216	[Normal]	[23] Chotiprayanakul, P., Liu, D. K., & Paul, G. (2011). Effect of view distance and movement scale on haptic-based teleoperation of industrial robots in complex environments. In Proceedings of the 28th International Symposium on Automation and Robotics in Construction (ISARC) (pp. 1019-1024). https://doi.org/10.22260/ISARC2011/0188
+P0217	[Normal]	[24] Chotiprayanakul, P., Liu, D. K., & Dissanayake, G. (2012). Human-robot-environment interaction interface for robotic grit-blasting of complex steel bridges. Automation in Construction, 27, 11-23. https://doi.org/10.1016/j.autcon.2012.04.014
+P0218	[Normal]	[25] Rispin, M., Gause, C., & Kurth, T. (2005). Robotic shotcrete applications for mining and tunneling. Shotcrete, Summer 2005, 4-9. https://shotcrete.org/wp-content/uploads/2020/01/2005Sum_Rispinetal.pdf
+P0219	[Normal]	[26] Das, D., Kundu, D., Rahman, A., Rahman, M., & Sazzad, S. (2024). A remote control painting system for exterior walls of high-rise buildings through robotic system. arXiv preprint arXiv:2409.05153. https://doi.org/10.48550/arXiv.2409.05153
+P0220	[Normal]	[27] Stedman, H., Kocer, B. B., Kovac, M., & Pawar, V. M. (2022). VRTAB-Map: A configurable immersive teleoperation framework with online 3D reconstruction. In 2022 IEEE International Symposium on Mixed and Augmented Reality Adjunct (ISMAR-Adjunct) (pp. 104-110). IEEE. https://doi.org/10.1109/ISMAR-Adjunct57072.2022.00029
+P0221	[Normal]	[28] Mazeas, D., & Namoano, B. (2025). Study of visualization modalities on industrial robot teleoperation for inspection in a virtual co-existence space. Virtual Worlds, 4(2), Article 17. https://doi.org/10.3390/virtualworlds4020017
+P0222	[Normal]	[29] Dincer, E. U., Zaremski, M., Nick, A., Wucher, E., Deml, B., & Neumann, G. (2026). A multi-view 3D telepresence system for XR robot teleoperation. arXiv preprint arXiv:2604.03730. https://doi.org/10.48550/arXiv.2604.03730
+P0223	[Normal]	[30] García-Gómez, M., Duque-Domingo, J., Gómez-García-Bermejo, J., & Zalama, E. (2026). Intuitive bimanual teleoperation in mixed reality with assisted grasp autonomy. Image and Vision Computing, 174, Article 106110. https://doi.org/10.1016/j.imavis.2026.106110
+P0224	[Normal]	[31] Naceri, A., Mazzanti, D., Bimbo, J., Tefera, Y. T., Prattichizzo, D., Caldwell, D. G., Mattos, L. S., & Deshpande, N. (2021). The Vicarios virtual reality interface for remote robotic teleoperation: Teleporting for intuitive tele-manipulation. Journal of Intelligent & Robotic Systems, 101(4), Article 80. https://doi.org/10.1007/s10846-021-01311-7
+P0225	[Normal]	[32] Cheng, X., Li, J., Yang, S., Yang, G., & Wang, X. (2025). Open-TeleVision: Teleoperation with immersive active visual feedback. Proceedings of the 8th Conference on Robot Learning, Proceedings of Machine Learning Research, 270, 2729-2749. https://proceedings.mlr.press/v270/cheng25b.html
+P0226	[Normal]	[33] Tang, Z., Chen, Y., Rouxel, Q., Li, D., Wu, S., & Chen, F. (2026). CaFe-TeleVision: A coarse-to-fine teleoperation system with immersive situated visualization for enhanced ergonomics. IEEE Robotics and Automation Letters, 11(2), 1426-1433. https://doi.org/10.1109/LRA.2025.3641110
+P0227	[Normal]	[34] Wei, D., Huang, B., & Li, Q. (2021). Multi-view merging for robot teleoperation with virtual reality. IEEE Robotics and Automation Letters, 6(4), 8537–8544. https://ieeexplore.ieee.org/document/9528927
+P0228	[Normal]	[35] Stotko, P., Krumpen, S., Schwarz, M., Lenz, C., Behnke, S., Klein, R., & Weinmann, M. (2019). A VR system for immersive teleoperation and live exploration with a mobile robot. In 2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) (pp. 3630–3637). IEEE. https://doi.org/10.1109/IROS40897.2019.8968598
+P0229	[Normal]	[36] Chen, Y., Sun, L., Benallegue, M., Cisneros-Limón, R., Singh, R. P., Kaneko, K., Tanguy, A., Caron, G., Suzuki, K., Kheddar, A., & Kanehiro, F. (2022). Enhanced visual feedback with decoupled viewpoint control in immersive humanoid robot teleoperation using SLAM. In 2022 IEEE-RAS International Conference on Humanoid Robots (Humanoids). IEEE. https://doi.org/10.1109/Humanoids53995.2022.9999740
+P0230	[Normal]	[37] Kuitert, S., Hofland, J., Heemskerk, C. J. M., Abbink, D. A., & Peternel, L. (2023). Orbital head-mounted display: A novel interface for viewpoint control during robot teleoperation in cluttered environments. In 2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS). IEEE. https://doi.org/10.1109/IROS55552.2023.10341733
+P0231	[Normal]	[38] LeMasurier, G., Tukpah, J., Wonsick, M., Allspaw, J., Hertel, B., Epstein, J., Azadeh, R., Padir, T., Yanco, H., & Phillips, E. (2024). Comparing a 2D keyboard and mouse interface to virtual reality for human-in-the-loop robot planning for mobile manipulation. In 2024 33rd IEEE International Conference on Robot and Human Interactive Communication (RO-MAN). IEEE. https://doi.org/10.1109/RO-MAN60168.2024.10731138
+P0232	[Normal]	[39] E. Triantafyllidis, C. McGreavy, J. Gu, and Z. Li, “Study of Multimodal Interfaces and the Improvements on Teleoperation,” IEEE Access, vol. 8, pp. 78213–78227, 2020, doi: 10.1109/ACCESS.2020.2990080.
+P0233	[Normal]	[40] J. Brooks, R. Lodge, and D. White, “Comparison of a Head-Mounted Display and Flat Screen Display during a Micro-UAV Target Detection Task,” Proceedings of the Human Factors and Ergonomics Society Annual Meeting, vol. 61, no. 1, pp. 1514–1518, 2017, doi: 10.1177/1541931213601863.
+P0234	[Normal]	[41] J. Huang, Y. Hou, P. Liu, and J. Dalton, “Comparing Neural Correlates of Drone Operations in Virtual Reality and 2D Monitor,” Proceedings of the Human Factors and Ergonomics Society Annual Meeting, vol. 69, no. 1, pp. 58–65, 2025, doi: 10.1177/10711813251367003.
+P0235	[Normal]	[42] Georg, J.-M., Feiler, J., Diermeyer, F., & Lienkamp, M. (2018). Teleoperated driving, a key technology for automated driving? Comparison of actual test drives with a head-mounted display and conventional monitors. In 2018 IEEE Intelligent Transportation Systems Conference (ITSC) (pp. 3403–3408). IEEE. https://doi.org/10.1109/ITSC.2018.8569408
+P0236	[Normal]	[43] Bechtel, N., Weber, B., Severin, P., Sancho Aragon, J., Van Bogaert, L., & Panzirsch, M. (2023). Toward physically realistic vision in teleoperation: A user study with light-field head-mounted display and 6-DoF head motion. Journal of the Society for Information Display, 31, 663–674. https://doi.org/10.1002/jsid.1262
+P0237	[Normal]	[44] Liu, H., Wang, X., Or, C., Pan, J., Jia, R., Wang, W., & Lei, Y. (2025). Operational performance, cognitive load, visual attention, and usability of fixed-, manual-, and autonomous-camera control in single- and multiple-camera telemanipulation systems. Applied Ergonomics, 130, Article 104647. https://doi.org/10.1016/j.apergo.2025.104647
+P0238	[Normal]	[45] Drury, J. L., Scholtz, J., & Yanco, H. A. (2003). Awareness in human–robot interactions. In 2003 IEEE International Conference on Systems, Man and Cybernetics (Vol. 1, pp. 912–918). IEEE.
+P0239	[Normal]	[46] Rakita, D., Mutlu, B., & Gleicher, M. (2019). Remote telemanipulation with adapting viewpoints in visually complex environments. In Robotics: Science and Systems XV. https://doi.org/10.15607/RSS.2019.XV.068
+P0240	[Normal]	[47] Ramos, I. F., Sagar, K., Long, P., Leva, M. C., Damiani, E., & Gianini, G. (2026). Human-centered evaluation of control and perception interface factors in a teleoperational cutting task. Journal of Intelligent & Robotic Systems, 112, Article 47. https://doi.org/10.1007/s10846-026-02383-z
+P0242	[Heading 1]	Figures
+P0244	[Caption]	Figure 1 Four visual-interface conditions. The 2 × 2 design combined Monitor or VR display modalities with Stereo or PCD workspace representations. Each participant completed the four conditions in a randomized order.
+P0246	[Caption]	Figure 2 Remote robotic painting system architecture (To be updated)
+P0248	[Caption]	Figure 3 Experimental task and remote-operation procedure. (A) The target surface was divided into four 35 × 60 cm painting areas, which participants completed sequentially from Area 1 to Area 4. (B) The robot performed the painting task behind an opaque curtain, preventing participants from directly observing the work. (C) A participant remotely controlled the robot through the assigned visual interface; the photograph shows a VR condition.
+P0250	[Caption]	Figure 4-1 Painting accuracy and coverage across display modality
+P0252	[Caption]	Figure 4-2 Painting accuracy and coverage across workspace visualization
+P0254	[Caption]	Figure 5 Temporal Performance by Display Modality and Workspace Representation
+P0256	[Caption]	Figure 6 Thematic analysis of participant interview responses. (A) Interface-mediated task experience capture how participants evaluated the four visual-interface conditions; (B) Painting practices and support needs summarize the concerns and interface needs that emerged during remote robotic painting.
+P0257	[Heading 1]	Tables
+P0258	[Caption]	Table 1 Implementation Characteristics of the Four Visual-Interface Conditions
+P0260	[Caption]	Table 2 Demographic information and experience levels of the participants in the user study (To be updated)
+P0262	[Caption]	Table 3 Task Performance Measures
+P0265	[Caption]	Table 4 Two-Way Repeated-Measures ANOVA Results for Task Performance Measures
+P0266	[Normal]	= partial eta squared. * p < .05.
+P0268	[Caption]	Table 5 Overall Interface Preference Ranking
+P0269	[Normal]	Note. Seven participants ranked the four interface configurations after completing all conditions. Scores were calculated as 4 points for first place, 3 for second, 2 for third, and 1 for fourth (possible range = 7-28).
+P0271	[Caption]	Table 6 Interface-Specific Qualitative Findings for RQ1
+P0274	[Caption]	Table 7 Critical Visual Requirements for Effective Remote Robotic Painting (RQ2)
+
+TABLE 1
+T1R1	Characteristic	Monitor Stereo	Monitor PCD	VR Stereo	VR PCD
+T1R2	Workspace representation	Stereo image	Point cloud	Stereo image	Point cloud
+T1R3	Display modality	Desktop monitor	Desktop monitor	Head-mounted display	Head-mounted display
+T1R4	Rendering path	Backend server to Unity	Backend server to Unity	ZED Unity SDK to Unity	Backend server to Unity
+T1R5	Viewpoint control	Not available	Keyboard	Not available	VR Controller
+
+TABLE 2
+T2R1	Variable	Participants
+T2R2	Age [38-70] (in years)	.
+T2R3	Gender	.
+T2R4	Male	6
+T2R5	Female	1
+T2R6	Painting experience	.
+T2R7	VR experience	.
+T2R8	Video game experience	.
+T2R9	Teleoperation experience	.
+
+TABLE 3
+T3R1	Measure	Definition	Unit
+T3R2	Painting performance	Painting performance	Painting performance
+T3R3	Error number	Number of instances in which paint extended beyond the work area.	—
+T3R4	Error area	Proportion of paint coverage beyond the work boundary relative to the total work area.	%
+T3R5	Error time	Cumulative duration during which paint extended outside the work area.	s
+T3R6	Painted area rate	Proportion of the work area covered with paint.	%
+T3R7	Temporal performance	Temporal performance	Temporal performance
+T3R8	Working time rate	Proportion of total task time spent applying paint.	%
+T3R9	Total time	Time required to complete the task.	s
+T3R10	Robot motion characteristics	Robot motion characteristics	Robot motion characteristics
+T3R11	Average Working Distance	Mean end-effector travel distance during active painting.	m
+T3R12	Average Working Speed	Mean end-effector speed during active painting.	m/s
+T3R13	Average Moving Distance	Mean end-effector travel distance during movement without paint application.	m
+T3R14	Average Moving Speed	Mean end-effector speed during movement without paint application.	m/s
+
+TABLE 4
+T4R1	Outcome	Display Modality	Display Modality	Display Modality	Workspace Representation	Workspace Representation	Workspace Representation	Display Modality ×  / Workspace Representation	Display Modality ×  / Workspace Representation	Display Modality ×  / Workspace Representation
+T4R2	Outcome	F(1, 6)	p		F(1, 6)	p		F(1, 6)	p	
+T4R3	Painting performance	Painting performance	Painting performance	Painting performance	Painting performance	Painting performance	Painting performance	Painting performance	Painting performance	Painting performance
+T4R4	Error number	6.89	.039*	.535	1.94	.214	.244	0.03	.864	.005
+T4R5	Error area	7.20	.036*	.546	0.36	.571	.057	0.29	.611	.046
+T4R6	Error time	6.47	.044*	.519	2.31	.179	.278	1.14	.326	.160
+T4R7	Painted area rate	0.43	.535	.067	0.06	.815	.010	0.73	.425	.109
+T4R8	Temporal performance	Temporal performance	Temporal performance	Temporal performance	Temporal performance	Temporal performance	Temporal performance	Temporal performance	Temporal performance	Temporal performance
+T4R9	Working time rate	0.99	.359	.141	13.64	.010*	.695	0.87	.387	.126
+T4R10	Total time	5.54	.057	.480	2.65	.155	.306	0.33	.587	.052
+T4R11	Robot motion characteristics	Robot motion characteristics	Robot motion characteristics	Robot motion characteristics	Robot motion characteristics	Robot motion characteristics	Robot motion characteristics	Robot motion characteristics	Robot motion characteristics	Robot motion characteristics
+T4R12	Average Working Distance	1.91	.216	.242	1.96	.211	.246	1.08	.338	.153
+T4R13	Average Working Speed	1.87	.220	.238	2.02	.206	.251	1.39	.284	.188
+T4R14	Average Moving Distance	2.54	.162	.298	0.06	.811	.010	1.05	.345	.149
+T4R15	Average Moving Speed	0.01	.940	.001	1.79	.230	.230	0.60	.466	.092
+
+TABLE 5
+T5R1	Rank	Interface configuration	Preference score
+T5R2	1	Monitor Stereo	24
+T5R3	2	Monitor PCD	19
+T5R4	3	VR Stereo	17
+T5R5	4	VR PCD	10
+
+TABLE 6
+T6R1	Interface	Primary experience pattern	Interpretive summary	Representative quote
+T6R2	Monitor Stereo	Stable and intuitive visual reference with residual depth uncertainty	Stable viewpoint supported target approach and boundary tracking, but distance and subtle defects remained uncertain.	“The monitor view was clear and more intuitive for approaching the target.” (S04)
+T6R3	Monitor PCD	Flexible view exploration with limited surface detail	Adjusting viewpoint supported local inspection, but closer views did not reliably reveal painting quality or defects.	“Zooming in and scrolling left and right helped because the result was difficult to examine from a distance.” (S02)
+T6R4	VR Stereo	Immersive Presence but Indirect Visual Reference	VR enhanced work-area awareness for some participants, but its indirect visual reference increased depth uncertainty and made precise correction demanding.	“The image was not fixed, which made it uncomfortable to work.” (S06)
+T6R5	VR PCD	Competing demands of viewpoint management and robot control	Although movable viewpoints were useful, coordinating head movement, viewpoint adjustment, and robot control increased workload.	“I had to adjust the 3D viewpoint while simultaneously controlling the robot.” (S07)
+
+TABLE 7
+T7R1	Critical visual requirement	Interpretive summary	Representative quote
+T7R2	Painting-state and defect visibility	Operators needed to observe coverage, paint accumulation, missed areas, and local defects while painting so that quality degradation could be identified and corrected promptly.	“Accumulated paint and defects were not visible in sufficient detail, making realistic correction difficult.” (S07)
+T7R3	Global and local spatial awareness	Operators needed simultaneous awareness of the work boundary, remaining unpainted area, and roller position, distance, and contact to guide placement and fine correction.	“It was more difficult to work accurately along the boundary line.” (S04)
+T7R4	Visual stability and viewpoint accessibility	Operators needed a stable primary view for continuous manipulation, with zooming or alternative viewpoints available for local inspection without competing with robot control.	“The image was not fixed, which made it uncomfortable to work.” (S06)

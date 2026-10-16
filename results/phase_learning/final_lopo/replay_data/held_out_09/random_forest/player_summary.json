@@ -1,0 +1,43 @@
+{
+  "trial": "09_03",
+  "model": "D:\\SNUCEM\\PROJECTS\\다부처\\Shared Control for Remote Painting\\results\\phase_learning\\paper_outline_html\\lopo_best_players\\random_forest\\lopo_holdout_09_random_forest.npz",
+  "model_sha256": "274bd79bbcdb3f653f0871f0a36839ee366dedd82befd0cd790d377420687580",
+  "training_trials": [
+    "06_01",
+    "06_02",
+    "06_03",
+    "06_04",
+    "07_01",
+    "07_02",
+    "07_03",
+    "07_04",
+    "08_01",
+    "08_02",
+    "08_04",
+    "10_01",
+    "10_02",
+    "10_03",
+    "10_04",
+    "11_01",
+    "11_02",
+    "11_03",
+    "11_04"
+  ],
+  "valid_frames": 3797,
+  "invalid_warmup_frames": 15,
+  "frame_accuracy": 0.9273110350276534,
+  "manual_phase_fraction": {
+    "FREE_MOTION": 0.22886489333684487,
+    "APPROACH": 0.0474058467210956,
+    "PAINTING": 0.6889649723465894,
+    "RETRACT": 0.03476428759547011
+  },
+  "predicted_phase_fraction": {
+    "FREE_MOTION": 0.22965499078219648,
+    "APPROACH": 0.030287068738477745,
+    "PAINTING": 0.7074005794047933,
+    "RETRACT": 0.03265736107453253
+  },
+  "prediction_npz": "09_03_random_forest_predictions.npz",
+  "player_html": "09_03_random_forest_prediction_player.html"
+}

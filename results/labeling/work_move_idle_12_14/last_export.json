@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "complete_trials": 0,
+  "total_trials": 12,
+  "incomplete_trials": [
+    "12-VP",
+    "12-MS",
+    "12-VS",
+    "12-MP",
+    "13-MP",
+    "13-MS",
+    "13-VS",
+    "13-VP",
+    "14-VS",
+    "14-VP",
+    "14-MS",
+    "14-MP"
+  ],
+  "excel_output": "D:\\SNUCEM\\PROJECTS\\다부처\\Shared Control for Remote Painting\\results\\spreadsheets\\원격도장작업실험_0720_Wide Format_12-14추가.xlsx",
+  "metric_summary": "D:\\SNUCEM\\PROJECTS\\다부처\\Shared Control for Remote Painting\\results\\labeling\\work_move_idle_12_14\\metrics\\summary.csv",
+  "model_output": "D:\\SNUCEM\\PROJECTS\\다부처\\Shared Control for Remote Painting\\data\\processed\\work_move_idle_v1"
+}

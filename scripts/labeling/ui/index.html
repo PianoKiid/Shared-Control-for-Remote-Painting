@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sub12–14 WORK / MOVE / IDLE 라벨링</title>
+  <style>
+    :root {
+      --bg:#f5f7fb; --panel:#fff; --text:#172033; --muted:#667085;
+      --border:#d7dce5; --blue:#2457c5; --work:#e8684a; --move:#247f8f;
+      --idle:#7b6f9e; --un:#d9dee7; --cursor:#e11d48;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; }
+    button,select,input { font:inherit; }
+    main { max-width:1380px; margin:auto; padding:20px; }
+    h1 { font-size:26px; margin:0 0 6px; }
+    p { margin:0; color:var(--muted); }
+    .header,.pose-head { display:flex; justify-content:space-between; gap:15px; align-items:flex-start; flex-wrap:wrap; }
+    .header-tools,.view-controls,.legend { display:flex; gap:9px; flex-wrap:wrap; align-items:center; }
+    .trial-select,.btn,.view-controls button { height:38px; border:1px solid var(--border); background:#fff; border-radius:8px; padding:0 12px; color:var(--text); cursor:pointer; }
+    .trial-select { min-width:150px; }
+    .btn:hover,.view-controls button:hover { border-color:#98a2b3; }
+    .btn:disabled { opacity:.45; cursor:not-allowed; }
+    .btn.primary { color:#fff; border-color:var(--blue); background:var(--blue); }
+    .btn.warn { color:#b42318; background:#fff6f4; border-color:#f4c7c1; }
+    .save-state { min-width:68px; color:var(--muted); font-size:12px; text-align:right; }
+    .progress-shell { width:min(340px,42vw); display:flex; align-items:center; gap:9px; }
+    .progress-track { height:10px; flex:1; background:#e4e7ec; border-radius:9px; overflow:hidden; }
+    .progress-fill { height:100%; width:0; background:linear-gradient(90deg,var(--blue),#5b8ff9); transition:width .2s; }
+    .progress-text { min-width:88px; color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums; }
+    .panel { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px; margin-top:14px; }
+    .section-title { font-weight:750; margin-bottom:7px; }
+    .hint { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.55; }
+    .controls { display:grid; grid-template-columns:auto auto minmax(220px,1fr) auto; gap:10px; align-items:center; }
+    .controls input[type=range] { width:100%; accent-color:var(--blue); }
+    .time { font-variant-numeric:tabular-nums; min-width:180px; text-align:right; }
+    .status-row { display:grid; grid-template-columns:minmax(160px,.7fr) minmax(180px,1fr) auto; gap:10px; margin-top:12px; }
+    .badge { border-radius:9px; color:#fff; padding:10px 12px; font-weight:750; text-align:center; }
+    .selection-now { padding:10px 12px; border-radius:9px; font-weight:650; text-align:center; background:#eef1f5; color:#475467; }
+    .timeline-label { font-size:12px; color:var(--muted); margin:10px 0 4px; }
+    .timeline-wrap { position:relative; height:70px; border:1px solid var(--border); border-radius:7px; overflow:hidden; background:var(--un); cursor:crosshair; }
+    .timeline-wrap canvas { position:absolute; inset:0; width:100%; height:100%; }
+    canvas { display:block; width:100%; height:100%; }
+    .legend { margin-top:9px; color:var(--muted); font-size:12px; }
+    .legend span { display:inline-flex; align-items:center; gap:6px; }
+    .dot { width:11px; height:11px; border-radius:2px; }
+    .pose3d { height:600px; min-height:430px; margin-top:10px; border:1px solid var(--border); border-radius:8px; overflow:hidden; touch-action:none; cursor:grab; background:#fbfcfe; }
+    .pose3d.dragging { cursor:grabbing; }
+    .view-controls button.active { background:var(--blue); color:#fff; border-color:var(--blue); }
+    .stats { display:grid; grid-template-columns:repeat(6,minmax(120px,1fr)); gap:8px; margin-top:10px; }
+    .stat { background:#f5f7fa; border-radius:8px; padding:9px; }
+    .stat small { display:block; color:var(--muted); font-size:11px; }
+    .stat strong { display:block; margin-top:3px; font-size:14px; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+    .edit-grid { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr); gap:14px; }
+    .frame-inputs { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+    label.field { display:block; color:var(--muted); font-size:11px; }
+    label.field input { margin-top:5px; width:100%; height:38px; border:1px solid var(--border); border-radius:7px; padding:0 9px; font-variant-numeric:tabular-nums; }
+    .label-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+    .label-btn { color:#fff; border:0; border-radius:8px; min-height:46px; cursor:pointer; font-weight:750; }
+    .label-btn.work { background:var(--work); }
+    .label-btn.move { background:var(--move); }
+    .label-btn.idle { background:var(--idle); }
+    .edit-row { display:grid; grid-template-columns:1fr 1fr 1.25fr; gap:8px; margin-top:8px; }
+    .counts { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+    .count-card { border:1px solid var(--border); border-radius:8px; padding:9px 10px; }
+    .count-card span { font-size:11px; color:var(--muted); }
+    .count-card b { display:block; margin-top:4px; font-variant-numeric:tabular-nums; }
+    .footer-actions { display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; margin-top:14px; }
+    .footer-actions .note { max-width:920px; font-size:12px; color:var(--muted); line-height:1.55; }
+    .toast { position:fixed; left:50%; bottom:22px; transform:translateX(-50%) translateY(20px); background:#172033; color:#fff; padding:11px 15px; border-radius:9px; opacity:0; pointer-events:none; transition:.2s; z-index:20; box-shadow:0 12px 35px rgba(16,24,40,.18); }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+    dialog { border:0; border-radius:13px; padding:0; width:min(620px,calc(100% - 30px)); box-shadow:0 20px 60px rgba(0,0,0,.25); }
+    dialog::backdrop { background:rgba(10,20,24,.5); }
+    .dialog-body { padding:20px; }
+    .dialog-body h3 { margin:0 0 12px; }
+    .dialog-body pre { white-space:pre-wrap; background:#f3f4f6; padding:12px; border-radius:8px; max-height:300px; overflow:auto; font-size:12px; }
+    @media(max-width:900px) {
+      main { padding:10px; }
+      .controls { grid-template-columns:auto auto 1fr; }
+      .time { grid-column:1/-1; text-align:left; }
+      .status-row,.edit-grid { grid-template-columns:1fr; }
+      .pose3d { height:480px; }
+      .stats { grid-template-columns:repeat(2,1fr); }
+      .progress-shell { width:100%; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="header">
+    <div>
+      <h1>Sub12–14 · WORK / MOVE / IDLE 라벨링</h1>
+      <p>EE pose 3D 궤적을 재생하며 구간을 직접 선택하고 라벨링합니다. 자동 상태 추정은 사용하지 않습니다.</p>
+    </div>
+    <div class="header-tools">
+      <select id="trialSelect" class="trial-select" aria-label="실험 선택"></select>
+      <div class="progress-shell"><div class="progress-track"><div id="progressFill" class="progress-fill"></div></div><span id="progressText" class="progress-text">0.0%</span></div>
+      <span id="saveState" class="save-state">불러오는 중</span>
+      <button id="saveBtn" class="btn primary">저장</button>
+    </div>
+  </div>
+
+  <section class="panel">
+    <div class="controls">
+      <button id="playBtn" class="btn">▶ 재생</button>
+      <select id="speedSelect" class="btn" aria-label="재생 속도"><option value="1">1×</option><option value="3">3×</option><option value="10">10×</option><option value="30">30×</option></select>
+      <input id="frameSlider" type="range" min="0" value="0" aria-label="현재 프레임">
+      <div id="timeRead" class="time">0.00 s</div>
+    </div>
+    <div class="status-row">
+      <div id="currentLabel" class="badge">UNLABELED</div>
+      <div id="selectionNow" class="selection-now">선택 0–0 · 1 frame</div>
+      <div id="durationLabel" class="selection-now">—</div>
+    </div>
+    <div class="timeline-label">수동 WORK / MOVE / IDLE 라벨</div>
+    <div id="timelineWrap" class="timeline-wrap"><canvas id="timeline"></canvas></div>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--work)"></i>WORK</span>
+      <span><i class="dot" style="background:var(--move)"></i>MOVE</span>
+      <span><i class="dot" style="background:var(--idle)"></i>IDLE</span>
+      <span><i class="dot" style="background:var(--un)"></i>UNLABELED</span>
+      <span>타임라인 드래그: 구간 선택 · ←/→: 프레임 이동 · Ctrl+S: 저장</span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="pose-head">
+      <div>
+        <div class="section-title">EE pose 3차원 위치 재생</div>
+        <div class="hint">마우스 드래그로 회전하고 휠로 확대·축소할 수 있습니다. 더블클릭하면 기본 시점으로 돌아옵니다.</div>
+      </div>
+      <div class="view-controls">
+        <button data-view="default" class="active">기본 3D</button>
+        <button data-view="front">정면 X–Z</button>
+        <button data-view="side">측면 Y–Z</button>
+        <button data-view="top">상단 X–Y</button>
+      </div>
+    </div>
+    <div class="pose3d" id="poseWrap"><canvas id="trajectory"></canvas></div>
+    <div class="stats">
+      <div class="stat"><small>Frame</small><strong id="frameRead">—</strong></div>
+      <div class="stat"><small>Segment / file</small><strong id="segmentRead">—</strong></div>
+      <div class="stat"><small>Position X,Y,Z</small><strong id="posRead">—</strong></div>
+      <div class="stat"><small>Force Fx,Fy,Fz</small><strong id="forceRead">—</strong></div>
+      <div class="stat"><small>Force magnitude</small><strong id="forceMagRead">—</strong></div>
+      <div class="stat"><small>EE speed</small><strong id="speedRead">—</strong></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="edit-grid">
+      <div>
+        <div class="section-title">선택 구간 라벨 지정</div>
+        <div class="frame-inputs">
+          <label class="field">시작 프레임<input id="startInput" type="number" min="0" value="0"></label>
+          <label class="field">끝 프레임<input id="endInput" type="number" min="0" value="0"></label>
+        </div>
+        <div class="label-grid">
+          <button class="label-btn work" data-label="WORK">1 · WORK</button>
+          <button class="label-btn move" data-label="MOVE">2 · MOVE</button>
+          <button class="label-btn idle" data-label="IDLE">3 · IDLE</button>
+        </div>
+        <div class="edit-row"><button id="undoBtn" class="btn">실행취소</button><button id="redoBtn" class="btn">다시실행</button><button id="clearBtn" class="btn warn">선택 지우기</button></div>
+        <div class="hint">타임라인을 드래그하거나 [ 와 ] 키로 시작·끝을 지정하세요. 단절 및 14-MP 파일 경계는 지표 계산 시 자동으로 분리됩니다.</div>
+      </div>
+      <div>
+        <div class="section-title">현재 라벨 분포</div>
+        <div id="counts" class="counts"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-actions">
+    <div class="note"><b>IDLE 처리:</b> 감사용 라벨과 CSV에는 남지만 모델용 데이터와 작업/이동 거리·속도 계산에서는 제외됩니다. 원본 MCAP과 원본 WIDE 엑셀은 수정하지 않습니다.</div>
+    <button id="finalizeBtn" class="btn primary">결과 계산 · 엑셀 복사본 업데이트</button>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+<dialog id="resultDialog"><div class="dialog-body"><h3>결과 파일 업데이트</h3><pre id="resultText"></pre><button id="closeDialog" class="btn primary">확인</button></div></dialog>
+
+<script>
+const COLORS={"-1":"#d9dee7",0:"#e8684a",1:"#247f8f",2:"#7b6f9e"};
+const LABEL_ID={WORK:0,MOVE:1,IDLE:2};
+const LABEL_NAME={"-1":"UNLABELED",0:"WORK",1:"MOVE",2:"IDLE"};
+let manifest=null,data=null,labels=[],current=0,selStart=0,selEnd=0,playing=false,timer=null,dirty=false;
+let undoStack=[],redoStack=[],dragStart=null,positionCenter=[0,0,0],positionScale=1;
+const view={yaw:-.68,pitch:.46,zoom:1,dragging:false,x:0,y:0};
+const $=s=>document.querySelector(s);
+const fmt=(v,n=3)=>Number.isFinite(v)?Number(v).toFixed(n):"—";
+
+function toast(message){const el=$("#toast");el.textContent=message;el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),2200);}
+async function api(url,options={}){const res=await fetch(url,options);const body=await res.json();if(!res.ok||body.ok===false)throw new Error(body.error||`요청 실패 (${res.status})`);return body;}
+function snapshot(){return labels.slice();}
+function pushUndo(){undoStack.push(snapshot());if(undoStack.length>60)undoStack.shift();redoStack=[];}
+function markDirty(){dirty=true;$("#saveState").textContent="저장 안 됨";}
+
+async function boot(){
+  manifest=await api("/api/manifest");
+  const select=$("#trialSelect");
+  manifest.trials.forEach(t=>{const o=document.createElement("option");o.value=t.trial_id;o.textContent=`${t.trial_id} · ${t.progress.percent}%${t.appended_sources?" · 2개 파일":""}`;select.appendChild(o);});
+  select.addEventListener("change",()=>loadTrial(select.value));
+  await loadTrial(select.value);
+}
+
+function setPositionBounds(){
+  const mins=[Infinity,Infinity,Infinity],maxs=[-Infinity,-Infinity,-Infinity];
+  for(const p of data.position_m){for(let axis=0;axis<3;axis++){mins[axis]=Math.min(mins[axis],p[axis]);maxs[axis]=Math.max(maxs[axis],p[axis]);}}
+  positionCenter=mins.map((v,axis)=>(v+maxs[axis])/2);
+  positionScale=Math.max(maxs[0]-mins[0],maxs[1]-mins[1],maxs[2]-mins[2],1e-6);
+}
+
+async function loadTrial(id){
+  if(dirty&&!confirm("저장하지 않은 변경이 있습니다. 다른 실험으로 이동할까요?")){ $("#trialSelect").value=data.trial_id; return; }
+  stop();$("#saveState").textContent="불러오는 중";
+  const [trial,saved]=await Promise.all([api(`/api/trial/${id}`),api(`/api/labels/${id}`)]);
+  data=trial;labels=new Int8Array(data.frame_count);labels.fill(-1);
+  for(const item of saved.labels){labels.fill(LABEL_ID[item.label],item.start_index,item.end_index+1);}
+  current=0;selStart=0;selEnd=0;undoStack=[];redoStack=[];dirty=false;setPositionBounds();setView("default");
+  const max=data.frame_count-1;for(const id of ["frameSlider","startInput","endInput"]){$("#"+id).max=max;}
+  $("#frameSlider").value=0;$("#startInput").value=0;$("#endInput").value=0;
+  $("#durationLabel").textContent=`${fmt(data.duration_ui_s,1)} s · ${data.segments.length} segments`;
+  $("#saveState").textContent=saved.updated_at?"저장됨":"새 라벨";
+  renderAll();
+}
+
+function setCurrent(index){current=Math.max(0,Math.min(data.frame_count-1,Math.round(index)));$("#frameSlider").value=current;renderReadout();drawTrajectory();drawTimeline();}
+function setSelection(a,b){selStart=Math.max(0,Math.min(data.frame_count-1,Math.round(a)));selEnd=Math.max(0,Math.min(data.frame_count-1,Math.round(b)));if(selStart>selEnd)[selStart,selEnd]=[selEnd,selStart];$("#startInput").value=selStart;$("#endInput").value=selEnd;renderSelection();drawTimeline();}
+function renderSelection(){$("#selectionNow").textContent=`선택 ${selStart.toLocaleString()}–${selEnd.toLocaleString()} · ${(selEnd-selStart+1).toLocaleString()} frames`;}
+function applyLabel(value){pushUndo();labels.fill(value,selStart,selEnd+1);markDirty();renderAll();toast(value<0?"선택 구간을 지웠습니다.":`${LABEL_NAME[value]}로 표시했습니다.`);}
+function undo(){if(!undoStack.length)return;redoStack.push(snapshot());labels=Int8Array.from(undoStack.pop());markDirty();renderAll();}
+function redo(){if(!redoStack.length)return;undoStack.push(snapshot());labels=Int8Array.from(redoStack.pop());markDirty();renderAll();}
+
+function labelsAsIntervals(){
+  const out=[];let i=0;
+  while(i<labels.length){const v=labels[i];let j=i;while(j+1<labels.length&&labels[j+1]===v)j++;if(v>=0)out.push({start_index:i,end_index:j,label:LABEL_NAME[v]});i=j+1;}
+  return out;
+}
+async function save(){
+  $("#saveBtn").disabled=true;$("#saveState").textContent="저장 중";
+  try{const result=await api("/api/save-labels",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({trial_id:data.trial_id,labels:labelsAsIntervals()})});dirty=false;$("#saveState").textContent="저장됨";updateProgress();toast(`저장 완료 · ${result.progress.percent}%`);}
+  catch(e){$("#saveState").textContent="저장 실패";alert(e.message);}finally{$("#saveBtn").disabled=false;}
+}
+
+function renderReadout(){
+  const p=data.position_m[current],f=data.force_N[current],forceMag=Math.hypot(f[0],f[1],f[2]),label=labels[current];
+  $("#timeRead").textContent=`${fmt(data.time_s[current],2)} / ${fmt(data.duration_ui_s,2)} s`;
+  $("#frameRead").textContent=`${current.toLocaleString()} / ${(data.frame_count-1).toLocaleString()}`;
+  $("#segmentRead").textContent=`${data.segment_id[current]} / ${data.file_part[current]}`;
+  $("#posRead").textContent=`${fmt(p[0])}, ${fmt(p[1])}, ${fmt(p[2])} m`;
+  $("#forceRead").textContent=`${fmt(f[0],2)}, ${fmt(f[1],2)}, ${fmt(f[2],2)} N`;
+  $("#forceMagRead").textContent=`${fmt(forceMag,2)} N`;
+  $("#speedRead").textContent=`${fmt(data.speed_m_s[current],4)} m/s`;
+  const badge=$("#currentLabel");badge.textContent=`현재: ${LABEL_NAME[label]}`;badge.style.background=COLORS[label];badge.style.color=label<0?"#475467":"#fff";
+}
+
+function fitCanvas(canvas){
+  const r=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1,w=Math.max(1,r.width),h=Math.max(1,r.height);
+  const pw=Math.round(w*dpr),ph=Math.round(h*dpr);if(canvas.width!==pw||canvas.height!==ph){canvas.width=pw;canvas.height=ph;}
+  const ctx=canvas.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);return{ctx,w,h};
+}
+function projectPoint(p,w,h){
+  const x=(p[0]-positionCenter[0])/positionScale,y=(p[1]-positionCenter[1])/positionScale,z=(p[2]-positionCenter[2])/positionScale;
+  const cy=Math.cos(view.yaw),sy=Math.sin(view.yaw),cp=Math.cos(view.pitch),sp=Math.sin(view.pitch);
+  const xr=cy*x-sy*y,yr=sy*x+cy*y,screenY=cp*z-sp*yr,depth=sp*z+cp*yr,k=1/(1+.22*depth),s=Math.min(w,h)*.78*view.zoom;
+  return{x:w/2+s*xr*k,y:h/2-s*screenY*k,depth};
+}
+function drawAxes(ctx,w,h){
+  const length=.55*positionScale,origin=positionCenter,axes=[{p:[origin[0]+length,origin[1],origin[2]],c:"#dc2626",n:"X"},{p:[origin[0],origin[1]+length,origin[2]],c:"#16a34a",n:"Y"},{p:[origin[0],origin[1],origin[2]+length],c:"#2563eb",n:"Z"}],o=projectPoint(origin,w,h);
+  ctx.save();ctx.lineWidth=1.5;ctx.font="700 12px system-ui";
+  for(const a of axes){const q=projectPoint(a.p,w,h);ctx.strokeStyle=a.c;ctx.beginPath();ctx.moveTo(o.x,o.y);ctx.lineTo(q.x,q.y);ctx.stroke();ctx.fillStyle=a.c;ctx.fillText(a.n,q.x+5,q.y-5);}
+  ctx.restore();
+}
+function drawTrajectory(){
+  if(!data)return;const {ctx,w,h}=fitCanvas($("#trajectory"));ctx.clearRect(0,0,w,h);ctx.fillStyle="#fbfcfe";ctx.fillRect(0,0,w,h);drawAxes(ctx,w,h);
+  const pts=data.position_m,projected=pts.map(p=>projectPoint(p,w,h)),stride=Math.max(1,Math.floor(pts.length/5000));
+  for(const pass of ["all","played"]){ctx.globalAlpha=pass==="all"?.23:.95;ctx.lineWidth=pass==="all"?2:3;let previous=-1;
+    for(let i=0;i<pts.length;i+=stride){if(pass==="played"&&i>current)break;if(previous<0||data.segment_id[i]!==data.segment_id[previous]||data.file_part[i]!==data.file_part[previous]){previous=i;continue;}
+      const a=projected[previous],b=projected[i];ctx.strokeStyle=pass==="all"?"#667085":COLORS[labels[i]];ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();previous=i;
+    }
+  }
+  ctx.globalAlpha=1;const p=projected[current],color=COLORS[labels[current]];ctx.fillStyle="#fff";ctx.strokeStyle=color;ctx.lineWidth=4;ctx.beginPath();ctx.arc(p.x,p.y,10,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.fillStyle=labels[current]<0?"#667085":color;ctx.font="700 13px system-ui";ctx.fillText(LABEL_NAME[labels[current]],p.x+15,p.y-8);
+}
+
+function drawTimeline(){
+  if(!data)return;const canvas=$("#timeline"),{ctx,w,h}=fitCanvas(canvas);ctx.clearRect(0,0,w,h);ctx.fillStyle="#f7f9fc";ctx.fillRect(0,0,w,h);const n=labels.length,top=9,barH=Math.max(26,h-27),pixels=Math.max(1,Math.floor(w));
+  for(let px=0;px<pixels;px++){const a=Math.floor(px/pixels*n),b=Math.min(n,Math.ceil((px+1)/pixels*n)),counts=[0,0,0,0];for(let i=a;i<b;i++)counts[labels[i]+1]++;let best=0;for(let j=1;j<4;j++)if(counts[j]>counts[best])best=j;ctx.fillStyle=COLORS[best-1];ctx.fillRect(px,top,1,barH);}
+  for(const seg of data.segments){if(seg.start_index===0)continue;const x=seg.start_index/(n-1)*w,fileBoundary=seg.file_part!==data.file_part[Math.max(0,seg.start_index-1)];ctx.strokeStyle=fileBoundary?"#172033":"#98a2b3";ctx.lineWidth=fileBoundary?3:1;ctx.beginPath();ctx.moveTo(x,3);ctx.lineTo(x,h-4);ctx.stroke();}
+  const x1=selStart/(n-1)*w,x2=selEnd/(n-1)*w;ctx.fillStyle="rgba(255,255,255,.22)";ctx.fillRect(x1,top,Math.max(2,x2-x1),barH);ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.strokeRect(x1,top,Math.max(2,x2-x1),barH);
+  const xc=current/(n-1)*w;ctx.strokeStyle=COLORS[0];ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(xc,0);ctx.lineTo(xc,h);ctx.stroke();
+}
+
+function updateProgress(){const counts={WORK:0,MOVE:0,IDLE:0,UNLABELED:0};for(const v of labels){if(v===0)counts.WORK++;else if(v===1)counts.MOVE++;else if(v===2)counts.IDLE++;else counts.UNLABELED++;}const done=labels.length-counts.UNLABELED,pct=100*done/labels.length;$("#progressFill").style.width=`${pct}%`;$("#progressText").textContent=`${pct.toFixed(1)}% 라벨됨`;$("#counts").innerHTML=Object.entries(counts).map(([k,v])=>`<div class="count-card"><span>${k}</span><b>${v.toLocaleString()} frames</b></div>`).join("");}
+function renderAll(){renderReadout();renderSelection();drawTrajectory();drawTimeline();updateProgress();$("#undoBtn").disabled=!undoStack.length;$("#redoBtn").disabled=!redoStack.length;}
+
+function play(){if(playing){stop();return;}playing=true;$("#playBtn").textContent="⏸ 일시정지";timer=setInterval(()=>{const step=Number($("#speedSelect").value);if(current+step>=data.frame_count){stop();setCurrent(data.frame_count-1);}else setCurrent(current+step);},33);}
+function stop(){playing=false;$("#playBtn").textContent="▶ 재생";if(timer){clearInterval(timer);timer=null;}}
+function setView(name){
+  document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===name));
+  if(name==="front"){view.yaw=0;view.pitch=0;}else if(name==="side"){view.yaw=Math.PI/2;view.pitch=0;}else if(name==="top"){view.yaw=0;view.pitch=Math.PI/2;}else{view.yaw=-.68;view.pitch=.46;}view.zoom=1;if(data)drawTrajectory();
+}
+
+$("#playBtn").addEventListener("click",play);$("#frameSlider").addEventListener("input",e=>{stop();setCurrent(Number(e.target.value));});
+function selectionFromInputs(){const max=data.frame_count-1,a=Math.max(0,Math.min(max,Number($("#startInput").value)||0)),b=Math.max(0,Math.min(max,Number($("#endInput").value)||0));selStart=Math.min(a,b);selEnd=Math.max(a,b);renderSelection();drawTimeline();}
+$("#startInput").addEventListener("input",selectionFromInputs);$("#endInput").addEventListener("input",selectionFromInputs);
+$("#startInput").addEventListener("change",()=>setSelection(selStart,selEnd));$("#endInput").addEventListener("change",()=>setSelection(selStart,selEnd));
+document.querySelectorAll(".label-btn").forEach(b=>b.addEventListener("click",()=>applyLabel(LABEL_ID[b.dataset.label])));
+$("#clearBtn").addEventListener("click",()=>applyLabel(-1));$("#undoBtn").addEventListener("click",undo);$("#redoBtn").addEventListener("click",redo);$("#saveBtn").addEventListener("click",save);
+document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>setView(b.dataset.view)));
+
+const poseWrap=$("#poseWrap");
+poseWrap.addEventListener("pointerdown",e=>{view.dragging=true;view.x=e.clientX;view.y=e.clientY;poseWrap.classList.add("dragging");poseWrap.setPointerCapture(e.pointerId);});
+poseWrap.addEventListener("pointermove",e=>{if(!view.dragging)return;view.yaw+=(e.clientX-view.x)*.01;view.pitch=Math.max(-1.45,Math.min(1.45,view.pitch+(e.clientY-view.y)*.008));view.x=e.clientX;view.y=e.clientY;document.querySelectorAll("[data-view]").forEach(b=>b.classList.remove("active"));drawTrajectory();});
+function endPoseDrag(e){view.dragging=false;poseWrap.classList.remove("dragging");if(poseWrap.hasPointerCapture(e.pointerId))poseWrap.releasePointerCapture(e.pointerId);}
+poseWrap.addEventListener("pointerup",endPoseDrag);poseWrap.addEventListener("pointercancel",endPoseDrag);
+poseWrap.addEventListener("wheel",e=>{e.preventDefault();view.zoom=Math.max(.45,Math.min(3.5,view.zoom*Math.exp(-e.deltaY*.001)));drawTrajectory();},{passive:false});
+poseWrap.addEventListener("dblclick",()=>setView("default"));
+
+$("#timelineWrap").addEventListener("pointerdown",e=>{const r=e.currentTarget.getBoundingClientRect();dragStart=Math.round((e.clientX-r.left)/r.width*(labels.length-1));setCurrent(dragStart);setSelection(dragStart,dragStart);e.currentTarget.setPointerCapture(e.pointerId);});
+$("#timelineWrap").addEventListener("pointermove",e=>{if(dragStart===null)return;const r=e.currentTarget.getBoundingClientRect();const idx=Math.max(0,Math.min(labels.length-1,Math.round((e.clientX-r.left)/r.width*(labels.length-1))));setSelection(dragStart,idx);setCurrent(idx);});
+$("#timelineWrap").addEventListener("pointerup",()=>dragStart=null);$("#timelineWrap").addEventListener("pointercancel",()=>dragStart=null);
+$("#finalizeBtn").addEventListener("click",async()=>{if(dirty&&confirm("현재 변경을 먼저 저장할까요?"))await save();const b=$("#finalizeBtn");b.disabled=true;b.textContent="계산 중…";try{const r=await api("/api/finalize",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});$("#resultText").textContent=`완료된 실험: ${r.complete_trials} / ${r.total_trials}\n미완료: ${r.incomplete_trials.length?r.incomplete_trials.join(", "):"없음"}\n\n엑셀 복사본\n${r.excel_output}\n\n지표 요약\n${r.metric_summary}\n\n모델용 데이터\n${r.model_output}`;$("#resultDialog").showModal();}catch(e){alert(e.message);}finally{b.disabled=false;b.textContent="결과 계산 · 엑셀 복사본 업데이트";}});
+$("#closeDialog").addEventListener("click",()=>$("#resultDialog").close());
+window.addEventListener("resize",()=>{drawTrajectory();drawTimeline();});window.addEventListener("beforeunload",e=>{if(dirty){e.preventDefault();e.returnValue="";}});
+window.addEventListener("keydown",e=>{if(e.target.matches("input,select"))return;if(e.ctrlKey&&e.key.toLowerCase()==="s"){e.preventDefault();save();return;}if(e.key===" "){e.preventDefault();play();}else if(e.key==="ArrowLeft")setCurrent(current-(e.shiftKey?10:1));else if(e.key==="ArrowRight")setCurrent(current+(e.shiftKey?10:1));else if(e.key==="[")setSelection(current,selEnd);else if(e.key==="]")setSelection(selStart,current);else if(e.key==="1")applyLabel(0);else if(e.key==="2")applyLabel(1);else if(e.key==="3")applyLabel(2);});
+boot().catch(e=>{console.error(e);alert(`초기화 실패: ${e.message}`);});
+</script>
+</body>
+</html>

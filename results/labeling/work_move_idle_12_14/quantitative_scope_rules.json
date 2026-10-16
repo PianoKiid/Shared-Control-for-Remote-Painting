@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-29T12:20:00+09:00",
+  "updated_at": "2026-09-29T14:05:00+09:00",
+  "purpose": "Sub12–14 정량분석에서 실제 작업 범위와 비작업 IDLE 제외 구간을 고정한다.",
+  "source": "사용자 수동 라벨링 및 2026-09-29 명시적 지시",
+  "global_policy": {
+    "preserve_original_labels_for_audit": true,
+    "use_original_timestamps_within_each_source_segment": true,
+    "never_connect_distance_or_duration_across_segment_or_file_boundaries": true,
+    "listed_exclusions_apply_to": [
+      "total_task_duration",
+      "work_time_calculation",
+      "working_time_ratio_denominator",
+      "all_future_quantitative_aggregations_using_task_time"
+    ],
+    "unlisted_idle_intervals": "Keep inside the task scope unless a later explicit user instruction excludes them.",
+    "ui_time_warning": "Do not use duration_ui_s directly because it contains a synthetic 0.25 s display gap between valid segments."
+  },
+  "trials": {
+    "12-VP": {
+      "task_scope": {
+        "start_frame": 1849,
+        "end_frame": 25102,
+        "start_ui_time_s": 61.6298,
+        "end_ui_time_s": 836.7262,
+        "user_description": "61.63 s–836.73 s가 전체 작업구간"
+      },
+      "excluded_intervals": [
+        {
+          "start_frame": 11465,
+          "end_frame": 13377,
+          "start_ui_time_s": 382.1637,
+          "end_ui_time_s": 445.8938,
+          "expected_label": "IDLE",
+          "reason": "작업 중인 구간이 아니므로 작업시간 및 작업중 시간 비율 계산에서 제외"
+        }
+      ]
+    },
+    "12-MS": {
+      "task_scope": {
+        "all_preprocessed_valid_frames": true,
+        "start_frame": 0,
+        "end_frame": 19029
+      },
+      "excluded_intervals": [
+        {
+          "start_frame": 7608,
+          "end_frame": 9241,
+          "start_ui_time_s": 254.8742,
+          "end_ui_time_s": 309.9446,
+          "expected_label": "IDLE",
+          "reason": "작업 중인 구간이 아니므로 작업시간 및 작업중 시간 비율 계산에서 제외"
+        }
+      ]
+    },
+    "12-MP": {
+      "task_scope": {
+        "all_preprocessed_valid_frames": true,
+        "start_frame": 0,
+        "end_frame": 12546
+      },
+      "excluded_intervals": [
+        {
+          "start_frame": 0,
+          "end_frame": 620,
+          "start_ui_time_s": 0.0,
+          "end_ui_time_s": 20.6687,
+          "expected_label": "IDLE",
+          "reason": "초반 첫 번째 비작업 IDLE 구간"
+        },
+        {
+          "start_frame": 1402,
+          "end_frame": 2927,
+          "start_ui_time_s": 46.9558,
+          "end_ui_time_s": 98.8566,
+          "expected_label": "IDLE",
+          "reason": "초반 두 번째 비작업 IDLE 구간"
+        }
+      ]
+    },
+    "12-VS": {
+      "task_scope": {
+        "all_preprocessed_valid_frames": true,
+        "start_frame": 0,
+        "end_frame": 18207
+      },
+      "excluded_intervals": [],
+      "note": "특이사항 없음"
+    },
+    "13-MP": {
+      "task_scope": {
+        "all_preprocessed_valid_frames": true,
+        "start_frame": 0,
+        "end_frame": 18137
+      },
+      "excluded_intervals": [
+        {
+          "start_frame": 4232,
+          "end_frame": 5471,
+          "start_ui_time_s": 141.0699,
+          "end_ui_time_s": 182.374,
+          "expected_label": "IDLE",
+          "reason": "중간 비작업 IDLE 구간"
+        }
+      ]
+    },
+    "13-MS": {
+      "task_scope": {
+        "all_preprocessed_valid_frames": true,
+        "start_frame": 0,
+        "end_frame": 12699
+      },
+      "excluded_intervals": [
+        {
+          "start_frame": 0,
+          "end_frame": 1336,
+          "start_ui_time_s": 0.0,
+          "end_ui_time_s": 45.1834,
+          "expected_label": "IDLE",
+          "reason": "초반 비작업 IDLE 구간"
+        }
+      ]
+    },
+    "13-VP": {
+      "task_scope": {
+        "all_preprocessed_valid_frames": true,
+        "start_frame": 0,
+        "end_frame": 3376
+      },
+      "excluded_intervals": [],
+      "data_quality": {
+        "status": "incomplete_recording_suspected",
+        "available_record_only": true,
+        "raw_pose_span_s": 113.930476032,
+        "processed_duration_s": 112.532151264,
+        "note": "원본 MCAP 누락이 의심되지만 현재 저장된 기록만 사용하며 추가 제거 구간은 없다. 누락 구간을 추정하거나 보간하지 않는다."
+      }
+    },
+    "13-VS": {
+      "task_scope": {
+        "all_preprocessed_valid_frames": true,
+        "start_frame": 0,
+        "end_frame": 14893
+      },
+      "excluded_intervals": [
+        {
+          "start_frame": 6941,
+          "end_frame": 8452,
+          "start_ui_time_s": 231.3717,
+          "end_ui_time_s": 281.7313,
+          "expected_label": "IDLE",
+          "reason": "중간 비작업 IDLE 구간"
+        }
+      ]
+    }
+  }
+}

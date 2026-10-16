@@ -1,0 +1,1519 @@
+===== PAGE 1 =====
+Contents lists available at ScienceDirect
+Robotics and Computer-Integrated Manufacturing
+journal homepage: www.elsevier.com/locate/rcim
+A corrective shared control architecture for human–robot collaborative
+polishing tasks
+Hao Zhou a,b, Xin Zhanga,∗, Jinguo Liua,∗
+a State Key Laboratory of Robotics, Shenyang Institute of Automation, Chinese Academy of Sciences, Shenyang, 110016, China
+b University of Chinese Academy of Sciences, Beijing, 100049, China
+A R T I C L E I N F O
+Keywords:
+Corrective shared control
+Human–robot collaboration
+Human intention
+Polishing tasks
+Energy tank
+Teleoperation
+A B S T R A C T
+Human–robot collaborative polishing can integrate the capabilities of humans and automation to deal with
+complex polishing tasks. Traditional impedance-control-based human–robot collaboration (HRC) requires
+operators to physically interact with robots for a good polishing performance, which brings unsafety to
+operators. To address this issue, a corrective shared control architecture using haptic feedback is proposed
+in this paper, where the direct force-reflection is used to guarantee the exact human-intention intervention.
+The proposed control architecture is designed with two layers: (i) the transparency layer in which the direct
+force-reflection and the human–robot collaborative polishing strategy are implemented; (ii) the passivity layer
+in which two energy tanks are designed and endowed with master and slave sides and a coupling energy
+scaling policy is employed to guarantee the passivity of the whole system. Under the proposed architecture, the
+constant force is adopted to polish normal areas of workpieces, and corrective force based on human intention
+is applied to deal with unexpected issues. Finally, two groups of experiments are conducted to evaluate the
+proposed architecture from two aspects: polishing effect and user experience.
+1. Introduction
+After rough machining, workpieces are usually left with residual
+materials such as burrs on their surfaces, which affects the aesthetics
+and even the service life of workpieces. Polishing is the last procedure
+for workpiece machining and directly determines the quality of ma-
+chined workpieces [1]. For complex workpieces, such as castings with
+irregular shape and roughness [ 2] and weak-stiffness workpieces with
+the deformation and polishing force fluctuation [ 3], the autonomous
+polishing technology cannot handle these unexpected issues. Therefore,
+some companies hire professional workers to polish these workpieces
+manually. However, the manual mode has several drawbacks: low
+efficiency, hazardous operation, and intensive labor [ 4]. In practice,
+autonomous technologies can polish workpieces efficiently but cannot
+handle unexpected issues, while manual mode can handle unexpected
+issues but is inefficient. Therefore, combining human judgment and
+decision-making capabilities with autonomous machining technology
+is a promising solution in this field.
+Human–robot collaboration (HRC) integrates the capabilities of hu-
+mans and robots to finish the task. HRC can be generally categorized as
+impedance-control-based HRC [ 5] and shared-control-based HRC [ 6].
+Impedance-based HRC indicates that humans interact physically with
+robots to affect robot behaviors directly. For example, Gaz et al. [ 7]
+∗ Corresponding authors.
+E-mail addresses: zhouhao1@sia.cn (H. Zhou), zhangxin@sia.cn (X. Zhang), liujinguo@sia.cn (J. Liu).
+proposed a method based on the impedance-based HRC in polishing
+tasks, where the robot held the polished workpiece and the operator
+manually polished the workpiece while orienting it. One of the issues
+with impedance-based HRC is operators’ safety in polishing tasks due to
+the physical interaction between the operator and workpieces. Shared-
+control-based HRC avoids the issue and provides comfort and security
+to the operator because operators correct robot behaviors with teleoper-
+ation interfaces [8]. In shared-control-based HRC, operators and robots
+can work in two different locations thousands of meters apart [ 9].
+Shared-control-based HRC includes three types [10]: (i) complemen-
+tary shared control [11], the operator and local autonomous controller
+are responsible for different and complementary subtasks (the operator
+acts as a collaborator); (ii) blending shared control [ 12], the operator
+inputs and nominal behavior are blended as the final input; that is,
+the operator can intervene the nominal robot behavior (as a super-
+visor); and (iii) assistive shared control, the operator takes the lead
+in tasks with some assistive methods (as a leader), such as virtual
+fixture [13,14] and prior knowledge method [15]. The complementary
+shared control has a fixed level of automation (the level of automation
+means the degree of the functions conducted autonomously) since
+subtasks are assigned in advance. For example, González et al. [ 8]
+proposed a complementary shared control system for polishing tasks,
+https://doi.org/10.1016/j.rcim.2024.102876
+Received 9 February 2024; Received in revised form 8 July 2024; Accepted 8 September 2024
+Robotics and Computer–Integrated Manufacturing 92 (2025) 102876 
+Available online 18 September 2024 
+0736-5845/© 2024 Elsevier Ltd. All rights are reserved, including those for text and data mining, AI training, and similar technologies. 
+
+===== PAGE 2 =====
+H. Zhou et al.
+where the operator controls the position of the polishing tool and the
+local autonomous controller is responsible for the perpendicular and
+smooth approach of the polishing tool to the workpiece surface; that
+is, the operator and local autonomous controller are in a cooperative
+relationship by utilizing their strengths. The blending shared control
+has a more flexible level of automation, in which the operator is a
+supervisor and will intervene to correct behaviors if necessary. The
+assistive shared control is suitable for complex tasks requiring real-
+time decision-making by the operator or tasks with complicated steps.
+Therefore, the blending shared control is more suitable for polishing
+tasks because a constant force is necessary to act on the normal area of
+workpieces, and an operator’s judgment and intervention are required
+when handling abnormalities.
+For the blending shared control, the degree of integration of hu-
+man and automation capabilities (degree of corrective intervention)
+is mainly determined by human intention estimation [16]. Hagenow
+et al. [17] proposed corrective shared autonomy, where the nominal
+robot behavior was generated by dynamic movement primitives and
+the operator made corrections based on an expert cost function. Masone
+et al. [18] proposed a shared framework for online planning of mobile
+robots, where the operator was in charge of correcting the desired
+path, the nominal behavior was generated by the artificial potential
+field, and the blending filter fused the nominal behavior and operator’s
+inputs smoothly. Corredor [19] proposed an assistance method for
+teleoperation, where the drift-diffusion model was built as the decision-
+maker to determine the assistance levels. Kim et al. [20] proposed a
+shared control strategy for single-cell microinjection tasks, where the
+nominal behavior was generated by the artificial potential field and
+the Fitts’ law as well as the steering law were adopted to quantify
+and determine the optimal blending parameters. Estimating human
+intention is a key and difficult issue for blending control strategies.
+Estimation strategy design and human perception of the interaction
+tasks are two important factors in this process.
+Haptic feedback helps operators make reasonable decisions and
+behaviors. For example, the force feedback at the master side guides
+the operator’s arm towards the position with the most comfort [21];
+the haptic feedback guides the operator towards the position where the
+estimation uncertainty is minimized [22]; the force feedback provided
+to the operator is the function of the error between the desired and ac-
+tual path tracked by the slave robot [18]; and the haptic force feedback
+provided to the operator is used to assist the operator in performing the
+task [14]. The direct force-reflection (a type of haptic force feedback,
+interaction force at the slave side is proportionally transmitted to the
+master side [23]) on operators facilitates their perception of the task
+conducted at the slave side and allows for more accurate judgment and
+corrective behavior in polishing tasks.
+However, the direct force-reflection can cause contact instabili-
+ties even without communication delays, such as violent recoiling at
+the master side [23]. Some methods, such as the time domain pas-
+sivity approach [24], wave-variables concept [25], and energy tank
+approach [26], are proposed to solve the problem, which are widely
+used in bilateral teleoperation. Panzirsch et al. [27] presented a tele-
+operation approach with force feedback at extreme delays based on
+the time domain passivity approach, and the method was validated in
+the Analog-1 experiment. Heck et al. [23] proposed a two-layer ap-
+proach for bilateral teleoperation with direct force-reflection and time
+delays, where the passivity layer guaranteed the system’s passivity.
+Lee et al. [28] proposed a teleoperation system with multiple safety
+constraints based on quadratic programming, where the energy tank
+method was adopted to preserve the system’s passivity. Although direct
+force-reflection helps operators perceive interaction force at the slave
+side, there is little research on introducing direct force-reflection into
+corrective shared control due to the instability it causes.
+To sum up, proper estimation of human intention is a key technol-
+ogy for shared-control-based HRC. The accuracy of this estimation is
+influenced by the intention estimation strategy and human perception
+of the interaction tasks. direct force-reflection facilitates estimating the
+human intention, but it will lead to contact instability in corrective
+shared control.
+To the best of our knowledge, our work is the first research on
+incorporating direct force-reflection in corrective shared control, and
+the contributions of this paper are twofold.
+(1) A corrective shared control architecture with direct force-
+reflection is proposed to allow operators to deal with unexpected
+issues in polishing tasks, under which an intention-based collab-
+orative polishing strategy is proposed to correct the polishing
+force.
+(2) Based on the energy-awareness theory, a coupling energy scaling
+policy is designed between master and slave sides to regulate
+the transmission of both energy flows, which guarantees the
+passivity of the whole system and avoids contact instability
+caused by direct force-reflection.
+The rest of this paper is organized as follows. Section 2 introduces
+the human–robot collaborative polishing strategy. Section 3 presents
+the shared control architecture with direct force-reflection. Section 4
+validates the proposed strategy and architecture through experimental
+studies. Section 5 concludes this paper.
+2. Human–robot collaborative polishing strategy
+In this section, we propose a human–robot collaborative polishing
+strategy for correcting polishing force based on human intention, as
+shown in Fig. 1.
+2.1. Problem formulation
+Human intention can directly determine the degree of correct-
+ing polishing force from operators, where estimating human intention
+is a critical technology for corrective shared control. Proper estima-
+tion of human intention facilitates better handling of emergencies and
+unexpected issues in polishing tasks.
+Human intention consists of direct and indirect human intention
+[29]. Direct human intention represents the instant or natural re-
+sponse when an abnormality occurs [30]. Indirect human intention
+implies the goal of achieving a task. For example, the slave robot is
+expected to polish workpieces with constant force when unexpected
+issues disappear. For the human–robot collaborative polishing strategy,
+the nominal robot behavior generated by a force-tracking controller can
+satisfy the indirect human intention. Besides, operators perceive the
+performance of the polishing task through visual and haptic feedback.
+The direct human intention is generated to correct the polishing force at
+the slave side when unexpected issues occur. The correcting polishing
+force increases with the strength of the direct human intention.
+The challenges associated with the human–robot collaborative pol-
+ishing strategy are (i) selecting a suitable natural response, such as
+velocity and force, representing human direct intention; and (ii) de-
+signing a plausible human intention estimator according to the natural
+response.
+2.2. Strategy design
+The dynamics model of manipulators in the Cartesian space can be
+written as
+𝜦 (𝒙) ̈𝒙 + 𝑫 (𝒙, ̇𝒙) ̇𝒙 + 𝑭 𝑔 (𝒙) = 𝑭 𝜏 + 𝑭 𝑒 (1)
+where 𝜦 (𝒙) ∈ R6×6 denotes the inertia matrix; 𝑫 (𝒙, ̇𝒙) ∈ R6×6 denotes
+the Coriolis and centrifugal matrix; 𝑭 𝑔 (𝒙) ∈ R6 denotes the gravity
+wrench; 𝑭 𝜏 ∈ R6 denotes the driving wrench; and 𝑭 𝑒 ∈ R6 denotes the
+interaction wrench between the manipulator and environment.
+The human–robot collaborative polishing strategy consists of a
+blending mechanism, a human intention estimator, and a nominal
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+2 
+
+===== PAGE 3 =====
+H. Zhou et al.
+Fig. 1. Human–robot collaborative polishing strategy based on human intention. (a) Human–robot collaborative polishing strategy. (b) Force analysis while polishing normal areas
+of workpieces. (c) Force analysis while polishing hard-to-polish areas of workpieces. 𝐹𝑓 denotes friction due to the motion 𝑣; 𝐹𝑒, 𝐹𝑎𝑢𝑡𝑜, 𝐹𝑐𝑜𝑟𝑟 are explained in ( 4).
+behavior generator as shown in Fig. 1 (a). The operator corrects the
+polishing force applied to the workpiece through the master robot. The
+master robot has seven degrees of freedom (DoFs), six of which are the
+Cartesian DoFs and one of which is the gripper DoF. The gripper DoF is
+used to determine whether the operator is intervening in the polishing
+task, and the Cartesian DoFs are used to determine the degree of the
+operator’s intention to correct the polishing force.
+We adopt a force-tracking controller [ 31] that we proposed before
+as the nominal behavior generator in polishing tasks. The impedance
+model of the nominal behavior generator is shown as follows.
+𝑴 𝑎 ̈𝒆𝑎 + 𝑩𝑎 ̇𝒆𝑎 + 𝑲 𝑎𝒆𝑎 = 𝑭 𝑒 (2)
+where 𝑴 𝑎 ∈ R6×6 denotes the inertial matrix, 𝑩𝑎 ∈ R6×6 denotes the
+damping matrix, 𝒆𝑎 = 𝒙𝑎 − 𝒙𝑎𝑑 denotes the pose error, 𝒙𝑎 ∈ R6 denotes
+the calculated pose of the force-tracking controller, 𝒙𝑎𝑑 ∈ R6 denotes
+the desired pose, and the stiffness matrix 𝑲 𝑎 ∈ R6×6 is varied according
+to the force-tracking error.
+𝑲 𝑎 (𝑡) = diag { 𝐾𝑎1, … , 𝐾𝑎6
+}
+𝐾𝑎𝑗 =
+𝑘𝑃 𝑗𝐸𝑓 𝑗 + 𝑘𝐼𝑗
+∑𝑡
+𝑙=0 𝐸𝑓 𝑗 (𝑙) 𝛿 + 𝑘𝐷𝑗 ̇𝐸𝑓 𝑗
+𝑒𝑎𝑗 (𝑡) , 𝑗 = 1, … , 6
+(3)
+where 𝐸𝑓 𝑗 = 𝐹𝑒𝑗 − 𝐹𝑑𝑗 , 𝑗 = 1 , … , 6, denotes the force tracking error
+in Cartesian space, ̇𝐸𝑓 𝑗 denotes the differential of the force-tracking
+error, 𝑘𝑃 𝑗 denotes proportional coefficient, 𝑘𝐼𝑗 denotes the integral
+coefficient, 𝑘𝐷𝑗 denotes the damping coefficient, and 𝛿 denotes the
+sampling period. More details can be found in [ 31].
+The interaction force between the manipulator and environment is
+affected directly by the manipulator’s motion according to (1). A linear
+blending mechanism [ 32] fusing human correction with the nominal
+behavior is proposed as follows:
+𝑭 𝑏𝑙𝑒𝑛𝑑𝑖𝑛𝑔 =
+⎧
+⎪
+⎪
+⎨
+⎪
+⎪⎩
+𝑭 𝑐𝑜𝑟𝑟
+⏞ ⏞ ⏞ ⏞ ⏞
+𝜶𝑩 𝑠𝑚 ̇𝒙𝑚 +
+𝑭 𝑎𝑢𝑡𝑜
+⏞ ⏞⏞⏞⏞⏞⏞ ⏞ ⏞⏞⏞⏞⏞⏞ ⏞
+(𝑰 − 𝜶) 𝑩𝑠𝑎 ̇𝒙𝑎, swtich on
+𝑩𝑠𝑎 ̇𝒙𝑎
+⏟ ⏟ ⏟
+𝑭 𝑎𝑢𝑡𝑜
+, switch off (4)
+where 𝑭 𝑏𝑙𝑒𝑛𝑑𝑖𝑛𝑔 ∈ R6 denotes the blending output, the diagonal matrix
+𝑩𝑠𝑚 ∈ R6×6 denotes the scaling of the master motion ̇𝒙𝑚 ∈ R6,
+the diagonal matrix 𝑩𝑠𝑎 ∈ R6×6 denotes the scaling of the nominal
+behavior, ̇𝒙𝑎 ∈ R6 denotes the nominal behavior calculated by ( 2) and
+(3), 𝜶 denotes the arbitration matrix, which is acquired according to
+the human intention in ( 5), and 𝑰 denotes the identity matrix. The
+operator judges that the corrective polishing force is not necessary in
+the normal areas of the workpiece and the polishing force is controlled
+by the nominal behavior generator when the system is in the switch-off
+state, as shown in Fig. 1 (b). The operator increases the polishing force
+when meeting the hard-to-polish area, as shown in Fig. 1 (c), and the
+operator manipulates the master robot to correct the polish force while
+the system is in the switch-on state. In the state, the polishing force is
+controlled by both the operator and the nominal behavior generator.
+It is worth noting that although the operator manipulates the master
+robot, it does not correct the polishing force when the system is in the
+switch-off state.
+The master velocity ̇𝒙𝑚 ∈ R6 is an accessible and reasonable
+estimation information representing direct human intention: the greater
+the master velocity indicates the stronger the operator’s intention to
+correct polishing force.
+𝜶 = diag { 𝛼1, … , 𝛼6
+}
+𝛼𝑗 =
+⎧
+⎪
+⎨
+⎪⎩
+||| ̇ 𝑥𝑚𝑗 ∕ ̇ 𝑥𝑚𝑎𝑥
+𝑚𝑗
+||| , ||| ̇ 𝑥𝑚𝑗 ∕ ̇ 𝑥𝑚𝑎𝑥
+𝑚𝑗
+||| ≥ 0.1
+0, ||| ̇ 𝑥𝑚𝑗 ∕ ̇ 𝑥𝑚𝑎𝑥
+𝑚𝑗
+||| < 0.1
+, 𝑗 = 1 ⋯ 6
+(5)
+where |⋅| denotes absolute value sign, ̇ 𝑥𝑚𝑗 denotes the master velocity
+on the 𝑗-direction, and ̇ 𝑥𝑚𝑎𝑥
+𝑚𝑗 denotes the maximum velocity on the
+𝑗-direction.
+3. Shared control architecture with direct force-reflection
+In this section, we propose a shared control architecture consisting
+of two layers to enhance human perception of polishing tasks as shown
+in Fig. 2. The human–robot collaborative polishing strategy and direct
+force-reflection are implemented in the transparency layer. The energy
+scaling is introduced in the passivity layer to deal with the non-
+passivity caused by the asymmetry in the transparency layer. Energy
+flow is fundamental in the proposed architecture, and the energy
+analysis is shown in Fig. 3. Energy flow in the proposed architecture is
+embodied in three aspects: (i) energy-behavior conversion, for example,
+the energy in the slave tank supports the polishing force between
+the slave robot and workpieces; (ii) dissipated power produced by
+the robots is injected into the corresponding tank; and (iii) energy
+regulation based on the coupling energy scaling policy between the
+master and slave tanks guarantees the system’s passivity.
+Definition 1. A general nonlinear system with state 𝒙 ∈ R𝑛, input
+𝒖 ∈ R𝑚, and output 𝒚 ∈ R𝑚 in the form
+̇𝒙 = 𝑓 (𝒙, 𝒖) , 𝒚 = ℎ (𝒙, 𝒖) (6)
+is passive [ 33] if there exists a positive semi-definite storage function
+𝑉 ∶ R𝑛 → R, 𝑉 ∈ 1 such that for all 𝑡 ≥ 0,
+̇𝑉 = 𝜕𝒙𝑉 (𝒙) 𝑓 (𝒙, 𝒖) ≤ 𝒖𝑇 𝒚 (7)
+We can find that passivity guarantees that the system ( 6) generates
+energy in a desired range. Passive systems can be considered from the
+point of stability: if there is no input (i.e., 𝒖 = 0), the system is locally
+stable; if there is bounded input, the output is bounded [ 34,35].
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+3 
+
+===== PAGE 4 =====
+H. Zhou et al.
+Fig. 2. Bond graph of the proposed shared control architecture with direct force-reflection. The symbols 𝑓, 𝑒, and 𝐸 represent velocity, force, and power sensors, respectively.
+Fig. 3. Energy analysis of the proposed shared control architecture. Energy flow occurs between the two tanks, between the tanks and the corresponding robot, and between the
+robots and the operator/environment.
+3.1. Coupled impedance model
+A coupled model consisting of two impedance models corresponding
+to master and slave robots is designed as follows.
+𝑭 ℎ + 𝑭 𝑚 = 𝑴 𝑚 ̈𝒙𝑚 + 𝑩𝑚 ̇𝒙𝑚 (8a)
+𝑭 𝑠 + 𝑬𝑓 = 𝑴 𝑠 ̈𝒙𝑠 + 𝑩𝑠 ̇𝒙𝑠 (8b)
+where 𝑭 ℎ ∈ R6 denotes the force applied by human, 𝑬𝑓 = 𝑭 𝑒 − 𝑭 𝑑
+denotes the force-tracking error, 𝑭 𝑒 ∈ R6 denotes the force applied
+by environments, 𝑭 𝑑 ∈ R6 denotes the desired force, 𝑭 𝑖 ∈ R6, 𝑖 =
+{𝑠, 𝑚} denotes the coupling force, 𝑴 𝑖 ∈ R6×6 denotes the mass matrix,
+𝑩𝑖 ∈ R6×6 denotes the damping matrix (positive semi-definite), ̈𝒙𝑖 ∈ R6
+denotes the Cartesian acceleration, and ̇𝒙𝑖 ∈ R6 denotes the Cartesian
+velocity. Note that the desired behavior of the coupled model in ( 8) is
+directly sent to corresponding robots, and ( 8b) is different from ( 2),
+namely the impedance model of the nominal behavior generator as
+shown in Fig. 2.
+We set the storage function for the coupled model as follows.
+𝐻𝑖 = 1
+2 ̇𝒙𝑇
+𝑖 𝑴 𝑖 ̇𝒙𝑖, 𝑖 = {𝑠, 𝑚} (9)
+According to (8) and (9), we have
+̇𝐻𝑚 = −𝐷𝑚 + ̇𝒙𝑇
+𝑚
+(𝑭 ℎ + 𝑭 𝑚
+)≤ ̇𝒙𝑇
+𝑚
+(𝑭 ℎ + 𝑭 𝑚
+) (10a)
+̇𝐻𝑠 = −𝐷𝑠 + ̇𝒙𝑇
+𝑠
+(𝑭 𝑠 + 𝑬𝑓
+)≤ ̇𝒙𝑇
+𝑠
+(𝑭 𝑠 + 𝑬𝑓
+) (10b)
+where the dissipated power is
+𝐷𝑖 = ̇𝒙𝑇
+𝑖 𝑩𝑖 ̇𝒙𝑖 ≥ 0 (11)
+which proves the passivity of the coupled impedance model according
+to Definition 1.
+3.2. Transparency layer
+Master and slave sides described in the coupled impedance model
+(8) are connected in the transparency layer: the operator manipulates
+the master robot with the force 𝑭 ℎ; the master motion ̇𝒙𝑚 is generated;
+the blending result 𝑭 𝑏𝑙𝑒𝑛𝑑𝑖𝑛𝑔 and desired coupling force 𝑭 𝑠,𝑑 are gen-
+erated; the slave motion ̇𝒙𝑠 is generated; the interaction force 𝑭 𝑒 at
+the slave side is generated due to the slave motion ̇𝒙𝑠; and the desired
+coupling force 𝑭 𝑚,𝑑 at the master side is generated and applied to the
+operator.
+The desired coupling force for the master robot is designed with
+direct force-reflection.
+𝑭 𝑚,𝑑 = 𝑲 𝑚𝑒𝑭 𝑒 (12)
+where 𝑲 𝑚𝑒 ∈ R6×6 denotes the feedback scaling of the force applied by
+the environment.
+The desired coupling force for the slave robot is designed based on
+the human–robot collaborative polishing strategy.
+𝑭 𝑠,𝑑 = 𝑭 𝑏𝑙𝑒𝑛𝑑𝑖𝑛𝑔 (13)
+where 𝑭 𝑏𝑙𝑒𝑛𝑑𝑖𝑛𝑔 ∈ R6 denotes the blending result of the human input
+and the nominal behavior in ( 4).
+3.3. Passivity layer with energy scaling
+The asymmetry in the transparency layer causes the system’s non-
+passivity [23]. To preserve the system’s passivity, we design two energy
+tanks with the input 𝑢𝑡𝑖 ∈ R, 𝑖 ∈ {𝑠, 𝑚}, output 𝑦𝑡𝑖 ∈ R and state 𝑥𝑡𝑖 ∈ R
+endowed with the master and slave robots.
+𝑇𝑖 = 1
+2 𝑥2
+𝑡𝑖, 𝑖 ∈ {𝑠, 𝑚} (14)
+Considering the dissipated energy produced by the system damping
+and exchange energy between the two tanks, we can design the energy
+tank as follows.
+{ ̇ 𝑥𝑡𝑖 = 𝜎𝑖
+𝑥𝑡𝑖
+𝐷𝑖(𝑡) + 1
+𝑥𝑡𝑖
+(𝜎𝑖𝑃 𝑖𝑛
+𝑖 (𝑡) − 𝑃 𝑜𝑢𝑡
+𝑖 (𝑡))+ 𝑢𝑡𝑖
+𝑦𝑡𝑖 = 𝜕𝑥𝑡𝑖 𝑇𝑖 = 𝑥𝑡𝑖
+(15)
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+4 
+
+===== PAGE 5 =====
+H. Zhou et al.
+where 𝐷𝑖 denotes dissipated power in (11); 𝑃 𝑖𝑛
+𝑖 and 𝑃 𝑜𝑢𝑡
+𝑖 denote the
+exchange power between the two tanks through the communication
+channel in (21)–(23); and 𝜎𝑖 is a valve designed as follows.
+𝜎𝑖 =
+{
+1, 𝑇 𝑖 (𝑡) < 𝑇 𝑏𝑎𝑟
+𝑖
+0, 𝑒𝑙𝑠𝑒
+(16)
+where 𝑇 𝑏𝑎𝑟
+𝑖 is an energy threshold used to control input power.
+We have the energy rate of the tank 𝑖 according to (14) and (15).
+̇𝑇𝑖 = 𝜎𝑖𝐷𝑖 (𝑡) + 𝜎𝑖𝑃 𝑖𝑛
+𝑖 − 𝑃 𝑜𝑢𝑡
+𝑖 + 𝑦𝑡𝑖𝑢𝑡𝑖 (17)
+The interconnection between the energy tank and the corresponding
+robot is given as follows.
+[
+𝑭 𝑖
+𝑢𝑡𝑖
+]
+=
+⎡
+⎢
+⎢
+⎢⎣
+0 𝝎𝑖
+𝜕𝑥𝑡𝑖 𝑇𝑖(𝑥𝑡𝑖)
+−
+𝝎𝑇
+𝑖
+𝜕𝑥𝑡𝑖 𝑇𝑖(𝑥𝑡𝑖) 0
+⎤
+⎥
+⎥
+⎥⎦
+[ ̇𝒙𝑖
+𝑦𝑡𝑖
+]
+(18)
+which implies
+̇𝒙𝑇
+𝑖 𝑭 𝑖 + 𝑦𝑡𝑖𝑢𝑡𝑖 = 0 (19)
+and means that the energy is only exchanged without generating and
+dissipating between the tank and the master/slave robot. 𝑭 𝑖 = 𝝎𝑖 is the
+coupling force considering the passivity.
+min
+𝝎𝑖(𝑡)
+‖𝝎𝑖 (𝑡) − 𝑭 𝑖,𝑑 ‖2
+𝑠.𝑡. 𝑇 𝑖
+(𝑥𝑡𝑖 (𝑡)
+)≥ 𝜀𝑖
+(20)
+where 𝑭 𝑖,𝑑 is acquired by (12) and (13) in the transparency layer.
+Coupling energy flows 𝑃 𝑖𝑛
+𝑖 and 𝑃 𝑜𝑢𝑡
+𝑖 connect the master and slave
+sides. The energy is transmitted directly from one (master/slave) side to
+the other side when the master and slave robots have similar dynamic
+models. However, the energy scaling factors should be considered when
+the master and slave robots are mechanically different [36].
+{
+𝑃 𝑖𝑛
+𝑠 (𝑡) = 𝜅𝑚𝑠𝑃 𝑜𝑢𝑡
+𝑚 (𝑡)
+𝑃 𝑖𝑛
+𝑚 (𝑡) = 𝜅𝑠𝑚𝑃 𝑜𝑢𝑡
+𝑠 (𝑡)
+(21)
+where 𝜅𝑚𝑠 denotes the energy scaling factor from the master side to the
+slave side and 𝜅𝑠𝑚 denotes the energy scaling factor from the slave side
+to the master side. The two factors are determined by the inertia ratio
+of master and slave models and they have the following relationship.
+𝜅𝑚𝑠𝜅𝑠𝑚 = 1 (22)
+The transmission rules of coupling energy flows between the two
+tanks are defined. We take the example of energy transmission from
+the master side to the slave side: The remaining dissipated energy
+flow 𝐷𝑚(𝑡) is transmitted to the slave side when the master tank is
+full and the slave tank requires energy; the constant energy flow ̄𝑃𝑚
+is transmitted from the master side to the slave side when the amount
+of the energy in the master tank is available and the slave tank requires
+energy.
+{
+𝑃 𝑜𝑢𝑡
+𝑚 (𝑡) = 𝐸𝑟𝑒𝑞
+𝑠 (𝑡)
+((1 − 𝜎𝑚 (𝑡)
+)𝐷𝑚 (𝑡) + 𝛽𝑚 (𝑡) ̄𝑃𝑚
+)
+𝑃 𝑜𝑢𝑡
+𝑠 (𝑡) = 𝐸𝑟𝑒𝑞
+𝑚 (𝑡)
+((1 − 𝜎𝑠 (𝑡)
+)𝐷𝑠 (𝑡) + 𝛽𝑠 (𝑡) ̄𝑃𝑠
+) (23)
+where 𝐸𝑟𝑒𝑞
+𝑖 , 𝑖 ∈ {𝑠, 𝑚} denotes the energy requirement signal from the
+tank 𝑖, and 𝛽𝑖(𝑡) denotes the energy transmission available signal of tank
+𝑖.
+𝐸𝑟𝑒𝑞
+𝑖 (𝑡) =
+{
+1, 𝑇 𝑖(𝑡) ≤ 𝑇 𝑟𝑒𝑞
+𝑖
+0, 𝑒𝑙𝑠𝑒
+(24)
+𝛽𝑖(𝑡) =
+{
+1, 𝑇 𝑖(𝑡) ≥ 𝑇 𝑎𝑣𝑎
+𝑖
+0, 𝑒𝑙𝑠𝑒
+(25)
+where 𝑇 𝑟𝑒𝑞
+𝑖 denotes the energy threshold for requiring the energy from
+the other tank; 𝑇 𝑎𝑣𝑎
+𝑖 denotes the threshold used to allow transferring
+energy to the other tank; and the thresholds satisfy the relationship:
+0 < 𝜀 𝑖 < 𝑇 𝑟𝑒𝑞
+𝑖 < 𝑇 𝑎𝑣𝑎
+𝑖 ≤ 𝑇 𝑏𝑎𝑟
+𝑖 , 𝑖 ∈ {𝑠, 𝑚}.
+Algorithm 1 Corrective shared control architecture with direct
+force-reflection.
+Input: 𝑭 ℎ(𝑡), ̇𝒙𝑚(𝑡), 𝑭 𝑒(𝑡), 𝑇𝑠(𝑡), 𝑇𝑚(𝑡)
+/*The controller parameters are not listed*/
+Output: ̈𝒙𝑚, ̈𝒙𝑠
+1: for 𝑡 = 0 to 𝑟 do
+2: Calculating the desired coupling force at master side 𝑭 𝑚,𝑑 (𝑡)
+according to (12)
+3: Calculating 𝝎𝑚 (𝑡) according to (20)
+4: Calculating coupling force 𝑭 𝑚 according to (18)
+5: Calculating ̈𝒙𝑚(𝑡) according to (8a)
+6: Calculating arbitration matrix 𝜶(𝑡) according to (5)
+7: Calculating desired coupling force at the slave side 𝑭 𝑠,𝑑 (𝑡)
+according to (4) and (13)
+8: Calculating 𝝎𝑠 (𝑡) according to (20)
+9: Calculating coupling force 𝑭 𝑠 according to (18)
+10: Calculating ̈𝒙𝑠(𝑡) according to (8b)
+11: end for
+Algorithm 2 The amount of energy in the tank (take the master tank
+as an example).
+Input: 𝐷𝑚(𝑡), 𝐷𝑠(𝑡)
+/*The controller parameters are not listed*/
+Output: 𝑇𝑚(𝑡)
+1: for 𝑡 = 0 to 𝑟 do
+2: Calculating the energy requirement signal 𝐸𝑟𝑒𝑞
+𝑠 (𝑡) according to
+(24) and the available signal 𝛽𝑚(𝑡) according to (25)
+3: Calculating 𝜎𝑚(𝑡) according to (16)
+4: Calculating the input power 𝑃 𝑖𝑛
+𝑚 (𝑡) according to (21) and the
+output power 𝑃 𝑜𝑢𝑡
+𝑚 (𝑡) according to (23)
+5: Calculating 𝑢𝑡𝑚 according to (18)
+6: Calculating ̇ 𝑥𝑡𝑚(𝑡) according to (15)
+7: Calculating the energy amount 𝑇𝑚(𝑡) according to (14)
+8: Calculating the energy requirement signal 𝐸𝑟𝑒𝑞
+𝑚 (𝑡) according to
+(24) and the available signal 𝛽𝑠(𝑡) according to (25)
+9: Calculating 𝜎𝑠(𝑡) according to (16)
+10: Calculating the output power 𝑃 𝑜𝑢𝑡
+𝑠 (𝑡) according to (23)
+11: end for
+3.4. Passivity of system
+We choose 𝑉 as the system storage function.
+𝑉 = 𝜅𝑚𝑠
+(𝐻𝑚 + 𝑇𝑚
+)+ 𝐻𝑠 + 𝑇𝑠 + 𝐻𝑐ℎ (26)
+where 𝐻𝑐ℎ denotes the enrgry in the communication channel and
+̇𝐻𝑐ℎ (𝑡) is defined in (30). We have the differential of the function 𝑉
+̇𝑉 = 𝜅𝑚𝑠 ̇𝐻𝑚 + 𝜅𝑚𝑠 ̇𝑇𝑚 + ̇𝐻𝑠 + ̇𝑇𝑠 + ̇𝐻𝑐ℎ (27)
+For the master side, we have the following equation according to
+(17) and (10a).
+𝜅𝑚𝑠 ̇𝐻𝑚 = − 𝜅𝑚𝑠𝐷𝑚 (𝑡) + 𝜅𝑚𝑠 ̇𝒙𝑇
+𝑚
+(𝑭 ℎ + 𝑭 𝑚
+) (28a)
+𝜅𝑚𝑠 ̇𝑇𝑚 =𝜅𝑚𝑠𝜎𝑚𝐷𝑚 (𝑡) + 𝜅𝑚𝑠𝜎𝑚𝑃 𝑖𝑛
+𝑚 (𝑡) − 𝜅𝑚𝑠𝑃 𝑜𝑢𝑡
+𝑚 (𝑡) − 𝜅𝑚𝑠 ̇𝒙𝑇
+𝑚𝑭 𝑚 (28b)
+For the slave side, we have the following equation according to (17)
+and (10b).
+̇𝐻𝑠 = − 𝐷𝑠 (𝑡) + ̇𝒙𝑇
+𝑠
+(𝑭 𝑠 + 𝑬𝑓
+) (29a)
+̇𝑇𝑠 =𝜎𝑠𝐷𝑠 (𝑡) + 𝜎𝑠𝑃 𝑖𝑛
+𝑠 (𝑡) − 𝑃 𝑜𝑢𝑡
+𝑠 (𝑡) − ̇𝒙𝑇
+𝑠 𝑭 𝑠 (29b)
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+5 
+
+===== PAGE 6 =====
+H. Zhou et al.
+Fig. 4. Polishing task with two experimental conditions. (a) Master side. (b) Slave side, where (b1) polishing a flat steel plate, and (b2) polishing a slope aluminum extrusion. (c)
+Polished workpieces, where (c1) the flat steel plate with the size of 400 mm × 400 mm, and (c2) the slope aluminum extrusion is placed at an angle of 8 ◦ and is 40 mm wide
+with a 10 mm gap in the center. The workpieces consist of three areas, where the hard-to-polish area is painted. NA1, NA2: normal areas; HPA: hard-to-polish area.
+For the energy flow in the communication channel, we have the
+following relationship according to Fig. 2.
+̇𝐻𝑐ℎ (𝑡) = 𝜅𝑚𝑠𝑃 𝑜𝑢𝑡
+𝑚 (𝑡) + 𝑃 𝑜𝑢𝑡
+𝑠 (𝑡) −
+𝑃 𝑖𝑛
+𝑚 (𝑡)
+𝜅𝑠𝑚
+− 𝑃 𝑖𝑛
+𝑠 (𝑡)
+= 𝜅𝑚𝑠𝑃 𝑜𝑢𝑡
+𝑚 (𝑡) + 𝑃 𝑜𝑢𝑡
+𝑠 (𝑡) − 𝜅𝑚𝑠𝑃 𝑖𝑛
+𝑚 (𝑡) − 𝑃 𝑖𝑛
+𝑠 (𝑡)
+(30)
+According to (27)–(30), we have
+̇𝑉 = − (1 − 𝜎𝑚
+)𝜅𝑚𝑠𝐷𝑚 (𝑡) − (1 − 𝜎𝑚
+)𝜅𝑚𝑠𝑃 𝑖𝑛
+𝑚 (𝑡) − (1 − 𝜎𝑠
+)𝐷𝑠 (𝑡)
+− (1 − 𝜎𝑠
+)𝑃 𝑖𝑛
+𝑠 (𝑡)
++ 𝜅𝑚𝑠 ̇𝒙𝑇
+𝑚𝑭 ℎ + ̇𝒙𝑇
+𝑠 𝑬𝑓
+̇𝑉 ≤𝜅𝑚𝑠 ̇𝒙𝑇
+𝑚𝑭 ℎ + ̇𝒙𝑇
+𝑠 𝑬𝑓
+(31)
+which proves that the overall teleoperation system is passive with
+respect to the two ports ( ̇𝒙𝑚, 𝜅𝑚𝑠𝑭 ℎ) and ( ̇𝒙𝑠, 𝑬𝑓 ) according to Def-
+inition 1 . The proposed architecture is shown in Algorithms 1 and
+2.
+4. Experimental studies
+In the section, two experiments are conducted in polishing tasks
+to verify our proposal sufficiently: (i) polishing effect, polishing two
+workpieces in Fig. 4 with four methods to compare and analyze our
+proposal with other methods; and (ii) user experience, 17 subjects are
+invited to polish two workpieces and ours is compared with the latest
+shared control strategy using 14 subjective metrics.
+As shown in Fig. 4 , a polishing experimental setup is built to
+verify the proposed corrective shared control architecture with di-
+rect force-reflection through a shared-control-based HRC system. The
+shared-control-based HRC system consists of a master robot (omega
+7) with a maximum feedback force of 8 N, a slave robot (ROKAE
+Xmate7Pro) with a maximum load of 7 kg, and a force/torque sensor
+(Kunwei KWR75) with a maximum force of 200 N and a maximum
+torque of 8 N m. A polishing tool with a speed of 200 RPM is equipped
+to the endpoint of the slave robot. The polishing tool sticking an 800-
+mesh sandpaper is used to polish the workpieces in Fig. 4 (c) roughly.
+The polishing task includes the following two experimental conditions
+with different materials, shapes, and polishing surfaces: (i) polishing
+a flat steel plate with the size of 400 mm × 400 mm in Fig. 4 (c1),
+and (ii) polishing a slope aluminum extrusion with an angle of 8 ◦ in
+Fig. 4 (c2). The polished workpieces have three areas: normal area-1
+(NA1), hard-to-polish area (HPA), and normal area-2 (NA2). The HPA
+is painted in yellow, and the polishing sequence is ‘NA1-HPA-NA2’.
+The master robot, which is operated by users, is used to correct the
+polishing force while polishing the HPA. The communication between
+the master and slave robots and sample frequencies are all set at 1 kHz.
+Although the shared-control-based HRC avoids the direct interaction
+Table 1
+Experimental groups in Section 4.1 .
+Group Polishing method Polished workpiece
+1 Manual polishing
+Flat steel plate
+in Fig. 4 (b1)&(c1)
+2 Autonomous polishing with constant
+force of 30 N
+3 The latest shared control strategy in
+[8,11]
+4 The proposed human–robot collaborative
+polishing strategy in Section 2.2
+5 Manual polishing
+Slope aluminum extrusion
+in Fig. 4 (b2)&(c2)
+6 Autonomous polishing with constant
+force of 30 N
+7 The latest shared control strategy in
+[8,11]
+8 The proposed human–robot collaborative
+polishing strategy in Section 2.2
+Table 2
+Control parameters of the proposed corrective shared control architecture.
+Symbols 𝐵𝑠𝑚 𝐵𝑠𝑎 ̇ 𝑥𝑚𝑎𝑥
+𝑚 𝐵𝑠 𝐵𝑚 𝐾𝑚𝑒 𝑀𝑎 𝐵𝑎 𝑘𝑃
+Parameters 150 20 0.252 20 20 0.08 0 300 2
+Symbols 𝑘𝑖 𝑘𝐷 ̄𝑃𝑚∕𝑠
+a 𝑇 𝑟𝑒𝑞
+𝑚∕𝑠 𝑇 𝑎𝑣𝑎
+𝑚∕𝑠 𝑇 𝑏𝑎𝑟
+𝑚∕𝑠 𝜀𝑚∕𝑠 𝜅𝑠𝑚 𝜅𝑚𝑠
+Parameters 0 0.1 0.005 3 4 5 1 0.05 20
+a ̄𝑃𝑚∕𝑠 denotes ̄𝑃𝑚, ̄𝑃𝑠.
+between the operator and slave robot, the polished workpieces should
+be observed by the operator (on-site or through visual feedback) to
+allow the operator to make reasonable behaviors.
+4.1. Polishing effect
+Eight groups of experiments with two conditions are conducted to
+verify and analyze the effectiveness of the proposed method as shown
+in Table 1 . A workpiece is repetitively polished four times in each
+group, and then a new sandpaper will be replaced before the next one.
+It is worth noting that (i) the autonomous polishing in Groups 2&6 is
+achieved when the system is in the switch-off state (human correction
+is not introduced) as shown in Fig. 1 ; (ii) the latest shared control
+strategy [8,11] cannot be directly applied to the polishing tasks in Fig. 4
+since subtask allocation is variable according to shared tasks so we
+incorporate our polishing tasks and the latest shared control strategy
+to obtain the optimal strategy, where the operator is responsible for
+the polishing force on the workpieces and the local autonomous con-
+troller is responsible for the transversal motion when the polishing tool
+interacts with the workpiece; and (iii) all the methods in Table 1 other
+than manual polishing are implemented in the proposed architecture
+to allow the operator to perceive the polishing force directly and
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+6 
+
+===== PAGE 7 =====
+H. Zhou et al.
+Fig. 5. Polishing effect of Group 1 in Table 1 . (a)–(d) From first to fourth polishing. (e) Focus on HPA. Polishing sequence: NA1-HPA-NA2. NA1, NA2: normal areas; HPA:
+hard-to-polish area.
+proportionally, which is important because the operator’s perception
+is equally treated in comparison experiments (especially the latest
+shared control strategy in Groups 3&7 and our proposed polishing
+strategy in Groups 4&8) and the proposed architecture is validated. The
+control parameters are shown in Table 2 . Figs. 5∼11 show the results
+and profiles of polishing the flat steel plate (Groups 1 ∼4 in Table 1)
+and Figs. 12 ∼18 show the results and profiles of polishing the slope
+aluminum extrusion (Groups 5 ∼8 in Table 1).
+The manual polishing effect of the flat steel plate (Group 1 in
+Table 1) is shown in Fig. 5. Fig. 5 (a)–(d) represent that the steel plate
+is polished four times, and Fig. 5 (d) represents the final polishing
+effect. For the first manual polishing, the NA1 is polished ideally; the
+HPA is polished with a large force applied by the operator holding the
+polishing tool as shown in Fig. 5 (a), a part of HPA is polished cleanly,
+but the sandpaper is clogged by the solid paint particles in the HPA
+immediately; and the NA2 cannot be polished as the NA1 due to the
+clogged sandpaper. A new sandpaper is replaced for the second manual
+polishing, and the NA1 is also polished ideally; a larger polishing force
+is applied, and a larger part of HPA is polished cleanly; and the NA2 can
+be polished partly. The third and fourth manual polishing experiments
+have the same phenomenon as the second manual experiment. For the
+final polishing effect in Fig. 5 (d)&(e), the NA1 and NA2 are polished
+cleanly, and about two-thirds of the HPA is polished ideally. The left
+part of the HPA is not polished ideally because the polishing tool is
+difficult to hold and to apply more force while polishing the entire HPA.
+More polishing motion is required to clean the entire HPA. It is worth
+noting that the manual polishing process is very tiring for the operator,
+and the polishing marks on the steel plate are messy.
+The polishing effect of the autonomous polishing with the force of
+30 N (Group 2 in Table 1 , the parameter 𝑘𝑖 in the Table 2 is set to
+0.35 in the Group) is shown in Fig. 6 . Fig. 6 (a) ∼(d) represent that
+the steel plate is polished four times and Fig. 6 (d) represents the
+final polishing effect. The polishing process in Fig. 6 (a) ∼(d) is similar
+to that of manual polishing in Fig. 5 (a) ∼(d), and the final polishing
+effect in Fig. 6 (d) is different from that of manual polishing. The NA1
+and NA2 are polished cleanly and the polishing marks are regular as
+shown in Fig. 6 (d). However, the HPA is not polished cleanly due
+to the constant polishing force as shown in Fig. 6 (e). In contrast to
+the manual polishing, the autonomous polishing with constant force
+performs better in the NA1 and NA2 but cannot polish the HPA as
+cleanly as manual polishing. A representative result of four polishing
+is selected and the force and motion profiles are shown in Fig. 7 . The
+entire polishing task takes 95 s and the polishing tool equipped to the
+slave robot approaches the steel plate autonomously at the height of
+88.36 mm from the workpiece. The polishing tool interacts with the
+steel plate at 2.66 s (the polishing force is greater than 1 N) and the
+polishing force first reaches 30 N at 4.79 s. The mean polishing force
+(after 4.79 s) is 29.38 N; that is, the mean error of the polishing force is
+0.62 N and the variance of polishing force is 2.6789 N 2. The polishing
+tool autonomously moves horizontally after 2.66 s and the polishing-
+force-tracking controller in ( 3) calculates the interaction velocity ̇ 𝑥𝑠
+of the slave robot in real time according to the polishing force error
+between the desired polishing force of 30 N and the actual polishing
+force 𝐹𝑒. The displacement on the 𝑧-axis is almost constant while
+polishing the steel plate (after 4.79 s) since the steel plate is placed
+horizontally and the polishing force is constant.
+The polishing effect of the latest shared control strategy (Group 3
+in Table 1) is shown in Fig. 8 . Fig. 8 (a) ∼(d) represent that the flat
+steel plate is polished four times and Fig. 8 (d) represents the final
+polishing effect. For the first polishing, as shown in Fig. 8 (a), the NA1
+is polished ideally; the human correction is intervened so the polishing
+force increases, and the initial part of the HPA is polished cleanly,
+but the solid paint particles clog the sandpaper; the polishing force
+decreases, and the NA2 cannot be polished cleanly due to the clogged
+sandpaper. The polishing result in Fig. 8 (b) ∼(d) in the group shows
+the same phenomenon as the first polishing, and the HPA is gradually
+polished cleanly. For the final polishing effect in Fig. 8 (d) ∼(e), the
+NA1 and NA2 are polished ideally, and the polishing marks are regular;
+about two-thirds of the HPA is also polished ideally; and the paint on
+the surface of the rest part of the HPA is polished off. A representative
+result of four polishing is selected and the force and motion profiles
+are shown in Fig. 9. The entire polishing task takes 105 s and the slave
+robot equipped with the polishing tool does not interact with the flat
+steel plate. The operator manipulates the master robot to control the
+polishing tool to approach and interact with the steel plate, the operator
+manipulates the master robot with a larger velocity before 10.88 s,
+and the operator manipulates the master robot with a smaller velocity
+between 10.88 s and 17.51 s because the polishing tool is about to
+interact with the steel plate (or have interacted with the steel plate with
+slight polishing force) and a larger velocity will damage the polishing
+tool. The polishing tool interacts with the steel plate at 11.51 s (the
+polishing force is greater than 1 N), and the operator still manipulates
+the master robot between 11.51 s and 17.51 s because the polishing
+force is considered not to be enough. The slave robot autonomously
+moves in the horizontal direction after 11.51 s, and the operator only
+focuses on the polishing force. The HPA is polished and the operator
+perceives that the polishing force should be increased between 52.37 s
+and 82.87 s. A small velocity of the master robot is enough to increase
+the polishing force at the slave side because the interaction stiffness
+between the polishing tool and the steel plate is high while polishing
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+7 
+
+===== PAGE 8 =====
+H. Zhou et al.
+Fig. 6. Polishing effect of Group 2 in Table 1 . (a)–(d) From first to fourth polishing. (e) Focus on HPA. Polishing sequence: NA1-HPA-NA2. NA1, NA2: normal areas; HPA:
+hard-to-polish area.
+Fig. 7. Motion and force profiles of Group 2 in Table 1 . 𝑑𝑖, 𝑖 = {𝑥, 𝑧} denotes the displacement on the 𝑖-axis.
+Fig. 8. Polishing effect of Group 3 in Table 1 . (a)–(d) From first to fourth polishing. (e) Focus on HPA. Polishing sequence: NA1-HPA-NA2. NA1, NA2: normal areas; HPA:
+hard-to-polish area.
+the steel plate, so the velocity is adjusted slightly, and the polishing
+force varies greatly between 52.37 s and 82.87 s. It is worth noting that
+the displacement on the 𝑧-axis is not constant (especially at the period
+of 52.37 s ∼ 82.87 s) although the steel plate is placed horizontally and
+the polishing force cannot be maintained at a desired value.
+The polishing effect of the proposed human–robot collaborative
+polishing strategy (Group 4 in Table 1 ) is shown in Fig. 10 . Fig. 10
+(a)∼(d) represent that the flat steel plate is polished four times and
+Fig. 10 (d) represents the final polishing effect. For the first polishing as
+shown in Fig. 10 (a), the NA1 is polished ideally; the human correction
+is intervened so the polishing force increases, and the HPA is polished
+partly; and the NA2 cannot also be polished cleanly due to the clogged
+sandpaper as in Group 3. The rest polishing in the group shows the
+same phenomenon as the first polishing and the HPA is gradually
+polished cleanly. For the final polishing effect in Fig. 10 (d) ∼(e), the
+NA1 and NA2 are polished ideally and the polishing marks are regular;
+about more than two thirds of the HPA is polished cleanly; and the
+paint on the surface of the rest part of the HPA is polished off. A
+representative result of four polishing is selected and the force and
+motion profiles are shown in Fig. 11 . The entire polishing task takes
+95 s and the polishing process consists of four stages: (i) approaching
+the steel plate before 4.36 s (the polishing force first reaches 30 N),
+(ii) polishing the NA1 between 4.36 s and 39.74 s, (iii) polishing the
+HPA between 39.74 s and 65.83 s, and (iv) polishing the NA2 after
+65.83 s. In the first, second, and fourth stages, the master robot does
+not move and there is no dissipated power 𝐷𝑚 flowing into the master
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+8 
+
+===== PAGE 9 =====
+H. Zhou et al.
+Fig. 9. Motion and force profiles of Group 3 in Table 1 . 𝐹𝐼𝑖 , 𝑖 = {𝑠, 𝑚} denotes the force at the master/slave side; 𝑑𝑖, 𝑖 = {𝑥, 𝑧} denotes the displacement on the 𝑖-axis.
+Fig. 10. Polishing effect of Group 4 in Table 1 . (a)–(d) From first to fourth polishing. (e) Focus on HPA. Polishing sequence: NA1-HPA-NA2. NA1, NA2: normal areas; HPA:
+hard-to-polish area.
+tank. The slave robot moves according to the nominal behavior and the
+dissipated power 𝐷𝑠 flows into the slave tank (the dissipated power in
+the first stage is greater than the dissipated power in the second and
+fourth stages). The slave robot autonomously moves in the horizontal
+direction when the polishing force is greater than 1N. In the third stage
+(the orange part in Fig. 11 ), the slave robot polishes the HPA in the
+steel plate; the operator believes that the correction (more polishing
+force) is required and manipulates the master robot; and the polishing
+force increases. In detail, the operator applies the force𝐹ℎ to the master
+robot; the velocity of the master robot ̇ 𝑥𝑚 and the arbitration ratio 𝛼
+vary correspondingly; the coupling force 𝐹𝑠 is generated according to
+̇ 𝑥𝑚, ̇ 𝑥𝑎 and 𝑇𝑠; the velocity of the slave robot ̇ 𝑥𝑠 is generated; and the
+polishing force 𝐹𝑒 increases. The displacement on the 𝑧-axis fluctuates
+due to the increased polishing force although the steel plate is placed
+horizontally. It is worth noting that the system is in ‘switch-on’ (see
+Fig. 1) as the operator manipulates the master robot downward, and
+the system is in ‘switch-off’ as the operator manipulates the master
+robot upward in the third stage. For the energy in the master tank,
+the dissipated power 𝐷𝑚 is generated when the operator manipulates
+the master robot, the dissipated power flows into the master tank in
+the blue part in Fig. 11 (39.74 s ∼44.64 s), and there is no dissipated
+power into the master tank although the dissipated power 𝐷𝑚 is still
+generated at other time of the third stage due to 𝑇𝑚 ≥ 𝑇 𝑏𝑎𝑟
+𝑚 = 5 J; and
+the energy in the master tank still increases when 𝑇𝑚 ≥ 𝑇 𝑏𝑎𝑟
+𝑚 because
+the exchange power from the master robot flows into the master tank.
+For the energy in the slave tank, the dissipated power 𝐷𝑠 is generated
+and flows into the slave tank in four stages (the dissipated power in
+the first and third stages is greater); the exchange power flows out of
+the slave tank to support the polishing force between the polishing tool
+and steel plate; and the power intermittently flows into the slave tank
+from the master tank due to 𝑇𝑠 ≤ 𝑇 𝑟𝑒𝑞
+𝑠 (𝐸𝑟𝑒𝑞
+𝑠 = 1) and 𝑇𝑚 ≥ 𝑇 𝑎𝑣𝑎
+𝑚 (𝛽𝑚 = 1)
+in the green part (0 s ∼ 15.43 s and 40.04 s ∼63.57 s) in Fig. 11.
+The manual polishing effect of the slope aluminum extrusion (Group
+5 in Table 1) is shown in Fig. 12 . Fig. 12 (a) ∼(d) represent that the
+aluminum extrusion is polished four times and Fig. 12 (d) represents
+the final polishing effect. The polishing process in Fig. 12 (a) ∼(d) is
+similar to that of Group 1 in Fig. 5 (a) ∼(d). For the final polishing
+effect in Fig. 12 (d) ∼(e), the NA1 and NA2 are polished ideally; and
+about three quarters of the HPA is polished cleanly and the paint on
+the surface of the rest part of the HPA is polished off. It is worth noting
+that the manual polishing process is also very tiring for the operator but
+the polishing marks on the aluminum extrusion are more regular than
+the polishing marks of manual polishing the steel plate.
+The polishing effect of the autonomous polishing with the force of
+30 N (Group 6 in Table 1, the parameter 𝑘𝑖 in the Table 2 is set to 0.35
+in the Group) is shown in Fig. 13 . Fig. 13 (a) ∼(d) represent that the
+aluminum extrusion is polished four times and Fig. 13 (d) represents
+the final polishing effect. The polishing process in Fig. 13 (a) ∼(d) is
+similar to that of manual polishing in Fig. 12 (a) ∼(d), and the final
+polishing effect in Fig. 13 (d) is different from that of manual polishing.
+The NA1 and NA2 are polished cleanly as shown in Fig. 13 (d).
+However, the HPA is not polished cleanly due to the constant polishing
+force as shown in Fig. 13 (e). In contrast to manual polishing, the
+autonomous polishing with constant force can also polish the NA1 and
+NA2 cleanly but cannot polish the HPA as cleanly as manual polishing.
+A representative result of four polishing is selected and the force and
+motion profiles are shown in Fig. 14 . The entire polishing task takes
+58 s and the polishing tool equipped to the slave robot approaches the
+aluminum extrusion autonomously at the height of 33.33 mm from the
+workpiece. The polishing tool interacts with the aluminum extrusion
+at 1.21 s (the polishing force is greater than 1 N). The mean polishing
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+9 
+
+===== PAGE 10 =====
+H. Zhou et al.
+Fig. 11. Motion and force profiles of Group 4 in Table 1 . 𝐹𝐼𝑖 , 𝑖 = {𝑠, 𝑚} denotes the force at the master/slave side; 𝐸𝑖 denotes the energy signal; 𝑃𝐷𝑖 denotes the dissipated power;
+𝑃𝐶𝑖 denotes the net input power from the communication channel; 𝑃𝑃 𝑖 denotes the exchange power between the tank and robot; 𝑑𝑖, 𝑖 = {𝑥, 𝑧} denotes the displacement on the
+𝑖-axis; and other symbols are the same as in equations.
+Fig. 12. Polishing effect of Group 5 in Table 1 . (a)–(d) From first to fourth polishing. (e) Focus on HPA. Polishing sequence: NA1-HPA-NA2. NA1, NA2: normal areas; HPA:
+hard-to-polish area.
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+10 
+
+===== PAGE 11 =====
+H. Zhou et al.
+Fig. 13. Polishing effect of Group 6 in Table 1 . (a)–(d) From first to fourth polishing. (e) Focus on HPA. Polishing sequence: NA1-HPA-NA2. NA1, NA2: normal areas; HPA:
+hard-to-polish area.
+Fig. 14. Motion and force profiles of Group 6 in Table 1 . 𝑑𝑖, 𝑖 = {𝑥, 𝑧} denotes the displacement on the 𝑖-axis.
+Fig. 15. Polishing effect of Group 7 in Table 1 . (a)–(d) From first to fourth polishing. (e) Focus on HPA. Polishing sequence: NA1-HPA-NA2. NA1, NA2: normal areas; HPA:
+hard-to-polish area.
+force is 28.73 N; that is, the mean error of the polishing force is 1.27 N
+and the variance of polishing force is 1.72 N2. The transversal motion of
+the polishing tool are autonomously generated moves after 1.21 s and
+the polishing-force-tracking controller in ( 3) calculates the interaction
+velocity ̇ 𝑥𝑠 of the slave robot in real time according to the polishing
+force error between the desired polishing force of 30 N and the actual
+polishing force 𝐹𝑒. The displacement on the 𝑧-axis almost coincides
+with the slope aluminum extrusion since the polishing force is constant.
+The polishing effect of the latest shared control strategy (Group 7
+in Table 1 ) is shown in Fig. 15 . Fig. 15 (a) ∼(d) represent the slope
+aluminum extrusion is polished four times and Fig. 15 (d) represents the
+final polishing effect. For the first polishing as shown in Fig. 15 (a), the
+NA1 is polished ideally; the human correction is intervened, the polish-
+ing force increases, a part of the HPA is polished cleanly, but the solid
+paint particles clog the sandpaper; the polishing force decreases and
+the NA2 cannot be polished cleanly due to the clogged sandpaper. The
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+11 
+
+===== PAGE 12 =====
+H. Zhou et al.
+Fig. 16. Motion and force profiles of Group 7 in Table 1. 𝐹𝐼𝑖 , 𝑖 = {𝑠, 𝑚} denotes the force at the master/slave side; 𝑑𝑖, 𝑖 = {𝑥, 𝑧} denotes the displacement on the 𝑖-axis.
+polishing in Fig. 15 (b) ∼(d) in the group shows the same phenomenon
+as the first polishing and the HPA is gradually polished cleanly. For the
+final polishing effect in Fig. 15 (d) ∼(e), the NA1 and NA2 are polished
+ideally; more than three quarters of the HPA is also polished ideally;
+and the paint on the surface of the rest part of the HPA is polished
+off. A representative result of four polishing is selected and the force
+and motion profiles are shown in Fig. 16. The entire polishing task
+takes 67 s and the polishing tool equipped to the slave robot does not
+interact with the aluminum extrusion. The operator manipulates the
+master robot to allow the polishing tool to approach and interact with
+the aluminum extrusion, the operator manipulates the master robot
+with a larger velocity before 5.47 s, and the operator manipulates
+the master robot with a smaller velocity between 5.47 s and 8.91 s
+because the polishing tool is about to interact with the aluminum
+extrusion (or have interacted with the aluminum extrusion with slight
+polishing force) and a larger velocity will damage the polishing tool.
+The polishing tool interacts with the aluminum extrusion at 7.26 s (the
+polishing force is greater than 1 N) and the operator still manipulates
+the master robot between 7.26 s and 8.91 s because the polishing force
+is considered not to be enough. The transversal motion of the slave
+robot is autonomously generated after 7.26 s and the operator only
+focuses on the polishing force. The HPA is polished and the operator
+perceives that the polishing force should be increased between 36.08 s
+and 59.87 s. A small velocity of the master robot is enough to increase
+the polishing force at the slave side because the interaction stiffness
+between the polishing tool and the aluminum extrusion is high while
+polishing the aluminum extrusion, so the velocity is adjusted slightly
+and the polishing force varies greatly between 36.08 s and 59.87 s. It
+is worth noting that the displacement on the 𝑧-axis does not coincide
+with the slope aluminum extrusion (especially at the period of 36.08
+s ∼ 59 .87 s) and the polishing force cannot be maintained at a desired
+value.
+The polishing effect of the proposed human–robot collaborative
+polishing strategy (Group 8 in Table 1) is shown in Fig. 17. Fig. 17
+(a)∼(d) represent that the slope aluminum extrusion is polished four
+times and Fig. 17 (d) represents the final polishing effect. For the first
+polishing as shown in Fig. 17 (a), the NA1 is polished ideally; the
+human correction is intervened, the polishing force increases, and the
+HPA is polished partly; and the NA2 cannot also be polished cleanly
+due to the clogged sandpaper as in Group 7. The rest polishing in
+the group shows the same phenomenon as the first polishing and the
+HPA is gradually polished cleanly. For the final polishing effect in
+Fig. 17 (d) ∼(e), the NA1 and NA2 are polished ideally; more than
+three quarters of the HPA is polished cleanly; and the paint on the
+surface of the rest part of the HPA is polished off. A representative
+result of four polishing is selected and the force and motion profiles
+are shown in Fig. 18. The entire polishing task takes 58 s and the
+polishing process consists of four stages: (i) approaching the aluminum
+extrusion before 1.38 s (the polishing force first reaches 30 N), (ii)
+polishing the NA1 between 1.38 s and 29.36 s, (iii) polishing the HPA
+between 29.36 s and 47.78 s, and (iv) polishing the NA2 after 47.78 s.
+In the first, second, and fourth stages, the master robot does not move
+and there is no dissipated power 𝐷𝑚 flowing into the master tank.
+The slave robot moves according to the nominal behavior and the
+dissipated power 𝐷𝑠 is generated (the dissipated power in the first
+stage is greater than the dissipated power in the second and fourth
+stages). In the third stage (the orange part in Fig. 18), the slave robot
+polishes the HPA in the aluminum extrusion; the operator believes
+that the correction (more polishing force) is required and manipulates
+the master robot; and the polishing force increases. The displacement
+on the 𝑧-axis fluctuates along the slope aluminum extrusion due to
+the increased polishing force. For the energy in the master tank, the
+dissipated power 𝐷𝑚 is generated when the operator manipulates the
+master robot, the dissipated power flows into the master tank in the
+blue part in Fig. 18 (29.36 s∼ 34.94 s), and there is no dissipated power
+into the master tank although the dissipated power𝐷𝑚 is still generated
+at other time of the third stage due to 𝑇𝑚 ≥ 𝑇 𝑏𝑎𝑟
+𝑚 = 5 J ; and the energy
+in the master tank still increases when 𝑇𝑚 ≥ 𝑇 𝑏𝑎𝑟
+𝑚 because the exchange
+power from the master robot flows into the master tank. For the energy
+in the slave tank, the dissipated power 𝐷𝑠 is generated and flows into
+the slave tank in four stages (the dissipated power in the first and third
+stages is greater); the exchange power flows out of the slave tank to
+support the polishing force between the polishing tool and aluminum
+extrusion; and the power intermittently flows into the slave tank from
+the master tank due to 𝑇𝑠 ≤ 𝑇 𝑟𝑒𝑞
+𝑠 (𝐸𝑟𝑒𝑞
+𝑠 = 1) and 𝑇𝑚 ≥ 𝑇 𝑎𝑣𝑎
+𝑚 (𝛽𝑚 = 1) in
+the green part (0 s ∼ 58 s) in Fig. 18.
+To sum up, eight experimental groups were conducted under two
+conditions, including different materials, shapes, and polishing sur-
+faces, to compare the proposed human–robot collaborative polishing
+strategy with manual polishing, autonomous polishing with constant
+force, and the latest shared control strategy. We found that (i) the
+proposed corrective shared control architecture effectively provided the
+operator with direct force-reflection while guaranteeing the stability
+of the human–robot collaborative polishing system; and (ii) in terms
+of polishing effect, the proposed human–robot collaborative polishing
+strategy was compatible with the advantages of manual polishing and
+autonomous polishing like the latest shared control strategy: the polish-
+ing marks of NA1 and NA2 were regular (the advantage of autonomous
+polishing) and the HPA was polished cleanly with larger polishing force
+(the advantage of manual polishing).
+4.2. User experience
+The proposed human–robot collaborative polishing strategy has the
+same polishing effect as the state-of-the-art shared control strategies,
+and the validity of the proposed corrective shared control architec-
+ture is also verified in Section 4.1. User experience is important for
+human–robot collaborative systems so 17 subjects (12 males and 5
+females) aged between 21 and 37 are invited to exhaustively evaluate
+our proposal from the following two viewpoints: (i) user experience
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+12 
+
+===== PAGE 13 =====
+H. Zhou et al.
+Fig. 17. Polishing effect of Group 8 in Table 1 . (a)–(d) From first to fourth polishing. (e) Focus on HPA. Polishing sequence: NA1-HPA-NA2. NA1, NA2: normal areas; HPA:
+hard-to-polish area.
+Fig. 18. Motion and force profiles of Group 8 in Table 1 . 𝐹𝐼𝑖 , 𝑖 = {𝑠, 𝑚} denotes the force at the master/slave side; 𝐸𝑖 denotes the energy signal; 𝑃𝐷𝑖 denotes the dissipated power;
+𝑃𝐶𝑖 denotes the net input power from the communication channel; 𝑃𝑃 𝑖 denotes the exchange power between the tank and robot; 𝑑𝑖, 𝑖 = {𝑥, 𝑧} denotes the displacement on the
+𝑖-axis; and other symbols are the same as in equations.
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+13 
+
+===== PAGE 14 =====
+H. Zhou et al.
+Table 3
+Experimental groups in Section 4.2. Subjects are required to conduct the polishing task
+in both experimental conditions in Fig. 4.
+Abbreviation Controller
+C1 The proposed human–robot collaborative polishing strategy with direct
+force-reflection
+C2 The proposed human–robot collaborative polishing strategy without
+direct force-reflection
+C3 The latest shared control strategy in [8,11] with direct force-reflection
+C4 The latest shared control strategy in [8,11] without direct
+force-reflection
+difference between the proposed human–robot collaborative polishing
+strategy and the state-of-the-art shared control strategy in [8,11]; and
+(ii) user experience difference between the correction with and without
+direct force-reflection. Four comprehensive groups of experiments are
+provided as shown in Table 3. Each subject is required to conduct
+the polishing task four times with each approach in both experimental
+conditions in Fig. 4 and a total of 2 × 4 × 4 = 32 polishing tasks are
+conducted for each subject.
+Some subjective metrics are used to evaluate the four methods.
+We combine the NASA Task Load Index (TLX) [37] and a self-defined
+survey to assess subjects’ perceptions while using the four methods.
+The NASA TLX evaluates mental, physical and temporal demands and
+analyzes subjects’ performance, effort, and frustration. The self-defined
+survey is determined based on tasks as follows:
+(1) Usability, it is easy to execute the asked task with the system;
+(2) Predictability, the robot consistently moves in a way that I ex-
+pected;
+(3) Smoothly, the robot and I work smoothly together as a team;
+(4) Trust, the system is trustworthy and I am confident in finishing
+the task;
+(5) Goal perception , the system perceives accurately what my goals
+are;
+(6) Robot intelligence, the system is intelligent;
+(7) Satisfaction, I am satisfied with it and I would recommend it to
+my friends;
+(8) Transparency, the system gives me a feeling closer to manual
+operation.
+The performance of the four methods is evaluated and the anal-
+ysis of metrics is conducted based on a repeated-measures ANOVA
+(i.e., analysis of variance) as shown in Fig. 19. All pairwise comparisons
+are achieved by using Tukey’s HSD (i.e., Tukey’s honestly significant
+difference) test [15].
+For the TLX mental demands, C1 is perceived as the best method
+with a mean of 22.35 and a standard deviation of 3.69. The proposed
+human–robot collaborative polishing strategy significantly decreases
+the mental demand (C1 versus C3, 𝑝 < 0.01; and C2 versus C4,
+𝑝 < 0.05), and the direct force-reflection significantly decreases the
+mental demand (C3 versus C4, 𝑝 < 0.05) because fewer energies are
+required for subjects to acquire the polishing quality when the direct
+force-reflection is introduced. For the TLX physical demands, the direct
+force-reflection significantly increases the physical demand (C1 versus
+C2, 𝑝 < 0.05) because subjects should expend effort to counteract the
+force feedback. For the TLX temporal demand, C1 is perceived as the
+best method with a mean of 41.02 and a standard deviation of 6.50. The
+proposed human–robot collaborative polishing strategy and the direct
+force-reflection significantly decrease the temporal demand (C1 versus
+C4, 𝑝 < 0.05). For the TLX performance, C1 is perceived as the best
+method with a mean of 18.09 and a standard deviation of 2.33. The di-
+rect force-reflection significantly improves the performance (C3 versus
+C4, 𝑝 < 0.01) and the proposed human–robot collaborative polishing
+strategy performs similarly (even better but not significantly) to the
+latest shared control strategy. The proposed human–robot collaborative
+polishing strategy and the direct force-reflection significantly improve
+the usability, which is confirmed by the analysis of the TLX effort (C1
+versus C4, 𝑝 < 0.01) and usability (C1 versus C4, 𝑝 < 0.05). C1 is
+perceived as the best method with a mean of 26.18 and a standard
+deviation of 3.59 for the TLX effort, and with a mean of 78.09 and a
+standard deviation of 4.14 for the usability because the subjects think
+that the direct force-reflection allows them to determine the force to be
+applied intuitively. For the TLX frustration, C1 is perceived as the best
+method with a mean of 25.29 and a standard deviation of 2.60. The
+proposed human–robot collaborative polishing strategy significantly
+reduces the subjects’ sense of frustration (C1 versus C3,𝑝 < 0.05; and C2
+versus C4, 𝑝 < 0.05). The direct force-reflection significantly improves
+the system’s perception of the subject’s goals, which is confirmed by the
+analysis of the predictability (C3 versus C4, 𝑝 < 0.05) and goal percep-
+tion (C3 versus C4, 𝑝 < 0.01). The proposed human–robot collaborative
+polishing strategy also significantly improves the goal perception (C2
+versus C4, 𝑝 < 0.05) and C1 is perceived as the best method with a
+mean of 85.88 and a standard deviation of 2.12. Subjects think that C1
+is the most trustworthy method with a mean of 87.94 and a standard
+deviation of 2.57 because C1 tends to make them apply the most
+appropriate force. The proposed human–robot collaborative polishing
+strategy is more trustworthy than the latest shared control strategy (C2
+versus C4, 𝑝 < 0.05) and the direct force-reflection gives the subjects
+more confidence in the human–robot collaborative polishing system
+(C1 versus C2, 𝑝 < 0.01; and C3 versus C4, 𝑝 < 0.01). C1 is considered
+the most intelligent method with a mean of 87.20 and a standard
+deviation of 2.39. The proposed human–robot collaborative polishing
+strategy significantly improves the intelligence of the polishing system
+(C1 versus C3, 𝑝 < 0.05; and C2 versus C4, 𝑝 < 0.05) because the
+subjects are only required to correct the polishing force while polishing
+the HPA. Subjects are most satisfied with C1 with a mean of 88.23
+and a standard deviation of 2.68. Both the proposed human–robot
+collaborative polishing strategy (C2 versus C4, 𝑝 < 0.01) and the direct
+force-reflection (C1 versus C2, 𝑝 < 0.05; and C3 versus C4, 𝑝 < 0.01)
+significantly improve the subjects’ satisfaction. For transparency, C3
+with a mean of 88.68 and a standard deviation of 3.08 is considered the
+best method, and C1 with a mean of 87 and a standard deviation of 2.24
+is similar to C3. The direct force-reflection significantly improves the
+transparency of the human–robot collaborative polishing system (C1
+versus C2, 𝑝 < 0.01; and C3 versus C4, 𝑝 < 0.01).
+We have conclusions as follows: (i) C1 is considered the best method
+and gives the subjects the best user experience in almost all aspects
+except physical demand; (ii) the proposed human–robot collaborative
+polishing strategy gives the subjects the better user experience with re-
+spect to the latest shared control strategy, especially in goal perception;
+and (iii) the direct force-reflection improves the subjects’ satisfaction
+with the polishing system and gives the subjects more confidence in
+correcting the polishing force appropriately.
+4.3. Discussion
+In this section, two experiments are conducted to validate our
+proposal in the two experimental conditions as shown in Fig. 4. In
+the first experiment, the results of 8 groups of contrastive exper-
+iments (the proposed human–robot collaborative polishing strategy
+versus manual polishing, automatic polishing, and the latest shared
+control strategy in the two experimental conditions) indicate that (i)
+the proposed human–robot collaborative polishing strategy combines
+the advantages of both manual polishing and autonomous polishing
+like the latest shared control strategy; (ii) the proposed corrective
+shared control architecture effectively provides the operator with direct
+force-reflection while guaranteeing the stability of the human–robot
+collaborative polishing system. In the second experiment, 17 subjects
+are invited to polish the workpiece with four correction approaches in
+the two experimental conditions. The results indicate that the direct
+force-reflection enhances the accuracy of estimating human intention to
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+14 
+
+===== PAGE 15 =====
+H. Zhou et al.
+Fig. 19. Tukey boxplots of subjective metrics. The data indicate mean ± standard deviation ; * indicates that 𝑝 < 0.05; and ** indicates that 𝑝 < 0.01.
+correct the polishing force while also increasing operators’ confidence
+in the human–robot collaborative polishing system, and the proposed
+human–robot collaborative polishing strategy (with respect to the lat-
+est shared control strategy) provide subjects better user experience,
+especially in correcting the polishing force appropriately.
+The proposed corrective shared architecture has the potential to be
+applied in industrial scenarios although only the 400 mm × 400 mm
+steel plate and slope aluminum extrusion are polished in the experimen-
+tal setup in Fig. 4. The polished workpieces involve different materials,
+shape and polishing surfaces. Considering the large size variation of
+polished workpieces in industrial scenarios, we further provided two
+solutions for workpieces in different sizes. For small-sized workpieces,
+a suitable polishing tool in Fig. 4 is required to be replaced and the
+scaling matrices 𝑩𝑠𝑚 and 𝑩𝑠𝑎 in (4) should be reduced. Besides, a
+camera with a long focal length is required to allow the operator to
+scrutinize the polished workpiece if the workpiece is small in size. For
+large-sized workpieces, only the scaling matrices 𝑩𝑠𝑚 and 𝑩𝑠𝑎 in (4) are
+required to be adjusted if the workpiece is within the workspace of the
+slave manipulator (the parameter can be referred to the manipulator
+manual); otherwise the large workpiece can be placed on a conveyor
+belt, the slave manipulator can be equipped to a mobile base such as a
+mobile robot [38] or rail [39], or the slave manipulator can be replaced
+with long-stroke manipulators [40] (we recommend the first scheme
+because the kinematics of the manipulators are more complex in the
+latter two schemes).
+The most important components in the proposed architecture are
+the master and slave sides. The proposed architecture is extremely
+robust and protective for operators on the master side. The architecture
+prevents operators from being affected by the field environment, such
+as noise, because operators can correct the polishing force in a comfort-
+able and safe area. Only one parameter ̇ 𝑥𝑚𝑎𝑥
+𝑚 denoting the maximum
+correction velocity in (5) is required to be calibrated in advance, and
+the same parameter is generally suitable for different operators because
+human arms move at the same speed essentially. For the slave side,
+the sandpaper sticking to the polishing tool in Fig. 4 is required to be
+replaced regularly as with other methods [3,7,8]. A camera is required
+to allow operators to observe the polished workpieces, and the camera
+must be protected from dust.
+The proposed architecture avoids direct and physical interaction
+between the operator and polishing tool, as shown in Fig. 4, and
+the corrective behaviors are transmitted from the operator to the
+slave side through communication. Therefore, communication is an
+important part of the proposed architecture, and communication that
+may affect polishing tasks consists of the following three aspects: (i)
+communication quality is mainly represented by packet loss rate that
+indicates the ratio of the number of lost packets to the number of
+sent packets [41]. A low packet loss rate is necessary for polishing
+tasks, which guarantees that the corrective behaviors from the operator
+can be completely transmitted to the slave side; (ii) communication
+frequency determines the density of corrective behaviors transmitted to
+the slave side. A higher communication frequency allows a more perfect
+reflection of the operator’s corrective behaviors in polishing tasks; and
+(iii) communication delay can result in the instability of the system
+and usually occurs when the master and slave sides are far apart [27].
+In summary, low communication quality will result in system failure.
+It is fortunate that communication technology is very sophisticated,
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+15 
+
+===== PAGE 16 =====
+H. Zhou et al.
+and the human–robot collaborative polishing system can be paused
+automatically when the total packet loss rate reaches the set threshold
+value. Force interaction tasks require high communication frequency,
+and the frequency of 1 kHz is sufficient, as verified in the experiments.
+Communication delay is not a concern when the master and slave sides
+are not far apart.
+5. Conclusion and future work
+This paper proposes a corrective shared control architecture with
+direct force-reflection for polishing tasks with unexpected issues. In par-
+ticular, an intention-based human–robot collaborative polishing strat-
+egy is proposed under the proposed architecture. Direct force-reflection
+is introduced in corrective shared control for the first time. The pro-
+posed architecture guarantees operators’ safety [8], which is reflected
+in the following two aspects: (i) the proposed architecture belonging
+to shared-control-based HRC avoids the direct and physical interaction
+between the operator and workpiece in comparison with impedance-
+control-based HRC; and (ii) direct force-reflection will result in contact
+instability although it facilitates operators’ perception of polishing tasks
+and the contact instability will result in oscillatory behaviors of the
+master and slave robots that will cause damage to the polishing tool
+and polished workpieces. A coupling energy scaling policy between the
+master and slave sides is designed to address the issue, which is verified
+theoretically and experimentally.
+Polishing experiments are conducted to verify the proposed archi-
+tecture based on the polishing effect and user experience. Eight groups
+of contrastive experiments indicate that the proposed human–robot
+collaborative polishing strategy is compatible with the advantages of
+both manual polishing and autonomous polishing like the latest shared
+control strategy, and the proposed corrective shared control architec-
+ture effectively provides the operator with direct force-reflection while
+guaranteeing the stability of the human–robot collaborative polishing
+system. Seventeen subjects think that the human–robot collaborative
+polishing strategy (with respect to the latest shared control strategy)
+implemented in the corrective shared control architecture with direct
+force-reflection gives them the best user experience and the direct
+force-reflection enhances their perception of the polishing force at the
+slave side.
+Currently, the proposed architecture is implemented in an experi-
+mental polishing task where the flat steel plate and slope aluminum
+extrusion are adopted. Workpieces with complex geometries are not
+considered in the paper because we mainly focus on correcting the
+polishing force. Future work will focus on implementing the proposed
+architecture in industrial polishing tasks and considering the safety
+of teleoperation systems in the presence of large time delays. The
+complexity of workpieces in industrial polishing tasks is reflected in
+the following two aspects: geometry complexity and size complexity.
+Workpieces of various sizes will also be considered, which requires the
+aid of a telephoto camera (for small-sized workpieces) and a conveyor
+belt (for large-sized workpieces). Besides, the instability caused by
+the communication delay between the master and slave sides will be
+addressed based on the assumption that the operator and the polished
+workpiece will be far apart.
+CRediT authorship contribution statement
+Hao Zhou: Writing – original draft, Validation, Software, Method-
+ology, Conceptualization. Xin Zhang: Writing – review & editing,
+Supervision, Conceptualization, Validation. Jinguo Liu: Supervision,
+Conceptualization, Validation.
+Declaration of competing interest
+The authors declare that they have no known competing finan-
+cial interests or personal relationships that could have appeared to
+influence the work reported in this paper.
+Data availability
+Data will be available on request.
+Acknowledgments
+This research is supported by the National Natural Science Founda-
+tion of China (Grant No. 62103407).
+Appendix A. Supplementary data
+Supplementary material related to this article can be found online
+at https://doi.org/10.1016/j.rcim.2024.102876.
+References
+[1] F. Xie, Z. Chong, X.-J. Liu, H. Zhao, J. Wang, Precise and smooth contact force
+control for a hybrid mobile robot used in polishing, Robot. Comput.-Integr.
+Manuf. 83 (2023) 102573, http://dx.doi.org/10.1016/j.rcim.2023.102573.
+[2] M. Wang, K. Chen, P. Wang, Y. Song, T. Sun, Teleoperation mode and control
+strategy for the machining of large casting parts, Robot. Comput.-Integr. Manuf.
+86 (2024) 102690, http://dx.doi.org/10.1016/j.rcim.2023.102690.
+[3] P. Zhou, X. Zhao, B. Tao, H. Ding, Time-varying isobaric surface reconstruction
+and path planning for robotic grinding of weak-stiffness workpieces, Robot.
+Comput.-Integr. Manuf. 64 (2020) 101945, http://dx.doi.org/10.1016/j.rcim.
+2020.101945.
+[4] Y. Huo, P. Li, D. Chen, Y.-H. Liu, X. Li, Model-free adaptive impedance control
+for autonomous robotic sanding, IEEE Trans. Autom. Sci. Eng. 19 (4) (2022)
+3601–3611, http://dx.doi.org/10.1109/TASE.2021.3126743.
+[5] S. Kana, S. Lakshminarayanan, D.M. Mohan, D. Campolo, Impedance controlled
+human–robot collaborative tooling for edge chamfering and polishing applica-
+tions, Robot. Comput.-Integr. Manuf. 72 (2021) 102199, http://dx.doi.org/10.
+1016/j.rcim.2021.102199.
+[6] G. Li, F. Caponetto, X. Wu, I. Sarakoglou, N.G. Tsagarakis, A haptic shared
+autonomy with partial orientation regulation for DoF deficiency in remote side,
+IEEE Trans. Haptics 16 (1) (2023) 86–95, http://dx.doi.org/10.1109/TOH.2023.
+3239602.
+[7] C. Gaz, E. Magrini, A. De Luca, A model-based residual approach for human-
+robot collaboration during manual polishing operations, Mechatronics 55 (2018)
+234–247, http://dx.doi.org/10.1016/j.mechatronics.2018.02.014.
+[8] C. González, J.E. Solanes, A. Muñoz, L. Gracia, V. Girbés-Juan, J. Tornero,
+Advanced teleoperation and control system for industrial robots based on
+augmented virtuality and haptic feedback, J. Manuf. Syst. 59 (2021) 283–298,
+http://dx.doi.org/10.1016/j.jmsy.2021.02.013.
+[9] N. Lawrance, R. DeBortoli, D. Jones, S. McCammon, L. Milliken, A. Nicolai, T.
+Somers, G. Hollinger, Shared autonomy for low-cost underwater vehicles, J. Field
+Robotics 36 (3) (2019) 495–516, http://dx.doi.org/10.1002/rob.21835.
+[10] S. Musić, S. Hirche, Control sharing in human-robot team interaction, Annu. Rev.
+Control 44 (2017) 342–354, http://dx.doi.org/10.1016/j.arcontrol.2017.09.017.
+[11] M. Selvaggio, J. Cacace, C. Pacchierotti, F. Ruggiero, P.R. Giordano, A shared-
+control teleoperation architecture for nonprehensile object transportation, IEEE
+Trans. Robot. 38 (1) (2022) 569–583, http://dx.doi.org/10.1109/TRO.2021.
+3086773.
+[12] D. Gopinath, S. Jain, B.D. Argall, Human-in-the-loop optimization of shared
+autonomy in assistive robotics, IEEE Robot. Autom. Lett. 2 (1) (2017) 247–254,
+http://dx.doi.org/10.1109/LRA.2016.2593928.
+[13] V. Pruks, J.-H. Ryu, Method for generating real-time interactive virtual fixture
+for shared teleoperation in unknown environments, Int. J. Robot. Res. 41 (9–10)
+(2022) 925–951, http://dx.doi.org/10.1177/02783649221102980.
+[14] G. Brantner, O. Khatib, Controlling ocean one: Human–robot collaboration for
+deep-sea manipulation, J. Field Robotics 38 (1) (2021) 28–51, http://dx.doi.org/
+10.1002/rob.21960.
+[15] D. Rakita, B. Mutlu, M. Gleicher, L.M. Hiatt, Shared control–based bimanual
+robot manipulation, Science Robotics 4 (30) (2019) eaaw0955, http://dx.doi.
+org/10.1126/scirobotics.aaw0955.
+[16] D.P. Losey, C.G. McDonald, E. Battaglia, M.K. O’Malley, A review of intent
+detection, arbitration, and communication aspects of shared control for physical
+human–robot interaction, Appl. Mech. Rev. 70 (1) (2018) 010804, http://dx.doi.
+org/10.1115/1.4039145.
+[17] M. Hagenow, E. Senft, R. Radwin, M. Gleicher, B. Mutlu, M. Zinn, Corrective
+shared autonomy for addressing task variability, IEEE Robot. Autom. Lett. 6 (2)
+(2021) 3720–3727, http://dx.doi.org/10.1109/LRA.2021.3064500.
+[18] C. Masone, M. Mohammadi, P.R. Giordano, A. Franchi, Shared planning and
+control for mobile robots with integral haptic feedback, Int. J. Robot. Res. 37
+(11) (2018) 1395–1420, http://dx.doi.org/10.1177/0278364918802006.
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+16 
+
+===== PAGE 17 =====
+H. Zhou et al.
+[19] J. Corredor, J. Sofrony, A. Peer, Decision-making model for adaptive impedance
+control of teleoperation systems, IEEE Trans. Haptics 10 (1) (2017) 5–16, http:
+//dx.doi.org/10.1109/TOH.2016.2581807.
+[20] J. Kim, H. Ladjal, D. Folio, A. Ferreira, J. Kim, Evaluation of telerobotic shared
+control strategy for efficient single-cell manipulation, IEEE Trans. Autom. Sci.
+Eng. 9 (2) (2012) 402–406, http://dx.doi.org/10.1109/TASE.2011.2174357.
+[21] R. Rahal, G. Matarese, M. Gabiccini, A. Artoni, D. Prattichizzo, P.R. Giordano,
+C. Pacchierotti, Caring about the human operator: Haptic shared control for
+enhanced user comfort in robotic telemanipulation, IEEE Trans. Haptics 13 (1)
+(2020) 197–203, http://dx.doi.org/10.1109/TOH.2020.2969662.
+[22] M. Cognetti, M. Aggravi, C. Pacchierotti, P. Salaris, P.R. Giordano, Perception-
+aware human-assisted navigation of mobile robots on persistent trajectories, IEEE
+Robot. Autom. Lett. 5 (3) (2020) 4711–4718, http://dx.doi.org/10.1109/LRA.
+2020.3003882.
+[23] D. Heck, A. Saccon, R. Beerens, H. Nijmeijer, Direct force-reflecting two-layer
+approach for passive bilateral teleoperation with time delays, IEEE Trans. Robot.
+34 (1) (2018) 194–206, http://dx.doi.org/10.1109/TRO.2017.2769123.
+[24] J.-H. Ryu, D.-S. Kwon, B. Hannaford, Stable teleoperation with time-domain
+passivity control, IEEE Trans. Robot. Autom. 20 (2) (2004) 365–373, http:
+//dx.doi.org/10.1109/TRA.2004.824689.
+[25] G. Niemeyer, J.-J. Slotine, Using wave variables for system analysis and robot
+control, in: Proceedings of International Conference on Robotics and Automation,
+Vol. 2, 1997, pp. 1619–1625 vol.2, http://dx.doi.org/10.1109/ROBOT.1997.
+614372.
+[26] F. Ferraguti, N. Preda, A. Manurung, M. Bonfè, O. Lambercy, R. Gassert,
+R. Muradore, P. Fiorini, C. Secchi, An energy tank-based interactive control
+architecture for autonomous and teleoperated robotic surgery, IEEE Trans. Robot.
+31 (5) (2015) 1073–1088, http://dx.doi.org/10.1109/TRO.2015.2455791.
+[27] M. Panzirsch, A. Pereira, H. Singh, B. Weber, E. Ferreira, A. Gherghescu, L.
+Hann, E. den Exter, F. van der Hulst, L. Gerdes, L. Cencetti, K. Wormnes, J.
+Grenouilleau, W. Carey, R. Balachandran, T. Hulin, C. Ott, D. Leidner, A. Albu-
+Schäffer, N.Y. Lii, T. Krüger, Exploring planet geology through force-feedback
+telemanipulation from orbit, Science Robotics 7 (65) (2022) eabl6307, http:
+//dx.doi.org/10.1126/scirobotics.abl6307.
+[28] D. Lee, D. Ko, W.K. Chung, K. Kim, Quadratic programming-based task scaling
+for safe and passive robot arm teleoperation, IEEE/ASME Trans. Mechatronics
+27 (4) (2022) 1937–1945, http://dx.doi.org/10.1109/TMECH.2022.3175247.
+[29] G. Kang, H.S. Oh, J.K. Seo, U. Kim, H.R. Choi, Variable admittance control of
+robot manipulators based on human intention, IEEE/ASME Trans. Mechatronics
+24 (3) (2019) 1023–1032, http://dx.doi.org/10.1109/TMECH.2019.2910237.
+[30] A. Campeau-Lecours, M.J.-D. Otis, C. Gosselin, Modeling of physical human–
+robot interaction: Admittance controllers applied to intelligent assist devices
+with large payload, Int. J. Adv. Robot. Syst. 13 (5) (2016) 1729881416658167,
+http://dx.doi.org/10.1177/1729881416658167.
+[31] X. Zhang, H. Zhou, J. Liu, Z. Ju, Y. Leng, C. Yang, A practical PID variable
+stiffness control and its enhancement for compliant force-tracking interactions
+with unknown environments, Sci. China Technol. Sci. 66 (10) (2023) 2882–2896.
+[32] S. Luo, M. Cheng, R. Ding, F. Wang, B. Xu, B. Chen, Human–robot shared
+control based on locally weighted intent prediction for a teleoperated hydraulic
+manipulator system, IEEE/ASME Trans. Mechatronics 27 (6) (2022) 4462–4474,
+http://dx.doi.org/10.1109/TMECH.2022.3157852.
+[33] M.A. Mabrok, Passivity analysis of replicator dynamics and its variations, IEEE
+Trans. Autom. Control 66 (8) (2021) 3879–3884, http://dx.doi.org/10.1109/
+TAC.2020.3027644.
+[34] H. Zhou, X. Zhang, J. Liu, Z. Ju, An active-passive compliance strategy for robotic
+plugging and unplugging of rocket electrical connectors, IEEE/ASME Trans.
+Mechatronics (2024) 1–12, http://dx.doi.org/10.1109/TMECH.2024.3410016.
+[35] A. van der Schaft, L2-Gain and Passivity Techniques in Nonlinear Control,
+Springer Cham, Berlin, Heidelberg, 2016.
+[36] E. Sartori, C. Tadiello, C. Secchi, R. Muradore, Tele-echography using a two-layer
+teleoperation algorithm with energy scaling, in: 2019 International Conference
+on Robotics and Automation, ICRA, 2019, pp. 1569–1575, http://dx.doi.org/10.
+1109/ICRA.2019.8794152.
+[37] S.G. Hart, L.E. Staveland, Development of NASA-TLX (task load index): Results of
+empirical and theoretical research, in: P.A. Hancock, N. Meshkati (Eds.), Human
+Mental Workload, in: Advances in Psychology, vol. 52, North-Holland, 1988, pp.
+139–183, http://dx.doi.org/10.1016/S0166-4115(08)62386-9.
+[38] D. Sirintuna, A. Giammarino, A. Ajoudani, Human-robot collaborative carry-
+ing of objects with unknown deformation characteristics, in: 2022 IEEE/RSJ
+International Conference on Intelligent Robots and Systems, IROS, 2022, pp.
+10681–10687, http://dx.doi.org/10.1109/IROS47612.2022.9981948.
+[39] Y. Tong, J. Liu, Y. Liu, Y. Yuan, Analytical inverse kinematic computation for
+7-DOF redundant sliding manipulators, Mech. Mach. Theory 155 (2021) 104006,
+http://dx.doi.org/10.1016/j.mechmachtheory.2020.104006.
+[40] H. Zhou, X. Zhang, J. Liu, A practical method for the deformation of long-
+stroke hydraulic manipulators in grasping-handling tasks, J. Field Robotics 40
+(4) (2023) 862–878, http://dx.doi.org/10.1002/rob.22160.
+[41] B. Mbarek, M. Ge, T. Pitner, An efficient mutual authentication scheme for
+internet of things, Internet Things 9 (2020) 100160, http://dx.doi.org/10.1016/
+j.iot.2020.100160.
+Robotics and Computer-Integrated Manufacturing 92 (2025) 102876 
+17 

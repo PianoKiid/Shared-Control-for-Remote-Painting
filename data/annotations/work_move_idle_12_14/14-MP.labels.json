@@ -1,0 +1,133 @@
+{
+  "trial_id": "14-MP",
+  "frame_count": 7559,
+  "labels": [
+    {
+      "start_index": 0,
+      "end_index": 421,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 422,
+      "end_index": 804,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 805,
+      "end_index": 893,
+      "label": "WORK"
+    },
+    {
+      "start_index": 894,
+      "end_index": 956,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 957,
+      "end_index": 1711,
+      "label": "WORK"
+    },
+    {
+      "start_index": 1712,
+      "end_index": 1830,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 1831,
+      "end_index": 2417,
+      "label": "WORK"
+    },
+    {
+      "start_index": 2418,
+      "end_index": 2762,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 2763,
+      "end_index": 4507,
+      "label": "WORK"
+    },
+    {
+      "start_index": 4508,
+      "end_index": 4609,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 4610,
+      "end_index": 5105,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 5106,
+      "end_index": 5570,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 5571,
+      "end_index": 5789,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 5790,
+      "end_index": 6094,
+      "label": "WORK"
+    },
+    {
+      "start_index": 6095,
+      "end_index": 6205,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 6206,
+      "end_index": 6261,
+      "label": "WORK"
+    },
+    {
+      "start_index": 6262,
+      "end_index": 6409,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 6410,
+      "end_index": 6471,
+      "label": "WORK"
+    },
+    {
+      "start_index": 6472,
+      "end_index": 6569,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 6570,
+      "end_index": 6652,
+      "label": "WORK"
+    },
+    {
+      "start_index": 6653,
+      "end_index": 6910,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 6911,
+      "end_index": 6993,
+      "label": "WORK"
+    },
+    {
+      "start_index": 6994,
+      "end_index": 7239,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 7240,
+      "end_index": 7432,
+      "label": "WORK"
+    },
+    {
+      "start_index": 7433,
+      "end_index": 7558,
+      "label": "MOVE"
+    }
+  ],
+  "updated_at": "2026-09-29T14:46:52+09:00",
+  "note": "IDLE은 감사용 라벨에 남지만 모델 입력과 작업/이동 지표에서는 제외됩니다."
+}

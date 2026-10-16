@@ -1,0 +1,299 @@
+{
+  "version": 1,
+  "created_at": "2026-09-29T10:03:49+09:00",
+  "labels": [
+    "WORK",
+    "MOVE",
+    "IDLE"
+  ],
+  "unlabeled_is_draft_only": true,
+  "idle_excluded_from_model_and_metrics": true,
+  "metric_definition": {
+    "distance": "구간 안 연속 EE position의 3D 유클리드 거리 합",
+    "interval_speed": "구간 거리 / (마지막 timestamp - 첫 timestamp)",
+    "average_distance": "같은 상태 구간별 distance의 산술평균",
+    "average_speed": "같은 상태 구간별 avg_speed의 산술평균",
+    "boundary_rule": "통신 단절/파일 경계/IDLE/UNLABELED를 가로질러 거리를 연결하지 않음"
+  },
+  "excel_source": "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\원격도장작업실험_0720_Wide Format.xlsx",
+  "excel_output": "D:\\SNUCEM\\PROJECTS\\다부처\\Shared Control for Remote Painting\\results\\spreadsheets\\원격도장작업실험_0720_Wide Format_12-14추가.xlsx",
+  "trials": [
+    {
+      "trial_id": "12-VP",
+      "frame_count": 25103,
+      "duration_ui_s": 836.726,
+      "segment_count": 1,
+      "source_count": 1,
+      "appended_sources": false,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\12\\12-0 (1)\\12-VP\\12-01_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 25103,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 25103
+        },
+        "updated_at": null
+      }
+    },
+    {
+      "trial_id": "12-MS",
+      "frame_count": 19030,
+      "duration_ui_s": 636.206,
+      "segment_count": 10,
+      "source_count": 1,
+      "appended_sources": false,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\12\\12-0 (1)\\12-MS\\12-02_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 19030,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 19030
+        },
+        "updated_at": null
+      }
+    },
+    {
+      "trial_id": "12-VS",
+      "frame_count": 18208,
+      "duration_ui_s": 607.327,
+      "segment_count": 3,
+      "source_count": 1,
+      "appended_sources": false,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\12\\12-0 (1)\\12-VS\\12-03_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 18208,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 18208
+        },
+        "updated_at": null
+      }
+    },
+    {
+      "trial_id": "12-MP",
+      "frame_count": 12547,
+      "duration_ui_s": 419.703,
+      "segment_count": 8,
+      "source_count": 1,
+      "appended_sources": false,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\12\\12-0 (1)\\12-MP\\12-04_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 12547,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 12547
+        },
+        "updated_at": null
+      }
+    },
+    {
+      "trial_id": "13-MP",
+      "frame_count": 18138,
+      "duration_ui_s": 604.57,
+      "segment_count": 1,
+      "source_count": 1,
+      "appended_sources": false,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\13\\13-MP\\13-01_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 18138,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 18138
+        },
+        "updated_at": null
+      }
+    },
+    {
+      "trial_id": "13-MS",
+      "frame_count": 12700,
+      "duration_ui_s": 424.165,
+      "segment_count": 5,
+      "source_count": 1,
+      "appended_sources": false,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\13\\13-MS\\13-02_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 12700,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 12700
+        },
+        "updated_at": null
+      }
+    },
+    {
+      "trial_id": "13-VS",
+      "frame_count": 14894,
+      "duration_ui_s": 496.437,
+      "segment_count": 1,
+      "source_count": 1,
+      "appended_sources": false,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\13\\13-VS\\13-03_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 14894,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 14894
+        },
+        "updated_at": null
+      }
+    },
+    {
+      "trial_id": "13-VP",
+      "frame_count": 3377,
+      "duration_ui_s": 112.532,
+      "segment_count": 1,
+      "source_count": 1,
+      "appended_sources": false,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\13\\13-VP\\13-04_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 3377,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 3377
+        },
+        "updated_at": null
+      }
+    },
+    {
+      "trial_id": "14-VS",
+      "frame_count": 8888,
+      "duration_ui_s": 296.445,
+      "segment_count": 2,
+      "source_count": 1,
+      "appended_sources": false,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\14\\14-VS\\14-01_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 8888,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 8888
+        },
+        "updated_at": null
+      }
+    },
+    {
+      "trial_id": "14-VP",
+      "frame_count": 6253,
+      "duration_ui_s": 208.822,
+      "segment_count": 3,
+      "source_count": 1,
+      "appended_sources": false,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\14\\14-VP\\14-02_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 6253,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 6253
+        },
+        "updated_at": null
+      }
+    },
+    {
+      "trial_id": "14-MS",
+      "frame_count": 5016,
+      "duration_ui_s": 167.165,
+      "segment_count": 1,
+      "source_count": 1,
+      "appended_sources": false,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\14\\14-MS\\14-03_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 5016,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 5016
+        },
+        "updated_at": null
+      }
+    },
+    {
+      "trial_id": "14-MP",
+      "frame_count": 7559,
+      "duration_ui_s": 252.139,
+      "segment_count": 2,
+      "source_count": 2,
+      "appended_sources": true,
+      "sources": [
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\14\\14-MP\\14-04_0.mcap",
+        "D:\\SNUCEM\\PROJECTS\\다부처\\원격도장작업실험\\DATA\\subjects\\14\\14-MP-2\\14-04_2_0.mcap"
+      ],
+      "progress": {
+        "labeled_frames": 0,
+        "unlabeled_frames": 7559,
+        "percent": 0.0,
+        "counts": {
+          "WORK": 0,
+          "MOVE": 0,
+          "IDLE": 0,
+          "UNLABELED": 7559
+        },
+        "updated_at": null
+      }
+    }
+  ]
+}

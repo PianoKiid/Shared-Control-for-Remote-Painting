@@ -1,0 +1,74 @@
+# Python environments and caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+/.analysis_deps/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+
+# Node dependencies and machine-local settings
+node_modules/
+.env
+.env.*
+!.env.example
+!.env.template
+.idea/
+.vscode/*.local.json
+
+# Local datasets (manual annotations remain trackable)
+/data/raw/
+/data/processed/
+/data/interim/
+/data/interviews/
+/data/spreadsheets/source_snapshots/
+*.mcap
+*.mcap.*
+*.bag
+*.bag.*
+
+# Training outputs; distribute selected models separately or with Git LFS
+/results/phase_learning/**/models/
+checkpoints/
+runs/
+wandb/
+lightning_logs/
+events.out.tfevents.*
+*.pt
+*.pth
+*.ckpt
+
+# Isaac Sim installation and generated runtime files
+/isaac-sim/
+/isaac_sim_install/
+/cache/
+/.cache/
+/logs/
+*.log
+
+# Regenerable previews and temporary files
+qa_render*/
+*.inspect.ndjson
+/tmp/
+/temp/
+*.tmp
+*.temp
+*.bak
+
+# OS and editor temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
+~$*
+*.swp
+*.swo
+
+# Keep scripts/, src/, docs/, manual annotations, and final result tables.
+# Keep simulation USD/URDF/mesh/texture assets; use Git LFS when needed.

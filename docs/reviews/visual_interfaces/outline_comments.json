@@ -1,0 +1,213 @@
+{
+  "file": "D:\\Downloads\\Outline_Comparative Evaluation of Visual Interfaces_CA (1).docx",
+  "comment_count": 9,
+  "comments": [
+    {
+      "id": "0",
+      "author": "안창범",
+      "date": "2026-09-09T11:23:00Z",
+      "initials": "안",
+      "resolved": false,
+      "text": "Too long",
+      "anchors": [
+        {
+          "part": "word/document.xml",
+          "paragraphs": [
+            {
+              "where": "start",
+              "text": "Background"
+            },
+            {
+              "where": "end",
+              "text": "These characteristics create a trade-off between spatial engagement and interaction discomfort."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "author": "안창범",
+      "date": "2026-09-09T11:24:00Z",
+      "initials": "안",
+      "resolved": false,
+      "text": "Methodology",
+      "anchors": [
+        {
+          "part": "word/document.xml",
+          "paragraphs": [
+            {
+              "where": "start",
+              "text": "Visual Interface Conditions"
+            },
+            {
+              "where": "end",
+              "text": "Visual Interface Conditions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "author": "안창범",
+      "date": "2026-09-09T11:24:00Z",
+      "initials": "안",
+      "resolved": false,
+      "text": "Methodology에 합침",
+      "anchors": [
+        {
+          "part": "word/document.xml",
+          "paragraphs": [
+            {
+              "where": "start",
+              "text": "Experimental Setup"
+            },
+            {
+              "where": "end",
+              "text": "Experimental Setup"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "author": "안창범",
+      "date": "2026-09-09T11:25:00Z",
+      "initials": "안",
+      "resolved": false,
+      "text": "왜 도장을 선택했는지에 대한 Justification 필요.",
+      "anchors": [
+        {
+          "part": "word/document.xml",
+          "paragraphs": [
+            {
+              "where": "start",
+              "text": "Robotic Painting System and Work Environment (Fig. 2, Fig. 3)."
+            },
+            {
+              "where": "end",
+              "text": "Robotic Painting System and Work Environment (Fig. 2, Fig. 3)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "author": "안창범",
+      "date": "2026-09-09T11:26:00Z",
+      "initials": "안",
+      "resolved": false,
+      "text": "Methodology - Evaluation 으로 정리",
+      "anchors": [
+        {
+          "part": "word/document.xml",
+          "paragraphs": [
+            {
+              "where": "start",
+              "text": "Evaluation"
+            },
+            {
+              "where": "end",
+              "text": "Evaluation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "author": "안창범",
+      "date": "2026-09-09T11:27:00Z",
+      "initials": "안",
+      "resolved": false,
+      "text": "이게 뭐지?",
+      "anchors": [
+        {
+          "part": "word/document.xml",
+          "paragraphs": [
+            {
+              "where": "start",
+              "text": "RQ2. What visual requirements are important for effective teleoperation of surface treatment tasks?"
+            },
+            {
+              "where": "end",
+              "text": "RQ2. What visual requirements are important for effective teleoperation of surface treatment tasks?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "author": "안창범",
+      "date": "2026-09-09T11:27:00Z",
+      "initials": "안",
+      "resolved": false,
+      "text": "시각적 정보?",
+      "anchors": [
+        {
+          "part": "word/document.xml",
+          "paragraphs": [
+            {
+              "where": "start",
+              "text": "RQ2. What visual requirements are important for effective teleoperation of surface treatment tasks?"
+            },
+            {
+              "where": "end",
+              "text": "RQ2. What visual requirements are important for effective teleoperation of surface treatment tasks?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "author": "안창범",
+      "date": "2026-09-09T11:32:00Z",
+      "initials": "안",
+      "resolved": false,
+      "text": "Discussion의 일부를 여기로 변경.",
+      "anchors": [
+        {
+          "part": "word/document.xml",
+          "paragraphs": [
+            {
+              "where": "start",
+              "text": "Qualitative results (Fig. 6; Table. 5)"
+            },
+            {
+              "where": "end",
+              "text": "Qualitative results (Fig. 6; Table. 5)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "author": "안창범",
+      "date": "2026-09-09T11:32:00Z",
+      "initials": "안",
+      "resolved": false,
+      "text": "Figure 6 자체 코드에 대한 분석은 여기로.",
+      "anchors": [
+        {
+          "part": "word/document.xml",
+          "paragraphs": [
+            {
+              "where": "start",
+              "text": "Qualitative results (Fig. 6; Table. 5)"
+            },
+            {
+              "where": "end",
+              "text": "Qualitative results (Fig. 6; Table. 5)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

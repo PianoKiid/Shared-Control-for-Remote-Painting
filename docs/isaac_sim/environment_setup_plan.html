@@ -1,0 +1,402 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>Isaac Sim 구축 계획 전송본</title><style>body{font:16px/1.65 sans-serif;max-width:1050px;margin:36px auto;padding:20px}table{border-collapse:collapse;width:100%;margin:18px 0}th,td{border:1px solid #bbb;padding:8px;text-align:left;vertical-align:top}pre{white-space:pre-wrap;background:#f4f4f4;padding:16px}code{font-family:monospace}h2{margin-top:36px}</style></head><body><main><p>도장 EOAT가 장착된 로봇과 베이스를 이용한 기본 작업 환경 구축</p>
+<p>작성일: 2026-10-13 · 대상: 환경 구축 담당 멘티</p>
+<h2>1. 이번 작업에서 만들 결과</h2>
+<p>Isaac Sim에서 장면을 열면 <strong>고정된 베이스 위에 로봇과 도장 EOAT가 조립되어 있고, 앞쪽에는 위치와 크기를 바꿀 수 있는 평면 벽이 배치된 환경</strong>을 만든다. 시뮬레이션을 실행한 상태에서 관절 목표값을 입력하여 로봇을 움직이고, EOAT가 함께 움직이도록 구현한다.</p>
+<p>최종 전달물은 장면 USD, 장면이 참조하는 모델과 재질, 실행 설명서, 동작 영상이다. 다른 폴더에 복사한 뒤에도 같은 절차로 실행할 수 있도록 묶는다.</p>
+<p>이번 작업 범위는 모델 준비·변환, 조립, 기본 물리 설정, 관절 조작, 저장까지다. MCAP 재생, Haply 연결, shared control, F/T 센서, 도장 효과 및 연구 성능 평가는 후속 작업으로 둔다.</p>
+<p>이 문서의 파일명과 장면 경로는 <strong>앞으로 만들 산출물의 지정 이름</strong>이다. 보유 모델의 실제 파일명이나 내부 관절 이름을 뜻하지 않는다. 원본 모델의 이름과 내부 구조는 가능한 한 유지한다. 실제 로봇 종류, 관절 수, EOAT 구조, 장착 치수는 전달받는 자료를 적용한다.</p>
+<h2>2. 모델 제공자에게 받을 자료</h2>
+<h3>2.1 우선 받을 묶음</h3>
+<p>모델 제공자에게 <strong>Isaac Sim에서 사용하던 모델 폴더 전체를 <code>.zip</code>으로 압축</strong>해서 받는다. 로봇과 EOAT가 이미 조립된 상태라면 그 조립 모델을 우선 사용한다.</p>
+<table>
+<tr><th>대상</th><th>우선 요청할 형식</th><th>반드시 함께 받을 내용</th><th>해당 자료가 없을 때의 대안</th></tr>
+<tr><td>로봇과 EOAT 조립 모델</td><td><code>.usd</code>, <code>.usda</code>, <code>.usdc</code> 중 실제로 실행하던 진입 파일</td><td>참조 USD, payload, 메시, 재질, 텍스처가 들어 있는 하위 폴더 전체</td><td>로봇 <code>.urdf</code>와 참조 메시, 별도 EOAT 모델을 받아 조립</td></tr>
+<tr><td>베이스 모델</td><td><code>.usd</code>, <code>.usda</code>, <code>.usdc</code></td><td>참조 파일과 로봇 장착 위치 정보</td><td><code>.step</code> 또는 <code>.stp</code>를 받아 변환하거나, <code>.stl</code>·<code>.obj</code>로 내보낸 형상을 받아 USD 생성</td></tr>
+<tr><td>별도 EOAT 모델</td><td><code>.usd</code>, <code>.usda</code>, <code>.usdc</code>; 형상만 있다면 <code>.step</code>, <code>.stp</code>, <code>.stl</code>, <code>.obj</code></td><td>로봇 플랜지에 붙는 면, 방향, 고정 브래킷, 움직이는 부분의 구분</td><td>CAD에서 부품별로 내보낸 형상으로 EOAT USD 생성</td></tr>
+<tr><td>로봇 관절 정보</td><td><code>.urdf</code>; 원본이 Xacro이면 <code>.xacro</code>와 포함 파일</td><td>링크 연결, 관절 원점·축·한계, 메시 경로, 제공되는 질량·관성</td><td>제조사 또는 기존 개발자의 로봇 description 패키지 확보</td></tr>
+<tr><td>실제 조립 치수</td><td>치수 도면 <code>.pdf</code>, 또는 수치가 적힌 <code>.csv</code>·<code>.xlsx</code>·<code>.txt</code></td><td>베이스 기준 로봇 장착 위치·방향, 플랜지 기준 EOAT 장착 위치·방향</td><td>CAD 어셈블리에서 변환값을 추출하고 출처 기록</td></tr>
+<tr><td>조립 상태 참고</td><td><code>.jpg</code>, <code>.png</code>, 필요하면 <code>.mp4</code></td><td>로봇·베이스·EOAT가 함께 보이는 사진과 장착부 근접 사진</td><td>모델 제공자가 장착 방향을 그림에 표시</td></tr>
+<tr><td>기존 실행 정보</td><td><code>.txt</code> 또는 <code>.md</code></td><td>사용한 Isaac Sim 버전, 열어야 할 USD 이름, 추가 확장 기능, 초기 관절 자세</td><td>전달받은 정보를 구축 결과의 <code>README.md</code>에 정리</td></tr>
+</table>
+<p>위 형식을 전부 중복해서 받을 필요는 없다. <strong>물리 설정까지 완료된 USD 묶음이 있으면 URDF나 CAD 변환 작업을 생략</strong>한다. 반대로 USD라는 확장자만으로 관절과 물리 설정까지 들어 있다고 판단하지 않는다.</p>
+<h3>2.2 URDF 또는 Xacro를 받는 경우</h3>
+<ul>
+<li><code>.urdf</code>가 참조하는 <code>.stl</code>, <code>.dae</code>, <code>.obj</code> 등의 메시를 같은 폴더 구조로 받는다. <code>.obj</code>가 <code>.mtl</code>을 사용하거나 <code>.dae</code>·재질이 이미지를 참조하면 해당 파일과 <code>.png</code>·<code>.jpg</code> 등의 텍스처도 포함한다.</li>
+<li><code>.xacro</code>는 매크로와 외부 설정을 펼쳐 최종 <code>.urdf</code>를 만드는 입력이다. 가능하면 제공자가 <strong>실제 사용하는 로봇 옵션으로 변환한 <code>.urdf</code>와 메시 묶음</strong>을 전달하도록 요청한다.</li>
+<li>직접 변환해야 한다면 포함된 <code>.xacro</code>, 참조 <code>.yaml</code>, 메시 패키지, 필요한 Xacro 인자까지 함께 받는다. 변환에 사용한 인자와 명령을 <code>README.md</code>에 남긴다.</li>
+<li><code>package://패키지명/...</code> 경로는 해당 패키지의 실제 폴더와 연결한다. 로봇 이름이 비슷한 다른 모델의 메시로 대체하지 않는다.</li>
+</ul>
+<h3>2.3 입력이 부족할 때 처리할 범위</h3>
+<table>
+<tr><th>받은 상태</th><th>바로 진행할 작업</th><th>추가로 확보할 자료</th></tr>
+<tr><td>관절과 물리 설정이 있는 USD</td><td>장면에 참조로 삽입하고 배치·구동 설정 적용</td><td>장착 치수와 초기 자세 중 빠진 항목</td></tr>
+<tr><td>URDF와 메시가 있는 상태</td><td>URDF를 USD로 변환</td><td>누락 메시 또는 패키지 경로</td></tr>
+<tr><td>링크별 형상은 있지만 관절 정보가 없는 상태</td><td>형상 정리와 베이스·벽 환경 구성</td><td>관절 축·원점·한계가 있는 URDF 또는 기술 도면</td></tr>
+<tr><td>로봇 전체가 하나의 STL/OBJ로 합쳐진 상태</td><td>정적 형상으로 임시 배치</td><td>링크별 형상과 관절 정보. 전체 메시 하나로 개별 관절 구동을 구현하지 않음</td></tr>
+<tr><td>베이스 형상만 있고 장착 치수가 없는 상태</td><td>베이스를 바닥에 배치하고 로봇 위치를 임시 설정</td><td>장착면의 위치·방향. 임시 배치를 최종 실물 배치로 기록하지 않음</td></tr>
+</table>
+<h2>3. 작업 폴더와 산출물 구성</h2>
+<p>작업 폴더를 다음과 같이 만든다. 원본은 <code>source_raw/</code>에 보관하고, Isaac Sim에서 사용할 작업본은 <code>assets/</code>에 둔다.</p>
+<pre><code>painting_sim/
+├─ source_raw/                 제공받은 원본 폴더를 구조 그대로 보관
+├─ assets/
+│  ├─ robot/
+│  │  ├─ robot.usd             로봇 작업본의 진입 파일
+│  │  └─ ...                   참조 레이어·메시·재질 등 종속 파일
+│  ├─ base/
+│  │  ├─ base.usd              베이스 작업본의 진입 파일
+│  │  └─ ...
+│  └─ eoat/                    EOAT가 별도 모델일 때만 생성
+│     ├─ eoat.usd
+│     └─ ...
+├─ scenes/
+│  └─ painting_scene.usd       최종 환경. 사용자가 처음 열 파일
+├─ scripts/
+│  └─ joint_demo.py            관절 시연을 스크립트로 구현한 경우에만 생성
+├─ evidence/
+│  ├─ scene_overview.png       환경 전체 화면
+│  ├─ mounting_detail.png      베이스 장착부와 EOAT 연결부를 담은 이미지
+│  └─ joint_demo.mp4           관절 구동과 벽 변경 시연 영상
+└─ README.md                   실행·조작·수정 방법과 실제 적용값</code></pre>
+<p><code>robot.usd</code>, <code>base.usd</code>, <code>eoat.usd</code>는 전달받은 모델을 참조하는 얇은 USD 파일로 만들어도 된다. 기존 파일을 무작정 이름 변경하여 참조 경로를 끊지 않는다. Importer가 여러 USD와 하위 폴더를 만들면 결과 폴더 전체를 유지한다.</p>
+<p>벽과 바닥은 Isaac Sim의 기본 도형으로 생성하여 <code>painting_scene.usd</code> 안에 저장한다. 별도의 벽 CAD나 바닥 메시를 요청하지 않는다. ROS 패키지, MoveIt 설정, 학습 모델 파일도 이번 환경 구축의 필수 입력으로 두지 않는다.</p>
+<h2>4. 실행 환경과 빈 장면 만들기</h2>
+<h3>4.1 실행 환경 고정</h3>
+<ol>
+<li>제공된 USD가 실행되던 Isaac Sim 버전을 기록한다. 사용할 PC에서 지원되는 버전과 모델 호환성을 고려하여 구축 버전 하나를 정하고, 작업 도중 임의로 바꾸지 않는다.</li>
+<li>선택한 버전의 공식 설치 방법과 GPU 드라이버 조건을 적용한다. Windows에서 진행하면 해당 버전이 지원하는 Windows에 네이티브 설치한다.</li>
+<li>Isaac Sim을 실행하고 빈 장면을 만든다. Compatibility Checker 결과, 운영체제, Isaac Sim 버전, GPU 모델·VRAM, 드라이버 버전을 <code>README.md</code>에 기록한다.</li>
+<li>URDF를 사용할 때만 URDF Importer를 활성화한다. 파일 기반 URDF 입력을 우선 사용하고, 이를 위해 ROS 2 실시간 통신 환경까지 추가하지 않는다.</li>
+<li>기존 PhysX 모델을 사용하는 경우 PhysX 기반 설정으로 작업한다. 다른 물리 엔진으로의 변환은 이번 작업에 추가하지 않는다. 실제 선택한 물리 엔진을 문서에 기록한다.</li>
+</ol>
+<p>계획 중인 Ryzen 5 7500F·RAM 32GB·RTX 5060 구성에서는 단일 로봇과 단순한 벽으로 시작한다. RTX 5060이 VRAM 8GB 모델이라면 현재 공식 최소 표의 GPU·VRAM 조건보다 낮다. 단순 장면의 실행 가능성은 실제 모델로 판단해야 하며, 이 계획은 해당 PC의 성능을 검증한 결과가 아니다. 공식 요구사항은 설치할 버전의 문서를 기준으로 적용한다. <a href="https://docs.isaacsim.omniverse.nvidia.com/latest/installation/requirements.html">NVIDIA 시스템 요구사항</a></p>
+<p>작업 시작 시에는 뷰포트를 약 1280×720 수준으로 두고, 기본 재질과 간단한 조명을 사용한다. 표시가 느리면 먼저 메시와 렌더링 부담을 줄인다. 로봇 동작 문제를 해결하기 위해 물리 계산 간격부터 크게 늘리지 않는다.</p>
+<h3>4.2 장면 기준 설정</h3>
+<table>
+<tr><th>항목</th><th>이번 구축에서 사용할 기준</th></tr>
+<tr><td>길이</td><td>m. 장면의 <code>metersPerUnit</code>을 1로 설정</td></tr>
+<tr><td>질량·시간</td><td>kg, s</td></tr>
+<tr><td>위쪽 방향</td><td>+Z</td></tr>
+<tr><td>장면 원점</td><td>베이스를 놓을 바닥 기준점</td></tr>
+<tr><td>장면의 +X</td><td>초기 배치에서 로봇으로부터 벽으로 향하는 방향</td></tr>
+<tr><td>중력</td><td>-Z 방향, 크기 9.81 m/s²</td></tr>
+<tr><td>물리 계산 간격</td><td>우선 1/60초로 설정하고 실제 적용값 기록. 기본 구동용 시작값</td></tr>
+</table>
+<p>로봇 자체의 링크 좌표계는 원본 정의를 유지한다. 로봇이 벽을 향하도록 돌릴 때에는 로봇 배치용 상위 Transform을 사용한다.</p>
+<h3>4.3 장면 트리 생성</h3>
+<p>아래 구조로 배치용 객체를 만든다. <code>Xform</code>은 위치·방향을 묶어 조절하는 객체이고, 트리에 표시되는 객체 하나를 USD에서는 <code>Prim</code>이라고 부른다.</p>
+<pre><code>/World
+├─ PhysicsScene
+├─ Environment
+│  ├─ Floor
+│  └─ Wall                     위치·회전을 조절하는 Xform
+│     └─ Panel                크기를 조절하는 Cube
+├─ Equipment
+│  ├─ BasePlacement           베이스 배치용 Xform
+│  │  └─ Base                 base.usd 참조
+│  └─ RobotPlacement          로봇 배치용 Xform
+│     └─ Robot                robot.usd 참조, 내부 링크·관절 구조 유지
+└─ Lighting
+   └─ MainLight</code></pre>
+<p>EOAT는 로봇과 조립되는 방식에 따라 로봇 모델 내부 또는 별도 링크로 배치한다. 위 트리에 맞추려고 기존 로봇의 링크와 관절을 임의로 이동하지 않는다. 실제 Articulation Root, 로봇 루트 링크, 말단 링크의 경로는 <code>README.md</code>에 별도로 기록한다.</p>
+<p>빈 장면을 <code>scenes/painting_scene.usd</code>로 저장한다. <code>/World</code>를 기본 진입 Prim으로 지정한다.</p>
+<h2>5. 모델 형식에 따라 Isaac Sim 작업본 만들기</h2>
+<p>아래 A~D 중 전달받은 자료에 해당하는 절차를 적용한다. 이미 끝난 변환이나 관절 설정을 중복해서 수행하지 않는다.</p>
+<h3>A. 물리 설정이 포함된 USD를 받은 경우</h3>
+<ol>
+<li>제공된 USD와 참조 폴더를 <code>assets/robot/</code> 또는 <code>assets/base/</code> 아래로 함께 복사한다.</li>
+<li>제공자가 지정한 진입 USD를 연다. 여러 파일 중 외형만 담긴 레이어를 진입 파일로 선택하지 않는다.</li>
+<li>로봇의 링크·관절·Articulation Root가 들어 있는 구성 또는 variant를 사용한다. 시각화 전용 구성만 있으면 C 절차로 진행한다.</li>
+<li>최종 장면의 <code>Robot</code> 또는 <code>Base</code>에 작업본을 Reference로 연결한다. 대상 파일에 defaultPrim이 없으면 참조할 루트 Prim을 명시하거나 작업본에 defaultPrim을 설정한다.</li>
+<li>빠진 형상·재질은 로그에 표시된 참조 경로를 기준으로 복구한다. 로컬에 없는 네트워크 경로를 사용하고 있다면 제공자에게 종속 파일을 받아 프로젝트 안에 포함한다.</li>
+<li>로봇의 내부 관절·물리 설정은 로봇 작업본에서 수정하고, 환경 내 위치·방향은 <code>painting_scene.usd</code>의 배치용 Xform에서 설정한다.</li>
+</ol>
+<p><strong>생성 결과:</strong> 종속 파일을 포함한 <code>assets/robot/robot.usd</code>, <code>assets/base/base.usd</code> 및 장면의 모델 참조.</p>
+<h3>B. URDF를 받아 USD로 변환하는 경우</h3>
+<ol>
+<li>Xacro만 있다면 실제 로봇 옵션을 반영한 <code>.urdf</code>를 먼저 생성한다. 이미 펼쳐진 <code>.urdf</code>가 있으면 이 단계를 생략한다.</li>
+<li>URDF의 <code>mesh filename</code>이 가리키는 경로를 연결한다. <code>package://</code> 경로는 Importer의 패키지 경로 매핑 기능을 사용하거나 작업본의 경로를 수정한다. 원본은 보존한다.</li>
+<li>Isaac Sim의 <code>File &gt; Import</code>에서 <code>.urdf</code>를 선택한다. 확장 기능이 꺼져 있으면 <code>isaacsim.asset.importer.urdf</code>를 활성화한다.</li>
+<li>출력 위치를 <code>assets/robot/</code> 안으로 지정한다. 임시 폴더에만 변환 결과가 남지 않도록 한다.</li>
+<li>로봇 본체는 고정 베이스로 가져온다. 최신 문서의 <code>Base Type: Fixed</code>에 해당하며, 버전에 따라 <code>Fix Base</code> 또는 유사한 이름으로 표시될 수 있다. 원본에 이미 고정 구속이 있으면 최종적으로 중복 고정이 남지 않게 구성한다.</li>
+<li>URDF에 collision 형상이 있으면 우선 활용한다. collision이 없으면 visual에서 충돌 형상을 생성한 뒤, 8장의 기준으로 단순화한다.</li>
+<li>EOAT 부착부와 실제로 움직이는 관절을 구분한다. 원본을 이해하기 전에 고정 링크 병합이나 메시 병합으로 부착 기준 프레임까지 없애지 않는다.</li>
+<li>Importer가 생성한 파일과 하위 폴더 전체를 보관한다. 생성된 진입 USD를 장면에 참조로 연결하고 8~9장의 물리·구동 설정을 적용한다.</li>
+</ol>
+<p>Importer 옵션과 패키지 매핑의 기준은 <a href="https://docs.isaacsim.omniverse.nvidia.com/latest/importer_exporter/ext_isaacsim_asset_importer_urdf.html">NVIDIA URDF Importer 문서</a>를 사용한다. 메뉴와 옵션은 실제 설치 버전 기준으로 <code>README.md</code>에 남긴다.</p>
+<p><strong>생성 결과:</strong> 변환된 로봇 USD 묶음, 사용한 Importer 옵션 기록, 필요하면 경로를 정리한 작업용 URDF.</p>
+<h3>C. USD 또는 메시에는 외형만 있고 관절 설정이 없는 경우</h3>
+<ol>
+<li>로봇 형상을 실제 링크 단위로 나눈다. 부품이 하나의 메시로 합쳐져 있다면 CAD 원본이나 링크별 메시를 추가로 받는다.</li>
+<li>각 링크 아래에 시각화용 형상을 배치하고, 링크에 Rigid Body를 부여한다. 충돌 형상은 8장의 방법으로 별도 구성한다.</li>
+<li>로봇 URDF 또는 기술 자료의 링크 연결 순서대로 관절을 만든다. 회전 관절은 Revolute Joint, 직선 관절은 Prismatic Joint, 실제 고정부는 Fixed Joint를 사용한다.</li>
+<li>각 관절의 부모 링크를 Body 0, 자식 링크를 Body 1로 연결한다. 원본 관절 원점과 축에 맞춰 양쪽 링크의 로컬 joint frame을 설정한다. 화면에서 두 부품이 맞닿아 보이는 위치만으로 회전축을 추정하지 않는다.</li>
+<li>관절 한계와 구동 설정을 입력하고 로봇 전체를 하나의 Articulation으로 구성한다. 이미 Articulation Root가 있는 하위 모델을 중복 등록하지 않는다.</li>
+<li>모델을 저장한 뒤 7장의 장착 절차로 넘어간다.</li>
+</ol>
+<p>링크 원점과 joint frame을 직접 만드는 작업에는 실제 로봇의 기구학 정보가 필요하다. 자료가 없는 동안에는 바닥·벽·베이스 환경을 먼저 만들고, 관절 구동 부분은 누락 항목을 명시하여 남긴다. 임의의 관절축을 넣고 실제 로봇 모델로 전달하지 않는다.</p>
+<p><strong>생성 결과:</strong> 링크별 물리와 관절이 설정된 <code>robot.usd</code>. 직접 설정한 관절값과 출처는 <code>README.md</code>에 기록한다.</p>
+<h3>D. CAD 또는 메시에서 베이스·EOAT 작업본을 만드는 경우</h3>
+<ol>
+<li><code>.step</code>·<code>.stp</code>는 설치 버전에서 지원되는 CAD 변환기를 사용하거나, 원래 CAD 프로그램에서 <code>.stl</code>·<code>.obj</code> 등 지원 메시 형식으로 내보낸다. 확장자만 <code>.usd</code>로 바꾸지 않는다.</li>
+<li>베이스에서 볼트 나사산, 내부 배선 등 외형·간섭에 영향이 작은 세부 형상은 작업본에서 단순화한다. 로봇 장착면과 외곽 치수는 유지한다.</li>
+<li>EOAT는 고정부와 실제로 움직이는 부품을 구분해서 내보낸다. 롤러 등 수동 회전부가 있으면 그 축과 고정부를 분리해 둔다.</li>
+<li>변환 과정의 길이 단위를 지정한다. 특히 STL은 파일 자체에 단위 정보가 없으므로 제공자의 내보내기 단위와 도면 치수를 적용한다.</li>
+<li>변환한 형상을 USD에 넣고 기본 재질을 지정한다. CAD에서 가져온 외형만으로 물리 설정이 완료된 것으로 취급하지 않고, 7~8장에서 장착과 물리를 구성한다.</li>
+</ol>
+<p><strong>생성 결과:</strong> <code>base.usd</code>, 필요한 경우 <code>eoat.usd</code>와 종속 파일. 변환 도구·원본 단위·적용 배율 기록.</p>
+<h2>6. 크기와 기준 좌표 정리</h2>
+<ol>
+<li>도면에서 길이를 알 수 있는 치수 하나를 모델마다 정한다. 예를 들어 베이스 폭, 로봇 장착 플랜지 지름, EOAT 길이를 사용한다.</li>
+<li>해당 치수를 Isaac Sim의 월드 좌표 기준 길이와 맞춘다. 500 mm인 치수는 최종 장면에서 0.5 m가 되도록 변환한다.</li>
+<li>단위가 다른 모델은 임포트·변환 단계에서 맞춘다. <strong>장면의 단위 메타데이터만 변경해도 모든 모델이 자동으로 올바르게 재배율되는 것은 아니다.</strong></li>
+<li>관절과 물리 설정이 있는 로봇은 가능하면 상위 Scale을 <code>(1, 1, 1)</code>로 유지한다. 로봇 전체 크기를 바꿔야 한다면 메시뿐 아니라 링크 위치·관절 원점·충돌 형상·질량 및 관성의 일관성을 함께 처리한다.</li>
+<li>배치용 Xform의 회전으로 장면의 +Z와 모델의 위쪽을 맞춘다. 정상 URDF의 개별 관절축을 장면 방향에 맞춘다는 이유로 바꾸지 않는다.</li>
+</ol>
+<p><code>README.md</code>에 다음 정보를 표로 작성한다.</p>
+<table>
+<tr><th>대상</th><th>원본 단위</th><th>최종 기준 치수 m</th><th>기준 자료</th><th>적용한 배율·변환 위치</th></tr>
+<tr><td>로봇</td><td>수령 자료에서 기입</td><td>실제 값 기입</td><td>모델 또는 도면명</td><td>실제 값 기입</td></tr>
+<tr><td>베이스</td><td>수령 자료에서 기입</td><td>실제 값 기입</td><td>모델 또는 도면명</td><td>실제 값 기입</td></tr>
+<tr><td>EOAT</td><td>수령 자료에서 기입</td><td>실제 값 기입</td><td>모델 또는 도면명</td><td>실제 값 기입</td></tr>
+</table>
+<p>사진은 방향과 조립 형태를 파악하는 데 사용하고, 원근이 있는 사진에서 읽은 길이를 정확한 치수처럼 사용하지 않는다.</p>
+<h2>7. 베이스·로봇·EOAT 조립</h2>
+<h3>7.1 베이스를 바닥에 고정</h3>
+<ol>
+<li><code>BasePlacement</code> 아래에 베이스 작업본을 참조한다.</li>
+<li>베이스가 실제로 바닥에 닿는 면을 Z=0에 맞춘다. 모델 원점이 바닥면에 있지 않으면 원점의 높이 차이만큼 배치값을 보정한다.</li>
+<li>베이스를 정적 충돌 물체로 구성한다. 일반적인 고정 베이스에는 Collider를 적용하고 Dynamic Rigid Body를 부여하지 않는다.</li>
+<li>기존 베이스 모델이 이동 로봇처럼 동적 설정되어 있다면 이번 작업본에서는 고정 구조로 정리한다. 바퀴 구동 등 사용하지 않는 동적 설정이 남아 베이스가 움직이지 않도록 한다. 원본은 <code>source_raw/</code>에 유지한다.</li>
+<li>고정부 외곽을 따라 단순한 충돌 형상을 만든다. 장착면과 로봇 팔 주변 공간이 큰 충돌 박스 하나로 막히지 않게 나눈다.</li>
+</ol>
+<h3>7.2 로봇 장착 위치 맞추기</h3>
+<ol>
+<li>베이스에서 <strong>로봇 장착면의 기준점과 방향</strong>을 정한다. 로봇 모델에서는 <strong>바닥 장착면의 기준점과 방향</strong>을 정한다. CAD 조립 좌표 또는 도면에 정의된 기준을 사용한다.</li>
+<li><code>RobotPlacement</code>의 위치·회전을 조절하여 두 장착 기준을 일치시킨다. 베이스와 로봇의 파일 원점이 같은 위치라는 가정을 하지 않는다.</li>
+<li>장착 기준을 나타내는 빈 Xform을 필요에 따라 만든다. 이 Xform에는 질량이나 충돌 설정을 부여하지 않는다.</li>
+<li>로봇이 베이스에 대해 실제로 돌아가 있는 각도를 적용한다. 링크 내부 회전값을 일괄 변경하여 외형만 맞추지 않는다.</li>
+<li>로봇의 루트 링크를 월드에 고정하는 구속 하나를 사용한다. 기존 고정 구속이 있으면 재사용한다. 고정 베이스 외형과 로봇을 별도로 배치하는 이번 구성에서는 월드 고정으로 장착 상태를 구현할 수 있다.</li>
+<li>배치 변경 후 월드에 연결된 고정 관절의 앵커도 새 장착 위치에 맞춘다. 원래 위치에 남은 월드 앵커 때문에 Play 직후 로봇이 이전 위치로 끌려가지 않도록 한다.</li>
+</ol>
+<p>좌표를 계산할 경우, 장착 기준의 목표 월드 변환에 로봇 내부 장착 기준 변환의 역변환을 곱해 로봇 배치를 구한다. 행렬을 사용하는 담당자에게는 다음 관계를 적용한다.</p>
+<pre><code>T_world_robot = T_world_mount × inverse(T_robot_mount)
+
+T_A_B: B 좌표계의 점을 A 좌표계로 변환하는 행렬
+mount: 두 모델이 공유하도록 정의한 장착 기준 좌표계</code></pre>
+<p>고정 방식을 중복 적용하지 않는다. 이미 월드에 고정된 로봇을 다른 고정 경로로 다시 연결하여 폐회로 구속을 만들지 않는다. 또한 로봇 전체의 상위 객체에 하나의 Rigid Body를 부여하여 모든 관절을 한 덩어리로 만들지 않는다.</p>
+<h3>7.3 EOAT를 로봇 말단에 연결</h3>
+<p>이미 EOAT가 로봇 링크와 관절 구조에 포함되어 있으면 기존 연결을 사용한다. 별도 모델이면 다음과 같이 조립한다.</p>
+<ol>
+<li>로봇 말단 플랜지 링크와 EOAT 장착부를 지정한다. 브래킷이 있으면 브래킷 두께와 방향까지 포함한다.</li>
+<li>플랜지 기준 EOAT의 위치·방향을 도면 또는 CAD 조립값으로 입력한다. 객체 이름을 로봇 아래에 옮기는 것만으로 물리 연결을 대신하지 않는다.</li>
+<li>EOAT를 별도 강체로 만드는 경우, 플랜지 링크를 Body 0, EOAT의 고정 몸체를 Body 1로 하는 Fixed Joint를 만든다. 양쪽 joint frame이 조립 위치에서 일치하도록 입력한다.</li>
+<li>EOAT에 별도 Articulation Root가 들어 있으면 로봇과 하나의 articulation으로 조립할 수 있도록 중복 루트와 기존 월드 고정을 정리한다. 로봇에서 분리된 독립 고정 물체로 남기지 않는다.</li>
+<li>EOAT가 단순 고정 형상이고 플랜지 강체에 합쳐서 표현할 경우에는 별도 강체·고정 관절을 중복 생성하지 않는다. 이때 EOAT의 질량과 관성을 합쳐진 링크에 반영한다.</li>
+<li>실제 EOAT에 롤러 같은 수동 회전부가 있으면 해당 부품의 실제 관절을 유지한다. 도구 전체를 고정해야 한다는 이유로 수동 관절까지 없애지 않는다. 반대로 원본에 없는 구동축을 추가하지 않는다.</li>
+<li>도구 기준점 정보가 제공되면 해당 링크 아래에 <code>ToolFrame</code>이라는 빈 Xform을 만든다. 실제 작업 기준점의 위치와 방향을 입력한다. 정보가 없으면 임의의 점을 TCP라고 명명하지 않고 미정 항목으로 기록한다.</li>
+</ol>
+<p>로봇과 말단 장치를 하나의 articulation으로 조립하는 참고 절차는 <a href="https://docs.isaacsim.omniverse.nvidia.com/latest/robot_setup_tutorials/tutorial_import_assemble_manipulator.html">NVIDIA Manipulator Setup</a>을 사용한다. 예제의 로봇·그리퍼 수치는 이번 모델에 복사하지 않는다.</p>
+<h3>7.4 실제 적용한 조립값 기록</h3>
+<p><code>README.md</code>에 아래 형식으로 기록한다. 위치는 부모 좌표계 기준 m, 자세는 자식 좌표계의 방향을 부모 좌표계로 표현한 quaternion <code>(w, x, y, z)</code>로 통일한다. GUI의 각도값으로 기록한다면 축 순서와 각도 단위도 함께 적는다.</p>
+<table>
+<tr><th>연결 관계</th><th>위치 x, y, z m</th><th>자세 w, x, y, z</th><th>기준 자료·상태</th></tr>
+<tr><td>월드 → 베이스 기준</td><td>실제 값</td><td>실제 값</td><td>실측 또는 임시 배치</td></tr>
+<tr><td>베이스 기준 → 로봇 기준</td><td>실제 값</td><td>실제 값</td><td>장착 도면 또는 CAD</td></tr>
+<tr><td>플랜지 → EOAT 기준</td><td>실제 값</td><td>실제 값</td><td>장착 도면 또는 CAD</td></tr>
+<tr><td>EOAT 기준 → ToolFrame</td><td>정의한 경우 실제 값</td><td>실제 값</td><td>도구 기준점 자료</td></tr>
+</table>
+<p>표의 좌표계와 대응하는 실제 Prim 경로를 함께 기입한다. 모델 원점과 물리적인 장착 기준이 다르면 둘을 구분한다.</p>
+<h2>8. 기본 물리와 충돌 형상 구성</h2>
+<h3>8.1 객체별 물리 역할 지정</h3>
+<table>
+<tr><th>객체</th><th>구현할 물리 역할</th></tr>
+<tr><td>바닥·벽</td><td>정적 Collider. 중력으로 떨어지는 동적 물체로 만들지 않음</td></tr>
+<tr><td>베이스</td><td>고정된 외형과 정적 Collider</td></tr>
+<tr><td>로봇 링크</td><td>링크별 Rigid Body와 필요한 Collider, 질량·관성</td></tr>
+<tr><td>로봇 관절</td><td>링크 사이의 실제 관절 종류·축·한계와 구동 설정</td></tr>
+<tr><td>고정 EOAT</td><td>별도 강체와 Fixed Joint, 또는 말단 링크에 합쳐진 강체 구성 중 하나</td></tr>
+<tr><td>수동 EOAT 부품</td><td>실제 구조에 해당하는 관절. 필요하지 않은 구동기는 추가하지 않음</td></tr>
+<tr><td>배치용 Xform·ToolFrame</td><td>좌표 표현용 객체. 별도 질량·충돌 없음</td></tr>
+</table>
+<p>하나의 움직이는 강체를 상위 객체와 하위 메시 양쪽에 중복 지정하지 않는다. 각 링크를 식별할 수 있도록 시각 형상과 충돌 형상의 역할을 구분한다.</p>
+<h3>8.2 충돌 형상 생성</h3>
+<ol>
+<li>원본에 링크별 collision이 있으면 우선 사용한다. 복잡한 렌더링 메시를 그대로 충돌 계산에 사용해야 한다고 가정하지 않는다.</li>
+<li>원본에 없으면 로봇 링크마다 Box, Capsule, Cylinder 또는 Convex Hull로 외곽을 근사한다. 형태가 굽어 있거나 빈 공간이 중요한 부품은 여러 단순 도형 또는 Convex Decomposition으로 나눈다.</li>
+<li>EOAT의 벽을 향하는 외곽은 실제 형상과 크기에 맞춘다. 롤러라면 해당 원통의 반지름·폭·축 방향을 반영한다. 세부 브래킷과 볼트까지 동일한 정밀도로 만들 필요는 없다.</li>
+<li>충돌 형상 표시 기능을 켜서 시각 형상과 겹쳐 보고, 지나치게 큰 근사체를 줄인다. 팔 전체를 하나의 볼록 껍질로 감싸 관절 사이 공간을 막지 않는다.</li>
+<li>인접 링크의 설계상 중첩 때문에 충돌이 발생하면 해당 링크 쌍에만 충돌 필터를 적용한다. 벽·바닥과의 충돌까지 함께 꺼서 증상을 숨기지 않는다.</li>
+<li>self-collision 활성화 여부와 예외 처리한 링크 쌍을 <code>README.md</code>에 기록한다. 원본에 안정된 필터 구성이 있으면 유지한다.</li>
+</ol>
+<h3>8.3 질량·관성과 접촉 재질 입력</h3>
+<ol>
+<li>URDF 또는 기존 USD의 질량·관성을 우선 적용한다. 추가한 EOAT의 질량이 빠지지 않게 한다.</li>
+<li>형상만 있는 부품은 제공된 질량과 무게중심을 입력하고, 사용 가능한 형상 기반 도구로 관성을 추정한다. 질량조차 없으면 근거 있는 밀도 추정 등을 사용하고 <strong>초기 구동용 추정값</strong>으로 표시한다.</li>
+<li>음수 질량, 유효하지 않은 관성, 비정상적으로 큰 값이 남지 않게 수정한다. 모든 링크에 같은 질량을 일괄 입력하지 않는다.</li>
+<li>바닥·벽·EOAT에 적용한 마찰과 반발 설정을 기록한다. 기본값을 사용했다면 기본값 사용 사실과 실제 수치를 적는다. 이번 환경 구축에서는 도장 접촉의 실물 특성을 보정하는 작업까지 수행하지 않는다.</li>
+</ol>
+<p><strong>생성 결과:</strong> 중력과 충돌이 적용되고, 베이스에 고정된 로봇 링크 및 EOAT가 관절 구조를 유지하는 장면.</p>
+<p>물리 객체와 관절의 설정 항목은 <a href="https://docs.isaacsim.omniverse.nvidia.com/latest/physics/simulation_fundamentals.html">NVIDIA Physics Simulation Fundamentals</a>를 참고한다.</p>
+<h2>9. 관절 목표값으로 로봇 움직이기</h2>
+<h3>9.1 조작할 관절 목록 작성</h3>
+<p>실제로 제어할 로봇 관절을 원본 이름 그대로 정리한다. 고정 관절과 수동 EOAT 관절은 구동 관절과 구분한다. 관절이 6개라고 가정하여 목록을 만들지 않는다.</p>
+<p><code>README.md</code>에 다음 표를 작성한다.</p>
+<table>
+<tr><th>관절 이름·Prim 경로</th><th>종류</th><th>부모 → 자식 링크</th><th>구동 또는 수동</th><th>하한·상한과 단위</th><th>초기 목표값</th><th>시연 목표값</th></tr>
+<tr><td>실제 모델에서 기입</td><td>회전·직선·고정</td><td>실제 링크명</td><td>실제 역할</td><td>원본 값</td><td>적용 값</td><td>적용 값</td></tr>
+</table>
+<p>구동 관절에는 추가로 Drive 종류, stiffness, damping, 최대 힘 또는 토크, 속도 제한을 기록한다. 이 값이 원본인지 조정값인지 구분한다.</p>
+<h3>9.2 위치 제어 Drive 설정</h3>
+<ol>
+<li>로봇의 각 구동 관절에 위치 목표값을 받는 Drive를 적용한다. 회전 관절은 Angular Drive, 직선 관절은 Linear Drive에 해당한다.</li>
+<li>기존에 동작하는 Drive 설정이 있으면 시작값으로 사용한다. 위치 제어에 필요한 stiffness와 진동을 줄이는 damping을 설정한다. 로봇 크기·질량을 모르는 상태에서 모든 관절에 같은 숫자를 지정하지 않는다.</li>
+<li>최대 힘·토크와 속도 제한을 원본 로봇 자료에 맞춘다. 자세가 처진다는 이유로 제한값을 무조건 무한대로 바꾸지 않는다.</li>
+<li>초기 자세는 제공된 안전한 자세 또는 벽·바닥·베이스와 겹치지 않는 자세로 정한다. 모든 관절을 0으로 설정했을 때의 자세가 적절하다고 가정하지 않는다.</li>
+<li>초기 링크 자세와 초기 Drive 목표를 일치시킨다. Play 직후 큰 자세 변화가 발생하면 시작 자세 또는 목표값을 수정한다.</li>
+<li>중력 아래에서 자세가 처지면 먼저 단위, 질량, 구동 한계와 관절 연결을 수정하고 그다음 stiffness를 조정한다. 빠르게 진동하면 충돌 중첩을 먼저 제거하고 damping·목표 변화량을 조정한다.</li>
+</ol>
+<p>USD 관절 속성의 회전 각도는 보통 degree로 표현하고, 로봇 제어 Python API에서는 radian을 사용하는 경우가 있다. 문서와 화면에 <strong>각 입력의 단위를 적고</strong> 변환한다. 기존 Articulation Controller 문서도 USD와 제어 입력의 단위 차이를 명시한다. 신규 스크립트는 설치 버전이 권장하는 API를 사용한다. <a href="https://docs.isaacsim.omniverse.nvidia.com/latest/robot_simulation/articulation_controller.html">NVIDIA Articulation Controller 문서</a></p>
+<h3>9.3 최소 조작 방식 구현</h3>
+<p>이번 단계는 별도의 조작 앱을 개발할 필요 없이, Isaac Sim 내부에서 관절 목표값을 넣어 동작시키는 방식으로 완성한다.</p>
+<ol>
+<li>시뮬레이션을 Play한다.</li>
+<li>관절을 선택하고 Properties의 Drive Target Position을 수정할 수 있게 구성한다. 실제 메뉴 위치와 변경할 속성명을 화면 캡처와 함께 <code>README.md</code>에 적는다.</li>
+<li>다른 구동 관절은 초기 목표를 유지하고, 관절 하나를 작은 범위로 움직인 뒤 초기 목표로 되돌린다. 회전 관절은 약 5° 이하, 직선 관절은 약 0.01 m 이하를 시연 시작 범위로 삼되 실제 한계·간섭에 맞춰 줄인다.</li>
+<li>모든 구동 관절에 대해 같은 조작을 수행한다. 각 관절의 움직임과 말단·EOAT가 연결된 상태로 움직이는 모습을 영상에 담는다.</li>
+<li>마지막에는 초기 목표값을 다시 입력하여 초기 자세로 복귀시킨다. Stop/Reset 후에도 다음 실행이 같은 자세에서 시작하도록 초기 상태와 목표값을 저장한다.</li>
+</ol>
+<p>GUI 방식으로 초기 상태 재현이나 관절 순차 시연이 불편한 경우에만 <code>scripts/joint_demo.py</code>를 추가한다. 이 파일에는 장면 로드, 실제 articulation 경로 지정, 실제 관절 이름으로 목표 설정, 초기 자세 복귀만 구현한다. 사용한 Isaac Sim 버전의 예제를 기준으로 작성하고, 외부 일반 Python에서 그대로 실행할 수 있다고 가정하지 않는다.</p>
+<p>스크립트를 추가했다면 한 가지 실행 방식을 정한다. 예를 들어 Isaac Sim 내부 Script Editor에서 실행하도록 만들고, 파일을 여는 방법과 실행 순서를 설명한다. 명령은 articulation이 준비된 뒤 적용하고, 목표값을 여러 물리 스텝에 걸쳐 부드럽게 바꾸도록 한다. GUI Drive와 별도 제어기가 동시에 서로 다른 목표를 쓰지 않게 한다.</p>
+<p><strong>생성 결과:</strong> 관절 이름과 단위가 명확한 조작 방법, 초기 자세, 작은 범위의 관절 시연. IK, 경로 계획, 작업 궤적 재생은 추가하지 않는다.</p>
+<h2>10. 바닥과 변경 가능한 평면 벽 생성</h2>
+<h3>10.1 바닥 생성</h3>
+<ol>
+<li><code>/World/Environment/Floor</code>에 Ground Plane 또는 수평 평면을 만든다.</li>
+<li>바닥 표면을 Z=0에 두고 정적 충돌을 적용한다.</li>
+<li>시각적으로 보이는 바닥 크기는 베이스와 로봇 작업 영역을 포함하도록 지정한다. 무한 충돌 평면을 사용하는 경우 표시 크기와 물리적 범위가 다르다는 점을 문서에 적는다.</li>
+<li>단색 재질을 사용하여 로봇·EOAT와 구분한다. 고해상도 바닥 텍스처는 사용하지 않아도 된다.</li>
+</ol>
+<h3>10.2 벽 생성과 치수 정의</h3>
+<p>작업면은 두께가 있는 직육면체로 만든다. 기본 배치에서는 벽의 폭을 Y 방향, 높이를 Z 방향, 두께를 X 방향으로 둔다. 로봇은 벽의 -X 측에 위치한다.</p>
+<ol>
+<li><code>/World/Environment/Wall</code>에 Xform을 만든다. 이 객체의 원점을 <strong>로봇을 향하는 벽 앞면의 하단 중앙</strong>으로 정의한다.</li>
+<li><code>Wall</code> 아래에 Cube인 <code>Panel</code>을 만든다. Cube의 <code>size</code>를 1로 설정한 후 다음 값을 사용한다.</li>
+<li><code>Panel</code>의 로컬 Scale을 <code>(두께 t, 폭 w, 높이 h)</code>로 지정한다. 로컬 Translate는 <code>(t/2, 0, h/2)</code>로 지정한다. 로컬 Rotate는 <code>(0, 0, 0)</code>으로 둔다.</li>
+<li><code>Panel</code>에 정적 Collision을 적용한다. 벽은 움직이는 Rigid Body로 만들지 않는다.</li>
+<li><code>Wall</code>의 Scale은 <code>(1, 1, 1)</code>로 유지한다. 벽 전체 위치와 방향은 <code>Wall</code>의 Translate·Rotate에서 수정한다.</li>
+</ol>
+<p>초기 제작 예시는 폭 2.0 m, 높이 2.0 m, 두께 0.10 m로 둔다. 이 값은 실제 벽 치수가 아니라 환경을 만드는 시작값이다.</p>
+<table>
+<tr><th>객체·속성</th><th>초기 제작 예시</th></tr>
+<tr><td><code>Panel.size</code></td><td>1</td></tr>
+<tr><td><code>Panel.Scale</code></td><td><code>(0.10, 2.00, 2.00)</code></td></tr>
+<tr><td><code>Panel.Translate</code></td><td><code>(0.05, 0.00, 1.00)</code></td></tr>
+<tr><td><code>Wall.Translate</code></td><td>로봇 작업 영역을 기준으로 정한 위치. 바닥에 붙이면 Z=0</td></tr>
+<tr><td><code>Wall.Rotate</code></td><td>우선 <code>(0, 0, 0)</code></td></tr>
+<tr><td><code>Wall.Scale</code></td><td><code>(1, 1, 1)</code></td></tr>
+</table>
+<p>이 구조에서는 회전이 없는 벽의 로봇 측 표면이 <code>Wall</code>의 X 위치에 놓이고, 벽의 로컬 앞면 법선은 -X이다. 폭·높이를 바꿔도 앞면 하단 중앙을 배치 기준으로 유지할 수 있다.</p>
+<h3>10.3 벽 수정 방법 제공</h3>
+<table>
+<tr><th>바꿀 내용</th><th>수정할 항목</th><th>함께 적용할 값</th></tr>
+<tr><td>벽을 로봇 쪽 또는 반대쪽으로 이동</td><td><code>Wall.Translate</code>의 X</td><td>기본 무회전 배치 기준</td></tr>
+<tr><td>벽을 좌우로 이동</td><td><code>Wall.Translate</code>의 Y</td><td>다른 값은 유지</td></tr>
+<tr><td>벽 전체 높이를 올리기</td><td><code>Wall.Translate</code>의 Z</td><td>벽 하단 높이가 바뀜</td></tr>
+<tr><td>벽 방향 변경</td><td><code>Wall.Rotate</code></td><td>앞면 하단 중앙을 기준으로 회전</td></tr>
+<tr><td>폭을 w로 변경</td><td><code>Panel.Scale</code>의 Y = w</td><td>중심이 유지되므로 Y 위치는 0 유지</td></tr>
+<tr><td>높이를 h로 변경</td><td><code>Panel.Scale</code>의 Z = h</td><td><code>Panel.Translate</code>의 Z = h/2</td></tr>
+<tr><td>두께를 t로 변경</td><td><code>Panel.Scale</code>의 X = t</td><td><code>Panel.Translate</code>의 X = t/2</td></tr>
+</table>
+<p>벽 치수와 위치를 편집할 때에는 시뮬레이션을 정지하고, 변경 후 다시 실행한다. 시뮬레이션 중 벽을 움직이는 기능은 이번 범위에 포함하지 않는다. 크기 변경 후 충돌 형상도 같은 크기를 사용하도록 구성한다.</p>
+<p>벽까지의 초기 거리는 로봇의 실제 도달 범위와 EOAT 길이를 기준으로 정한다. 초기 자세에서 로봇·EOAT가 벽 안에 들어가지 않도록 배치한다. 실제 배치 치수가 없으면 <code>README.md</code>에 초기 시연용 거리라고 표시한다.</p>
+<h3>10.4 시연에 사용할 화면 구성</h3>
+<ol>
+<li>로봇 전체·베이스·벽이 한 화면에 들어오는 사선 뷰를 잡는다.</li>
+<li>간단한 조명을 추가하고, 벽·로봇·EOAT가 서로 구분되는 색을 지정한다.</li>
+<li>필요하면 화면 구도용 카메라를 저장한다. 이 카메라는 영상 센서나 연구 데이터 수집 장치로 구성할 필요가 없다.</li>
+</ol>
+<p><strong>생성 결과:</strong> 위치·방향·폭·높이·두께를 속성 입력으로 수정할 수 있는 벽과 바닥, 환경 전체를 보여주는 화면.</p>
+<h2>11. 저장과 전달 패키지 만들기</h2>
+<h3>11.1 수정 내용을 영구 저장</h3>
+<ol>
+<li>로봇 내부 설정, 베이스 모델, EOAT 모델, 최종 장면에서 수정한 USD 레이어를 모두 저장한다. 장면 파일 하나만 저장하고 참조 모델의 변경을 미저장 상태로 남기지 않는다.</li>
+<li>현재 편집 대상 레이어를 지정하고 저장한다. 임시 Session Layer에만 설정이 남았다면 프로젝트의 저장 가능한 레이어로 옮긴다.</li>
+<li>시연 중의 관절 목표를 초기값으로 되돌리고, 다음 실행의 시작 자세와 목표값을 저장한다. 화면에 보이는 마지막 시뮬레이션 상태가 자동으로 초기 자세로 저장된다고 가정하지 않는다.</li>
+<li>제공 모델의 형상 Prim이 instanceable이라 직접 수정할 수 없으면 인스턴스 원본 작업본 또는 해당 참조 레이어를 수정한다. 단순 배치는 인스턴스 위의 Placement Xform에서 처리한다.</li>
+<li>저장 후 Isaac Sim을 닫고 새로 실행하여 <code>scenes/painting_scene.usd</code>를 연다. 아래 11.3의 동일한 시연 절차를 실행한다. 이 과정에서 누락된 저장 항목은 원래 작업본에 반영한다.</li>
+</ol>
+<h3>11.2 외부 파일 의존성 정리</h3>
+<ol>
+<li>USD reference, sublayer, payload가 가리키는 파일과 재질·텍스처를 <code>painting_sim/</code> 안에 포함한다.</li>
+<li>프로젝트 내 참조는 해당 레이어를 기준으로 한 상대경로로 정리한다. 예를 들어 <code>scenes/painting_scene.usd</code>에서 로봇 진입 파일은 <code>../assets/robot/robot.usd</code>로 참조할 수 있다.</li>
+<li>제공자의 PC 드라이브 경로, 작업자 개인 다운로드 폴더, 전달받지 않은 서버 경로에 의존하는 항목을 제거한다. 텍스처가 필요 없다면 단색 재질로 대체한 내용을 기록한다.</li>
+<li>설치 버전에 Collect 기능이 있으면 종속 파일 수집에 활용한다. 수집 기능을 사용했더라도 별도 복사본에서 재실행하는 절차를 수행한다. <a href="https://docs.omniverse.nvidia.com/extensions/latest/ext_collect.html">NVIDIA Collect 문서</a></li>
+<li>최종 실행에 필요한 <code>assets/</code>, <code>scenes/</code>, <code>README.md</code>, 시연 자료와 사용한 스크립트를 포함해 <code>painting_sim.zip</code>을 만든다. 원본 <code>source_raw/</code>는 별도 보관하거나 함께 전달하되, 실행 장면이 그 폴더의 빠진 파일을 참조하지 않게 한다.</li>
+<li>압축을 원래 작업 폴더와 다른 경로에 풀고, 그 복사본의 진입 장면으로 실행한다. 다른 PC를 사용할 수 있으면 같은 Isaac Sim 버전에서도 실행한다. 다른 PC에서 수행하지 않았다면 폴더 이동 재실행까지만 수행한 것으로 기록한다.</li>
+</ol>
+<p><code>painting_scene.usd</code> 하나만 전달하지 않는다. USD는 외부 자산을 참조할 수 있으므로 <strong>최종 전달 단위는 필요한 종속 파일을 포함한 폴더 또는 ZIP</strong>으로 한다.</p>
+<h3>11.3 완료 시연 제작</h3>
+<p>다음 순서가 드러나도록 <code>evidence/joint_demo.mp4</code>를 만든다. 편집으로 숨길 필요 없이 기본 조작을 재현할 수 있는 영상이면 된다.</p>
+<ol>
+<li>최종 장면을 열고 로봇·EOAT·베이스·바닥·벽 전체를 보여준다.</li>
+<li>Play 후 약 30초 동안 초기 자세를 유지한다. 베이스 고정과 로봇·EOAT의 연결 상태가 드러나게 촬영한다.</li>
+<li>9장의 관절 표에 따라 각 구동 관절에 작은 목표값을 입력하고 초기 자세로 복귀시킨다. 목표를 입력하는 위치가 적어도 한 번은 영상에 보이게 한다.</li>
+<li>Stop 후 벽 위치와 폭·높이를 변경하고, 변경된 환경을 보여준다. 충돌 형상 표시 화면도 짧게 포함한다.</li>
+<li>기본 설정으로 복구해 저장하고, 다시 연 장면에서 Play한다.</li>
+</ol>
+<p>위 절차는 환경 인수용 시연이다. shared control 성능이나 실제 접촉력의 정확도를 평가한 결과로 사용하지 않는다.</p>
+<h2>12. README에 작성할 내용</h2>
+<p>실제 구축이 끝난 상태를 기준으로 아래 항목을 채운다. 메뉴나 경로를 일반론으로 적지 않고, 이 프로젝트에서 사용한 파일명·Prim 경로·수치를 적는다.</p>
+<table>
+<tr><th>항목</th><th>작성할 내용</th></tr>
+<tr><td>실행 환경</td><td>Isaac Sim 버전, 운영체제, GPU·VRAM, 드라이버, 물리 엔진, 필요한 확장 기능</td></tr>
+<tr><td>시작 방법</td><td>압축 해제 → Isaac Sim 실행 → <code>scenes/painting_scene.usd</code> 열기 → 필요한 초기화 → Play의 실제 순서</td></tr>
+<tr><td>입력 자료</td><td>받은 원본의 파일명·형식·제공처, 모델 종류, 원본 단위</td></tr>
+<tr><td>변환 방법</td><td>URDF Importer 옵션 또는 CAD 변환 도구·옵션, 적용한 단위 변환</td></tr>
+<tr><td>모델 구조</td><td>로봇 루트, Articulation Root, 구동 관절, 말단 링크, EOAT, 필요하면 ToolFrame의 Prim 경로</td></tr>
+<tr><td>장착값</td><td>7.4의 위치·자세 표와 값의 출처</td></tr>
+<tr><td>물리 설정</td><td>중력, physics step, 충돌 형상 방식, self-collision 설정, 추정한 질량·관성</td></tr>
+<tr><td>관절 조작</td><td>9.1의 관절 표, 목표값 단위, Drive 설정, 초기 자세 복귀 방법</td></tr>
+<tr><td>벽 수정</td><td><code>Wall</code>과 <code>Panel</code>의 경로, 위치·회전·크기 변경 방법, 현재 적용 치수</td></tr>
+<tr><td>스크립트</td><td>사용한 경우에만 파일명·실행 위치·버전·실행 순서</td></tr>
+<tr><td>재실행 결과</td><td>다른 폴더 또는 다른 PC에서 실행한 조건과 수행한 시연</td></tr>
+<tr><td>남은 자료</td><td>미수령 항목과 그 때문에 임시로 둔 값. 확정 값과 구분</td></tr>
+</table>
+<p>예를 들어 “관절을 움직인다”라고만 적지 말고, <strong>어떤 관절 Prim을 선택해 어떤 속성에 어떤 단위로 값을 입력하는지</strong>를 적는다. “벽 크기를 수정한다” 대신 10.3의 방식대로 Scale과 Translate 중 함께 바꿀 항목까지 적는다.</p>
+<h2>13. 작업 중 예상되는 문제와 수정 방법</h2>
+<table>
+<tr><th>증상</th><th>먼저 찾을 원인</th><th>수행할 수정</th></tr>
+<tr><td>모델이 너무 작거나 큼</td><td>mm·m 혼동, 메시 내보내기 단위, 중복 Scale</td><td>원본 치수와 비교해 변환 배율 수정. 로봇은 링크·관절·충돌 형상까지 같은 단위로 정리</td></tr>
+<tr><td>모델 일부가 보이지 않음</td><td>USD reference·payload·메시 경로 누락, 비활성 variant</td><td>실제 참조 경로의 파일을 포함하고 진입 USD와 선택 구성을 수정</td></tr>
+<tr><td>외형은 보이지만 관절이 없음</td><td>시각화용 USD 또는 단일 메시</td><td>URDF/링크별 형상·관절 자료로 관절 구조 생성. 단일 메시를 완성 로봇으로 취급하지 않음</td></tr>
+<tr><td>Play 직후 부품이 떨어짐</td><td>Rigid Body만 있고 링크 연결 없음, 잘못된 Body 0/1</td><td>해당 관절의 링크 연결과 양쪽 joint frame 재설정</td></tr>
+<tr><td>Play 직후 로봇이 튀거나 원래 위치로 이동</td><td>초기 충돌 중첩, 불일치한 고정 앵커·관절 프레임, 초기 목표 불일치</td><td>중첩 제거 → 조립 앵커 정렬 → 초기 자세·Drive 목표 일치 순으로 수정</td></tr>
+<tr><td>베이스 또는 로봇 전체가 움직임</td><td>베이스가 동적 물체, 루트 고정 누락</td><td>베이스를 정적으로 구성하고 로봇 루트의 단일 월드 고정 설정</td></tr>
+<tr><td>EOAT가 로봇과 따로 움직임</td><td>시각적으로만 배치, Fixed Joint 누락, EOAT 자체 월드 고정</td><td>플랜지와 물리 연결을 만들고 EOAT의 독립 고정 제거</td></tr>
+<tr><td>관절 목표를 바꿔도 움직이지 않음</td><td>잘못된 관절 선택, Drive 누락·stiffness 0, 한계 밖 목표, 다른 제어기의 덮어쓰기</td><td>실제 관절 경로와 제어 주체를 정리하고 Drive·목표·한계를 수정</td></tr>
+<tr><td>로봇이 떨리거나 벽 근처에서 불안정함</td><td>링크 간 충돌 중첩, 큰 목표 변화, 부적절한 Drive 값</td><td>충돌 형상·필터를 먼저 수정하고 작은 목표 변화와 감쇠 조정 적용</td></tr>
+<tr><td>벽을 통과함</td><td>Collider 누락, 충돌 비활성화·필터, 순간 위치 변경</td><td>벽과 도구의 충돌 설정 복구. 순간 위치 이동 대신 물리 Drive로 구동</td></tr>
+<tr><td>저장 후 설정이 사라짐</td><td>임시 레이어 편집, 참조 레이어 미저장, 런타임 상태만 변경</td><td>편집 대상 레이어를 저장 가능한 작업본으로 지정하고 관련 레이어 모두 저장</td></tr>
+<tr><td>다른 폴더에서 열리지 않음</td><td>절대경로, 누락된 재질·참조 레이어</td><td>종속 파일 수집과 상대경로 정리 후 복사본에서 재실행</td></tr>
+<tr><td>메모리 부족·화면 끊김</td><td>과도한 CAD 메시, 고해상도 텍스처·렌더링</td><td>보이지 않는 세부 부품과 중복 메시 정리, 텍스처·뷰포트 부담 축소. 충돌 형상은 필요한 외곽을 유지하며 단순화</td></tr>
+</table>
+<p>자료 부족으로 진행이 막힌 항목은 <code>README.md</code>에 <strong>필요한 파일 형식·필요한 값·그 값이 쓰이는 위치</strong>를 적는다. 예를 들어 “모델 추가 필요” 대신 “플랜지 기준 EOAT 장착 위치·방향이 들어 있는 CAD 어셈블리 또는 수치 도면 <code>.pdf</code> 필요”라고 적는다.</p>
+<h2>14. 수행 순서와 최종 제출물</h2>
+<p>작업은 다음 세 단계로 진행한다. 각 단계에서 만든 파일을 다음 단계에서 그대로 사용한다.</p>
+<table>
+<tr><th>단계</th><th>구현할 작업</th><th>단계 결과</th></tr>
+<tr><td>1차: 모델 작업본 제작</td><td>원본 확보, 파일 형식별 변환, 단위 정리, 링크·관절 자료 반영</td><td>로봇·베이스·필요한 EOAT의 작업용 USD 묶음</td></tr>
+<tr><td>2차: 환경 조립과 구동</td><td>실제 장착값 적용, 고정·충돌·Drive 설정, 초기 자세와 관절 조작, 벽·바닥 생성</td><td>Play와 관절 조작이 가능한 <code>painting_scene.usd</code></td></tr>
+<tr><td>3차: 전달본 제작</td><td>저장 레이어 정리, 종속 파일 포함, README 작성, 새 경로에서 재실행, 영상 촬영</td><td><code>painting_sim.zip</code>과 시연 영상</td></tr>
+</table>
+<p>최종 제출물은 다음과 같다.</p>
+<ul>
+<li><strong><code>painting_sim.zip</code></strong>: 최종 장면과 실행에 필요한 모델·종속 파일·설명서를 포함한 묶음.</li>
+<li><strong><code>scenes/painting_scene.usd</code></strong>: 다른 사람이 처음 열어 실행할 진입 장면.</li>
+<li><strong><code>README.md</code></strong>: 실행 방법, 실제 관절 조작 방법, 벽 수정 방법, 장착값과 임시 설정의 출처.</li>
+<li><strong><code>evidence/scene_overview.png</code> 및 <code>mounting_detail.png</code></strong>: 완성 장면과 조립부 화면.</li>
+<li><strong><code>evidence/joint_demo.mp4</code></strong>: 초기 자세 유지, 관절별 움직임, EOAT 연결, 벽 변경, 재실행을 보여주는 영상.</li>
+<li><strong><code>scripts/joint_demo.py</code></strong>: 스크립트를 사용한 경우에만 포함. GUI만으로 완성한 경우 불필요.</li>
+</ul>
+<p>인수 시에는 전달받은 사람이 <code>README.md</code>를 따라 장면을 열고, 관절 목표값과 벽 치수를 직접 바꾸는 과정을 수행한다. 모델 데이터에 없는 장착 치수나 질량 등을 추정했다면, 구현한 범위와 함께 그 항목을 명시한다.</p></main></body></html>

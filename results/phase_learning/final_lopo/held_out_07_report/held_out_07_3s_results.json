@@ -1,0 +1,350 @@
+{
+  "protocol": {
+    "held_out_participant": "07",
+    "training_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "tolerance_seconds": 3.0,
+    "phase_metric": "same-phase temporal tolerance within each contiguous sequence",
+    "transition_metric": "nearest unused same from-to event within tolerance",
+    "worst_trial_selection": "lowest 3-second-tolerant Macro F1 for Causal LSTM"
+  },
+  "models": {
+    "causal_fsm": {
+      "samples": 54177,
+      "tolerant_accuracy_3s": 0.7731509681230042,
+      "tolerant_macro_f1_3s": 0.41982687859013795,
+      "phase_precision_3s": [
+        0.9084551811824539,
+        0.8244047619047619,
+        0.8318386621609912,
+        0.2916120576671035
+      ],
+      "phase_recall_3s": [
+        0.12391768101392897,
+        0.1413833528722157,
+        0.9990930981643056,
+        0.33550325488232347
+      ],
+      "phase_f1_3s": [
+        0.2180872114707023,
+        0.24137201023400792,
+        0.9078265877081287,
+        0.3120217049477129
+      ],
+      "true_transitions": 313,
+      "predicted_transitions": 461,
+      "matched_transitions_3s": 28,
+      "false_transitions_3s": 433,
+      "transition_precision_3s": 0.06073752711496746,
+      "transition_recall_3s": 0.08945686900958466,
+      "transition_f1_3s": 0.07235142118863049,
+      "absolute_delay_mean_ms_3s": 888.7333253928572
+    },
+    "random_forest": {
+      "samples": 54177,
+      "tolerant_accuracy_3s": 0.8739132842350075,
+      "tolerant_macro_f1_3s": 0.7615286907015126,
+      "phase_precision_3s": [
+        0.8624219968798752,
+        0.8036144578313253,
+        0.8808252540864596,
+        0.5681233933161953
+      ],
+      "phase_recall_3s": [
+        0.8762078052453256,
+        0.6550996483001172,
+        1.0,
+        0.4767150726089134
+      ],
+      "phase_f1_3s": [
+        0.8692602463822146,
+        0.7217967475345073,
+        0.9366369918446118,
+        0.5184207770447168
+      ],
+      "true_transitions": 313,
+      "predicted_transitions": 2064,
+      "matched_transitions_3s": 149,
+      "false_transitions_3s": 1915,
+      "transition_precision_3s": 0.07218992248062016,
+      "transition_recall_3s": 0.476038338658147,
+      "transition_f1_3s": 0.12536811106436688,
+      "absolute_delay_mean_ms_3s": 593.1382932348993
+    },
+    "gmm": {
+      "samples": 54177,
+      "tolerant_accuracy_3s": 0.7457961865736382,
+      "tolerant_macro_f1_3s": 0.6887166273332879,
+      "phase_precision_3s": [
+        0.7019736842105263,
+        0.3985544656685596,
+        0.9507583376915959,
+        0.26410564225690275
+      ],
+      "phase_recall_3s": [
+        0.9442213577613251,
+        0.9833528722157092,
+        0.9912124339368922,
+        0.9344016024036054
+      ],
+      "phase_f1_3s": [
+        0.8052734072434613,
+        0.5672155690983062,
+        0.9705640267683374,
+        0.4118135062230466
+      ],
+      "true_transitions": 313,
+      "predicted_transitions": 4392,
+      "matched_transitions_3s": 244,
+      "false_transitions_3s": 4148,
+      "transition_precision_3s": 0.05555555555555555,
+      "transition_recall_3s": 0.7795527156549521,
+      "transition_f1_3s": 0.10371944739638682,
+      "absolute_delay_mean_ms_3s": 623.0768329098361
+    },
+    "gaussian_hmm": {
+      "samples": 54177,
+      "tolerant_accuracy_3s": 0.7276519556269265,
+      "tolerant_macro_f1_3s": 0.7447513457607761,
+      "phase_precision_3s": [
+        0.6300856716728521,
+        0.4566674370233418,
+        0.9840791017261605,
+        0.5336754329698524
+      ],
+      "phase_recall_3s": [
+        0.9962354122223617,
+        0.7910902696365768,
+        0.9560621696844607,
+        0.8582874311467201
+      ],
+      "phase_f1_3s": [
+        0.7719430868484664,
+        0.5790630087248247,
+        0.9698683441267034,
+        0.6581309433431096
+      ],
+      "true_transitions": 313,
+      "predicted_transitions": 1569,
+      "matched_transitions_3s": 182,
+      "false_transitions_3s": 1387,
+      "transition_precision_3s": 0.1159974506054812,
+      "transition_recall_3s": 0.5814696485623003,
+      "transition_f1_3s": 0.19341126461211477,
+      "absolute_delay_mean_ms_3s": 666.6981799780219
+    },
+    "gmm_hmm": {
+      "samples": 54177,
+      "tolerant_accuracy_3s": 0.6964763645089245,
+      "tolerant_macro_f1_3s": 0.6998643163396399,
+      "phase_precision_3s": [
+        0.709291380933172,
+        0.38250245982289277,
+        0.9589684014869888,
+        0.336674422767138
+      ],
+      "phase_recall_3s": [
+        0.9270924833730706,
+        0.9924970691676436,
+        0.9431466366450887,
+        0.9173760640961443
+      ],
+      "phase_f1_3s": [
+        0.8036973745927697,
+        0.5521930187166606,
+        0.9509917164627014,
+        0.4925751555864277
+      ],
+      "true_transitions": 313,
+      "predicted_transitions": 2258,
+      "matched_transitions_3s": 212,
+      "false_transitions_3s": 2046,
+      "transition_precision_3s": 0.09388839681133747,
+      "transition_recall_3s": 0.6773162939297125,
+      "transition_f1_3s": 0.1649163749513808,
+      "absolute_delay_mean_ms_3s": 702.5941313632076
+    },
+    "causal_lstm": {
+      "samples": 54177,
+      "tolerant_accuracy_3s": 0.90418443250826,
+      "tolerant_macro_f1_3s": 0.8441940222635848,
+      "phase_precision_3s": [
+        0.9252644182797845,
+        0.7022489705416535,
+        0.9179443639814213,
+        0.773109243697479
+      ],
+      "phase_recall_3s": [
+        0.8236290626176433,
+        0.8234466588511137,
+        1.0,
+        0.8077115673510266
+      ],
+      "phase_f1_3s": [
+        0.8714935172726319,
+        0.7580339844118323,
+        0.9572168840975965,
+        0.7900317032722782
+      ],
+      "true_transitions": 313,
+      "predicted_transitions": 777,
+      "matched_transitions_3s": 177,
+      "false_transitions_3s": 600,
+      "transition_precision_3s": 0.2277992277992278,
+      "transition_recall_3s": 0.5654952076677316,
+      "transition_f1_3s": 0.3247706422018349,
+      "absolute_delay_mean_ms_3s": 591.6924507966102
+    }
+  },
+  "causal_lstm_trial_metrics": {
+    "07_01": {
+      "samples": 11667,
+      "tolerant_accuracy_3s": 0.9396588668895175,
+      "tolerant_macro_f1_3s": 0.7801768782575248,
+      "phase_precision_3s": [
+        0.967316153362665,
+        0.643510054844607,
+        0.9529100529100529,
+        0.8481012658227848
+      ],
+      "phase_recall_3s": [
+        0.835843955195056,
+        0.7251700680272108,
+        1.0,
+        0.42487046632124353
+      ],
+      "phase_f1_3s": [
+        0.8967870969566046,
+        0.6819040072982221,
+        0.9758872934164183,
+        0.5661291153588541
+      ],
+      "true_transitions": 84,
+      "predicted_transitions": 119,
+      "matched_transitions_3s": 39,
+      "false_transitions_3s": 80,
+      "transition_precision_3s": 0.3277310924369748,
+      "transition_recall_3s": 0.4642857142857143,
+      "transition_f1_3s": 0.3842364532019704,
+      "absolute_delay_mean_ms_3s": 644.5172761794872
+    },
+    "07_02": {
+      "samples": 19888,
+      "tolerant_accuracy_3s": 0.9448411102172164,
+      "tolerant_macro_f1_3s": 0.9213370717635603,
+      "phase_precision_3s": [
+        0.9252319446971076,
+        0.9267461669505963,
+        0.9562997911671436,
+        0.8784722222222222
+      ],
+      "phase_recall_3s": [
+        0.8878489591737938,
+        0.9020172910662824,
+        1.0,
+        0.8963414634146342
+      ],
+      "phase_f1_3s": [
+        0.9061550616300174,
+        0.9142145348041203,
+        0.977661803661092,
+        0.8873168869590113
+      ],
+      "true_transitions": 110,
+      "predicted_transitions": 244,
+      "matched_transitions_3s": 72,
+      "false_transitions_3s": 172,
+      "transition_precision_3s": 0.29508196721311475,
+      "transition_recall_3s": 0.6545454545454545,
+      "transition_f1_3s": 0.4067796610169491,
+      "absolute_delay_mean_ms_3s": 509.2229521805556
+    },
+    "07_03": {
+      "samples": 12440,
+      "tolerant_accuracy_3s": 0.8171221864951769,
+      "tolerant_macro_f1_3s": 0.8153843499237808,
+      "phase_precision_3s": [
+        0.9125541125541126,
+        0.611214953271028,
+        0.8091727203729806,
+        0.717741935483871
+      ],
+      "phase_recall_3s": [
+        0.8672619047619048,
+        0.676056338028169,
+        1.0,
+        1.0
+      ],
+      "phase_f1_3s": [
+        0.8893317176069298,
+        0.6420025768452052,
+        0.8945223540692796,
+        0.835680751173709
+      ],
+      "true_transitions": 76,
+      "predicted_transitions": 248,
+      "matched_transitions_3s": 43,
+      "false_transitions_3s": 205,
+      "transition_precision_3s": 0.17338709677419356,
+      "transition_recall_3s": 0.5657894736842105,
+      "transition_f1_3s": 0.2654320987654321,
+      "absolute_delay_mean_ms_3s": 606.3385956511628
+    },
+    "07_04": {
+      "samples": 10182,
+      "tolerant_accuracy_3s": 0.8904930269102338,
+      "tolerant_macro_f1_3s": 0.7750026504412456,
+      "phase_precision_3s": [
+        0.8653846153846154,
+        0.49944506104328523,
+        0.9388915206063477,
+        0.6995305164319249
+      ],
+      "phase_recall_3s": [
+        0.5160984848484849,
+        0.9802731411229135,
+        1.0,
+        1.0
+      ],
+      "phase_f1_3s": [
+        0.6465858159767994,
+        0.6617375904283652,
+        0.9684827754703151,
+        0.8232044198895027
+      ],
+      "true_transitions": 43,
+      "predicted_transitions": 166,
+      "matched_transitions_3s": 23,
+      "false_transitions_3s": 143,
+      "transition_precision_3s": 0.13855421686746988,
+      "transition_recall_3s": 0.5348837209302325,
+      "transition_f1_3s": 0.22009569377990426,
+      "absolute_delay_mean_ms_3s": 732.9033847826088
+    }
+  },
+  "causal_lstm_worst_trial": "07_04"
+}

@@ -1,0 +1,78 @@
+{
+  "figure": "lopo_08_01_phase_timeline.png",
+  "trial": "08_01",
+  "held_out_participant": "08",
+  "training_trials": [
+    "06_01",
+    "06_02",
+    "06_03",
+    "06_04",
+    "07_01",
+    "07_02",
+    "07_03",
+    "07_04",
+    "09_02",
+    "09_03",
+    "09_04",
+    "10_01",
+    "10_02",
+    "10_03",
+    "10_04",
+    "11_01",
+    "11_02",
+    "11_03",
+    "11_04"
+  ],
+  "test_trials_for_fold_validation": [
+    "08_01",
+    "08_02",
+    "08_04"
+  ],
+  "model_order": [
+    "causal_fsm",
+    "random_forest",
+    "gmm",
+    "gaussian_hmm",
+    "gmm_hmm",
+    "causal_lstm"
+  ],
+  "phase_ids": {
+    "0": "FREE_MOTION",
+    "1": "APPROACH",
+    "2": "PAINTING",
+    "3": "RETRACT"
+  },
+  "strict_fold_metrics": {
+    "causal_fsm": {
+      "model": "Causal FSM",
+      "strict_accuracy": 0.510957324106113,
+      "strict_macro_f1": 0.2815964986761188
+    },
+    "random_forest": {
+      "model": "Random Forest",
+      "strict_accuracy": 0.8201579274243634,
+      "strict_macro_f1": 0.5194211739630402
+    },
+    "gmm": {
+      "model": "GMM",
+      "strict_accuracy": 0.8053411409812794,
+      "strict_macro_f1": 0.5006600667049323
+    },
+    "gaussian_hmm": {
+      "model": "Gaussian HMM",
+      "strict_accuracy": 0.7338523644752019,
+      "strict_macro_f1": 0.50909174720082
+    },
+    "gmm_hmm": {
+      "model": "GMM–HMM",
+      "strict_accuracy": 0.743722828497915,
+      "strict_macro_f1": 0.4780898915460183
+    },
+    "causal_lstm": {
+      "model": "Causal LSTM",
+      "strict_accuracy": 0.8559134060864164,
+      "strict_macro_f1": 0.5860352499992493
+    }
+  },
+  "note": "Predictions are causal. The ±3-s tolerance affects scoring only and does not alter these timelines."
+}

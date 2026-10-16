@@ -1,0 +1,23 @@
+{
+  "trial_id": "14-MS",
+  "frame_count": 5016,
+  "labels": [
+    {
+      "start_index": 0,
+      "end_index": 554,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 555,
+      "end_index": 4698,
+      "label": "WORK"
+    },
+    {
+      "start_index": 4699,
+      "end_index": 5015,
+      "label": "MOVE"
+    }
+  ],
+  "updated_at": "2026-09-29T14:35:48+09:00",
+  "note": "IDLE은 감사용 라벨에 남지만 모델 입력과 작업/이동 지표에서는 제외됩니다."
+}

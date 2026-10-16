@@ -1,0 +1,43 @@
+{
+  "trial": "09_03",
+  "model": "D:\\SNUCEM\\PROJECTS\\다부처\\Shared Control for Remote Painting\\results\\phase_learning\\paper_outline_html\\lopo_best_players\\causal_lstm\\lopo_holdout_09_causal_lstm.npz",
+  "model_sha256": "96a7c54c66fedb2bac23420d0bba7eac424b8c52b858ee9902c635b1a8f8aaf8",
+  "training_trials": [
+    "06_01",
+    "06_02",
+    "06_03",
+    "06_04",
+    "07_01",
+    "07_02",
+    "07_03",
+    "07_04",
+    "08_01",
+    "08_02",
+    "08_04",
+    "10_01",
+    "10_02",
+    "10_03",
+    "10_04",
+    "11_01",
+    "11_02",
+    "11_03",
+    "11_04"
+  ],
+  "valid_frames": 3797,
+  "invalid_warmup_frames": 15,
+  "frame_accuracy": 0.9457466420858572,
+  "manual_phase_fraction": {
+    "FREE_MOTION": 0.22886489333684487,
+    "APPROACH": 0.0474058467210956,
+    "PAINTING": 0.6889649723465894,
+    "RETRACT": 0.03476428759547011
+  },
+  "predicted_phase_fraction": {
+    "FREE_MOTION": 0.2388727943112984,
+    "APPROACH": 0.04029496971293126,
+    "PAINTING": 0.7005530682117461,
+    "RETRACT": 0.02027916776402423
+  },
+  "prediction_npz": "09_03_causal_lstm_predictions.npz",
+  "player_html": "09_03_causal_lstm_prediction_player.html"
+}

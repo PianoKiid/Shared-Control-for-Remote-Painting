@@ -1,0 +1,443 @@
+{
+  "trial_id": "12-VP",
+  "frame_count": 25103,
+  "labels": [
+    {
+      "start_index": 0,
+      "end_index": 1848,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 1849,
+      "end_index": 2237,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 2238,
+      "end_index": 2827,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 2828,
+      "end_index": 2951,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 2952,
+      "end_index": 3264,
+      "label": "WORK"
+    },
+    {
+      "start_index": 3265,
+      "end_index": 3455,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 3456,
+      "end_index": 3553,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 3554,
+      "end_index": 3577,
+      "label": "WORK"
+    },
+    {
+      "start_index": 3578,
+      "end_index": 3720,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 3721,
+      "end_index": 3738,
+      "label": "WORK"
+    },
+    {
+      "start_index": 3739,
+      "end_index": 3965,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 3966,
+      "end_index": 4164,
+      "label": "WORK"
+    },
+    {
+      "start_index": 4165,
+      "end_index": 4322,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 4323,
+      "end_index": 4792,
+      "label": "WORK"
+    },
+    {
+      "start_index": 4793,
+      "end_index": 4923,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 4924,
+      "end_index": 5256,
+      "label": "WORK"
+    },
+    {
+      "start_index": 5257,
+      "end_index": 5320,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 5321,
+      "end_index": 5766,
+      "label": "WORK"
+    },
+    {
+      "start_index": 5767,
+      "end_index": 5830,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 5831,
+      "end_index": 5936,
+      "label": "WORK"
+    },
+    {
+      "start_index": 5937,
+      "end_index": 6128,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 6129,
+      "end_index": 6486,
+      "label": "WORK"
+    },
+    {
+      "start_index": 6487,
+      "end_index": 6525,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 6526,
+      "end_index": 6693,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 6694,
+      "end_index": 6756,
+      "label": "WORK"
+    },
+    {
+      "start_index": 6757,
+      "end_index": 7126,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 7127,
+      "end_index": 7140,
+      "label": "WORK"
+    },
+    {
+      "start_index": 7141,
+      "end_index": 7199,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 7200,
+      "end_index": 7225,
+      "label": "WORK"
+    },
+    {
+      "start_index": 7226,
+      "end_index": 7304,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 7305,
+      "end_index": 7779,
+      "label": "WORK"
+    },
+    {
+      "start_index": 7780,
+      "end_index": 7882,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 7883,
+      "end_index": 7933,
+      "label": "WORK"
+    },
+    {
+      "start_index": 7934,
+      "end_index": 8101,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 8102,
+      "end_index": 8459,
+      "label": "WORK"
+    },
+    {
+      "start_index": 8460,
+      "end_index": 8535,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 8536,
+      "end_index": 8563,
+      "label": "WORK"
+    },
+    {
+      "start_index": 8564,
+      "end_index": 8645,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 8646,
+      "end_index": 8944,
+      "label": "WORK"
+    },
+    {
+      "start_index": 8945,
+      "end_index": 8980,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 8981,
+      "end_index": 9160,
+      "label": "WORK"
+    },
+    {
+      "start_index": 9161,
+      "end_index": 9833,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 9834,
+      "end_index": 9884,
+      "label": "WORK"
+    },
+    {
+      "start_index": 9885,
+      "end_index": 10112,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 10113,
+      "end_index": 10143,
+      "label": "WORK"
+    },
+    {
+      "start_index": 10144,
+      "end_index": 10396,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 10397,
+      "end_index": 10452,
+      "label": "WORK"
+    },
+    {
+      "start_index": 10453,
+      "end_index": 10646,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 10647,
+      "end_index": 10705,
+      "label": "WORK"
+    },
+    {
+      "start_index": 10706,
+      "end_index": 10882,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 10883,
+      "end_index": 11033,
+      "label": "WORK"
+    },
+    {
+      "start_index": 11034,
+      "end_index": 11107,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 11108,
+      "end_index": 11464,
+      "label": "WORK"
+    },
+    {
+      "start_index": 11465,
+      "end_index": 13377,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 13378,
+      "end_index": 13798,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 13799,
+      "end_index": 14009,
+      "label": "WORK"
+    },
+    {
+      "start_index": 14010,
+      "end_index": 14348,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 14349,
+      "end_index": 14423,
+      "label": "WORK"
+    },
+    {
+      "start_index": 14424,
+      "end_index": 14660,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 14661,
+      "end_index": 15195,
+      "label": "WORK"
+    },
+    {
+      "start_index": 15196,
+      "end_index": 15375,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 15376,
+      "end_index": 16097,
+      "label": "WORK"
+    },
+    {
+      "start_index": 16098,
+      "end_index": 16259,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 16260,
+      "end_index": 16665,
+      "label": "IDLE"
+    },
+    {
+      "start_index": 16666,
+      "end_index": 16861,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 16862,
+      "end_index": 16995,
+      "label": "WORK"
+    },
+    {
+      "start_index": 16996,
+      "end_index": 17244,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 17245,
+      "end_index": 18065,
+      "label": "WORK"
+    },
+    {
+      "start_index": 18066,
+      "end_index": 18432,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 18433,
+      "end_index": 19473,
+      "label": "WORK"
+    },
+    {
+      "start_index": 19474,
+      "end_index": 19653,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 19654,
+      "end_index": 19813,
+      "label": "WORK"
+    },
+    {
+      "start_index": 19814,
+      "end_index": 20102,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 20103,
+      "end_index": 21646,
+      "label": "WORK"
+    },
+    {
+      "start_index": 21647,
+      "end_index": 21801,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 21802,
+      "end_index": 21889,
+      "label": "WORK"
+    },
+    {
+      "start_index": 21890,
+      "end_index": 22646,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 22647,
+      "end_index": 23138,
+      "label": "WORK"
+    },
+    {
+      "start_index": 23139,
+      "end_index": 23583,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 23584,
+      "end_index": 23615,
+      "label": "WORK"
+    },
+    {
+      "start_index": 23616,
+      "end_index": 23759,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 23760,
+      "end_index": 23907,
+      "label": "WORK"
+    },
+    {
+      "start_index": 23908,
+      "end_index": 24009,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 24010,
+      "end_index": 24726,
+      "label": "WORK"
+    },
+    {
+      "start_index": 24727,
+      "end_index": 24844,
+      "label": "MOVE"
+    },
+    {
+      "start_index": 24845,
+      "end_index": 24922,
+      "label": "WORK"
+    },
+    {
+      "start_index": 24923,
+      "end_index": 25102,
+      "label": "MOVE"
+    }
+  ],
+  "updated_at": "2026-09-29T12:08:06+09:00",
+  "note": "IDLE은 감사용 라벨에 남지만 모델 입력과 작업/이동 지표에서는 제외됩니다."
+}

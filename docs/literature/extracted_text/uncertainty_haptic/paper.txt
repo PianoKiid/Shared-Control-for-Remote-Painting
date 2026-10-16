@@ -1,0 +1,866 @@
+===== PAGE 1 =====
+IEEE ROBOTICS AND AUTOMATION LETTERS, VOL. 8, NO. 10, OCTOBER 2023 6435
+Uncertainty-Aware Haptic Shared Control With
+Humanoid Robots for Flexible Object Manipulation
+Takumi Hara , Takashi Sato , Senior Member , IEEE, Tetsuya Ogata , Member , IEEE,
+and Hiromitsu Awano , Associate Member , IEEE
+Abstract—We propose a haptic shared control system that pre-
+dicts human manipulation intentions using a neural network and
+adaptively presents haptic guidance to achieve smooth robot con-
+trol remotely. Although the haptic shared control has garnered
+increasing attention as a method to improve operability in remote
+operations, incorrect guidance can worsen operability. In this study,
+we dynamically switch the strength of haptic guidance presentation
+depending on the uncertainty of the inference results of the neu-
+ral network. Thus, we weaken the haptic guidance presentation
+strength for predictions in which the neural network lacks con-
+ﬁdence and strengthen it for those with high conﬁdence, thereby
+achieving guidance presentation that does not impede human ma-
+nipulation. As a result of experiments using the Nextage OPEN
+upper-body humanoid robot, in a task involving folding a ﬂexible
+object, we succeeded in reducing task execution time by 17.1%
+compared to that with an existing method that determines the
+strength of haptic guidance presentation without considering the
+conﬁdence of the neural network.
+Index Terms—Imitation learning, haptics and haptic interfaces,
+human-centered automation.
+I. I NTRODUCTION
+B
+ECAUSE of the worldwide decline in birth rates and the
+trend towards an aging society, the shortage of labor force
+is increasingly concerning. In addition, with the recent pandemic
+experience, there has been a widespread diversiﬁcation of work
+styles such as telework. These circumstances have led to the
+continued research and development of automated control robots
+to improve labor productivity and realize a ubiquitous society.
+Conventional robots have mainly focused on manipulating
+solid objects, and their activity ﬁelds have been centered on
+Manuscript received 12 April 2023; accepted 6 August 2023. Date of pub-
+lication 18 August 2023; date of current version 29 August 2023. This letter
+was recommended for publication by Associate Editor M. Selvaggio and Editor
+J.-H. Ryu upon evaluation of the reviewers’ comments. This work was supported
+by JSPS KAKENHI under Grant 21H03409. (Corresponding author: Takumi
+Hara.)
+Takumi Hara is with the Depertment of Informatics, Graduate School
+of Informatics, Kyoto University, Sakyo, Kyoto 606-8501, Japan (e-mail:
+thara@easter.kuee.kyoto-u.ac.jp).
+Takashi Sato and Hiromitsu Awano are with the Department of Commu-
+nication and Computer Engineering, Graduate School of Infomatics, Kyoto
+University, Sakyo, Kyoto 606-8501, Japan (e-mail: takashi@i.kyoto-u.ac.jp;
+awano@i.kyoto-u.ac.jp).
+Tetsuya Ogata is with the Department of Intermedia Art and Science, School
+of Fundamental Science and Engineering, Waseda University, Shinjuku, Tokyo
+169-8555, Japan (e-mail: ogata@waseda.jp).
+This letter has supplementary downloadable material available at
+https://doi.org/10.1109/LRA.2023.3306668, provided by the authors.
+Digital Object Identiﬁer 10.1109/LRA.2023.3306668
+production sites, such as factories. However, because of the
+increase in caregiving and household burden caused by the
+declining birth rate, aging society, and trend towards nuclear
+families, the practical use of service robots to address these
+issues is highly desired. One of the barriers to realizing service
+robots is the presence of ﬂexible materials such as paper and
+cloth in the workspace. Generally, the manipulattion of such
+materials is difﬁcult for robots because their shape is affected
+by the end-effector trajectory of the robot during manipulation.
+To address this issue, a method of controlling robots using
+neural networks that learn human-demonstrated actions through
+end-to-end (E2E) learning has been reported [1], [2], [3].
+However, even after using E2E learning for fully autonomous
+robots, the risks of inference errors and associated malfunctions
+still exist. For example, in the ﬁeld of caregiving, robot mal-
+functions pose a potential direct threat to humans, and thus, the
+development of remotely operated robots controlled by humans
+is active in such ﬁelds [4]. However, even with the development
+of control interfaces, the remote operation of multi-DoF robots
+still imposes a signiﬁcant burden on operators. One factor is
+the incomplete transmission of human sensation from the robot,
+as it is challenging to perceive depth when operating through
+a monitor [5]. Another reason is that the joint structure of the
+robot arm is considerably different from that of the human arm,
+making it difﬁcult for the operator to infer the movements of the
+robot arm in a remote environment [6], [7]. Therefore, to reduce
+the burden on the operator, shared control technology has been
+devised, which enables humans and AI to share the control of
+the robot, and humans to intervene in the operation when the
+autonomous control of the robot by AI is difﬁcult.
+Based on the method of interaction between human and AI,
+shared control can be categorized into two types, namely haptic
+shared control and mixed-input shared control[8]. Haptic shared
+control is an operational format in which a human and an AI
+share the same operation interface to control a machine, and
+the human determines the operation input while continuously
+receiving haptic feedback generated by AIs. An example of
+this type of operation is the function that prevents a car from
+deviating from the lane by allowing the car to perform steering
+operations. Conversely, mixed-input shared control is an op-
+erational format in which the human and AI do not share the
+same operation interface; however, their operation inputs are
+combined in the control device. The collision avoidance braking
+function in an automobile falls under this category.
+2377-3766 © 2023 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission.
+See https://www.ieee.org/publications/rights/index.html for more information.
+Authorized licensed use limited to: Seoul National University. Downloaded on September 07,2026 at 11:16:05 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 2 =====
+6436 IEEE ROBOTICS AND AUTOMATION LETTERS, VOL. 8, NO. 10, OCTOBER 2023
+In response to the increasing utilization of shared control in
+the automotive ﬁeld, shared control is being applied to arm-type
+robots that require more complex control [9]. In this study, solid
+object grasping by a remote-controlled robot is achieved by
+presenting haptic guidance, such as moving a robot gripper to
+a grasping point candidate based on inferences made by AI, to
+a remote operator through a haptic feedback device. However,
+this approach has two issues. One issue is that the uncertainty of
+AI inferences when presenting haptic guidance to operators is
+not considered, which may worsen the operability by presenting
+incorrect haptic guidance. Another issue is that it cannot handle
+objects, such as clothing whose shape changes considerably
+during manipulation. Grasping point candidates are generated
+using still images of the entire work area before the robot moves,
+and the objects whose shape changes considerably during robot
+operation cannot be handled.
+This letter proposes a haptic-shared control system for an
+upper-body humanoid robot based on imitation learning. The
+proposed method uses a neural network that is trained E2E
+to imitate the behavior of a human operator, and sequentially
+presents haptic guidance by capturing images using a camera
+attached to robot that constantly change. Therefore, the objects
+with considerably changing shapes such as ﬂexible objects can
+be handled. Furthermore, unlike existing methods that provide
+deterministic haptic guidance, the proposed method predicts
+haptic guidance as a Gaussian distribution with uncertainty,
+realizing shared control that considers uncertainty in inference
+(i.e., providing strong guidance when AI is conﬁdent in its own
+inference results and weak guidance when it is not conﬁdent).
+The experimental results using the humanoid robot Nextage
+OPEN show that using the proposed system reduces the time
+required to complete the towel folding task by 14.5% and 17.1%,
+compared to the cases when the operator controls the robot alone
+and no uncertainty is considered, respectively.
+The contributions of this letter are summarized as follows.
+r To the best of our knowledge, this is the ﬁrst study using
+imitation learning for haptic shared control.
+r We proposed a method to predict the guidance as a Gaus-
+sian distribution such that the uncertainty of inference can
+be added to the guidance.
+r The results of experiments using humanoid robot Nextage
+showed that the proposed system could reduce the time
+required for task completion by 14.5% and 17.1%, com-
+pared with the cases in which control is performed when
+the operator controls the robot alone and no uncertainty is
+considered, respectively.
+II. R ELA TED WORK
+A. End-to-End Learning for Autonomous Robot
+Several studies have explored the application of E2E learning
+for autonomous robot control. In the domain of automated
+driving, a convolutional neural network (CNN) that produces
+steering actions directly from the front camera image has been
+proposed [10]. This approach achieved excellent performance
+even with a small amount of training data collected for less
+than 100 hours of driving, demonstrating its effectiveness under
+various environmental conditions such as highways, regular
+roads, and diverse weather conditions. Furthermore, Xu et al. in-
+troduced a network that utilized large unmodiﬁed video data and
+previous self-driving conditions to predict a discrete sequence
+of vehicle self-driving behaviors, including straight ahead, stop,
+left turn, and right turn [11].
+The success of E2E learning in autonomous driving has led to
+its application in complex robots with high degrees of freedom,
+such as humanoid robots. For example, Y ang et al. combined
+E2E learning with an upper body humanoid robot to manip-
+ulate soft objects, which was previously considered challeng-
+ing [12]. Their proposed model employed a deep convolutional
+autoencoder (DCAE) to extract low-dimensional image features
+from camera inputs, followed by a time delay neural network
+(TDNN) that predicted the next time-step image features and
+robot joint angles. During the folding movements, human op-
+erators remotely controlled the upper body robot and collected
+joint angle and camera image pairs as the training data. Their
+approach achieved a 77.8% success rate in folding task, which
+demonstrated the potential of E2E learning to enable complex
+manipulation tasks in robotics.
+B. Haptic Shared Control
+A fully autonomous robot refers to a machine that can per-
+form tasks independently within its environment, relying on
+its sensing, planning, and acting capabilities without human
+intervention. Despite notable progress in automation, achieving
+complete autonomy in robots remains a challenge, especially
+when it comes to effectively handling unpredictable or unfore-
+seen situations. For example, Kazhoyan et al. [13] demonstrated
+that an AI-controlled robot required 45 minutes to independently
+complete a table setting task, indicating the ongoing struggle
+of AI in performing tasks without human intervention. Conse-
+quently, most robotic applications involve human-operated or
+supervised robots, where a human operator provides superior
+situational awareness, logic, and problem-solving abilities. In
+the past, several robot control architectures have been developed
+to facilitate human interaction with partially autonomous robots.
+This design approach, known as “shared control,” has been
+primarily employed in various scenarios such as remote robot
+operation in space or undersea exploration [14], [15], aerial
+robotics [16], and surgical robotics [17].
+Recently, machine learning techniques have advanced sig-
+niﬁcantly, and learning from demonstration (LfD) has emerged
+as a promising approach for training robot motions based on
+expert demonstrations. LfD involves learning expert behaviors
+during task execution and utilizing them to assist non-experts
+in performing similar tasks. This technique has also found
+applications in shared control. For instance, Luo et al. predicted
+an operator’s actions using an autoregressive (AR) model and
+guided the predicted end-effector trajectory through haptic feed-
+back, enabling smooth teleoperation [18]. Moreover, there have
+been attempts to model expert actions probabilistically, allowing
+for dynamic adjustment of system intervention based on uncer-
+tainty [19]. In their work, the end-effector trajectories performed
+by an expert were learned as a probability distribution, and the
+Authorized licensed use limited to: Seoul National University. Downloaded on September 07,2026 at 11:16:05 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 3 =====
+HARA et al.: UNCERTAINTY -AW ARE HAPTIC SHARED CONTROL WITH HUMANOID ROBOTS FOR FLEXIBLE OBJECT MANIPULA TION 6437
+Fig. 1. Overall view of the proposed system.
+intensity of haptic guidance was adjusted based on the learned
+trajectory’s variance. Furthermore, efforts have been made to
+probabilistically estimate human intent [20]. This research uti-
+lized a recursive Bayesian ﬁlter to handle uncertainty in intent
+estimation, enabling dynamic adaptation of the behavior of the
+system in response to uncertainty, thereby facilitating smooth
+shared control. Similarly, in [21], Gaussian mixture models
+(GMMs) were employed to learn the trajectories performed by
+an expert, which were then used to generate haptic guidance,
+assisting in the peg-in-hole task.
+While these approaches have primarily focused on generating
+haptic guidance using robot poses and expert control inputs,
+they have not fully exploited complex sensor information such
+as cameras. However, with the recent advancements in deep
+learning techniques, it has become possible to leverage such
+sensor information in haptic shared control. The most relevant
+research to our work is presented in Farraj et al. [9].I nt h i s
+method, point cloud scans of all objects within the camera
+image are generated, creating graspable object data. Learning
+is then performed to determine which parts of the graspable
+object should be grasped, and guidance for object grasping is
+provided based on the learned results. When the operator is
+away from the object, only haptic feedback related to the danger
+zone is provided, while entering a predeﬁned distance triggers
+feedback to guide the operator to the nearest appropriate object.
+This approach has achieved approximately a 31% reduction
+in total trajectory length and approximately a 23% reduction
+in grasping completion time compared to conventional control
+methods, speciﬁcally human-only teleoperation. While this ap-
+proach incorporates sensor-based guidance generation, it does
+not consider uncertainty in the inference results.
+III. P ROPOSED METHOD
+A. Overall View of the Proposed System
+Fig. 1 shows an overall view of the proposed system which
+consists of the following four elements:
+r Haptic device: A controller operated by the operator. The
+end-effector of the robot moves in coordination with the
+XYZ coordinates indicated by the controller. Additionally,
+the controller contains motors that allow it to provide haptic
+guidance to the operator.
+r An upper-body humanoid robot.
+r A camera attached to the chest of the robot and captures
+the surface of the table.
+r Neural Network: Predicts the next posture of a robot from
+its current posture and camera image, and provides haptic
+guidance to the haptic device.
+The haptic devices produce a four-dimensional vector p =
+(x,y,z,o ), where the ﬁrst three values correspond to the end-
+effector coordinates and the fourth value indicates whether the
+gripper attached to the robot arm is open or closed. The gripper’s
+state, denoted as o, is typically represented by a binary value.
+However, for compatibility with other dimensions that employ
+real values, it is expressed as a real value. When the gripper is
+open,o takes the value 1, and when it is closed,o takes the value
+−1. Herein, we refer to this vector p as the position information
+vector. The robot arm operates in conjunction with the haptic
+device. Additionally, an RGB image of size 144× 144 and a
+depth image of size 144× 144 are provided from a camera
+installed on the chest of the robot (hereafter, we refer to the
+concatenated four-channel image of RGB and depth images as
+I). The neural network consists of a DCAE, a long short-term
+memory (LSTM), and a fully connected layer. The DCAE
+performs dimensionality reduction by converting the image I
+into a feature vector f . The position information vector at time
+t, pt, and the image feature vector f t are concatenated to form
+the visuo-motor vector vt =( pt,f t) which is provided to the
+LSTM. Then, the LSTM predicts the visuo-motor vector at time
+t +1 , ˆvt+1 =( pt+1,f t+1). Finally, the haptic device provides
+haptic guidance according to ˆvt+1 to assist remote operation of
+the robot. As described in the following subsection, the strength
+of the haptic guidance is dynamically adjusted based on the
+conﬁdence of the LSTM to achieve smooth guidance without
+inhibiting human operation.
+B. Conﬁdence estimation of Neural Network Inference
+In traditional time series prediction using a general LSTM,
+the evaluation of the reliability of the predicted value is difﬁ-
+cult because the value is inferred deterministically. To address
+this issue, this study models visuo-motor vectors vt at time
+t as a random variables that follows the following Gaussian
+distribution:
+ˆvt ∼N
+(ˆvt|μv,t,σ2
+v,t
+)
+, (1)
+whereμv,t andσ2
+v,t are the mean and the variance ofvt, respec-
+tively. Fig.2 conceptually illustrates the time-series prediction of
+the proposed method. The solid black line represents the mean
+value of the prediction μ, and the 3σrange of the prediction
+is shown around the prediction value using the predicted stan-
+dard deviation σ. The value of the Gaussian distribution using
+the standard deviation of the prediction value σis treated as
+the conﬁdence level. If the variance of the prediction value is
+large, the conﬁdence level is small, and vice versa.
+Authorized licensed use limited to: Seoul National University. Downloaded on September 07,2026 at 11:16:05 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 4 =====
+6438 IEEE ROBOTICS AND AUTOMATION LETTERS, VOL. 8, NO. 10, OCTOBER 2023
+Fig. 2. Conceptual diagram of time-series prediction using the proposed
+method.
+The following negative log likelihood is used for the loss
+function:
+L
+(
+μw,w,σ2
+w
+)
+= 1
+N
+N∑
+i=1
+1
+2
+{
+log(σ2
+w,i)+ (μw,i −wi)2
+σ2
+w,i
+}
+,
+(2)
+where, μw and σ2
+w are the mean and variance of the predicted
+values outputted by the LSTM respectively, and,w is the ground
+truth signal. This study employs human demonstrations as the
+ground truth signal to facilitate imitation learning. The mean
+squared error (MSE) frequently used in machine learning cor-
+responds to (2) when σ2
+w = E (where E is a vector with N
+elements that are all 1). With MSE, a neural network can reduce
+the loss only by adjusting the parameters such that the predicted
+value μw is closer to the ground truth signal w. In contrast,
+the loss function used in this study, (2), allows for the reduction
+of loss by increasing σ2
+w when the predicted value μw cannot
+be brought closer to the ground truth signal w. Therefore, by
+learning, the parameters reduce the loss and the predictions
+of the LSTM are naturally adjusted to increase the variance
+when the prediction is difﬁcult. This allows us to determine the
+conﬁdence in the prediction results from the variance value, and
+guidance force can be reduced when the variance is large and
+increased when the variance is small. Note that, in this letter,σ2
+v
+is assumed to be a diagonal matrix.
+C. Neural Network Architecture
+1) Deep Convolutional Autoencoder (DCAE): We use the
+encoder in the DCAE to reduce the spatial resolution of the
+image and extract features. The DCAE is a type of autoencoder
+composed of an encoder and a decoder. By training it to ensure
+that the input to the encoder and the output from the decoder are
+the same, the intermediate layers can organize image features
+in a self-supervised manner. This enables the generation of an
+encoder that can compress dimensions with only the unlabeled
+image data.
+The input image for the DCAE is a 144× 144 image I that
+combines RGB and depth images into a four-channel image. The
+encoder consists of six layers: four convolutional layers each
+with a 2D convolutional layer, batch normalization layer, and
+maximum value pooling layer, and two fully connected layers
+with a ReLU activation layer. The output of the encoder is a
+128-dimensional feature vector f . Similarly, the decoder con-
+sists of six layers: two fully connected layers and four transpose
+convolutional layers, each with a 2D transpose convolutional
+layer and a batch normalization layer. The output of the decoder
+is a 144× 144 four-channel image ˆI that combines RGB and
+depth images. The DCAE is pre-trained to ensure that the input
+image to the encoder can be reconstructed by the decoder.
+2) Long Short-Term Memory (LSTM): We predict the next
+time-step image feature vector and position information vector
+(i.e., visuo-motor vector) using LSTM. LSTM is a type of
+recurrent neural network that can perform time-series predic-
+tion using long-term data. The reasons for adopting LSTM
+are twofold: Firstly, the author group has prior experience in
+using LSTM for robot control [22]. And secondly, LSTM is
+well-suited for generating dynamic haptic feedback as it can
+generate predictions sequentially. The input to the LSTM is a
+132-dimensional visuo-motor vector v =( p, f ), which com-
+bines a four-dimensional position information vector p and a
+128-dimensional image feature vector f obtained by passing a
+camera image I through the encoder. Given the input vt,t h e
+internal activation values ht, and cell state ct at time-step t,
+the LSTM generates 500-dimensional internal activation values
+ht+1 and cell state ct+1 as follows:
+(ht+1,ct+1)=L S T M (vt,ht,ct). (3)
+The internal activation values ht+1 are then input to a fully
+connected layer:
+(
+μv,t+1,σ2
+v,t+1
+)
+=F c (ht+1), (4)
+which outputs two 132-dimensional vectors μv,t+1 =( μp,t+1,
+μf ,t+1) and σ2
+v,t+1 =( σ2
+p,t+1, σ2
+f ,t+1) each representing the
+mean and variance of the next visuo-motor vectorrespectively.
+D. Haptic Guidance Generation
+To ensure smooth haptic guidance and minimize errors in
+the actions of the operator, the proposed approach utilizes a
+haptic device to present haptic guidance that aligns with the
+predicted trajectory of the robot’s end-effector. The method takes
+into account the mean and variance values obtained from the
+LSTM and determines the strength of the haptic guidance by
+applying the following equation:
+F t(xt,μx,t,σt)= 1√
+2σt
+(
+1−exp
+(
+−
+√
+2|xt −μx,t|
+σt
+))
+,
+(5)
+whereF t is the haptic guidance presented at timet,xt is the end-
+effector coordinate,μx,t is the predicted end-effector coordinate
+(i.e., the predicted position vector μp,t without gripper state),
+and σ2
+t is the conﬁdence of the prediction. The value of σ2
+t is
+determined by setting a lower limit with a hyperparameter σ2
+min
+relative to the average prediction variance σ2
+f ,t for the image
+feature vector at time t as follows:
+σ2
+t =m a x
+(
+1
+N
+N∑
+i=1
+σ2
+f ,t,i,σ2
+min
+)
+. (6)
+The hyperparameter σ2
+min determines the maximum value of
+guidance provided by the neural network and plays a crucial role
+Authorized licensed use limited to: Seoul National University. Downloaded on September 07,2026 at 11:16:05 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 5 =====
+HARA et al.: UNCERTAINTY -AW ARE HAPTIC SHARED CONTROL WITH HUMANOID ROBOTS FOR FLEXIBLE OBJECT MANIPULA TION 6439
+in determining the balance between human control and neural
+network autonomy in the overall system. Ifσ2
+min is set too small, it
+can lead to strong feedback that contradicts the intended human
+actions, thereby negatively affecting the system’s operability.
+On the other hand, if σ2
+min is set too large, it results in a lack
+of feedback, similar to having no guidance at all, leading to
+longer task execution times. In our study, we explored different
+values forσ2
+min and selected those that appeared to strike a good
+balance between human guidance and neural network auton-
+omy. Although we acknowledge the importance of choosing an
+appropriate σ2
+min value, our empirical ﬁndings suggest that it is
+not excessively sensitive and does not require ﬁne-tuning to a
+great extent.
+IV . EXPERIMENT
+A. Experimental Setup
+The experiment utilized the upper body humanoid robot Nex-
+tage OPEN from Kawada Robotics Corporation. The arms of
+the robot had 6-DoF; however, due to constraints on the freedom
+of the haptic device, we controlled only the three-dimensional
+spatial position with ﬁxed end-effector rotation. The 3D Systems
+Touch, a pen-type haptic device capable of providing haptic
+feedback in 3-DoF of joint position, was used by the operator to
+manipulate the robot. It should be noted that if a haptic feedback
+device with 6 DoF, such as Virtuose 6D, were employed, it
+would be possible to easily incorporate haptic guidance along the
+rotational axis by including the rotational axis as a regression
+target for LSTM. An Intel RealSense Depth Camera 455 was
+installed near the chest of the robot for camera feedback. The
+EZGripper from SAKE Robotics was used as the gripper. To
+examine the effects of stiffness of ﬂexible objects, a commer-
+tially available blue towel with dimensions of 20 cm × 20.5 cm
+and a red silk fabric handkerchief with dimensions of 23 cm
+× 23 cm were used. The desk was a commercially available
+one, and a black cloth was used to create a black background
+when viewed through the camera in the workspace. The use of a
+black cloth was to reduce reﬂections from ﬂuorescent lights and
+similar sources. We believe that as long as the cloth used has low
+reﬂectivity and is not black, it would not affect the effectiveness
+of the proposed method.
+B. Benchmark Task
+The proposed method is evaluated through a cloth folding
+task in which a cloth placed on the desk is folded in half using a
+remote controlled robot end-effector, as well as a cloth unfolding
+task in which a cloth placed on the desk is unfolded that has
+been folded in half. In the folding task, the robot end-effector
+is ﬁrst moved to the vicinity of the cloth, and then the cloth is
+grasped using the gripper. On the other hand, in the unfolding
+task, similar to the folding task, the robotic arm is moved
+close to the cloth, and the gripper is used to grasp one end of
+the cloth. The robot arm is then operated to unfold the cloth.
+The operator remotely controls the robot end-effector using a
+two-dimensional image from a camera displayed on a monitor.
+In this study, the task was performed using only the right arm
+Fig. 3. Cloth placement in the experiment. The blue rectangle indicates the
+ﬁeld of view of the robot, and the white rectangles indicate the six cloth
+placement locations.
+of the robot. The placement of the cloch was divided into six
+locations in two directions horizontally and vertically, creating
+a total of six areas within the range of motion of the robot arm.
+The cloch placement is shown in Fig. 3. In the experiment, we
+focused on three task and cloth object combinations: folding the
+blue towel, folding the red handkerchief, and unfolding the red
+handkerchief.
+C. Evaluation Metrics
+In this study, three metrics were adopted for experimental
+evaluation: task execution time and cloth folding/unfolding ac-
+curacy, and National Aeronautics and Space Administration’s
+task load index (NASA-TLX). For task execution time, the
+movement start time of the robot arm was set as 0 s, and the end
+time was when the robot arm returned to its initial position after
+folding/unfolding the cloth. The folding/unfolding accuracy is
+an indicator of the accuracy in achieving the desired half-fold
+and unfold states. The deﬁnition of accuracy is given as follows:
+P =1 − 2Sm −S
+S (7)
+where P represents the folding/unfolding precision, S and Sm
+represent the area of the unfolded and folded cloth, respectively.
+When the cloth is completely folded, Sm equals half of S;
+therefore,P equals 1. The cloth area was calculated by extracting
+the cloth region using OpenCV and counting the number of
+pixels within the region.
+In order to assess workload, the NASA-TLX survey was
+utilized. This survey measures workload across six dimensions,
+namely: 1) mental demand, 2) physical demand, 3) temporal
+demand, 4) performance, 5) effort, and 6) frustration. Mental
+demand refers to the level of mental or perceptual activity
+needed, physical demand pertains to the degree of physical
+activity required, temporal demand indicates the perceived time
+pressure, performance captures the individual’s self-evaluation
+of their task success, effort represents the mental and physical
+exertion necessary for task completion, and frustration describes
+the emotional state of the participant during the task, encompass-
+ing feelings of insecurity, discouragement, irritation, stress, or
+annoyance. Each dimension is evaluated on a scale of 0 to 100,
+with increments of 5 points. Lower scores are considered favor-
+able for each dimension. In simpler terms, lower scores indicate
+that participants perceive lower levels of mental, physical, and
+Authorized licensed use limited to: Seoul National University. Downloaded on September 07,2026 at 11:16:05 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 6 =====
+6440 IEEE ROBOTICS AND AUTOMATION LETTERS, VOL. 8, NO. 10, OCTOBER 2023
+temporal demands, higher task performance, reduced effort for
+task execution, and decreased frustration.
+D. Training Data Collection
+For each of the three combinations of tasks and cloth ob-
+jects mentioned earlier (folding the blue towel, folding the red
+handkerchief, unfolding the red handkerchief), we collected 300
+samples of training data (50 samples for each of the six initial
+positions of the cloth). For the folding task with the blue towel,
+two individuals shared the data collection, with one person
+collecting data for positions 1 to 3 in Fig. 3, and the other was in
+charge of positions 4 to 6. The remaining data was collected by
+one person. Each trial consisted of the robot arm moving from
+its initial position to fold or unfold the cloth, and then returning
+to its initial position. Throughout the data collection process, the
+operators monitored the robot, rather than using a monitor. This
+was done to minimize the effects of dimensional information
+loss or feedback delay in the collection of the training data. The
+data was recorded at 10 frames per second.
+E. Neural Network Training
+We pre-trained the DCAE using the collected teacher data. We
+used Adam as the optimizer with a learning rate of α=0 .0005,
+exponential decay rates for the ﬁrst and second moments of
+gradients ofβ1 =0 .9,β2 =0 .999. The training was performed
+using mini-batch learning with 400 epochs. After extracting
+image features using the pre-trained DCAE to obtain the visuo-
+motor vector, we trained the LSTM. We again used Adam as the
+optimizer and trained using mini-batch learning. The parameter
+αwas set to 0.001, while the other parameters were the same as
+t h o s ei nD C A E .
+F . Experimental Results
+In the experiment, three patterns were tested: (A) human-only
+operation, (B) haptic shared control with a constant haptic
+guidance strength without considering the prediction conﬁdence
+of the neural network, analogous to the conventional method[9],
+and (C) proposed haptic shared control which dynamically
+adjusts the haptic guidance strength based on the prediction
+conﬁdence of the neural network. The minimum variance σ2
+min
+in (6) was set to 0.05. For pattern (B), σ2
+t = σ2
+min was set
+throughout the experiment.
+1) Preliminary Experiment: First, to verify the effectiveness
+of the proposed method, we conducted an experiment with one
+of the individuals involved in the training data collection serving
+as the operator.
+We performed the cloth folding/unfolding task 16 times under
+each condition. The initial position of the cloth was randomly
+selected for each of the 16 trials. Additionally, all experiments
+were conducted by the same person. Table I lists the task
+completion time and accuracy for each condition. The proposed
+method demonstrated the fastest task execution time without
+deteriorating accuracy.
+TABLE I
+TIME REQUIRED TO CLOTH FOLDING /UNFOLDING AND ACCURACY
+TABLE II
+TOWEL FOLDING TIME AND ACCURACY WHEN PLACING THE TOWEL IN A
+POSITION NOT INCLUDED IN THE TRAINING DATA
+Additionally, an attempt was made to assess the performance
+by solely relying on the neural network without human interven-
+tion. Nevertheless, even though the robot managed to approach
+the fabric successfully, it encountered difﬁculties in grasping
+it with precision, resulting in an inability to complete the task
+accurately. It is worth noting that our neural network is explicitly
+developed for cooperation with a human operator and is not
+meant for complete automation. While researchers have reported
+successful towel folding using solely the neural network[12],t h e
+achieved success rate was 77.8%, emphasizing the importance
+of haptic shared control.
+2) Robustness to Unseen Situation: Furthermore, we evalu-
+ated the task execution time and accuracy when the towel was
+placed in locations not included in the training data. Speciﬁcally,
+we excluded the case where the towel was placed in position 3 in
+Fig. 3, retrained the neural network, and performed the folding
+task with the towel placed in position 3 in Fig. 3. The results are
+shown in Table II. Similar to the previous experiment, using the
+proposed method (C) has successfully reduced the task execution
+time. This indicates that the proposed method is robust even for
+unknown situations.
+3) Effectiveness of the Proposed Method on Inexperienced
+Operators: In order to determine whether the time reduction
+effect of the proposed method can be observed by operators
+with limited experience in robot operation, we conducted towel
+folding tasks using the robot with ﬁve individuals who were
+not involved in the data acquisition for training. For this ex-
+periment, we utilized the same neural network used in Sec-
+tion IV -F2, and positioned the towel at position 3 in Fig. 3,
+which was not included in the training data. The results of the
+experiment are presented in Table III. Since all ﬁve operators
+were inexperienced in robot operation, the task execution times
+were generally longer compared to the results shown in Ta-
+ble I. However, similar to the ﬁndings in Table I, it became
+Authorized licensed use limited to: Seoul National University. Downloaded on September 07,2026 at 11:16:05 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 7 =====
+HARA et al.: UNCERTAINTY -AW ARE HAPTIC SHARED CONTROL WITH HUMANOID ROBOTS FOR FLEXIBLE OBJECT MANIPULA TION 6441
+TABLE III
+TOWEL FOLDING TIME AND ACCURACY BY INEXPERIENCED OPERA TORS
+Fig. 4. Results of NASA-TLX.
+evident that the proposed method (C) achieved the shortest
+task execution time. This conﬁrms that the proposed method
+is effective even for operators who are not proﬁcient in robot
+operation.
+Fig. 4 displays box plots depicting the scores assigned by ﬁve
+operators to each item of the NASA-TLX. The introduction of
+the proposed method has resulted in a slight increase (deterio-
+ration) in mental, physical, and temporal demand. Conversely,
+performance, effort, and frustration exhibit improvement as a
+result of the proposed method. Notably, effort has shown a sig-
+niﬁcant enhancement, indicating that the perceived level of effort
+required for task execution has been reduced by the proposed
+method.
+V. D ISCUSSION
+A ss h o w ni nT a b l eI, the proposed haptic-shared control (C)
+reduced task completion time by 31.4% and 24.7% on average
+compared to (A) and (B), respectively. A signiﬁcant difference
+was observed between (A) and (C) at a signiﬁcance level of
+p =0 .05. Additionally, (C) exhibited smaller variance in task
+execution time compared to (A) or (B), indicating that the haptic
+guidance can reduce the variance in task execution time.
+Regarding the towel folding precision, improvements of 1.5%
+and 3.6% were observed when compared to (A) and (B), respec-
+tively. A signiﬁcant difference were found between (B) and (C)
+in the folding towel task, as well as between (A) and (B) in the
+unfolding handkerchief task at a signiﬁcance level of p =0 .05.
+However, no signiﬁcant difference was found for other combi-
+nations. One possible explanation of the improved accuracy in
+the task execution is the inclusion of task execution accuracy
+in the training data. The training data for towel folding had a
+folding accuracy of 96.6%, demonstrating precision in folding
+actions. Another factor is the information asymmetry between
+the operator and the neural network. The operator relied on visual
+feedback without depth information, while the neural network
+Fig. 5. Time variation of variance for a sequence and a camera image attached
+to the chest of the robot. At point A, shown in blue, the variance is low, the
+prediction is made with high conﬁdence, and the haptic guidance is presented
+with high intensity. In contrast, at orange point B, the variance is high. Therefore,
+the prediction is made with low conﬁdence and the haptic guidance is presented
+with weak intensity.
+Fig. 6. Impact of interference on predicted variance. The gray shading indi-
+cates the times at which the noise and rectangle interference were introduced.
+could infer depth information. The collaborative interaction
+between the operator and the neural network compensated for
+each other’s limitations, enabling precise object manipulation.
+Fig. 5 shows an example of the temporal evolution of the
+predictive variance in one sequence and the image captured by
+the chest-mounted camera. The predictive variance rises sharply
+when the towel begins to fold. This is attributed to the fact that
+the towel is hidden by the gripper of the robot, making prediction
+difﬁcult. As mentioned before, the minimum value of variance is
+clipped atσ2
+min. Although clipping does not occur within speciﬁc
+time intervals, it tends to occur when the robot starts moving
+from the initial pose and immediately after grasping the towel,
+which corresponds to poses with a high occurrence frequency
+in the training data.
+Fig. 6 presents an examination of the reliability of the pre-
+diction of the neural network. The black line represents the
+temporal ﬂuctuation of predicted variance of joint angles, where
+higher variance indicates decreased reliability of the neural
+network. The green, blue depict changes in variance in predic-
+tions when uniform noise was added to the pose of the robot
+and image inputs, respectively. Further, the red line represents
+variance changes in predictions when an image with a red
+rectangle overlaying the towel was presented, effectively con-
+cealing the towel from the neural network. The gray shading
+indicates the times at which the noise and rectangle interference
+Authorized licensed use limited to: Seoul National University. Downloaded on September 07,2026 at 11:16:05 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 8 =====
+6442 IEEE ROBOTICS AND AUTOMATION LETTERS, VOL. 8, NO. 10, OCTOBER 2023
+were introduced. Samples of interferenced images are also pro-
+vided. The results indicate that the proposed method yields high
+predicted variances as expected in situations where interference
+stimuli make inference more susceptible to failure, indicating
+that there is no sudden increase in guidance force. Additionally,
+adding noise to the image increases predicted variance, likely
+due to the higher dimensionality of the image feature and dom-
+inant inﬂuence on the prediction of the neural network.
+Additionally, the time taken to fold towels was measured
+when the operator directly manipulated the robot while visually
+observing it, rather than using the monitor. The results revealed
+that when the robot was visible, the folding time was approx-
+imately half that of viewing through a screen, with the towel
+folding completed in about 6 seconds. This can be attributed
+to the limitations of depth information and the inability to
+freely change perspectives when viewing through the monitor.
+It is anticipated that future advancements, such as combining
+the proposed method with technologies like VR, could further
+enhance operability.
+The results in Table III conﬁrm the effectiveness of the pro-
+posed method for inexperienced operators in robot operation.
+Speciﬁcally, when compared to (B), which is analogous to the
+conventional methods [9], the proposed method demonstrated
+a notable 17.1% reduction in the time required for folding
+towels. T-tests showed no signiﬁcant difference in task execution
+accuracy but a signiﬁcant reduction in execution time at a sig-
+niﬁcance level ofp =0 .05, indicating that the proposed method
+effectively decreases task execution time without compromising
+accuracy.
+Upon analyzing the NASA-TLX scores presented in Fig. 4,
+it becomes evident that there is an increase in mental workload
+in (B) and (C). This rise can be attributed to the requirement
+of collaboration with the neural network for participants in (B)
+and (C), unlike in (A) where they worked independently. On
+the other hand, performance has demonstrated improvement
+in both (B) and (C) compared to individual operation in (A),
+indicating that subjective performance is enhanced when haptic
+guidance is provided. It might be possible to explore haptic
+guidance presentations that alleviate the escalation in mental,
+physical, and temporal demands by tailoring the presentation
+method according to individual preferences.
+VI. C ONCLUSION
+We proposed a haptic shared control system that dynamically
+adjusted the haptic guidance intensity based on the neural net-
+work conﬁdence. Using the cloth folding/unfolding task as an
+example, we compared three scenarios: operator-only control,
+the conventional haptic shared control with a constant intensity,
+and the proposed method. The experimental results showed the
+proposed method reduced the task execution time by 14.5% and
+17.1% compared to the operator-only and the existing haptic
+shared control system, respectively, highlightning the impor-
+tance of dynamically adjusting the haptic guidance based on the
+uncertainty of neural network inference.
+REFERENCES
+[1] K. Kawaharazuka, T. Ogawa, J. Tamura, and C. Nabeshima, “Dynamic
+manipulation of ﬂexible objects with torque sequence using a deep neural
+network,” in Proc. IEEE Int. Conf. Robot. Automat., 2019, pp. 2139–2145.
+[2] K. Kase, K. Suzuki, P . -C. Y ang, H. Mori, and T. Ogata, “Put-in-box task
+generated from multiple discrete tasks by aHumanoid robot using deep
+learning,” in Proc. IEEE Int. Conf. Robot. Automat., 2018, pp. 6447–6452.
+[3] N. Saito, N. B. Dai, T. Ogata, H. Mori, and S. Sugano, “Real-time liquid
+pouring motion generation: End-to-end sensorimotor coordination for
+unknown liquid dynamics trained with deep neural networks,” in Proc.
+IEEE Int. Conf. Robot. Biomimetics , 2019, pp. 1077–1082.
+[4] T.-C. Lin, A. U. Krishnan, and Z. Li, “Intuitive, efﬁcient and ergonomic
+tele-nursing robot interfaces: Design evaluation and evolution,” ACM
+Trans. Hum.-Robot Interact., vol. 11, no. 3, pp. 1–41, Jul. 2022.
+[5] L. Kaufman, Sight and Mind: An Introduction to Visual Perception .N e w
+Y ork, NY , USA: Oxford, 1974.
+[6] C. Ware and J. Rose, “Rotating virtual objects with real handles,”
+ACM Trans. Computer-Hum. Interact. , vol. 6, no. 2, pp. 162–180,
+Jun. 1999.
+[7] S. Zhai and P . Milgram, “Quantifying coordination in multiple DOF
+movement and its application to evaluating 6 DOF input devices,” inProc.
+SIGCHI Conf. Hum. Factors Comput. Syst. , 1998, pp. 320–327.
+[8] D. A. Abbink and M. Mulder, “Haptic shared control: Smoothly shift-
+ing control authority?,” Cogn., Technol. Work , vol. 14, pp. 19–28,
+2011.
+[9] F. Abi-Farraj, C. Pacchierotti, O. Arenz, G. Neumann, and P . R. Giordano,
+“A haptic shared-control architecture for guided multi-target robotic grasp-
+ing,” IEEE Trans. Haptics, vol. 13, no. 2, pp. 270–285, Apr./Jun. 2020.
+[10] M. Bojarski et al., “End to end learning for self-driving cars,” in Proc.
+NIPS Deep Learn. Symp. , 2016, pp. 1–9.
+[11] H. Xu, Y . Gao, F. Y u, and T. Darrell, “End-to-end learning of driving
+models from large-scale video datasets,” in Proc. IEEE Conf. Conput. Vis.
+Pattern Recognit., 2017, pp. 2174–2182.
+[12] P .-C. Y ang, K. Sasaki, K. Suzuki, K. Kase, S. Sugano, and T. Ogata,
+“Repeatable folding task by humanoid robot worker using deep learning,”
+IEEE Robot. Automat. Lett. , vol. 2, no. 2, pp. 397–403, Apr. 2017.
+[13] G. Kazhoyan, S. Stelter, F. K. Kenfack, S. Koralewski, and M. Beetz, “The
+robot household marathon experiment,” in Proc. IEEE Int. Conf. Robot.
+Automat., 2021, pp. 9382–9388.
+[14] A. Douglas and H. Xu, “Real-time shared control system for space teler-
+obotics,” in Proc. Int. Conf. Intell. Robots Syst. , 1993, pp. 2117–2122.
+[15] G. Brantner and O. Khatib, “Controlling Ocean One: Human–robot col-
+laboration for deep-sea manipulation,” J. Field Robot. , vol. 38, no. 1,
+pp. 28–51, 2021.
+[16] D. Lee, A. Franchi, H. I. Son, C. Ha, H. H. Bülthoff, and P . R. Giordano,
+“Semiautonomous haptic teleoperation control architecture of multiple
+unmanned aerial vehicles,” IEEE/ASME Trans. Mechatron., vol. 18, no. 4,
+pp. 1334–1345, Aug. 2013.
+[17] P .-L. Y en and T.-H. Ho, “Shared control for a handheld orthopedic sur-
+gical robot,” IEEE Robot. Automat. Lett. , vol. 6, no. 4, pp. 8394–8400,
+Oct. 2021.
+[18] J. Luo, D. Huang, Y . Li, and C. Y ang, “Trajectory online adaption based
+on human motion prediction for teleoperation,” IEEE Trans. Automat. Sci.
+Eng., vol. 19, no. 4, pp. 3184–3191, Oct. 2022.
+[19] F. Abi-Farraj, T. Osa, N. P . J. Peters, G. Neumann, and P . R. Giordano, “A
+learning-based shared control architecture for interactive task execution,”
+in Proc. IEEE Int. Conf. Robot. Automat. , 2017, pp. 329–335.
+[20] S. Jain and B. Argall, “Probabilistic human intent recognition for shared
+autonomy in assistive robotics,”ACM Trans. Hum.-Robot Interact.,v o l .9 ,
+no. 1, pp. 1–23, Dec. 2019.
+[21] C. J. Pérez-del Pulgar, J. Smisek, V . F. Muñoz, and A. Schiele, “Using
+learning from demonstration to generate real-time guidance for haptic
+shared control,” in Proc. IEEE Int. Conf. Syst., Man, Cybern. , 2016,
+pp. 003205–003210.
+[22] H. Ito, K. Y amamoto, H. Mori, and T. Ogata, “Efﬁcient multitask learning
+with an embodied predictive model for door opening and entry with whole-
+body control,” Sci. Robot., vol. 7, no. 65, 2022, Art. no. eaax8177.
+Authorized licensed use limited to: Seoul National University. Downloaded on September 07,2026 at 11:16:05 UTC from IEEE Xplore.  Restrictions apply. 

@@ -1,0 +1,18 @@
+{
+  "trial_id": "14-VP",
+  "subject": 14,
+  "interface": "VP",
+  "frame_count": 6253,
+  "labeled_frames": 0,
+  "unlabeled_frames": 6253,
+  "complete": false,
+  "updated_at": "2026-09-28T15:26:29+09:00",
+  "work_interval_count": 0,
+  "average_work_distance_m": null,
+  "average_work_speed_m_s": null,
+  "total_work_distance_m": 0.0,
+  "move_interval_count": 0,
+  "average_move_distance_m": null,
+  "average_move_speed_m_s": null,
+  "total_move_distance_m": 0.0
+}

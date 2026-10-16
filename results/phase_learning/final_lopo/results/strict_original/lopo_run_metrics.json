@@ -1,0 +1,8666 @@
+[
+  {
+    "held_out_participant": "06",
+    "model_type": "causal_fsm",
+    "model": "Causal FSM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 0.39428810006938875,
+    "samples": 40947,
+    "accuracy": 0.6324761276772413,
+    "balanced_accuracy": 0.35067052470850846,
+    "macro_f1": 0.2860691223584897,
+    "free_motion_f1": 0.2946708463949843,
+    "approach_f1": 0.006369426751592357,
+    "painting_f1": 0.7975219305730962,
+    "retract_f1": 0.045714285714285714,
+    "transition_recall": 0.12727272727272726,
+    "false_transitions": 696,
+    "absolute_delay_mean_ms": 576.9386495357143,
+    "inference_mean_ms_per_frame": 0.007418020857362447,
+    "confusion_matrix": [
+      [
+        2397,
+        243,
+        8703,
+        2496
+      ],
+      [
+        30,
+        4,
+        556,
+        416
+      ],
+      [
+        3,
+        3,
+        23365,
+        2313
+      ],
+      [
+        0,
+        0,
+        286,
+        132
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 724,
+    "matched_transitions": 28
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 18.406210699817166,
+    "samples": 40947,
+    "accuracy": 0.7925122719613158,
+    "balanced_accuracy": 0.43003325411759524,
+    "macro_f1": 0.45601955911650804,
+    "free_motion_f1": 0.6536494653649465,
+    "approach_f1": 0.08895866038723181,
+    "painting_f1": 0.8731367773805206,
+    "retract_f1": 0.20833333333333334,
+    "transition_recall": 0.5,
+    "false_transitions": 460,
+    "absolute_delay_mean_ms": 380.5318070636363,
+    "inference_mean_ms_per_frame": 0.019316570202845454,
+    "confusion_matrix": [
+      [
+        7030,
+        820,
+        5891,
+        98
+      ],
+      [
+        180,
+        85,
+        741,
+        0
+      ],
+      [
+        408,
+        0,
+        25276,
+        0
+      ],
+      [
+        53,
+        0,
+        305,
+        60
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 570,
+    "matched_transitions": 110
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 5.2550619000103325,
+    "samples": 40947,
+    "accuracy": 0.7784941509756514,
+    "balanced_accuracy": 0.47094459393745086,
+    "macro_f1": 0.4588561870715379,
+    "free_motion_f1": 0.6524097456873554,
+    "approach_f1": 0.11703239289446184,
+    "painting_f1": 0.8750563337118958,
+    "retract_f1": 0.19092627599243855,
+    "transition_recall": 0.6954545454545454,
+    "false_transitions": 1396,
+    "absolute_delay_mean_ms": 397.73210117647056,
+    "inference_mean_ms_per_frame": 0.15201736879450978,
+    "confusion_matrix": [
+      [
+        7337,
+        1365,
+        4800,
+        337
+      ],
+      [
+        374,
+        168,
+        445,
+        19
+      ],
+      [
+        912,
+        318,
+        24271,
+        183
+      ],
+      [
+        30,
+        14,
+        273,
+        101
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 1549,
+    "matched_transitions": 153
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "gaussian_hmm",
+    "model": "Gaussian HMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 0.279389499919489,
+    "samples": 40947,
+    "accuracy": 0.7553422717170977,
+    "balanced_accuracy": 0.46725882645033995,
+    "macro_f1": 0.43642312431699687,
+    "free_motion_f1": 0.5861089113523082,
+    "approach_f1": 0.16087962962962962,
+    "painting_f1": 0.8586937365619822,
+    "retract_f1": 0.14001021972406744,
+    "transition_recall": 0.4727272727272727,
+    "false_transitions": 629,
+    "absolute_delay_mean_ms": 464.85452174999995,
+    "inference_mean_ms_per_frame": 0.14625229687121843,
+    "confusion_matrix": [
+      [
+        6291,
+        533,
+        6187,
+        828
+      ],
+      [
+        517,
+        139,
+        293,
+        57
+      ],
+      [
+        779,
+        26,
+        24362,
+        517
+      ],
+      [
+        41,
+        24,
+        216,
+        137
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 733,
+    "matched_transitions": 104
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "gmm_hmm",
+    "model": "GMM-HMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 4.826652599964291,
+    "samples": 40947,
+    "accuracy": 0.7715095122963831,
+    "balanced_accuracy": 0.5291293432177059,
+    "macro_f1": 0.46401697242630213,
+    "free_motion_f1": 0.6425253664036077,
+    "approach_f1": 0.15876641918903484,
+    "painting_f1": 0.8849844374458993,
+    "retract_f1": 0.16979166666666667,
+    "transition_recall": 0.6045454545454545,
+    "false_transitions": 732,
+    "absolute_delay_mean_ms": 448.8153018421052,
+    "inference_mean_ms_per_frame": 0.15771124624497382,
+    "confusion_matrix": [
+      [
+        7124,
+        1853,
+        4051,
+        811
+      ],
+      [
+        365,
+        278,
+        314,
+        49
+      ],
+      [
+        826,
+        353,
+        24026,
+        479
+      ],
+      [
+        21,
+        12,
+        222,
+        163
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 865,
+    "matched_transitions": 133
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "gmm_hsmm",
+    "model": "GMM-HSMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 4.604260300053284,
+    "samples": 40947,
+    "accuracy": 0.7701174689232423,
+    "balanced_accuracy": 0.5312661735230277,
+    "macro_f1": 0.46327304895722143,
+    "free_motion_f1": 0.642860359346152,
+    "approach_f1": 0.15810732833237162,
+    "painting_f1": 0.883629991699714,
+    "retract_f1": 0.16849451645064806,
+    "transition_recall": 0.6090909090909091,
+    "false_transitions": 771,
+    "absolute_delay_mean_ms": 447.41921307462695,
+    "inference_mean_ms_per_frame": 0.18803022687607265,
+    "confusion_matrix": [
+      [
+        7138,
+        1835,
+        4041,
+        825
+      ],
+      [
+        359,
+        274,
+        319,
+        54
+      ],
+      [
+        852,
+        339,
+        23953,
+        540
+      ],
+      [
+        19,
+        12,
+        218,
+        169
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 905,
+    "matched_transitions": 134
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 10.770232900045812,
+    "samples": 40947,
+    "accuracy": 0.7916330866730164,
+    "balanced_accuracy": 0.49798580993894564,
+    "macro_f1": 0.49930788183752617,
+    "free_motion_f1": 0.6341395864106351,
+    "approach_f1": 0.24502297090352224,
+    "painting_f1": 0.883605693199789,
+    "retract_f1": 0.23446327683615822,
+    "transition_recall": 0.4,
+    "false_transitions": 139,
+    "absolute_delay_mean_ms": 404.8706893749999,
+    "inference_mean_ms_per_frame": 0.24913705521815352,
+    "confusion_matrix": [
+      [
+        6869,
+        1279,
+        5490,
+        201
+      ],
+      [
+        383,
+        320,
+        303,
+        0
+      ],
+      [
+        528,
+        7,
+        25143,
+        6
+      ],
+      [
+        45,
+        0,
+        290,
+        83
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 227,
+    "matched_transitions": 88
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "causal_fsm",
+    "model": "Causal FSM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 0.2514458999503404,
+    "samples": 54177,
+    "accuracy": 0.5732690994333389,
+    "balanced_accuracy": 0.2964430630871396,
+    "macro_f1": 0.2656177494956946,
+    "free_motion_f1": 0.15384615384615385,
+    "approach_f1": 0.0930232558139535,
+    "painting_f1": 0.7479556186892924,
+    "retract_f1": 0.06764596963337859,
+    "transition_recall": 0.07667731629392971,
+    "false_transitions": 437,
+    "absolute_delay_mean_ms": 644.5021994166667,
+    "inference_mean_ms_per_frame": 0.007253517174390654,
+    "confusion_matrix": [
+      [
+        1347,
+        82,
+        11955,
+        2554
+      ],
+      [
+        96,
+        214,
+        3295,
+        660
+      ],
+      [
+        105,
+        33,
+        29223,
+        2616
+      ],
+      [
+        25,
+        7,
+        1691,
+        274
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 461,
+    "matched_transitions": 24
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 16.086712999967858,
+    "samples": 54177,
+    "accuracy": 0.7131439540764531,
+    "balanced_accuracy": 0.4082229436764771,
+    "macro_f1": 0.4338951861521816,
+    "free_motion_f1": 0.5530485964382735,
+    "approach_f1": 0.2067336089781453,
+    "painting_f1": 0.8232144538764748,
+    "retract_f1": 0.15258408531583265,
+    "transition_recall": 0.4472843450479233,
+    "false_transitions": 1974,
+    "absolute_delay_mean_ms": 402.7424874428571,
+    "inference_mean_ms_per_frame": 0.01905806523135404,
+    "confusion_matrix": [
+      [
+        7329,
+        177,
+        8186,
+        246
+      ],
+      [
+        1617,
+        525,
+        2119,
+        4
+      ],
+      [
+        1283,
+        93,
+        30596,
+        5
+      ],
+      [
+        337,
+        19,
+        1455,
+        186
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 2114,
+    "matched_transitions": 140
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 3.59355829982087,
+    "samples": 54177,
+    "accuracy": 0.6033002934824742,
+    "balanced_accuracy": 0.4730125103218543,
+    "macro_f1": 0.4391445331862126,
+    "free_motion_f1": 0.5440926912048686,
+    "approach_f1": 0.3006742695413302,
+    "painting_f1": 0.7436745610022171,
+    "retract_f1": 0.1681366109964346,
+    "transition_recall": 0.7220447284345048,
+    "false_transitions": 4166,
+    "absolute_delay_mean_ms": 458.14774742920355,
+    "inference_mean_ms_per_frame": 0.1618559831670481,
+    "confusion_matrix": [
+      [
+        9298,
+        2439,
+        2092,
+        2109
+      ],
+      [
+        1447,
+        1806,
+        847,
+        165
+      ],
+      [
+        6978,
+        3256,
+        21133,
+        610
+      ],
+      [
+        517,
+        247,
+        785,
+        448
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 4392,
+    "matched_transitions": 226
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "gaussian_hmm",
+    "model": "Gaussian HMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 0.24750500009395182,
+    "samples": 54177,
+    "accuracy": 0.5867434520183842,
+    "balanced_accuracy": 0.5127773733422868,
+    "macro_f1": 0.4650938721247269,
+    "free_motion_f1": 0.5997006857423665,
+    "approach_f1": 0.2853817504655493,
+    "painting_f1": 0.6542764345001805,
+    "retract_f1": 0.32101661779081136,
+    "transition_recall": 0.5271565495207667,
+    "false_transitions": 1404,
+    "absolute_delay_mean_ms": 446.5149292363635,
+    "inference_mean_ms_per_frame": 0.14595103641860863,
+    "confusion_matrix": [
+      [
+        13424,
+        956,
+        821,
+        737
+      ],
+      [
+        2214,
+        1226,
+        291,
+        534
+      ],
+      [
+        12716,
+        1918,
+        16317,
+        1026
+      ],
+      [
+        477,
+        227,
+        472,
+        821
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 1569,
+    "matched_transitions": 165
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "gmm_hmm",
+    "model": "GMM-HMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 3.4170496000442654,
+    "samples": 54177,
+    "accuracy": 0.5598870369344925,
+    "balanced_accuracy": 0.529156082583411,
+    "macro_f1": 0.43980881153961543,
+    "free_motion_f1": 0.5170712709334025,
+    "approach_f1": 0.31832816961302474,
+    "painting_f1": 0.7075910798736378,
+    "retract_f1": 0.21624472573839665,
+    "transition_recall": 0.610223642172524,
+    "false_transitions": 2067,
+    "absolute_delay_mean_ms": 500.45333060732975,
+    "inference_mean_ms_per_frame": 0.1577873691783206,
+    "confusion_matrix": [
+      [
+        7966,
+        3498,
+        1577,
+        2897
+      ],
+      [
+        731,
+        2620,
+        478,
+        436
+      ],
+      [
+        5883,
+        5733,
+        18927,
+        1434
+      ],
+      [
+        294,
+        345,
+        538,
+        820
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 2258,
+    "matched_transitions": 191
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "gmm_hsmm",
+    "model": "GMM-HSMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 3.3880081998649985,
+    "samples": 54177,
+    "accuracy": 0.5603115713310076,
+    "balanced_accuracy": 0.5292543872721798,
+    "macro_f1": 0.4400112453776606,
+    "free_motion_f1": 0.5165910563836681,
+    "approach_f1": 0.3198482159250872,
+    "painting_f1": 0.708027424386781,
+    "retract_f1": 0.2155782848151062,
+    "transition_recall": 0.6325878594249201,
+    "false_transitions": 2163,
+    "absolute_delay_mean_ms": 516.6846398434343,
+    "inference_mean_ms_per_frame": 0.18871069457509515,
+    "confusion_matrix": [
+      [
+        7971,
+        3477,
+        1585,
+        2905
+      ],
+      [
+        730,
+        2613,
+        489,
+        433
+      ],
+      [
+        5922,
+        5636,
+        18950,
+        1469
+      ],
+      [
+        299,
+        348,
+        528,
+        822
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 2361,
+    "matched_transitions": 198
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 9.603390699950978,
+    "samples": 54177,
+    "accuracy": 0.7524779888144415,
+    "balanced_accuracy": 0.5377780794247429,
+    "macro_f1": 0.5802994631965195,
+    "free_motion_f1": 0.6104006163328197,
+    "approach_f1": 0.4721099434114794,
+    "painting_f1": 0.8473682018244172,
+    "retract_f1": 0.3913190912173618,
+    "transition_recall": 0.536741214057508,
+    "false_transitions": 609,
+    "absolute_delay_mean_ms": 495.8401537321429,
+    "inference_mean_ms_per_frame": 0.251075971353428,
+    "confusion_matrix": [
+      [
+        7923,
+        714,
+        7029,
+        272
+      ],
+      [
+        1164,
+        1752,
+        1323,
+        26
+      ],
+      [
+        712,
+        673,
+        30515,
+        77
+      ],
+      [
+        223,
+        18,
+        1179,
+        577
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 777,
+    "matched_transitions": 168
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "causal_fsm",
+    "model": "Causal FSM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 0.2594346001278609,
+    "samples": 45084,
+    "accuracy": 0.510957324106113,
+    "balanced_accuracy": 0.3239843675824936,
+    "macro_f1": 0.2815964986761188,
+    "free_motion_f1": 0.3717144099919219,
+    "approach_f1": 0.04737575476079889,
+    "painting_f1": 0.6673428334770188,
+    "retract_f1": 0.03995299647473561,
+    "transition_recall": 0.1504424778761062,
+    "false_transitions": 1338,
+    "absolute_delay_mean_ms": 596.5087162941176,
+    "inference_mean_ms_per_frame": 0.00740389494908237,
+    "confusion_matrix": [
+      [
+        2991,
+        75,
+        7295,
+        1576
+      ],
+      [
+        169,
+        51,
+        899,
+        530
+      ],
+      [
+        977,
+        378,
+        19739,
+        9722
+      ],
+      [
+        19,
+        0,
+        408,
+        255
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 1355,
+    "matched_transitions": 17
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 18.12478660000488,
+    "samples": 45084,
+    "accuracy": 0.8291411587259339,
+    "balanced_accuracy": 0.48774962634835684,
+    "macro_f1": 0.5218438079957781,
+    "free_motion_f1": 0.7228177641653906,
+    "approach_f1": 0.2469013386217154,
+    "painting_f1": 0.8985419100817874,
+    "retract_f1": 0.21911421911421908,
+    "transition_recall": 0.6814159292035398,
+    "false_transitions": 974,
+    "absolute_delay_mean_ms": 390.76665450649347,
+    "inference_mean_ms_per_frame": 0.019490271493136122,
+    "confusion_matrix": [
+      [
+        8968,
+        68,
+        2877,
+        24
+      ],
+      [
+        865,
+        249,
+        535,
+        0
+      ],
+      [
+        2638,
+        50,
+        28070,
+        58
+      ],
+      [
+        406,
+        1,
+        181,
+        94
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 1051,
+    "matched_transitions": 77
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 3.421586000127718,
+    "samples": 45084,
+    "accuracy": 0.8053411409812794,
+    "balanced_accuracy": 0.5171068569431855,
+    "macro_f1": 0.5006600667049323,
+    "free_motion_f1": 0.7388308513002889,
+    "approach_f1": 0.26300099370652535,
+    "painting_f1": 0.8858029453616554,
+    "retract_f1": 0.11500547645125958,
+    "transition_recall": 0.7433628318584071,
+    "false_transitions": 2033,
+    "absolute_delay_mean_ms": 441.0501836666666,
+    "inference_mean_ms_per_frame": 0.16680614186852255,
+    "confusion_matrix": [
+      [
+        9972,
+        514,
+        1190,
+        261
+      ],
+      [
+        905,
+        397,
+        322,
+        25
+      ],
+      [
+        3801,
+        428,
+        25834,
+        753
+      ],
+      [
+        379,
+        31,
+        167,
+        105
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 2117,
+    "matched_transitions": 84
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "gaussian_hmm",
+    "model": "Gaussian HMM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 0.3483307999558747,
+    "samples": 45084,
+    "accuracy": 0.7338523644752019,
+    "balanced_accuracy": 0.5718250060138784,
+    "macro_f1": 0.50909174720082,
+    "free_motion_f1": 0.694105532499142,
+    "approach_f1": 0.27297895902547065,
+    "painting_f1": 0.8068674423910562,
+    "retract_f1": 0.2624150548876111,
+    "transition_recall": 0.6460176991150443,
+    "false_transitions": 665,
+    "absolute_delay_mean_ms": 384.043029,
+    "inference_mean_ms_per_frame": 0.15089533981366315,
+    "confusion_matrix": [
+      [
+        11122,
+        231,
+        315,
+        269
+      ],
+      [
+        916,
+        493,
+        176,
+        64
+      ],
+      [
+        7713,
+        1237,
+        21219,
+        647
+      ],
+      [
+        359,
+        2,
+        70,
+        251
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 738,
+    "matched_transitions": 73
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "gmm_hmm",
+    "model": "GMM-HMM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 3.014610599959269,
+    "samples": 45084,
+    "accuracy": 0.743722828497915,
+    "balanced_accuracy": 0.5523744972819264,
+    "macro_f1": 0.4780898915460183,
+    "free_motion_f1": 0.7199007364713417,
+    "approach_f1": 0.257823613086771,
+    "painting_f1": 0.856221932493119,
+    "retract_f1": 0.07841328413284133,
+    "transition_recall": 0.4424778761061947,
+    "false_transitions": 1456,
+    "absolute_delay_mean_ms": 409.0540435600001,
+    "inference_mean_ms_per_frame": 0.1585840564312863,
+    "confusion_matrix": [
+      [
+        8993,
+        1872,
+        470,
+        602
+      ],
+      [
+        669,
+        725,
+        159,
+        96
+      ],
+      [
+        3058,
+        1330,
+        23642,
+        2786
+      ],
+      [
+        327,
+        48,
+        137,
+        170
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 1506,
+    "matched_transitions": 50
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "gmm_hsmm",
+    "model": "GMM-HSMM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 3.13051120005548,
+    "samples": 45084,
+    "accuracy": 0.740484429065744,
+    "balanced_accuracy": 0.5511928431078967,
+    "macro_f1": 0.4761964340963823,
+    "free_motion_f1": 0.7183421020924534,
+    "approach_f1": 0.2543906333155934,
+    "painting_f1": 0.8542925033102974,
+    "retract_f1": 0.07776049766718508,
+    "transition_recall": 0.4778761061946903,
+    "false_transitions": 1514,
+    "absolute_delay_mean_ms": 412.3268751666667,
+    "inference_mean_ms_per_frame": 0.19001290258019335,
+    "confusion_matrix": [
+      [
+        8943,
+        1894,
+        476,
+        624
+      ],
+      [
+        672,
+        717,
+        158,
+        102
+      ],
+      [
+        3027,
+        1322,
+        23549,
+        2918
+      ],
+      [
+        320,
+        55,
+        132,
+        175
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 1568,
+    "matched_transitions": 54
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 10.200953399995342,
+    "samples": 45084,
+    "accuracy": 0.8559134060864164,
+    "balanced_accuracy": 0.5373564460960883,
+    "macro_f1": 0.5860352499992493,
+    "free_motion_f1": 0.7524407252440726,
+    "approach_f1": 0.4624136529865908,
+    "painting_f1": 0.9166223445859275,
+    "retract_f1": 0.21266427718040623,
+    "transition_recall": 0.6106194690265486,
+    "false_transitions": 165,
+    "absolute_delay_mean_ms": 497.3623711449275,
+    "inference_mean_ms_per_frame": 0.25773378582557255,
+    "confusion_matrix": [
+      [
+        8632,
+        46,
+        3217,
+        42
+      ],
+      [
+        726,
+        569,
+        348,
+        6
+      ],
+      [
+        1303,
+        197,
+        29298,
+        18
+      ],
+      [
+        346,
+        0,
+        247,
+        89
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 234,
+    "matched_transitions": 69
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "causal_fsm",
+    "model": "Causal FSM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 0.3031462000217289,
+    "samples": 14159,
+    "accuracy": 0.826400169503496,
+    "balanced_accuracy": 0.3532105255085256,
+    "macro_f1": 0.3823904159010107,
+    "free_motion_f1": 0.4662826160623518,
+    "approach_f1": 0.0,
+    "painting_f1": 0.9007508308374021,
+    "retract_f1": 0.16252821670428894,
+    "transition_recall": 0.075,
+    "false_transitions": 41,
+    "absolute_delay_mean_ms": 587.417565,
+    "inference_mean_ms_per_frame": 0.007236916442276799,
+    "confusion_matrix": [
+      [
+        688,
+        26,
+        1536,
+        13
+      ],
+      [
+        0,
+        0,
+        525,
+        0
+      ],
+      [
+        0,
+        0,
+        10977,
+        85
+      ],
+      [
+        0,
+        0,
+        273,
+        36
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 44,
+    "matched_transitions": 3
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 22.409189499914646,
+    "samples": 14159,
+    "accuracy": 0.9089624973515079,
+    "balanced_accuracy": 0.7069166783827362,
+    "macro_f1": 0.7127873791990945,
+    "free_motion_f1": 0.7925142392188771,
+    "approach_f1": 0.6263846928499497,
+    "painting_f1": 0.9591323051576588,
+    "retract_f1": 0.4731182795698925,
+    "transition_recall": 0.8,
+    "false_transitions": 281,
+    "absolute_delay_mean_ms": 342.07451515625,
+    "inference_mean_ms_per_frame": 0.0337410269083971,
+    "confusion_matrix": [
+      [
+        1948,
+        83,
+        151,
+        81
+      ],
+      [
+        163,
+        311,
+        48,
+        3
+      ],
+      [
+        478,
+        72,
+        10479,
+        33
+      ],
+      [
+        64,
+        2,
+        111,
+        132
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 313,
+    "matched_transitions": 32
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 8.29294509999454,
+    "samples": 14159,
+    "accuracy": 0.8556395225651529,
+    "balanced_accuracy": 0.6699212943623345,
+    "macro_f1": 0.6184490974269573,
+    "free_motion_f1": 0.7048766271614533,
+    "approach_f1": 0.4471243042671614,
+    "painting_f1": 0.9309631301730624,
+    "retract_f1": 0.390832328106152,
+    "transition_recall": 0.75,
+    "false_transitions": 564,
+    "absolute_delay_mean_ms": 363.53118880000005,
+    "inference_mean_ms_per_frame": 0.153826527285394,
+    "confusion_matrix": [
+      [
+        1814,
+        170,
+        167,
+        112
+      ],
+      [
+        184,
+        241,
+        45,
+        55
+      ],
+      [
+        834,
+        139,
+        9898,
+        191
+      ],
+      [
+        52,
+        3,
+        92,
+        162
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 594,
+    "matched_transitions": 30
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "gaussian_hmm",
+    "model": "Gaussian HMM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 0.3098933999426663,
+    "samples": 14159,
+    "accuracy": 0.8392541846175577,
+    "balanced_accuracy": 0.6281653083337678,
+    "macro_f1": 0.5554263254769063,
+    "free_motion_f1": 0.6823821339950372,
+    "approach_f1": 0.3474663908996897,
+    "painting_f1": 0.9354838709677419,
+    "retract_f1": 0.25637290604515656,
+    "transition_recall": 0.675,
+    "false_transitions": 263,
+    "absolute_delay_mean_ms": 427.05133922222217,
+    "inference_mean_ms_per_frame": 0.14814798361964818,
+    "confusion_matrix": [
+      [
+        1650,
+        149,
+        97,
+        367
+      ],
+      [
+        137,
+        168,
+        18,
+        202
+      ],
+      [
+        738,
+        116,
+        9889,
+        319
+      ],
+      [
+        48,
+        9,
+        76,
+        176
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 290,
+    "matched_transitions": 27
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "gmm_hmm",
+    "model": "GMM-HMM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 7.997080900007859,
+    "samples": 14159,
+    "accuracy": 0.8240694964333639,
+    "balanced_accuracy": 0.6803972182326354,
+    "macro_f1": 0.5725354506283533,
+    "free_motion_f1": 0.6656475212928586,
+    "approach_f1": 0.44919786096256686,
+    "painting_f1": 0.9234740213182927,
+    "retract_f1": 0.25182239893969516,
+    "transition_recall": 0.675,
+    "false_transitions": 340,
+    "absolute_delay_mean_ms": 471.44329177777774,
+    "inference_mean_ms_per_frame": 0.16321602515369554,
+    "confusion_matrix": [
+      [
+        1524,
+        265,
+        88,
+        386
+      ],
+      [
+        95,
+        294,
+        28,
+        108
+      ],
+      [
+        664,
+        222,
+        9660,
+        516
+      ],
+      [
+        33,
+        3,
+        83,
+        190
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 367,
+    "matched_transitions": 27
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "gmm_hsmm",
+    "model": "GMM-HSMM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 8.425637099891901,
+    "samples": 14159,
+    "accuracy": 0.8228688466699625,
+    "balanced_accuracy": 0.6808038764662703,
+    "macro_f1": 0.5723267102435844,
+    "free_motion_f1": 0.6657980456026058,
+    "approach_f1": 0.449885233358837,
+    "painting_f1": 0.9221344819334769,
+    "retract_f1": 0.2514890800794176,
+    "transition_recall": 0.675,
+    "false_transitions": 350,
+    "absolute_delay_mean_ms": 414.744658925926,
+    "inference_mean_ms_per_frame": 0.2106891376568155,
+    "confusion_matrix": [
+      [
+        1533,
+        267,
+        89,
+        374
+      ],
+      [
+        94,
+        294,
+        27,
+        110
+      ],
+      [
+        682,
+        218,
+        9634,
+        528
+      ],
+      [
+        33,
+        3,
+        83,
+        190
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 377,
+    "matched_transitions": 27
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 0,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 13.413887899834663,
+    "samples": 14159,
+    "accuracy": 0.9199802245921322,
+    "balanced_accuracy": 0.7475226534071874,
+    "macro_f1": 0.7498992983209095,
+    "free_motion_f1": 0.8265237776289349,
+    "approach_f1": 0.6730103806228374,
+    "painting_f1": 0.9610295777827952,
+    "retract_f1": 0.5390334572490706,
+    "transition_recall": 0.875,
+    "false_transitions": 47,
+    "absolute_delay_mean_ms": 355.0534409428572,
+    "inference_mean_ms_per_frame": 0.2856514301954557,
+    "confusion_matrix": [
+      [
+        1851,
+        130,
+        259,
+        23
+      ],
+      [
+        102,
+        389,
+        22,
+        12
+      ],
+      [
+        260,
+        112,
+        10641,
+        49
+      ],
+      [
+        3,
+        0,
+        161,
+        145
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 82,
+    "matched_transitions": 35
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "causal_fsm",
+    "model": "Causal FSM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 0.326217400142923,
+    "samples": 27813,
+    "accuracy": 0.5489519289540862,
+    "balanced_accuracy": 0.359600288417161,
+    "macro_f1": 0.3543834976653507,
+    "free_motion_f1": 0.37455259207943653,
+    "approach_f1": 0.22500746045956432,
+    "painting_f1": 0.7169454262098907,
+    "retract_f1": 0.10102851191251139,
+    "transition_recall": 0.1891891891891892,
+    "false_transitions": 607,
+    "absolute_delay_mean_ms": 867.6040113809524,
+    "inference_mean_ms_per_frame": 0.009042764177247017,
+    "confusion_matrix": [
+      [
+        1622,
+        113,
+        3082,
+        1421
+      ],
+      [
+        55,
+        377,
+        1141,
+        677
+      ],
+      [
+        660,
+        589,
+        12881,
+        3883
+      ],
+      [
+        86,
+        22,
+        816,
+        388
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 628,
+    "matched_transitions": 21
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 23.56722420011647,
+    "samples": 27813,
+    "accuracy": 0.7986193506633589,
+    "balanced_accuracy": 0.5348494053852162,
+    "macro_f1": 0.5481566071002859,
+    "free_motion_f1": 0.6954925555782174,
+    "approach_f1": 0.433934377771209,
+    "painting_f1": 0.9010373328895547,
+    "retract_f1": 0.16216216216216217,
+    "transition_recall": 0.6396396396396397,
+    "false_transitions": 862,
+    "absolute_delay_mean_ms": 479.29939918309844,
+    "inference_mean_ms_per_frame": 0.013947610831108417,
+    "confusion_matrix": [
+      [
+        5115,
+        126,
+        986,
+        11
+      ],
+      [
+        1085,
+        734,
+        431,
+        0
+      ],
+      [
+        1530,
+        203,
+        16243,
+        37
+      ],
+      [
+        741,
+        70,
+        381,
+        120
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 933,
+    "matched_transitions": 71
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 3.9273901998531073,
+    "samples": 27813,
+    "accuracy": 0.7370654010714414,
+    "balanced_accuracy": 0.6027047938639439,
+    "macro_f1": 0.5672684868548818,
+    "free_motion_f1": 0.6547314578005115,
+    "approach_f1": 0.5219686969639826,
+    "painting_f1": 0.8504383087840659,
+    "retract_f1": 0.24193548387096775,
+    "transition_recall": 0.8108108108108109,
+    "false_transitions": 1848,
+    "absolute_delay_mean_ms": 549.7253268444445,
+    "inference_mean_ms_per_frame": 0.16722981699315476,
+    "confusion_matrix": [
+      [
+        4480,
+        743,
+        736,
+        279
+      ],
+      [
+        482,
+        1384,
+        326,
+        58
+      ],
+      [
+        1948,
+        728,
+        14261,
+        1076
+      ],
+      [
+        537,
+        198,
+        202,
+        375
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 1938,
+    "matched_transitions": 90
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "gaussian_hmm",
+    "model": "Gaussian HMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 0.4099636999890208,
+    "samples": 27813,
+    "accuracy": 0.6368245065257254,
+    "balanced_accuracy": 0.5287712943600555,
+    "macro_f1": 0.5040695599516606,
+    "free_motion_f1": 0.5380048764974027,
+    "approach_f1": 0.3568716780561883,
+    "painting_f1": 0.757837016483335,
+    "retract_f1": 0.3635646687697161,
+    "transition_recall": 0.5315315315315315,
+    "false_transitions": 543,
+    "absolute_delay_mean_ms": 497.2090947118644,
+    "inference_mean_ms_per_frame": 0.1774651206322881,
+    "confusion_matrix": [
+      [
+        5075,
+        261,
+        530,
+        372
+      ],
+      [
+        1478,
+        705,
+        43,
+        24
+      ],
+      [
+        5570,
+        605,
+        11471,
+        367
+      ],
+      [
+        505,
+        130,
+        216,
+        461
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 602,
+    "matched_transitions": 59
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "gmm_hmm",
+    "model": "GMM-HMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 4.397438900079578,
+    "samples": 27813,
+    "accuracy": 0.694135835760256,
+    "balanced_accuracy": 0.643769753103386,
+    "macro_f1": 0.5581672270778515,
+    "free_motion_f1": 0.6406817105886066,
+    "approach_f1": 0.5356695869837297,
+    "painting_f1": 0.8178718029681086,
+    "retract_f1": 0.23844580777096114,
+    "transition_recall": 0.6576576576576577,
+    "false_transitions": 904,
+    "absolute_delay_mean_ms": 640.9730255068494,
+    "inference_mean_ms_per_frame": 0.15895700930562734,
+    "confusion_matrix": [
+      [
+        4060,
+        1200,
+        440,
+        538
+      ],
+      [
+        293,
+        1712,
+        158,
+        87
+      ],
+      [
+        1701,
+        991,
+        12951,
+        2370
+      ],
+      [
+        382,
+        239,
+        108,
+        583
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 977,
+    "matched_transitions": 73
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "gmm_hsmm",
+    "model": "GMM-HSMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 3.982241600053385,
+    "samples": 27813,
+    "accuracy": 0.6935605652033222,
+    "balanced_accuracy": 0.6432101708762654,
+    "macro_f1": 0.5580095647177687,
+    "free_motion_f1": 0.6401008032761065,
+    "approach_f1": 0.536400882445635,
+    "painting_f1": 0.8171798515711353,
+    "retract_f1": 0.2383567215781981,
+    "transition_recall": 0.6576576576576577,
+    "false_transitions": 939,
+    "absolute_delay_mean_ms": 634.6092799863014,
+    "inference_mean_ms_per_frame": 0.19393809730004832,
+    "confusion_matrix": [
+      [
+        4064,
+        1195,
+        442,
+        537
+      ],
+      [
+        293,
+        1702,
+        166,
+        89
+      ],
+      [
+        1719,
+        963,
+        12938,
+        2393
+      ],
+      [
+        384,
+        236,
+        106,
+        586
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 1012,
+    "matched_transitions": 73
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 9.923590200021863,
+    "samples": 27813,
+    "accuracy": 0.7792399237766512,
+    "balanced_accuracy": 0.6074302460076659,
+    "macro_f1": 0.6132861973301654,
+    "free_motion_f1": 0.6777683078738609,
+    "approach_f1": 0.6152057661009067,
+    "painting_f1": 0.8680495032246819,
+    "retract_f1": 0.2921212121212121,
+    "transition_recall": 0.5855855855855856,
+    "false_transitions": 285,
+    "absolute_delay_mean_ms": 551.2977887538462,
+    "inference_mean_ms_per_frame": 0.26507753927653216,
+    "confusion_matrix": [
+      [
+        5169,
+        181,
+        869,
+        19
+      ],
+      [
+        883,
+        1323,
+        44,
+        0
+      ],
+      [
+        2512,
+        483,
+        14940,
+        78
+      ],
+      [
+        451,
+        64,
+        556,
+        241
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 350,
+    "matched_transitions": 65
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "causal_fsm",
+    "model": "Causal FSM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 0.275991200003773,
+    "samples": 25308,
+    "accuracy": 0.5380907223012487,
+    "balanced_accuracy": 0.39598313484037506,
+    "macro_f1": 0.3680380964986929,
+    "free_motion_f1": 0.4905686167304539,
+    "approach_f1": 0.2,
+    "painting_f1": 0.6635906331309627,
+    "retract_f1": 0.11799313613335513,
+    "transition_recall": 0.2,
+    "false_transitions": 597,
+    "absolute_delay_mean_ms": 706.0692780476189,
+    "inference_mean_ms_per_frame": 0.007128963177832044,
+    "confusion_matrix": [
+      [
+        3589,
+        141,
+        5402,
+        1532
+      ],
+      [
+        46,
+        104,
+        307,
+        229
+      ],
+      [
+        288,
+        109,
+        9564,
+        2986
+      ],
+      [
+        45,
+        0,
+        605,
+        361
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 618,
+    "matched_transitions": 21
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 20.126439800020307,
+    "samples": 25308,
+    "accuracy": 0.676623992413466,
+    "balanced_accuracy": 0.44098237938170426,
+    "macro_f1": 0.45537489587385876,
+    "free_motion_f1": 0.7164635341145119,
+    "approach_f1": 0.2981132075471698,
+    "painting_f1": 0.6795034869950436,
+    "retract_f1": 0.12741935483870967,
+    "transition_recall": 0.5428571428571428,
+    "false_transitions": 452,
+    "absolute_delay_mean_ms": 597.2608742280703,
+    "inference_mean_ms_per_frame": 0.032418255094525346,
+    "confusion_matrix": [
+      [
+        9141,
+        106,
+        1344,
+        73
+      ],
+      [
+        218,
+        158,
+        303,
+        7
+      ],
+      [
+        5029,
+        102,
+        7746,
+        70
+      ],
+      [
+        465,
+        8,
+        459,
+        79
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 509,
+    "matched_transitions": 57
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 4.6615422000177205,
+    "samples": 25308,
+    "accuracy": 0.6703809072230125,
+    "balanced_accuracy": 0.5453426337789556,
+    "macro_f1": 0.48188083932303316,
+    "free_motion_f1": 0.765196329591504,
+    "approach_f1": 0.28763183125599234,
+    "painting_f1": 0.7162436997081969,
+    "retract_f1": 0.15845149673643935,
+    "transition_recall": 0.7619047619047619,
+    "false_transitions": 1727,
+    "absolute_delay_mean_ms": 478.89420055,
+    "inference_mean_ms_per_frame": 0.18368197012872567,
+    "confusion_matrix": [
+      [
+        8214,
+        628,
+        1200,
+        622
+      ],
+      [
+        80,
+        300,
+        135,
+        171
+      ],
+      [
+        2174,
+        386,
+        8100,
+        2287
+      ],
+      [
+        337,
+        86,
+        236,
+        352
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 1807,
+    "matched_transitions": 80
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "gaussian_hmm",
+    "model": "Gaussian HMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 0.5003719001542777,
+    "samples": 25308,
+    "accuracy": 0.6193298561719615,
+    "balanced_accuracy": 0.5160561479627043,
+    "macro_f1": 0.46199844326201234,
+    "free_motion_f1": 0.7846996564850061,
+    "approach_f1": 0.3048469387755102,
+    "painting_f1": 0.6357603061570508,
+    "retract_f1": 0.1226868716304823,
+    "transition_recall": 0.5333333333333333,
+    "false_transitions": 494,
+    "absolute_delay_mean_ms": 612.3988549107144,
+    "inference_mean_ms_per_frame": 0.1625050023705667,
+    "confusion_matrix": [
+      [
+        8452,
+        384,
+        826,
+        1002
+      ],
+      [
+        162,
+        239,
+        82,
+        203
+      ],
+      [
+        1969,
+        190,
+        6562,
+        4226
+      ],
+      [
+        295,
+        69,
+        226,
+        421
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 550,
+    "matched_transitions": 56
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "gmm_hmm",
+    "model": "GMM-HMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 4.61903650010936,
+    "samples": 25308,
+    "accuracy": 0.5710447289394658,
+    "balanced_accuracy": 0.5439900827594522,
+    "macro_f1": 0.4393340217674467,
+    "free_motion_f1": 0.762844823107694,
+    "approach_f1": 0.24798464491362762,
+    "painting_f1": 0.6220252912476352,
+    "retract_f1": 0.12448132780082986,
+    "transition_recall": 0.5142857142857142,
+    "false_transitions": 723,
+    "absolute_delay_mean_ms": 516.4572551111111,
+    "inference_mean_ms_per_frame": 0.1628957325689052,
+    "confusion_matrix": [
+      [
+        7342,
+        1036,
+        694,
+        1592
+      ],
+      [
+        44,
+        323,
+        67,
+        252
+      ],
+      [
+        950,
+        469,
+        6247,
+        5281
+      ],
+      [
+        249,
+        91,
+        131,
+        540
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 777,
+    "matched_transitions": 54
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "gmm_hsmm",
+    "model": "GMM-HSMM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 4.3288046000525355,
+    "samples": 25308,
+    "accuracy": 0.5718349928876245,
+    "balanced_accuracy": 0.544672583766808,
+    "macro_f1": 0.43979055141441026,
+    "free_motion_f1": 0.7617913538700493,
+    "approach_f1": 0.25028879476318827,
+    "painting_f1": 0.6219657779546359,
+    "retract_f1": 0.12511627906976744,
+    "transition_recall": 0.5142857142857142,
+    "false_transitions": 773,
+    "absolute_delay_mean_ms": 507.69907957407406,
+    "inference_mean_ms_per_frame": 0.2187004504543253,
+    "confusion_matrix": [
+      [
+        7357,
+        1029,
+        703,
+        1575
+      ],
+      [
+        47,
+        325,
+        69,
+        245
+      ],
+      [
+        998,
+        466,
+        6252,
+        5231
+      ],
+      [
+        249,
+        91,
+        133,
+        538
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 827,
+    "matched_transitions": 54
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 0,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 8.516292099840939,
+    "samples": 25308,
+    "accuracy": 0.7196933775881145,
+    "balanced_accuracy": 0.5602837501115904,
+    "macro_f1": 0.5540310396693843,
+    "free_motion_f1": 0.7415739596209313,
+    "approach_f1": 0.49445531637312456,
+    "painting_f1": 0.7427615493501479,
+    "retract_f1": 0.23733333333333334,
+    "transition_recall": 0.6952380952380952,
+    "false_transitions": 359,
+    "absolute_delay_mean_ms": 639.7614508493152,
+    "inference_mean_ms_per_frame": 0.22689540461203286,
+    "confusion_matrix": [
+      [
+        8999,
+        270,
+        1293,
+        102
+      ],
+      [
+        230,
+        379,
+        44,
+        33
+      ],
+      [
+        3942,
+        171,
+        8658,
+        176
+      ],
+      [
+        435,
+        27,
+        371,
+        178
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 432,
+    "matched_transitions": 73
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 8.35281419986859,
+    "samples": 40947,
+    "accuracy": 0.7822062666373605,
+    "balanced_accuracy": 0.49049098187406287,
+    "macro_f1": 0.4876689058573798,
+    "free_motion_f1": 0.6115942028985507,
+    "approach_f1": 0.2793506983767459,
+    "painting_f1": 0.8762720755376814,
+    "retract_f1": 0.18345864661654135,
+    "transition_recall": 0.4318181818181818,
+    "false_transitions": 145,
+    "absolute_delay_mean_ms": 460.60891457894735,
+    "inference_mean_ms_per_frame": 0.2332670110171546,
+    "confusion_matrix": [
+      [
+        6541,
+        1257,
+        5856,
+        185
+      ],
+      [
+        350,
+        370,
+        285,
+        1
+      ],
+      [
+        611,
+        16,
+        25057,
+        0
+      ],
+      [
+        49,
+        0,
+        308,
+        61
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 240,
+    "matched_transitions": 95
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 9.480090100085363,
+    "samples": 40947,
+    "accuracy": 0.7436442230200014,
+    "balanced_accuracy": 0.4293800602265091,
+    "macro_f1": 0.43358247973395087,
+    "free_motion_f1": 0.49499895811627426,
+    "approach_f1": 0.15913634546181527,
+    "painting_f1": 0.8544348469061944,
+    "retract_f1": 0.22575976845151954,
+    "transition_recall": 0.4,
+    "false_transitions": 138,
+    "absolute_delay_mean_ms": 487.8744201363636,
+    "inference_mean_ms_per_frame": 0.2345897526032576,
+    "confusion_matrix": [
+      [
+        4751,
+        1295,
+        7598,
+        195
+      ],
+      [
+        310,
+        199,
+        497,
+        0
+      ],
+      [
+        261,
+        1,
+        25422,
+        0
+      ],
+      [
+        35,
+        0,
+        305,
+        78
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 226,
+    "matched_transitions": 88
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 9.19317189999856,
+    "samples": 40947,
+    "accuracy": 0.7772242166703299,
+    "balanced_accuracy": 0.4691904946633597,
+    "macro_f1": 0.47221048927663456,
+    "free_motion_f1": 0.6017940168130371,
+    "approach_f1": 0.20499632623071273,
+    "painting_f1": 0.8762144404836794,
+    "retract_f1": 0.20583717357910905,
+    "transition_recall": 0.37272727272727274,
+    "false_transitions": 151,
+    "absolute_delay_mean_ms": 378.05523069512196,
+    "inference_mean_ms_per_frame": 0.2593828387917188,
+    "confusion_matrix": [
+      [
+        6407,
+        1428,
+        5840,
+        164
+      ],
+      [
+        399,
+        279,
+        326,
+        2
+      ],
+      [
+        603,
+        9,
+        25072,
+        0
+      ],
+      [
+        45,
+        0,
+        306,
+        67
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 233,
+    "matched_transitions": 82
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 8.409633599920198,
+    "samples": 40947,
+    "accuracy": 0.7855032114684837,
+    "balanced_accuracy": 0.45691744251438754,
+    "macro_f1": 0.4657730776046274,
+    "free_motion_f1": 0.6306924802050438,
+    "approach_f1": 0.15986677768526228,
+    "painting_f1": 0.8787128278091023,
+    "retract_f1": 0.19382022471910113,
+    "transition_recall": 0.40454545454545454,
+    "false_transitions": 149,
+    "absolute_delay_mean_ms": 421.081578235955,
+    "inference_mean_ms_per_frame": 0.2547674579358213,
+    "confusion_matrix": [
+      [
+        6890,
+        1202,
+        5532,
+        215
+      ],
+      [
+        413,
+        192,
+        391,
+        10
+      ],
+      [
+        669,
+        2,
+        25013,
+        0
+      ],
+      [
+        38,
+        0,
+        311,
+        69
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 238,
+    "matched_transitions": 89
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 19.544714499963447,
+    "samples": 40947,
+    "accuracy": 0.7966395584536108,
+    "balanced_accuracy": 0.43344379541620665,
+    "macro_f1": 0.46204692151174714,
+    "free_motion_f1": 0.6631154754736208,
+    "approach_f1": 0.0980507974010632,
+    "painting_f1": 0.8724885411999862,
+    "retract_f1": 0.21453287197231835,
+    "transition_recall": 0.5,
+    "false_transitions": 536,
+    "absolute_delay_mean_ms": 383.91018838181816,
+    "inference_mean_ms_per_frame": 0.014432522532158414,
+    "confusion_matrix": [
+      [
+        7158,
+        604,
+        5979,
+        98
+      ],
+      [
+        174,
+        83,
+        749,
+        0
+      ],
+      [
+        367,
+        0,
+        25317,
+        0
+      ],
+      [
+        51,
+        0,
+        305,
+        62
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 646,
+    "matched_transitions": 110
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 17.792418099939823,
+    "samples": 40947,
+    "accuracy": 0.7972012601655799,
+    "balanced_accuracy": 0.4322411868994378,
+    "macro_f1": 0.4619731192045662,
+    "free_motion_f1": 0.6655595534643417,
+    "approach_f1": 0.10289389067524116,
+    "painting_f1": 0.8707433805047688,
+    "retract_f1": 0.20869565217391306,
+    "transition_recall": 0.4818181818181818,
+    "false_transitions": 547,
+    "absolute_delay_mean_ms": 366.67551536792456,
+    "inference_mean_ms_per_frame": 0.013536688892765922,
+    "confusion_matrix": [
+      [
+        7214,
+        469,
+        6059,
+        97
+      ],
+      [
+        177,
+        80,
+        749,
+        0
+      ],
+      [
+        395,
+        0,
+        25289,
+        0
+      ],
+      [
+        53,
+        0,
+        305,
+        60
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 653,
+    "matched_transitions": 106
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 19.74907679995522,
+    "samples": 40947,
+    "accuracy": 0.8003028304881921,
+    "balanced_accuracy": 0.4351929261552588,
+    "macro_f1": 0.46626035231880747,
+    "free_motion_f1": 0.6729349172132276,
+    "approach_f1": 0.10276679841897235,
+    "painting_f1": 0.8721768214889142,
+    "retract_f1": 0.2171628721541156,
+    "transition_recall": 0.5,
+    "false_transitions": 509,
+    "absolute_delay_mean_ms": 362.50088333636364,
+    "inference_mean_ms_per_frame": 0.01603933865598435,
+    "confusion_matrix": [
+      [
+        7336,
+        434,
+        5978,
+        91
+      ],
+      [
+        187,
+        78,
+        741,
+        0
+      ],
+      [
+        390,
+        0,
+        25294,
+        0
+      ],
+      [
+        51,
+        0,
+        305,
+        62
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 619,
+    "matched_transitions": 110
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 18.490238399943337,
+    "samples": 40947,
+    "accuracy": 0.7990328961828705,
+    "balanced_accuracy": 0.43370736451695746,
+    "macro_f1": 0.46358293601934747,
+    "free_motion_f1": 0.669699476151089,
+    "approach_f1": 0.10627400768245839,
+    "painting_f1": 0.8720645539501362,
+    "retract_f1": 0.2062937062937063,
+    "transition_recall": 0.4954545454545455,
+    "false_transitions": 480,
+    "absolute_delay_mean_ms": 362.303578412844,
+    "inference_mean_ms_per_frame": 0.015660436661294838,
+    "confusion_matrix": [
+      [
+        7287,
+        473,
+        5984,
+        95
+      ],
+      [
+        189,
+        83,
+        734,
+        0
+      ],
+      [
+        395,
+        0,
+        25289,
+        0
+      ],
+      [
+        52,
+        0,
+        307,
+        59
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 589,
+    "matched_transitions": 109
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 4.729306400055066,
+    "samples": 40947,
+    "accuracy": 0.8235523970010012,
+    "balanced_accuracy": 0.5088828440751654,
+    "macro_f1": 0.48880696146133873,
+    "free_motion_f1": 0.7567700237257629,
+    "approach_f1": 0.11846001974333664,
+    "painting_f1": 0.9093267170407127,
+    "retract_f1": 0.17067108533554265,
+    "transition_recall": 0.6409090909090909,
+    "false_transitions": 1248,
+    "absolute_delay_mean_ms": 364.1437414255319,
+    "inference_mean_ms_per_frame": 0.15054764696095863,
+    "confusion_matrix": [
+      [
+        9250,
+        1455,
+        2673,
+        461
+      ],
+      [
+        407,
+        180,
+        397,
+        22
+      ],
+      [
+        910,
+        382,
+        24189,
+        203
+      ],
+      [
+        40,
+        16,
+        259,
+        103
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 1389,
+    "matched_transitions": 141
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 3.2509562999475747,
+    "samples": 40947,
+    "accuracy": 0.8250177058148338,
+    "balanced_accuracy": 0.5120647275324577,
+    "macro_f1": 0.49908626277635726,
+    "free_motion_f1": 0.753777923784494,
+    "approach_f1": 0.1264875892553553,
+    "painting_f1": 0.9074181207427451,
+    "retract_f1": 0.20866141732283466,
+    "transition_recall": 0.6636363636363637,
+    "false_transitions": 1259,
+    "absolute_delay_mean_ms": 350.623411760274,
+    "inference_mean_ms_per_frame": 0.15532922070064667,
+    "confusion_matrix": [
+      [
+        9178,
+        1398,
+        2917,
+        346
+      ],
+      [
+        408,
+        186,
+        400,
+        12
+      ],
+      [
+        896,
+        342,
+        24312,
+        134
+      ],
+      [
+        31,
+        9,
+        272,
+        106
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 1405,
+    "matched_transitions": 146
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 4.687691899947822,
+    "samples": 40947,
+    "accuracy": 0.839280044936137,
+    "balanced_accuracy": 0.5175251985483419,
+    "macro_f1": 0.5043629618465685,
+    "free_motion_f1": 0.784986929889587,
+    "approach_f1": 0.18258132214060857,
+    "painting_f1": 0.9072343959383199,
+    "retract_f1": 0.14264919941775836,
+    "transition_recall": 0.6818181818181818,
+    "false_transitions": 1546,
+    "absolute_delay_mean_ms": 310.77163085333336,
+    "inference_mean_ms_per_frame": 0.15515586978281418,
+    "confusion_matrix": [
+      [
+        10060,
+        651,
+        2546,
+        582
+      ],
+      [
+        348,
+        174,
+        454,
+        30
+      ],
+      [
+        1343,
+        61,
+        24034,
+        246
+      ],
+      [
+        41,
+        14,
+        265,
+        98
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 1696,
+    "matched_transitions": 150
+  },
+  {
+    "held_out_participant": "06",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04"
+    ],
+    "fit_seconds": 4.0232554001268,
+    "samples": 40947,
+    "accuracy": 0.8106576794392751,
+    "balanced_accuracy": 0.49532922217960906,
+    "macro_f1": 0.472004336127473,
+    "free_motion_f1": 0.7259637520405173,
+    "approach_f1": 0.17738359201773835,
+    "painting_f1": 0.9067189982244649,
+    "retract_f1": 0.0779510022271715,
+    "transition_recall": 0.6409090909090909,
+    "false_transitions": 1445,
+    "absolute_delay_mean_ms": 346.2216594184398,
+    "inference_mean_ms_per_frame": 0.14917825481822058,
+    "confusion_matrix": [
+      [
+        8672,
+        570,
+        2869,
+        1728
+      ],
+      [
+        395,
+        160,
+        423,
+        28
+      ],
+      [
+        956,
+        56,
+        24257,
+        415
+      ],
+      [
+        29,
+        12,
+        272,
+        105
+      ]
+    ],
+    "true_transitions": 220,
+    "predicted_transitions": 1586,
+    "matched_transitions": 141
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 6.676088700070977,
+    "samples": 54177,
+    "accuracy": 0.7259722760581059,
+    "balanced_accuracy": 0.499488260029463,
+    "macro_f1": 0.5434506661173886,
+    "free_motion_f1": 0.5677376121514464,
+    "approach_f1": 0.42867767365759335,
+    "painting_f1": 0.8278931338052654,
+    "retract_f1": 0.3494942448552494,
+    "transition_recall": 0.44089456869009586,
+    "false_transitions": 635,
+    "absolute_delay_mean_ms": 523.4307836521739,
+    "inference_mean_ms_per_frame": 0.23232558465572542,
+    "confusion_matrix": [
+      [
+        7625,
+        491,
+        7542,
+        280
+      ],
+      [
+        1416,
+        1441,
+        1381,
+        27
+      ],
+      [
+        1654,
+        497,
+        29764,
+        62
+      ],
+      [
+        228,
+        29,
+        1239,
+        501
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 773,
+    "matched_transitions": 138
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 6.733870400115848,
+    "samples": 54177,
+    "accuracy": 0.7454454842460823,
+    "balanced_accuracy": 0.5133323701548088,
+    "macro_f1": 0.565609915153878,
+    "free_motion_f1": 0.5861486486486487,
+    "approach_f1": 0.45871559633027525,
+    "painting_f1": 0.8414317355281506,
+    "retract_f1": 0.3761436801084378,
+    "transition_recall": 0.5015974440894568,
+    "false_transitions": 561,
+    "absolute_delay_mean_ms": 508.9008369044586,
+    "inference_mean_ms_per_frame": 0.22324674677710302,
+    "confusion_matrix": [
+      [
+        7634,
+        373,
+        7618,
+        313
+      ],
+      [
+        1221,
+        1425,
+        1595,
+        24
+      ],
+      [
+        1013,
+        130,
+        30772,
+        62
+      ],
+      [
+        242,
+        20,
+        1180,
+        555
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 718,
+    "matched_transitions": 157
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 6.730691500008106,
+    "samples": 54177,
+    "accuracy": 0.7285194824371966,
+    "balanced_accuracy": 0.5056533022995429,
+    "macro_f1": 0.5500987619843183,
+    "free_motion_f1": 0.5294142489125385,
+    "approach_f1": 0.43990860624524,
+    "painting_f1": 0.8305668232280101,
+    "retract_f1": 0.4005053695514845,
+    "transition_recall": 0.4472843450479233,
+    "false_transitions": 519,
+    "absolute_delay_mean_ms": 438.91719447142856,
+    "inference_mean_ms_per_frame": 0.2311798272328863,
+    "confusion_matrix": [
+      [
+        6268,
+        534,
+        8750,
+        386
+      ],
+      [
+        869,
+        1444,
+        1898,
+        54
+      ],
+      [
+        460,
+        299,
+        31123,
+        95
+      ],
+      [
+        144,
+        23,
+        1196,
+        634
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 659,
+    "matched_transitions": 140
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 7.885227299993858,
+    "samples": 54177,
+    "accuracy": 0.7468298355390663,
+    "balanced_accuracy": 0.5227159456234298,
+    "macro_f1": 0.5743623338990552,
+    "free_motion_f1": 0.5802209988514396,
+    "approach_f1": 0.4940385203301743,
+    "painting_f1": 0.8412126812431207,
+    "retract_f1": 0.3819771351714862,
+    "transition_recall": 0.4984025559105431,
+    "false_transitions": 507,
+    "absolute_delay_mean_ms": 495.5715176987179,
+    "inference_mean_ms_per_frame": 0.2549810786828753,
+    "confusion_matrix": [
+      [
+        7325,
+        429,
+        7841,
+        343
+      ],
+      [
+        1045,
+        1616,
+        1581,
+        23
+      ],
+      [
+        772,
+        210,
+        30952,
+        43
+      ],
+      [
+        169,
+        22,
+        1238,
+        568
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 663,
+    "matched_transitions": 156
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 16.513068200089037,
+    "samples": 54177,
+    "accuracy": 0.7257507798512284,
+    "balanced_accuracy": 0.41916388728703213,
+    "macro_f1": 0.4454688050524122,
+    "free_motion_f1": 0.5890687516059171,
+    "approach_f1": 0.2055817610062893,
+    "painting_f1": 0.8308837512564861,
+    "retract_f1": 0.15634095634095635,
+    "transition_recall": 0.4696485623003195,
+    "false_transitions": 1961,
+    "absolute_delay_mean_ms": 442.4147981496599,
+    "inference_mean_ms_per_frame": 0.016961830664214785,
+    "confusion_matrix": [
+      [
+        8024,
+        193,
+        7509,
+        212
+      ],
+      [
+        1636,
+        523,
+        2103,
+        3
+      ],
+      [
+        1304,
+        84,
+        30584,
+        5
+      ],
+      [
+        341,
+        23,
+        1445,
+        188
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 2108,
+    "matched_transitions": 147
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 17.94205929990858,
+    "samples": 54177,
+    "accuracy": 0.7207671151964856,
+    "balanced_accuracy": 0.4184877815273858,
+    "macro_f1": 0.4459907360437174,
+    "free_motion_f1": 0.5791636096845193,
+    "approach_f1": 0.2235590917911896,
+    "painting_f1": 0.8266267763649963,
+    "retract_f1": 0.1546134663341646,
+    "transition_recall": 0.4792332268370607,
+    "false_transitions": 2171,
+    "absolute_delay_mean_ms": 447.3299367733334,
+    "inference_mean_ms_per_frame": 0.019925804304370447,
+    "confusion_matrix": [
+      [
+        7894,
+        198,
+        7631,
+        215
+      ],
+      [
+        1592,
+        576,
+        2095,
+        2
+      ],
+      [
+        1485,
+        93,
+        30393,
+        6
+      ],
+      [
+        351,
+        21,
+        1439,
+        186
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 2321,
+    "matched_transitions": 150
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 16.499047099845484,
+    "samples": 54177,
+    "accuracy": 0.7263229783856618,
+    "balanced_accuracy": 0.4218959915317575,
+    "macro_f1": 0.44884802017108044,
+    "free_motion_f1": 0.5933357744415965,
+    "approach_f1": 0.215510522213562,
+    "painting_f1": 0.8304362621656571,
+    "retract_f1": 0.15610952186350632,
+    "transition_recall": 0.4504792332268371,
+    "false_transitions": 1952,
+    "absolute_delay_mean_ms": 417.8888018652482,
+    "inference_mean_ms_per_frame": 0.019833654502233542,
+    "confusion_matrix": [
+      [
+        8102,
+        192,
+        7393,
+        251
+      ],
+      [
+        1568,
+        553,
+        2141,
+        3
+      ],
+      [
+        1360,
+        108,
+        30504,
+        5
+      ],
+      [
+        342,
+        14,
+        1450,
+        191
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 2093,
+    "matched_transitions": 141
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 19.189452499849722,
+    "samples": 54177,
+    "accuracy": 0.7292762611440279,
+    "balanced_accuracy": 0.42281276924735556,
+    "macro_f1": 0.45040831323883646,
+    "free_motion_f1": 0.6008236451765735,
+    "approach_f1": 0.21627998427054657,
+    "painting_f1": 0.8311423205683024,
+    "retract_f1": 0.1533873029399233,
+    "transition_recall": 0.4472843450479233,
+    "false_transitions": 2056,
+    "absolute_delay_mean_ms": 428.27683145,
+    "inference_mean_ms_per_frame": 0.030106163132981627,
+    "confusion_matrix": [
+      [
+        8243,
+        181,
+        7352,
+        162
+      ],
+      [
+        1566,
+        550,
+        2146,
+        3
+      ],
+      [
+        1366,
+        69,
+        30537,
+        5
+      ],
+      [
+        326,
+        21,
+        1470,
+        180
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 2196,
+    "matched_transitions": 140
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 3.9258725999388844,
+    "samples": 54177,
+    "accuracy": 0.6555733983055541,
+    "balanced_accuracy": 0.5014886353373808,
+    "macro_f1": 0.47851949249626036,
+    "free_motion_f1": 0.6307835514428078,
+    "approach_f1": 0.31742562234365507,
+    "painting_f1": 0.7630167462877051,
+    "retract_f1": 0.20285204991087347,
+    "transition_recall": 0.792332268370607,
+    "false_transitions": 5096,
+    "absolute_delay_mean_ms": 429.45536838306447,
+    "inference_mean_ms_per_frame": 0.1669286228469176,
+    "confusion_matrix": [
+      [
+        11520,
+        1112,
+        2083,
+        1223
+      ],
+      [
+        1612,
+        1307,
+        986,
+        360
+      ],
+      [
+        6958,
+        1437,
+        22121,
+        1461
+      ],
+      [
+        498,
+        114,
+        816,
+        569
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 5344,
+    "matched_transitions": 248
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 2.2319155998993665,
+    "samples": 54177,
+    "accuracy": 0.6795688207172785,
+    "balanced_accuracy": 0.502681887330944,
+    "macro_f1": 0.4937283027878954,
+    "free_motion_f1": 0.6374184191443073,
+    "approach_f1": 0.3035274815422478,
+    "painting_f1": 0.7881136519284413,
+    "retract_f1": 0.24585365853658536,
+    "transition_recall": 0.7412140575079872,
+    "false_transitions": 4244,
+    "absolute_delay_mean_ms": 425.5585628103448,
+    "inference_mean_ms_per_frame": 0.15570332244466828,
+    "confusion_matrix": [
+      [
+        11427,
+        1377,
+        2337,
+        797
+      ],
+      [
+        1600,
+        1295,
+        1070,
+        300
+      ],
+      [
+        6428,
+        1456,
+        23591,
+        502
+      ],
+      [
+        461,
+        140,
+        892,
+        504
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 4476,
+    "matched_transitions": 232
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 2.828484400175512,
+    "samples": 54177,
+    "accuracy": 0.6598187422707052,
+    "balanced_accuracy": 0.5158243440080964,
+    "macro_f1": 0.49163135389311796,
+    "free_motion_f1": 0.6361720807726076,
+    "approach_f1": 0.3173186171076124,
+    "painting_f1": 0.7724867724867724,
+    "retract_f1": 0.24054794520547945,
+    "transition_recall": 0.7795527156549521,
+    "false_transitions": 4263,
+    "absolute_delay_mean_ms": 450.8470421352459,
+    "inference_mean_ms_per_frame": 0.15928784539538318,
+    "confusion_matrix": [
+      [
+        10869,
+        2410,
+        2015,
+        644
+      ],
+      [
+        1280,
+        1955,
+        887,
+        143
+      ],
+      [
+        5660,
+        3406,
+        22484,
+        427
+      ],
+      [
+        423,
+        286,
+        849,
+        439
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 4507,
+    "matched_transitions": 244
+  },
+  {
+    "held_out_participant": "07",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04"
+    ],
+    "fit_seconds": 3.4766155001707375,
+    "samples": 54177,
+    "accuracy": 0.6798087749413958,
+    "balanced_accuracy": 0.5002017719021754,
+    "macro_f1": 0.4944847367577228,
+    "free_motion_f1": 0.638286170007975,
+    "approach_f1": 0.33184593705965243,
+    "painting_f1": 0.7830817125832692,
+    "retract_f1": 0.22472512737999462,
+    "transition_recall": 0.7252396166134185,
+    "false_transitions": 4103,
+    "absolute_delay_mean_ms": 417.89771696916296,
+    "inference_mean_ms_per_frame": 0.1560394724696797,
+    "confusion_matrix": [
+      [
+        11605,
+        1348,
+        2310,
+        675
+      ],
+      [
+        1508,
+        1413,
+        1136,
+        208
+      ],
+      [
+        6848,
+        1306,
+        23393,
+        430
+      ],
+      [
+        464,
+        184,
+        930,
+        419
+      ]
+    ],
+    "true_transitions": 313,
+    "predicted_transitions": 4330,
+    "matched_transitions": 227
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 1,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 8.812911899993196,
+    "samples": 45084,
+    "accuracy": 0.8444902848017035,
+    "balanced_accuracy": 0.5788075766844967,
+    "macro_f1": 0.6128918161406856,
+    "free_motion_f1": 0.7189349112426036,
+    "approach_f1": 0.6396917148362234,
+    "painting_f1": 0.9045887177899868,
+    "retract_f1": 0.18835192069392814,
+    "transition_recall": 0.584070796460177,
+    "false_transitions": 183,
+    "absolute_delay_mean_ms": 411.79696206060606,
+    "inference_mean_ms_per_frame": 0.2593324106099784,
+    "confusion_matrix": [
+      [
+        7776,
+        91,
+        4045,
+        25
+      ],
+      [
+        385,
+        996,
+        260,
+        8
+      ],
+      [
+        1197,
+        378,
+        29225,
+        16
+      ],
+      [
+        337,
+        0,
+        269,
+        76
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 249,
+    "matched_transitions": 66
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 2,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 7.825469699921086,
+    "samples": 45084,
+    "accuracy": 0.8364164670393044,
+    "balanced_accuracy": 0.5455602050802596,
+    "macro_f1": 0.5962049253338294,
+    "free_motion_f1": 0.7186737773368059,
+    "approach_f1": 0.5511875511875511,
+    "painting_f1": 0.901106610964059,
+    "retract_f1": 0.21385176184690155,
+    "transition_recall": 0.6017699115044248,
+    "false_transitions": 221,
+    "absolute_delay_mean_ms": 412.13925258823525,
+    "inference_mean_ms_per_frame": 0.2448004369616357,
+    "confusion_matrix": [
+      [
+        8692,
+        60,
+        3157,
+        28
+      ],
+      [
+        717,
+        673,
+        254,
+        5
+      ],
+      [
+        2480,
+        60,
+        28256,
+        20
+      ],
+      [
+        363,
+        0,
+        231,
+        88
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 289,
+    "matched_transitions": 68
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 3,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 10.129600699990988,
+    "samples": 45084,
+    "accuracy": 0.8560243101765593,
+    "balanced_accuracy": 0.5709504336405499,
+    "macro_f1": 0.6075513435305399,
+    "free_motion_f1": 0.7749117567200652,
+    "approach_f1": 0.5292500981546918,
+    "painting_f1": 0.9130805562844397,
+    "retract_f1": 0.21296296296296297,
+    "transition_recall": 0.6194690265486725,
+    "false_transitions": 226,
+    "absolute_delay_mean_ms": 452.14478368571434,
+    "inference_mean_ms_per_frame": 0.24896452178438727,
+    "confusion_matrix": [
+      [
+        9989,
+        59,
+        1844,
+        45
+      ],
+      [
+        698,
+        674,
+        267,
+        10
+      ],
+      [
+        2778,
+        165,
+        27838,
+        35
+      ],
+      [
+        379,
+        0,
+        211,
+        92
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 296,
+    "matched_transitions": 70
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 4,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 9.119889300083742,
+    "samples": 45084,
+    "accuracy": 0.851410700026617,
+    "balanced_accuracy": 0.5605342946151928,
+    "macro_f1": 0.5874915055637603,
+    "free_motion_f1": 0.7797592510031208,
+    "approach_f1": 0.45422943221320977,
+    "painting_f1": 0.9095891326505038,
+    "retract_f1": 0.20638820638820637,
+    "transition_recall": 0.6283185840707964,
+    "false_transitions": 235,
+    "absolute_delay_mean_ms": 474.4230024647887,
+    "inference_mean_ms_per_frame": 0.23306804188175081,
+    "confusion_matrix": [
+      [
+        10494,
+        51,
+        1365,
+        27
+      ],
+      [
+        818,
+        588,
+        241,
+        2
+      ],
+      [
+        3277,
+        301,
+        27219,
+        19
+      ],
+      [
+        390,
+        0,
+        208,
+        84
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 306,
+    "matched_transitions": 71
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 1,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 16.717744199791923,
+    "samples": 45084,
+    "accuracy": 0.8286531807293053,
+    "balanced_accuracy": 0.48783762817708237,
+    "macro_f1": 0.5224758349672751,
+    "free_motion_f1": 0.7203818306839784,
+    "approach_f1": 0.24254473161033796,
+    "painting_f1": 0.8986030751526388,
+    "retract_f1": 0.22837370242214536,
+    "transition_recall": 0.672566371681416,
+    "false_transitions": 997,
+    "absolute_delay_mean_ms": 411.27150838157894,
+    "inference_mean_ms_per_frame": 0.016722387101915367,
+    "confusion_matrix": [
+      [
+        8905,
+        72,
+        2936,
+        24
+      ],
+      [
+        880,
+        244,
+        525,
+        0
+      ],
+      [
+        2597,
+        46,
+        28111,
+        62
+      ],
+      [
+        404,
+        1,
+        178,
+        99
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 1073,
+    "matched_transitions": 76
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 2,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 16.83182490011677,
+    "samples": 45084,
+    "accuracy": 0.8276994055540768,
+    "balanced_accuracy": 0.48910967292683954,
+    "macro_f1": 0.5235735142359774,
+    "free_motion_f1": 0.7207664130741055,
+    "approach_f1": 0.25271470878578484,
+    "painting_f1": 0.8973106309365539,
+    "retract_f1": 0.22350230414746544,
+    "transition_recall": 0.7256637168141593,
+    "false_transitions": 977,
+    "absolute_delay_mean_ms": 452.52431547560974,
+    "inference_mean_ms_per_frame": 0.02056222828501716,
+    "confusion_matrix": [
+      [
+        8953,
+        72,
+        2888,
+        24
+      ],
+      [
+        853,
+        256,
+        540,
+        0
+      ],
+      [
+        2694,
+        47,
+        28010,
+        65
+      ],
+      [
+        406,
+        2,
+        177,
+        97
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 1059,
+    "matched_transitions": 82
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 3,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 19.040184499928728,
+    "samples": 45084,
+    "accuracy": 0.8282095643687339,
+    "balanced_accuracy": 0.49056168922331517,
+    "macro_f1": 0.5266777271916215,
+    "free_motion_f1": 0.7195852907824396,
+    "approach_f1": 0.2529644268774704,
+    "painting_f1": 0.8979226589964845,
+    "retract_f1": 0.23623853211009174,
+    "transition_recall": 0.6814159292035398,
+    "false_transitions": 985,
+    "absolute_delay_mean_ms": 396.6538102337662,
+    "inference_mean_ms_per_frame": 0.015808095997990185,
+    "confusion_matrix": [
+      [
+        8884,
+        72,
+        2955,
+        26
+      ],
+      [
+        853,
+        256,
+        540,
+        0
+      ],
+      [
+        2614,
+        45,
+        28096,
+        61
+      ],
+      [
+        404,
+        2,
+        173,
+        103
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 1062,
+    "matched_transitions": 77
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 4,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 16.485649999929592,
+    "samples": 45084,
+    "accuracy": 0.8168973471741637,
+    "balanced_accuracy": 0.4770736404366919,
+    "macro_f1": 0.5136710318337869,
+    "free_motion_f1": 0.6927872507328352,
+    "approach_f1": 0.2432969215491559,
+    "painting_f1": 0.8910137481566053,
+    "retract_f1": 0.22758620689655173,
+    "transition_recall": 0.672566371681416,
+    "false_transitions": 1026,
+    "absolute_delay_mean_ms": 410.08609073684215,
+    "inference_mean_ms_per_frame": 0.02117196566420058,
+    "confusion_matrix": [
+      [
+        8390,
+        69,
+        3454,
+        24
+      ],
+      [
+        883,
+        245,
+        521,
+        0
+      ],
+      [
+        2607,
+        49,
+        28095,
+        65
+      ],
+      [
+        404,
+        2,
+        177,
+        99
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 1102,
+    "matched_transitions": 76
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 1,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 2.6852516001090407,
+    "samples": 45084,
+    "accuracy": 0.8104205483098217,
+    "balanced_accuracy": 0.527756260755906,
+    "macro_f1": 0.5216539993908327,
+    "free_motion_f1": 0.734108555931196,
+    "approach_f1": 0.27224199288256223,
+    "painting_f1": 0.8880946302442345,
+    "retract_f1": 0.19217081850533807,
+    "transition_recall": 0.8053097345132744,
+    "false_transitions": 1739,
+    "absolute_delay_mean_ms": 389.6355884285714,
+    "inference_mean_ms_per_frame": 0.14766520051500132,
+    "confusion_matrix": [
+      [
+        9880,
+        641,
+        1349,
+        67
+      ],
+      [
+        865,
+        459,
+        324,
+        1
+      ],
+      [
+        3861,
+        599,
+        26090,
+        266
+      ],
+      [
+        374,
+        24,
+        176,
+        108
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 1830,
+    "matched_transitions": 91
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 2,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 3.132771800039336,
+    "samples": 45084,
+    "accuracy": 0.8044539082601366,
+    "balanced_accuracy": 0.5257701300590539,
+    "macro_f1": 0.5041299772057874,
+    "free_motion_f1": 0.7400052260256075,
+    "approach_f1": 0.24168399168399168,
+    "painting_f1": 0.8875656139747009,
+    "retract_f1": 0.14726507713884995,
+    "transition_recall": 0.7345132743362832,
+    "false_transitions": 2201,
+    "absolute_delay_mean_ms": 391.76550956626505,
+    "inference_mean_ms_per_frame": 0.14850540324931888,
+    "confusion_matrix": [
+      [
+        9912,
+        917,
+        991,
+        117
+      ],
+      [
+        838,
+        465,
+        341,
+        5
+      ],
+      [
+        3732,
+        781,
+        25786,
+        517
+      ],
+      [
+        370,
+        36,
+        171,
+        105
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 2284,
+    "matched_transitions": 83
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 3,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 2.4812648999504745,
+    "samples": 45084,
+    "accuracy": 0.7818960163250821,
+    "balanced_accuracy": 0.5089467132712122,
+    "macro_f1": 0.4883053891678812,
+    "free_motion_f1": 0.6954298030906368,
+    "approach_f1": 0.24436741767764297,
+    "painting_f1": 0.8728091444405959,
+    "retract_f1": 0.1406151914626491,
+    "transition_recall": 0.8053097345132744,
+    "false_transitions": 2587,
+    "absolute_delay_mean_ms": 481.8134684065934,
+    "inference_mean_ms_per_frame": 0.14823720610395064,
+    "confusion_matrix": [
+      [
+        9518,
+        977,
+        1217,
+        225
+      ],
+      [
+        886,
+        423,
+        321,
+        19
+      ],
+      [
+        4677,
+        386,
+        25198,
+        555
+      ],
+      [
+        355,
+        27,
+        188,
+        112
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 2678,
+    "matched_transitions": 91
+  },
+  {
+    "held_out_participant": "08",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 4,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "08_01",
+      "08_02",
+      "08_04"
+    ],
+    "fit_seconds": 2.983878100058064,
+    "samples": 45084,
+    "accuracy": 0.7816076656907107,
+    "balanced_accuracy": 0.5152554086639292,
+    "macro_f1": 0.4945488962934828,
+    "free_motion_f1": 0.6862108922363847,
+    "approach_f1": 0.25421994884910487,
+    "painting_f1": 0.874418130542625,
+    "retract_f1": 0.16334661354581673,
+    "transition_recall": 0.7699115044247787,
+    "false_transitions": 2308,
+    "absolute_delay_mean_ms": 449.90838202298846,
+    "inference_mean_ms_per_frame": 0.148930951117793,
+    "confusion_matrix": [
+      [
+        8883,
+        1060,
+        1787,
+        207
+      ],
+      [
+        789,
+        497,
+        349,
+        14
+      ],
+      [
+        3939,
+        662,
+        25735,
+        480
+      ],
+      [
+        342,
+        42,
+        175,
+        123
+      ]
+    ],
+    "true_transitions": 113,
+    "predicted_transitions": 2395,
+    "matched_transitions": 87
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 1,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 8.357521200086921,
+    "samples": 14159,
+    "accuracy": 0.9208277420721802,
+    "balanced_accuracy": 0.7638569769679668,
+    "macro_f1": 0.750040379732145,
+    "free_motion_f1": 0.8296803652968037,
+    "approach_f1": 0.7054009819967267,
+    "painting_f1": 0.9616079494128275,
+    "retract_f1": 0.5034722222222222,
+    "transition_recall": 0.825,
+    "false_transitions": 54,
+    "absolute_delay_mean_ms": 325.61369833333333,
+    "inference_mean_ms_per_frame": 0.2239966170003414,
+    "confusion_matrix": [
+      [
+        1817,
+        140,
+        246,
+        60
+      ],
+      [
+        61,
+        431,
+        26,
+        7
+      ],
+      [
+        236,
+        126,
+        10645,
+        55
+      ],
+      [
+        3,
+        0,
+        161,
+        145
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 87,
+    "matched_transitions": 33
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 2,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 8.727720699971542,
+    "samples": 14159,
+    "accuracy": 0.91447136097182,
+    "balanced_accuracy": 0.7514849597923766,
+    "macro_f1": 0.7416501243404503,
+    "free_motion_f1": 0.8051461988304094,
+    "approach_f1": 0.672185430463576,
+    "painting_f1": 0.9588634626624106,
+    "retract_f1": 0.5304054054054053,
+    "transition_recall": 0.875,
+    "false_transitions": 54,
+    "absolute_delay_mean_ms": 381.52610180000005,
+    "inference_mean_ms_per_frame": 0.22202367397808356,
+    "confusion_matrix": [
+      [
+        1721,
+        134,
+        341,
+        67
+      ],
+      [
+        80,
+        406,
+        29,
+        10
+      ],
+      [
+        206,
+        143,
+        10664,
+        49
+      ],
+      [
+        5,
+        0,
+        147,
+        157
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 89,
+    "matched_transitions": 35
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 3,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 9.597644600085914,
+    "samples": 14159,
+    "accuracy": 0.910657532311604,
+    "balanced_accuracy": 0.7436818437757141,
+    "macro_f1": 0.727574927372145,
+    "free_motion_f1": 0.8078113836627768,
+    "approach_f1": 0.6240369799691834,
+    "painting_f1": 0.9570105225290043,
+    "retract_f1": 0.5214408233276158,
+    "transition_recall": 0.85,
+    "false_transitions": 47,
+    "absolute_delay_mean_ms": 411.7088957647059,
+    "inference_mean_ms_per_frame": 0.2515355109743807,
+    "confusion_matrix": [
+      [
+        1696,
+        167,
+        349,
+        51
+      ],
+      [
+        72,
+        405,
+        29,
+        19
+      ],
+      [
+        168,
+        201,
+        10641,
+        52
+      ],
+      [
+        0,
+        0,
+        157,
+        152
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 81,
+    "matched_transitions": 34
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 4,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 11.914049499901012,
+    "samples": 14159,
+    "accuracy": 0.9095275090048732,
+    "balanced_accuracy": 0.7378336448674214,
+    "macro_f1": 0.726996638773648,
+    "free_motion_f1": 0.7982167996245892,
+    "approach_f1": 0.6514382402707275,
+    "painting_f1": 0.9559160562620771,
+    "retract_f1": 0.5024154589371981,
+    "transition_recall": 0.775,
+    "false_transitions": 54,
+    "absolute_delay_mean_ms": 402.16879632258076,
+    "inference_mean_ms_per_frame": 0.23182352568520898,
+    "confusion_matrix": [
+      [
+        1701,
+        132,
+        353,
+        77
+      ],
+      [
+        80,
+        385,
+        49,
+        11
+      ],
+      [
+        218,
+        140,
+        10636,
+        68
+      ],
+      [
+        0,
+        0,
+        153,
+        156
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 85,
+    "matched_transitions": 31
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 1,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 21.26070380001329,
+    "samples": 14159,
+    "accuracy": 0.9049367893212797,
+    "balanced_accuracy": 0.70767026581574,
+    "macro_f1": 0.7106859357139141,
+    "free_motion_f1": 0.7822349570200573,
+    "approach_f1": 0.6242544731610339,
+    "painting_f1": 0.9563944177533744,
+    "retract_f1": 0.4798598949211909,
+    "transition_recall": 0.85,
+    "false_transitions": 295,
+    "absolute_delay_mean_ms": 328.4735337941176,
+    "inference_mean_ms_per_frame": 0.01881873013835959,
+    "confusion_matrix": [
+      [
+        1911,
+        100,
+        166,
+        86
+      ],
+      [
+        153,
+        314,
+        54,
+        4
+      ],
+      [
+        510,
+        66,
+        10451,
+        35
+      ],
+      [
+        49,
+        1,
+        122,
+        137
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 329,
+    "matched_transitions": 34
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 2,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 21.354139199946076,
+    "samples": 14159,
+    "accuracy": 0.9079737269581185,
+    "balanced_accuracy": 0.7095366979293196,
+    "macro_f1": 0.7121485014805784,
+    "free_motion_f1": 0.789323553382233,
+    "approach_f1": 0.6104417670682731,
+    "painting_f1": 0.9592453521384742,
+    "retract_f1": 0.4895833333333333,
+    "transition_recall": 0.8,
+    "false_transitions": 278,
+    "absolute_delay_mean_ms": 308.72506040625,
+    "inference_mean_ms_per_frame": 0.019022162587452478,
+    "confusion_matrix": [
+      [
+        1937,
+        98,
+        136,
+        92
+      ],
+      [
+        166,
+        304,
+        51,
+        4
+      ],
+      [
+        491,
+        67,
+        10474,
+        30
+      ],
+      [
+        51,
+        2,
+        115,
+        141
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 310,
+    "matched_transitions": 32
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 3,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 20.40415610000491,
+    "samples": 14159,
+    "accuracy": 0.9056430538879865,
+    "balanced_accuracy": 0.7002145124956353,
+    "macro_f1": 0.7037884735491494,
+    "free_motion_f1": 0.7817549601145429,
+    "approach_f1": 0.6049751243781094,
+    "painting_f1": 0.9584591453929912,
+    "retract_f1": 0.4699646643109541,
+    "transition_recall": 0.775,
+    "false_transitions": 280,
+    "absolute_delay_mean_ms": 350.8387660322582,
+    "inference_mean_ms_per_frame": 0.01738423617279511,
+    "confusion_matrix": [
+      [
+        1911,
+        106,
+        159,
+        87
+      ],
+      [
+        172,
+        304,
+        45,
+        4
+      ],
+      [
+        486,
+        68,
+        10475,
+        33
+      ],
+      [
+        57,
+        2,
+        117,
+        133
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 311,
+    "matched_transitions": 31
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 4,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 21.578377099940553,
+    "samples": 14159,
+    "accuracy": 0.9093156296348612,
+    "balanced_accuracy": 0.7075675922411577,
+    "macro_f1": 0.713651068596314,
+    "free_motion_f1": 0.7961640481534382,
+    "approach_f1": 0.5991902834008096,
+    "painting_f1": 0.9592499428310084,
+    "retract_f1": 0.5,
+    "transition_recall": 0.85,
+    "false_transitions": 273,
+    "absolute_delay_mean_ms": 321.0729927647058,
+    "inference_mean_ms_per_frame": 0.019187901680930597,
+    "confusion_matrix": [
+      [
+        1951,
+        90,
+        146,
+        76
+      ],
+      [
+        176,
+        296,
+        49,
+        4
+      ],
+      [
+        466,
+        75,
+        10487,
+        34
+      ],
+      [
+        45,
+        2,
+        121,
+        141
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 307,
+    "matched_transitions": 34
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 1,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 4.551027699839324,
+    "samples": 14159,
+    "accuracy": 0.8434211455611272,
+    "balanced_accuracy": 0.6448981809592804,
+    "macro_f1": 0.5972505940339148,
+    "free_motion_f1": 0.6852842146959794,
+    "approach_f1": 0.4536679536679537,
+    "painting_f1": 0.9215263453965873,
+    "retract_f1": 0.32852386237513875,
+    "transition_recall": 0.825,
+    "false_transitions": 632,
+    "absolute_delay_mean_ms": 333.5371377575758,
+    "inference_mean_ms_per_frame": 0.1702545730612719,
+    "confusion_matrix": [
+      [
+        1730,
+        144,
+        260,
+        129
+      ],
+      [
+        157,
+        235,
+        73,
+        60
+      ],
+      [
+        851,
+        127,
+        9829,
+        255
+      ],
+      [
+        48,
+        5,
+        108,
+        148
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 665,
+    "matched_transitions": 33
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 2,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 4.488126200158149,
+    "samples": 14159,
+    "accuracy": 0.8455399392612473,
+    "balanced_accuracy": 0.6441063949134539,
+    "macro_f1": 0.6015037035331068,
+    "free_motion_f1": 0.6821018723575598,
+    "approach_f1": 0.4665354330708661,
+    "painting_f1": 0.9225460480298437,
+    "retract_f1": 0.3348314606741573,
+    "transition_recall": 0.825,
+    "false_transitions": 635,
+    "absolute_delay_mean_ms": 403.4217315454545,
+    "inference_mean_ms_per_frame": 0.1633586835262697,
+    "confusion_matrix": [
+      [
+        1694,
+        128,
+        304,
+        137
+      ],
+      [
+        144,
+        237,
+        83,
+        61
+      ],
+      [
+        821,
+        115,
+        9892,
+        234
+      ],
+      [
+        45,
+        11,
+        104,
+        149
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 668,
+    "matched_transitions": 33
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 3,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 5.014328500023112,
+    "samples": 14159,
+    "accuracy": 0.8485062504414154,
+    "balanced_accuracy": 0.6454112711878417,
+    "macro_f1": 0.6081805137869174,
+    "free_motion_f1": 0.6885826771653544,
+    "approach_f1": 0.44260789715335164,
+    "painting_f1": 0.9235153950380788,
+    "retract_f1": 0.37801608579088475,
+    "transition_recall": 0.8,
+    "false_transitions": 582,
+    "absolute_delay_mean_ms": 365.99071640625,
+    "inference_mean_ms_per_frame": 0.170672286167142,
+    "confusion_matrix": [
+      [
+        1749,
+        170,
+        271,
+        73
+      ],
+      [
+        161,
+        241,
+        77,
+        46
+      ],
+      [
+        855,
+        147,
+        9883,
+        177
+      ],
+      [
+        52,
+        6,
+        110,
+        141
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 614,
+    "matched_transitions": 32
+  },
+  {
+    "held_out_participant": "09",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 4,
+    "train_trial_count": 19,
+    "test_trial_count": 3,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "09_02",
+      "09_03",
+      "09_04"
+    ],
+    "fit_seconds": 4.844956200104207,
+    "samples": 14159,
+    "accuracy": 0.850695670598206,
+    "balanced_accuracy": 0.6582797302635638,
+    "macro_f1": 0.6197897998553238,
+    "free_motion_f1": 0.696646942800789,
+    "approach_f1": 0.4837545126353791,
+    "painting_f1": 0.922573711508808,
+    "retract_f1": 0.3761840324763193,
+    "transition_recall": 0.8,
+    "false_transitions": 569,
+    "absolute_delay_mean_ms": 365.67330196875,
+    "inference_mean_ms_per_frame": 0.15622804576304913,
+    "confusion_matrix": [
+      [
+        1766,
+        139,
+        282,
+        76
+      ],
+      [
+        141,
+        268,
+        75,
+        41
+      ],
+      [
+        856,
+        160,
+        9872,
+        174
+      ],
+      [
+        44,
+        16,
+        110,
+        139
+      ]
+    ],
+    "true_transitions": 40,
+    "predicted_transitions": 601,
+    "matched_transitions": 32
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 10.717622800031677,
+    "samples": 27813,
+    "accuracy": 0.7800309207924352,
+    "balanced_accuracy": 0.6303049111394885,
+    "macro_f1": 0.6167557150540904,
+    "free_motion_f1": 0.6903491591814682,
+    "approach_f1": 0.6411233701103309,
+    "painting_f1": 0.8639157155399473,
+    "retract_f1": 0.27163461538461536,
+    "transition_recall": 0.5945945945945946,
+    "false_transitions": 317,
+    "absolute_delay_mean_ms": 482.7563605151515,
+    "inference_mean_ms_per_frame": 0.28240312803243994,
+    "confusion_matrix": [
+      [
+        5111,
+        224,
+        885,
+        18
+      ],
+      [
+        608,
+        1598,
+        44,
+        0
+      ],
+      [
+        2312,
+        833,
+        14760,
+        108
+      ],
+      [
+        538,
+        80,
+        468,
+        226
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 383,
+    "matched_transitions": 66
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 9.59532339987345,
+    "samples": 27813,
+    "accuracy": 0.7364541761046992,
+    "balanced_accuracy": 0.6046845896608799,
+    "macro_f1": 0.5963225640851533,
+    "free_motion_f1": 0.6352750621854573,
+    "approach_f1": 0.5966674275279615,
+    "painting_f1": 0.8322468491960018,
+    "retract_f1": 0.3211009174311927,
+    "transition_recall": 0.5675675675675675,
+    "false_transitions": 399,
+    "absolute_delay_mean_ms": 491.58738595238094,
+    "inference_mean_ms_per_frame": 0.22954403696045222,
+    "confusion_matrix": [
+      [
+        5491,
+        191,
+        520,
+        36
+      ],
+      [
+        915,
+        1307,
+        28,
+        0
+      ],
+      [
+        3936,
+        556,
+        13405,
+        116
+      ],
+      [
+        707,
+        77,
+        248,
+        280
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 462,
+    "matched_transitions": 63
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 8.864601100096479,
+    "samples": 27813,
+    "accuracy": 0.7838780426419301,
+    "balanced_accuracy": 0.6010677587222697,
+    "macro_f1": 0.6015232116962366,
+    "free_motion_f1": 0.6793161507576738,
+    "approach_f1": 0.587693016824153,
+    "painting_f1": 0.8809398562160267,
+    "retract_f1": 0.2581438229870928,
+    "transition_recall": 0.6036036036036037,
+    "false_transitions": 296,
+    "absolute_delay_mean_ms": 512.4363317462687,
+    "inference_mean_ms_per_frame": 0.23298670405804806,
+    "confusion_matrix": [
+      [
+        5245,
+        260,
+        721,
+        12
+      ],
+      [
+        925,
+        1275,
+        50,
+        0
+      ],
+      [
+        2390,
+        458,
+        15072,
+        93
+      ],
+      [
+        644,
+        96,
+        362,
+        210
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 363,
+    "matched_transitions": 67
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 8.011996999848634,
+    "samples": 27813,
+    "accuracy": 0.7717254521267033,
+    "balanced_accuracy": 0.5965606838266081,
+    "macro_f1": 0.6038327261275076,
+    "free_motion_f1": 0.6650747769259772,
+    "approach_f1": 0.5933085501858737,
+    "painting_f1": 0.8670414741117947,
+    "retract_f1": 0.28990610328638494,
+    "transition_recall": 0.5855855855855856,
+    "false_transitions": 335,
+    "absolute_delay_mean_ms": 470.4025580153846,
+    "inference_mean_ms_per_frame": 0.22172131017781357,
+    "confusion_matrix": [
+      [
+        5292,
+        144,
+        778,
+        24
+      ],
+      [
+        993,
+        1197,
+        60,
+        0
+      ],
+      [
+        2790,
+        374,
+        14728,
+        121
+      ],
+      [
+        601,
+        70,
+        394,
+        247
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 400,
+    "matched_transitions": 65
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 17.932348100002855,
+    "samples": 27813,
+    "accuracy": 0.7994103476791429,
+    "balanced_accuracy": 0.5378021147410219,
+    "macro_f1": 0.5530403506727335,
+    "free_motion_f1": 0.6971016464825145,
+    "approach_f1": 0.43182490387459327,
+    "painting_f1": 0.9011732726818851,
+    "retract_f1": 0.18206157965194109,
+    "transition_recall": 0.6486486486486487,
+    "false_transitions": 873,
+    "absolute_delay_mean_ms": 508.59682752777775,
+    "inference_mean_ms_per_frame": 0.017935407906810887,
+    "confusion_matrix": [
+      [
+        5123,
+        125,
+        981,
+        9
+      ],
+      [
+        1078,
+        730,
+        442,
+        0
+      ],
+      [
+        1520,
+        211,
+        16245,
+        37
+      ],
+      [
+        739,
+        65,
+        372,
+        136
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 945,
+    "matched_transitions": 72
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 19.321836499962956,
+    "samples": 27813,
+    "accuracy": 0.8011002049401359,
+    "balanced_accuracy": 0.5400208962578357,
+    "macro_f1": 0.5550792464517166,
+    "free_motion_f1": 0.7004765146358067,
+    "approach_f1": 0.43711340206185567,
+    "painting_f1": 0.9021250624202409,
+    "retract_f1": 0.1806020066889632,
+    "transition_recall": 0.6576576576576577,
+    "false_transitions": 866,
+    "absolute_delay_mean_ms": 491.4084720273973,
+    "inference_mean_ms_per_frame": 0.015101089417745293,
+    "confusion_matrix": [
+      [
+        5145,
+        117,
+        961,
+        15
+      ],
+      [
+        1071,
+        742,
+        437,
+        0
+      ],
+      [
+        1503,
+        218,
+        16259,
+        33
+      ],
+      [
+        733,
+        68,
+        376,
+        135
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 939,
+    "matched_transitions": 73
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 19.62721349997446,
+    "samples": 27813,
+    "accuracy": 0.7983676697947003,
+    "balanced_accuracy": 0.5333652147984516,
+    "macro_f1": 0.5481629397264548,
+    "free_motion_f1": 0.6956284897180988,
+    "approach_f1": 0.4179640718562875,
+    "painting_f1": 0.9010136819365202,
+    "retract_f1": 0.17804551539491298,
+    "transition_recall": 0.6666666666666666,
+    "false_transitions": 862,
+    "absolute_delay_mean_ms": 484.2364881891892,
+    "inference_mean_ms_per_frame": 0.014466681047093756,
+    "confusion_matrix": [
+      [
+        5108,
+        136,
+        983,
+        11
+      ],
+      [
+        1104,
+        698,
+        448,
+        0
+      ],
+      [
+        1516,
+        193,
+        16266,
+        38
+      ],
+      [
+        720,
+        63,
+        396,
+        133
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 936,
+    "matched_transitions": 74
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 19.783792099915445,
+    "samples": 27813,
+    "accuracy": 0.8004530255635853,
+    "balanced_accuracy": 0.5356811822654396,
+    "macro_f1": 0.5485893328135122,
+    "free_motion_f1": 0.699829874106839,
+    "approach_f1": 0.4301329394387002,
+    "painting_f1": 0.9024511978704526,
+    "retract_f1": 0.16194331983805668,
+    "transition_recall": 0.6216216216216216,
+    "false_transitions": 837,
+    "absolute_delay_mean_ms": 492.1941768115943,
+    "inference_mean_ms_per_frame": 0.016906935601357146,
+    "confusion_matrix": [
+      [
+        5142,
+        120,
+        962,
+        14
+      ],
+      [
+        1093,
+        728,
+        429,
+        0
+      ],
+      [
+        1481,
+        223,
+        16273,
+        36
+      ],
+      [
+        741,
+        64,
+        387,
+        120
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 906,
+    "matched_transitions": 69
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 4.234435299877077,
+    "samples": 27813,
+    "accuracy": 0.7370654010714414,
+    "balanced_accuracy": 0.6029076618616436,
+    "macro_f1": 0.5674324363691966,
+    "free_motion_f1": 0.6547819098414553,
+    "approach_f1": 0.5223627099452728,
+    "painting_f1": 0.8503951095869986,
+    "retract_f1": 0.2421900161030596,
+    "transition_recall": 0.8108108108108109,
+    "false_transitions": 1853,
+    "absolute_delay_mean_ms": 549.7253268444445,
+    "inference_mean_ms_per_frame": 0.15713604789023525,
+    "confusion_matrix": [
+      [
+        4481,
+        742,
+        736,
+        279
+      ],
+      [
+        482,
+        1384,
+        326,
+        58
+      ],
+      [
+        1949,
+        725,
+        14259,
+        1080
+      ],
+      [
+        537,
+        198,
+        201,
+        376
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 1943,
+    "matched_transitions": 90
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 4.343450900167227,
+    "samples": 27813,
+    "accuracy": 0.7370294466616331,
+    "balanced_accuracy": 0.6032041177323411,
+    "macro_f1": 0.5675733976346924,
+    "free_motion_f1": 0.6546783625730994,
+    "approach_f1": 0.5232799245994344,
+    "painting_f1": 0.8503011868551321,
+    "retract_f1": 0.24203411651110393,
+    "transition_recall": 0.8108108108108109,
+    "false_transitions": 1856,
+    "absolute_delay_mean_ms": 566.0435000777777,
+    "inference_mean_ms_per_frame": 0.15318817099416293,
+    "confusion_matrix": [
+      [
+        4478,
+        743,
+        738,
+        279
+      ],
+      [
+        480,
+        1388,
+        324,
+        58
+      ],
+      [
+        1947,
+        727,
+        14257,
+        1082
+      ],
+      [
+        537,
+        197,
+        202,
+        376
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 1946,
+    "matched_transitions": 90
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 3.4768555001355708,
+    "samples": 27813,
+    "accuracy": 0.7291194765037932,
+    "balanced_accuracy": 0.5876242561133144,
+    "macro_f1": 0.5549786593326039,
+    "free_motion_f1": 0.6300431740360279,
+    "approach_f1": 0.4955885113572367,
+    "painting_f1": 0.8499244735361196,
+    "retract_f1": 0.2443584784010316,
+    "transition_recall": 0.8018018018018018,
+    "false_transitions": 1753,
+    "absolute_delay_mean_ms": 624.8889409550561,
+    "inference_mean_ms_per_frame": 0.14895959802640812,
+    "confusion_matrix": [
+      [
+        4232,
+        859,
+        848,
+        299
+      ],
+      [
+        510,
+        1320,
+        370,
+        50
+      ],
+      [
+        1882,
+        721,
+        14348,
+        1062
+      ],
+      [
+        572,
+        177,
+        184,
+        379
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 1842,
+    "matched_transitions": 89
+  },
+  {
+    "held_out_participant": "10",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "test_trials": [
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "fit_seconds": 3.035292300162837,
+    "samples": 27813,
+    "accuracy": 0.7355912702692985,
+    "balanced_accuracy": 0.5714267267241481,
+    "macro_f1": 0.5532446038705772,
+    "free_motion_f1": 0.6454307354710839,
+    "approach_f1": 0.4701293368918086,
+    "painting_f1": 0.8476128956485993,
+    "retract_f1": 0.2498054474708171,
+    "transition_recall": 0.7297297297297297,
+    "false_transitions": 1878,
+    "absolute_delay_mean_ms": 438.66587587654317,
+    "inference_mean_ms_per_frame": 0.1487233523826308,
+    "confusion_matrix": [
+      [
+        4559,
+        577,
+        961,
+        141
+      ],
+      [
+        647,
+        1145,
+        392,
+        66
+      ],
+      [
+        2139,
+        710,
+        14434,
+        730
+      ],
+      [
+        544,
+        189,
+        258,
+        321
+      ]
+    ],
+    "true_transitions": 111,
+    "predicted_transitions": 1959,
+    "matched_transitions": 81
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 7.796426399843767,
+    "samples": 25308,
+    "accuracy": 0.7284257942152679,
+    "balanced_accuracy": 0.5598985195669658,
+    "macro_f1": 0.5421482450451505,
+    "free_motion_f1": 0.756637168141593,
+    "approach_f1": 0.4643078833022967,
+    "painting_f1": 0.7575030012004802,
+    "retract_f1": 0.19014492753623186,
+    "transition_recall": 0.638095238095238,
+    "false_transitions": 353,
+    "absolute_delay_mean_ms": 627.6247020149252,
+    "inference_mean_ms_per_frame": 0.23007530819909344,
+    "confusion_matrix": [
+      [
+        9063,
+        370,
+        1133,
+        98
+      ],
+      [
+        222,
+        374,
+        71,
+        19
+      ],
+      [
+        3513,
+        167,
+        8834,
+        433
+      ],
+      [
+        494,
+        14,
+        339,
+        164
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 420,
+    "matched_transitions": 67
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 8.364970199996606,
+    "samples": 25308,
+    "accuracy": 0.7110399873557768,
+    "balanced_accuracy": 0.537827824420384,
+    "macro_f1": 0.5297711048934797,
+    "free_motion_f1": 0.7500306385064748,
+    "approach_f1": 0.45435540069686414,
+    "painting_f1": 0.7286271416677621,
+    "retract_f1": 0.18607123870281767,
+    "transition_recall": 0.6857142857142857,
+    "false_transitions": 407,
+    "absolute_delay_mean_ms": 586.0915144722222,
+    "inference_mean_ms_per_frame": 0.2768192231728426,
+    "confusion_matrix": [
+      [
+        9180,
+        273,
+        1117,
+        94
+      ],
+      [
+        215,
+        326,
+        127,
+        18
+      ],
+      [
+        3919,
+        131,
+        8314,
+        583
+      ],
+      [
+        501,
+        19,
+        316,
+        175
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 479,
+    "matched_transitions": 72
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 9.081533200107515,
+    "samples": 25308,
+    "accuracy": 0.7396080290817133,
+    "balanced_accuracy": 0.5585254088839499,
+    "macro_f1": 0.5551831010449576,
+    "free_motion_f1": 0.7727349560513861,
+    "approach_f1": 0.5007320644216691,
+    "painting_f1": 0.7683232186054407,
+    "retract_f1": 0.17894216510133465,
+    "transition_recall": 0.7238095238095238,
+    "false_transitions": 443,
+    "absolute_delay_mean_ms": 647.369122776316,
+    "inference_mean_ms_per_frame": 0.23804942310768748,
+    "confusion_matrix": [
+      [
+        9143,
+        216,
+        1193,
+        112
+      ],
+      [
+        305,
+        342,
+        30,
+        9
+      ],
+      [
+        3075,
+        110,
+        9052,
+        710
+      ],
+      [
+        477,
+        12,
+        341,
+        181
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 519,
+    "matched_transitions": 76
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "causal_lstm",
+    "model": "Causal LSTM",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 9.274245100095868,
+    "samples": 25308,
+    "accuracy": 0.7258179231863442,
+    "balanced_accuracy": 0.5470286899257061,
+    "macro_f1": 0.541623148186539,
+    "free_motion_f1": 0.7559075453019412,
+    "approach_f1": 0.4561653599429793,
+    "painting_f1": 0.7571810287241151,
+    "retract_f1": 0.19723865877712032,
+    "transition_recall": 0.6,
+    "false_transitions": 421,
+    "absolute_delay_mean_ms": 665.0951725079366,
+    "inference_mean_ms_per_frame": 0.23153272483327697,
+    "confusion_matrix": [
+      [
+        8781,
+        247,
+        1466,
+        170
+      ],
+      [
+        256,
+        320,
+        82,
+        28
+      ],
+      [
+        3131,
+        129,
+        9068,
+        619
+      ],
+      [
+        401,
+        21,
+        389,
+        200
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 484,
+    "matched_transitions": 63
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 23.27043589996174,
+    "samples": 25308,
+    "accuracy": 0.6758732416627153,
+    "balanced_accuracy": 0.4391385288214427,
+    "macro_f1": 0.45372595803185095,
+    "free_motion_f1": 0.7164904034469252,
+    "approach_f1": 0.2931034482758621,
+    "painting_f1": 0.6782249923188343,
+    "retract_f1": 0.12708498808578236,
+    "transition_recall": 0.5714285714285714,
+    "false_transitions": 454,
+    "absolute_delay_mean_ms": 627.9883714666666,
+    "inference_mean_ms_per_frame": 0.03603835546502689,
+    "confusion_matrix": [
+      [
+        9146,
+        99,
+        1354,
+        65
+      ],
+      [
+        224,
+        153,
+        299,
+        10
+      ],
+      [
+        5026,
+        102,
+        7726,
+        93
+      ],
+      [
+        470,
+        4,
+        457,
+        80
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 514,
+    "matched_transitions": 60
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 20.69536850019358,
+    "samples": 25308,
+    "accuracy": 0.6774932827564406,
+    "balanced_accuracy": 0.44577196110474276,
+    "macro_f1": 0.46265742359712847,
+    "free_motion_f1": 0.7172489511037917,
+    "approach_f1": 0.3082778306374881,
+    "painting_f1": 0.6795332923940697,
+    "retract_f1": 0.14556962025316456,
+    "transition_recall": 0.5428571428571428,
+    "false_transitions": 443,
+    "absolute_delay_mean_ms": 585.2363927017544,
+    "inference_mean_ms_per_frame": 0.02822392523805098,
+    "confusion_matrix": [
+      [
+        9146,
+        96,
+        1352,
+        70
+      ],
+      [
+        220,
+        162,
+        297,
+        7
+      ],
+      [
+        5016,
+        101,
+        7746,
+        84
+      ],
+      [
+        457,
+        6,
+        456,
+        92
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 500,
+    "matched_transitions": 57
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 19.25436980021186,
+    "samples": 25308,
+    "accuracy": 0.6783230599020073,
+    "balanced_accuracy": 0.4489284974359243,
+    "macro_f1": 0.46407170763859434,
+    "free_motion_f1": 0.717600408307487,
+    "approach_f1": 0.3241252302025783,
+    "painting_f1": 0.6810133239831697,
+    "retract_f1": 0.1335478680611424,
+    "transition_recall": 0.5428571428571428,
+    "false_transitions": 422,
+    "absolute_delay_mean_ms": 541.060149877193,
+    "inference_mean_ms_per_frame": 0.03404182867534601,
+    "confusion_matrix": [
+      [
+        9139,
+        112,
+        1351,
+        62
+      ],
+      [
+        210,
+        176,
+        293,
+        7
+      ],
+      [
+        4992,
+        106,
+        7769,
+        80
+      ],
+      [
+        466,
+        6,
+        456,
+        83
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 479,
+    "matched_transitions": 57
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "random_forest",
+    "model": "Random Forest",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 23.955389899900183,
+    "samples": 25308,
+    "accuracy": 0.6771376639797693,
+    "balanced_accuracy": 0.4446760911890499,
+    "macro_f1": 0.4602929996621169,
+    "free_motion_f1": 0.7170196078431372,
+    "approach_f1": 0.3091423185673893,
+    "painting_f1": 0.6794438840401738,
+    "retract_f1": 0.13556618819776714,
+    "transition_recall": 0.5428571428571428,
+    "false_transitions": 439,
+    "absolute_delay_mean_ms": 593.347204508772,
+    "inference_mean_ms_per_frame": 0.02706215821188317,
+    "confusion_matrix": [
+      [
+        9142,
+        98,
+        1349,
+        75
+      ],
+      [
+        215,
+        164,
+        302,
+        5
+      ],
+      [
+        5020,
+        103,
+        7746,
+        78
+      ],
+      [
+        459,
+        10,
+        457,
+        85
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 496,
+    "matched_transitions": 57
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 1,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 5.043346399907023,
+    "samples": 25308,
+    "accuracy": 0.6703018808281966,
+    "balanced_accuracy": 0.5415851611437237,
+    "macro_f1": 0.48315875352635385,
+    "free_motion_f1": 0.7622965976331361,
+    "approach_f1": 0.28843106180665606,
+    "painting_f1": 0.7126142434544571,
+    "retract_f1": 0.16929311121116614,
+    "transition_recall": 0.7619047619047619,
+    "false_transitions": 1751,
+    "absolute_delay_mean_ms": 464.81400871249997,
+    "inference_mean_ms_per_frame": 0.2333244191585996,
+    "confusion_matrix": [
+      [
+        8245,
+        515,
+        1249,
+        655
+      ],
+      [
+        99,
+        273,
+        158,
+        156
+      ],
+      [
+        2289,
+        344,
+        8070,
+        2244
+      ],
+      [
+        335,
+        75,
+        225,
+        376
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 1831,
+    "matched_transitions": 80
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 2,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 4.0252693998627365,
+    "samples": 25308,
+    "accuracy": 0.6588430535798957,
+    "balanced_accuracy": 0.5380719121120179,
+    "macro_f1": 0.47920961794309813,
+    "free_motion_f1": 0.7823104023734471,
+    "approach_f1": 0.30293333333333333,
+    "painting_f1": 0.6938588870090082,
+    "retract_f1": 0.13773584905660377,
+    "transition_recall": 0.6761904761904762,
+    "false_transitions": 1544,
+    "absolute_delay_mean_ms": 487.2360503521126,
+    "inference_mean_ms_per_frame": 0.15275962146806307,
+    "confusion_matrix": [
+      [
+        8438,
+        487,
+        986,
+        753
+      ],
+      [
+        99,
+        284,
+        131,
+        172
+      ],
+      [
+        2016,
+        345,
+        7587,
+        2999
+      ],
+      [
+        355,
+        73,
+        218,
+        365
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 1615,
+    "matched_transitions": 71
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 3,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 4.138995100045577,
+    "samples": 25308,
+    "accuracy": 0.6758732416627153,
+    "balanced_accuracy": 0.5170430616304785,
+    "macro_f1": 0.47041306664963095,
+    "free_motion_f1": 0.7555113685484567,
+    "approach_f1": 0.24008243173621846,
+    "painting_f1": 0.7100081662281099,
+    "retract_f1": 0.1760503000857388,
+    "transition_recall": 0.7714285714285715,
+    "false_transitions": 1571,
+    "absolute_delay_mean_ms": 526.9249140493828,
+    "inference_mean_ms_per_frame": 0.15516794689696783,
+    "confusion_matrix": [
+      [
+        8739,
+        507,
+        878,
+        540
+      ],
+      [
+        155,
+        233,
+        176,
+        122
+      ],
+      [
+        3173,
+        431,
+        7825,
+        1518
+      ],
+      [
+        403,
+        84,
+        216,
+        308
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 1652,
+    "matched_transitions": 81
+  },
+  {
+    "held_out_participant": "11",
+    "model_type": "gmm",
+    "model": "GMM",
+    "seed": 4,
+    "train_trial_count": 18,
+    "test_trial_count": 4,
+    "train_trials": [
+      "06_01",
+      "06_02",
+      "06_03",
+      "06_04",
+      "07_01",
+      "07_02",
+      "07_03",
+      "07_04",
+      "08_01",
+      "08_02",
+      "08_04",
+      "09_02",
+      "09_03",
+      "09_04",
+      "10_01",
+      "10_02",
+      "10_03",
+      "10_04"
+    ],
+    "test_trials": [
+      "11_01",
+      "11_02",
+      "11_03",
+      "11_04"
+    ],
+    "fit_seconds": 2.795931400032714,
+    "samples": 25308,
+    "accuracy": 0.6740161213845425,
+    "balanced_accuracy": 0.5365014434207545,
+    "macro_f1": 0.4834055973357596,
+    "free_motion_f1": 0.7774434001574148,
+    "approach_f1": 0.2937062937062937,
+    "painting_f1": 0.7147870119486519,
+    "retract_f1": 0.14768568353067815,
+    "transition_recall": 0.7523809523809524,
+    "false_transitions": 1529,
+    "absolute_delay_mean_ms": 484.90011901265837,
+    "inference_mean_ms_per_frame": 0.15141642167802147,
+    "confusion_matrix": [
+      [
+        8396,
+        479,
+        1118,
+        671
+      ],
+      [
+        98,
+        273,
+        163,
+        152
+      ],
+      [
+        2084,
+        349,
+        8046,
+        2468
+      ],
+      [
+        357,
+        72,
+        239,
+        343
+      ]
+    ],
+    "true_transitions": 105,
+    "predicted_transitions": 1608,
+    "matched_transitions": 79
+  }
+]
