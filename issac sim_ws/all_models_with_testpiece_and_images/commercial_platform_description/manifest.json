@@ -1,0 +1,856 @@
+{
+  "models": [
+    "platform",
+    "platform_spray_weld"
+  ],
+  "notes": "저장소의 상용 양팔 플랫폼 Construct/Hongik v4 CAD입니다. platform은 EOAT 없는 본체, platform_spray_weld는 왼팔 spray_v2·오른팔 hongik_v4 장착본입니다. 베이스·양팔·헤드·카메라 형상을 포함하며 원본의 작업점 프레임도 보존합니다. 양팔 제조사 모델명은 이 전달 작업에서 별도 실물 검증하지 않았습니다.",
+  "metadata": {
+    "source_model": "hongik_v4",
+    "source_urdf": "/home/minjea/robotics/sketch-robot-runtime-main/assets/construct/hongik_v4/source/construct_description/urdf_0528/construct_robot_0528_hongik_v2.urdf",
+    "equipment": {
+      "left": {
+        "model": "spray_v2",
+        "mount": {
+          "source_file": "EOAT ass_y_ROBOI_Sharing_v2 (2).stp",
+          "source_sha256": "b8c4d8ce18572932fde019faf4b55f5a9289acf5d324d5dcc1a68006abba73b9",
+          "cad_mount_center_mm": [
+            0,
+            -67,
+            0
+          ],
+          "cad_to_flange_rotation": [
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          "flange_in_link6_m": [
+            0,
+            0,
+            0.0543
+          ],
+          "tcp_in_flange_m": [
+            -0.11,
+            0,
+            0.2822
+          ],
+          "tcp_axis": "+z",
+          "tcp_basis": "CAD nozzle_1 front face at Y=215.2 mm; nominal, not physical calibration",
+          "excluded": [
+            "RB20-1900ES_LINK6 (duplicate robot wrist)",
+            "spray coat (spray envelope)",
+            "hose_1",
+            "hose_2",
+            "hose_3"
+          ],
+          "flexible_hoses": "Excluded from rigid-body model; routing requires a separate flexible model",
+          "included_parts": [
+            "nozzle_1",
+            "nozzle_2",
+            "nozzle_3",
+            "nozzle_4",
+            "nozzle_5",
+            "nozzle_6",
+            "SGCEL10A",
+            "Nut_1",
+            "MCM23-S ZNDC",
+            "C-UTE1",
+            "BNN6 1",
+            "BNBU 1x3-4",
+            "BallBearing",
+            "BallBearing",
+            "BallBearing",
+            "BallBearing",
+            "BallBearing",
+            "BallBearing",
+            "Component1",
+            "OuterPullBack",
+            "Component7",
+            "RetainingSpring",
+            "RubberSeal",
+            "Plunger",
+            "Component1_1",
+            "TypeIndicator",
+            "EndCap",
+            "EndCap_2",
+            "TSND R1-4xR3-8",
+            "ºÎÇ°1",
+            "PG9",
+            "nozzle_8",
+            "nozzle_9",
+            "nozzle_10",
+            "nozzle_11",
+            "nozzle_11",
+            "actuator_protection_base_case_1",
+            "actuator_protection_base_case_2",
+            "actuator_protection_base_case_pad_1",
+            "actuator_protection_base_case_3",
+            "GSW4",
+            "GSW4",
+            "GSW4",
+            "GSW4",
+            "GSW4",
+            "GSW4",
+            "GSW4",
+            "GSW4",
+            "JIS B 1174 - M4 x 8",
+            "JIS B 1174 - M4 x 8",
+            "JIS B 1174 - M4 x 8",
+            "JIS B 1174 - M4 x 8",
+            "JIS B 1174 - M4 x 8",
+            "JIS B 1174 - M4 x 8",
+            "JIS B 1174 - M4 x 8",
+            "JIS B 1174 - M4 x 8",
+            "ºÎÇ°1",
+            "PG9",
+            "spray coat gun_flange_plate_2_v3",
+            "spray coat gun_flange_plate_3_v3",
+            "spray coat gun_flange_plate_4_v3",
+            "spray coat gun_flange_plate_4-2_v3",
+            "spray coat gun_flange_plate_5_v3",
+            "spray coat gun_flange_plate_5-2_v3",
+            "spray coat gun_flange_plate_2_v3",
+            "spray coat gun_flange_plate_6_v3",
+            "AFT200-D80-EN",
+            "spray coat gun_flange_plate_1_v3",
+            "spray coat gun_flange_plate_7_v3",
+            "spray coat gun_flange_plate_8_v3",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 6 x 16",
+            "KS B 1003 - M 6 x 16",
+            "KS B 1003 - M 5 x 20",
+            "KS B 1003 - M 5 x 20",
+            "KS B 1003 - M 6 x 16",
+            "KS B 1003 - M 6 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 8 x 20",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16",
+            "KS B 1003 - M 5 x 16"
+          ],
+          "bounds_m": [
+            [
+              -0.21400000000008196,
+              -0.0699999999998669,
+              -0.04939999999999928
+            ],
+            [
+              0.05,
+              0.05,
+              0.2822000000000011
+            ]
+          ],
+          "triangles": 766077,
+          "simulation_mass_kg": 2.0,
+          "mass_basis": "Nominal simulation-only placeholder; CAD has no assigned material density",
+          "visual_triangles": 119759,
+          "collision_triangles": 46715,
+          "mesh_processing": "OCP tessellation (0.7 mm, 0.25 rad), quadric simplification (visual 120k / collision 25k target faces)"
+        },
+        "mass_calibrated": false,
+        "tcp_calibrated": false
+      },
+      "right": {
+        "model": "hongik_v4",
+        "tcp_basis": "contact_tip_face_center",
+        "tcp_calibrated": false,
+        "mass_calibrated": false,
+        "legacy_demo_torch_compatible": false
+      }
+    },
+    "head_motion_overrides": {
+      "robot_head_rev_joint1": {
+        "has_acceleration_limits": true,
+        "max_acceleration": 0.5,
+        "has_jerk_limits": true,
+        "max_jerk": 2.0
+      },
+      "robot_head_rev_joint2": {
+        "has_acceleration_limits": true,
+        "max_acceleration": 0.5,
+        "has_jerk_limits": true,
+        "max_jerk": 2.0
+      }
+    },
+    "inertia_overrides": [],
+    "name": "construct_robot_0528_hongik_v2",
+    "joint_names": [
+      "left_manipulator_joint1",
+      "left_manipulator_joint2",
+      "left_manipulator_joint3",
+      "left_manipulator_joint4",
+      "left_manipulator_joint5",
+      "left_manipulator_joint6",
+      "right_manipulator_joint1",
+      "right_manipulator_joint2",
+      "right_manipulator_joint3",
+      "right_manipulator_joint4",
+      "right_manipulator_joint5",
+      "right_manipulator_joint6",
+      "robot_head_rev_joint1",
+      "robot_head_rev_joint2"
+    ],
+    "initial_positions": {
+      "left_manipulator_joint1": 0,
+      "left_manipulator_joint2": -0.7767975217522227,
+      "left_manipulator_joint3": -1.570825302024956,
+      "left_manipulator_joint4": -4.466603319160641e-05,
+      "left_manipulator_joint5": -0.7767317140952323,
+      "left_manipulator_joint6": 6.233535385690629e-05,
+      "right_manipulator_joint1": 3.14,
+      "right_manipulator_joint2": 0.314159,
+      "right_manipulator_joint3": 1.43117,
+      "right_manipulator_joint4": 1.1002556,
+      "right_manipulator_joint5": 0.261799,
+      "right_manipulator_joint6": 2.89725,
+      "robot_head_rev_joint1": 0,
+      "robot_head_rev_joint2": 0
+    },
+    "limits": {
+      "left_manipulator_joint1": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 400.0,
+        "velocity": 2.094
+      },
+      "left_manipulator_joint2": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 400.0,
+        "velocity": 2.094
+      },
+      "left_manipulator_joint3": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 300.0,
+        "velocity": 2.094
+      },
+      "left_manipulator_joint4": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 120.0,
+        "velocity": 3.141
+      },
+      "left_manipulator_joint5": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 120.0,
+        "velocity": 3.141
+      },
+      "left_manipulator_joint6": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 120.0,
+        "velocity": 3.141
+      },
+      "right_manipulator_joint1": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 400.0,
+        "velocity": 2.094
+      },
+      "right_manipulator_joint2": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 400.0,
+        "velocity": 2.094
+      },
+      "right_manipulator_joint3": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 300.0,
+        "velocity": 2.094
+      },
+      "right_manipulator_joint4": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 120.0,
+        "velocity": 3.141
+      },
+      "right_manipulator_joint5": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 120.0,
+        "velocity": 3.141
+      },
+      "right_manipulator_joint6": {
+        "lower": -6.283,
+        "upper": 6.283,
+        "effort": 120.0,
+        "velocity": 3.141
+      },
+      "robot_head_rev_joint1": {
+        "lower": -3.1416,
+        "upper": 3.1416,
+        "effort": 300.0,
+        "velocity": 10.0
+      },
+      "robot_head_rev_joint2": {
+        "lower": -3.1416,
+        "upper": 3.1416,
+        "effort": 300.0,
+        "velocity": 10.0
+      }
+    },
+    "groups": {
+      "left_manipulator_controller": [
+        "left_manipulator_joint1",
+        "left_manipulator_joint2",
+        "left_manipulator_joint3",
+        "left_manipulator_joint4",
+        "left_manipulator_joint5",
+        "left_manipulator_joint6"
+      ],
+      "right_manipulator_controller": [
+        "right_manipulator_joint1",
+        "right_manipulator_joint2",
+        "right_manipulator_joint3",
+        "right_manipulator_joint4",
+        "right_manipulator_joint5",
+        "right_manipulator_joint6"
+      ],
+      "robot_head_controller": [
+        "robot_head_rev_joint1",
+        "robot_head_rev_joint2"
+      ]
+    }
+  },
+  "meshes": [
+    {
+      "source": "src/construct_description/meshes_0528/base_link_optimized.stl",
+      "file": "meshes/597181982565_base_link_optimized.stl",
+      "sha256": "597181982565a019166c834d2f8c38b83914a94790164d2e32de47db0c79214d"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/base_link_optimized.stl",
+      "file": "meshes/597181982565_base_link_optimized.stl",
+      "sha256": "597181982565a019166c834d2f8c38b83914a94790164d2e32de47db0c79214d"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_base_link_optimized.stl",
+      "file": "meshes/492c66c60313_robot_base_link_optimized.stl",
+      "sha256": "492c66c6031353c9603380be1e8845fec0e93fff8c9166cb1c04ec6f99aad966"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_base_link_optimized.stl",
+      "file": "meshes/492c66c60313_robot_base_link_optimized.stl",
+      "sha256": "492c66c6031353c9603380be1e8845fec0e93fff8c9166cb1c04ec6f99aad966"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_base_link_optimized.stl",
+      "file": "meshes/38d148b9ff88_left_manipulator_base_link_optimized.stl",
+      "sha256": "38d148b9ff8881931ab90e7288f2ef70a2153e19f5d3362496b7b1a0cadbfb4e"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_base_link_optimized.stl",
+      "file": "meshes/38d148b9ff88_left_manipulator_base_link_optimized.stl",
+      "sha256": "38d148b9ff8881931ab90e7288f2ef70a2153e19f5d3362496b7b1a0cadbfb4e"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link1_optimized.stl",
+      "file": "meshes/e7aa8b4f21e8_left_manipulator_link1_optimized.stl",
+      "sha256": "e7aa8b4f21e89c21a95c5d05938a909d5e6060ba04326f3d8164b02a0deda6b7"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link1_optimized.stl",
+      "file": "meshes/e7aa8b4f21e8_left_manipulator_link1_optimized.stl",
+      "sha256": "e7aa8b4f21e89c21a95c5d05938a909d5e6060ba04326f3d8164b02a0deda6b7"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link2_optimized.stl",
+      "file": "meshes/22abe8354b4e_left_manipulator_link2_optimized.stl",
+      "sha256": "22abe8354b4efa6a4183ea56d6daf429936515597171b49d779c5e59c884ed70"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link2_optimized.stl",
+      "file": "meshes/22abe8354b4e_left_manipulator_link2_optimized.stl",
+      "sha256": "22abe8354b4efa6a4183ea56d6daf429936515597171b49d779c5e59c884ed70"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link3_optimized.stl",
+      "file": "meshes/7cc9603e4aed_left_manipulator_link3_optimized.stl",
+      "sha256": "7cc9603e4aedfe0fc85c074d1b5c8f20c09ef5b14b44d566b74dc5a6bce30438"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link3_optimized.stl",
+      "file": "meshes/7cc9603e4aed_left_manipulator_link3_optimized.stl",
+      "sha256": "7cc9603e4aedfe0fc85c074d1b5c8f20c09ef5b14b44d566b74dc5a6bce30438"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link4_optimized.stl",
+      "file": "meshes/b1ad69a86220_left_manipulator_link4_optimized.stl",
+      "sha256": "b1ad69a8622093e8e3de6ba062ea86e12a7577ce0d599f371319f645ff71faae"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link4_optimized.stl",
+      "file": "meshes/b1ad69a86220_left_manipulator_link4_optimized.stl",
+      "sha256": "b1ad69a8622093e8e3de6ba062ea86e12a7577ce0d599f371319f645ff71faae"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link5_optimized.stl",
+      "file": "meshes/bbfe0115448f_left_manipulator_link5_optimized.stl",
+      "sha256": "bbfe0115448f52ac113bb3e81e17965ad878abcefa915152626c701372d387de"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link5_optimized.stl",
+      "file": "meshes/bbfe0115448f_left_manipulator_link5_optimized.stl",
+      "sha256": "bbfe0115448f52ac113bb3e81e17965ad878abcefa915152626c701372d387de"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link6_optimized.stl",
+      "file": "meshes/cd489b39250a_left_manipulator_link6_optimized.stl",
+      "sha256": "cd489b39250a981b5857dcb8a17abcde966f91251638f14459abf7536ad0da4d"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link6_optimized.stl",
+      "file": "meshes/cd489b39250a_left_manipulator_link6_optimized.stl",
+      "sha256": "cd489b39250a981b5857dcb8a17abcde966f91251638f14459abf7536ad0da4d"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_base_link_optimized.stl",
+      "file": "meshes/2b546519d699_right_manipulator_base_link_optimized.stl",
+      "sha256": "2b546519d699fdb8dada2502a03ab1f86c2f596826aa1455e38fccde4179fc91"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_base_link_optimized.stl",
+      "file": "meshes/2b546519d699_right_manipulator_base_link_optimized.stl",
+      "sha256": "2b546519d699fdb8dada2502a03ab1f86c2f596826aa1455e38fccde4179fc91"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link1_optimized.stl",
+      "file": "meshes/8583ea68aa57_right_manipulator_link1_optimized.stl",
+      "sha256": "8583ea68aa575592f98999d9308ada8320d9abf68d6bc92a57b6e64440541e1d"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link1_optimized.stl",
+      "file": "meshes/8583ea68aa57_right_manipulator_link1_optimized.stl",
+      "sha256": "8583ea68aa575592f98999d9308ada8320d9abf68d6bc92a57b6e64440541e1d"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link2_optimized.stl",
+      "file": "meshes/92ad82083286_right_manipulator_link2_optimized.stl",
+      "sha256": "92ad82083286f65055aad1f591136cc8789f4f220b94837582b47267d9fc9cba"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link2_optimized.stl",
+      "file": "meshes/92ad82083286_right_manipulator_link2_optimized.stl",
+      "sha256": "92ad82083286f65055aad1f591136cc8789f4f220b94837582b47267d9fc9cba"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link3_optimized.stl",
+      "file": "meshes/7a01ab046003_right_manipulator_link3_optimized.stl",
+      "sha256": "7a01ab046003e24b6d66a11b7f6dd69bd30dfb26a97b82a79a96e164ef1010c3"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link3_optimized.stl",
+      "file": "meshes/7a01ab046003_right_manipulator_link3_optimized.stl",
+      "sha256": "7a01ab046003e24b6d66a11b7f6dd69bd30dfb26a97b82a79a96e164ef1010c3"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link4_optimized.stl",
+      "file": "meshes/27902b21eddd_right_manipulator_link4_optimized.stl",
+      "sha256": "27902b21eddde899c61c0c636005dc0bdebf40abe228a24d8e115367c0a209b4"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link4_optimized.stl",
+      "file": "meshes/27902b21eddd_right_manipulator_link4_optimized.stl",
+      "sha256": "27902b21eddde899c61c0c636005dc0bdebf40abe228a24d8e115367c0a209b4"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link5_optimized.stl",
+      "file": "meshes/4b1e87c3a169_right_manipulator_link5_optimized.stl",
+      "sha256": "4b1e87c3a169d21a42def3cdf87bff54fefdaba9b72c753a934fe5f0aac9a2e4"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link5_optimized.stl",
+      "file": "meshes/4b1e87c3a169_right_manipulator_link5_optimized.stl",
+      "sha256": "4b1e87c3a169d21a42def3cdf87bff54fefdaba9b72c753a934fe5f0aac9a2e4"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link6_optimized.stl",
+      "file": "meshes/6a93ca7f8cf9_right_manipulator_link6_optimized.stl",
+      "sha256": "6a93ca7f8cf9dfe2ca1392dc6908e63b405e39a512e5f72bf040e53b757d6e1f"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link6_optimized.stl",
+      "file": "meshes/6a93ca7f8cf9_right_manipulator_link6_optimized.stl",
+      "sha256": "6a93ca7f8cf9dfe2ca1392dc6908e63b405e39a512e5f72bf040e53b757d6e1f"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_base_link_optimized.stl",
+      "file": "meshes/df4580c08052_robot_head_base_link_optimized.stl",
+      "sha256": "df4580c0805278907059392d4792a9c5b269ef3eb02f79bc1d432c5b3357d265"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_base_link_optimized.stl",
+      "file": "meshes/df4580c08052_robot_head_base_link_optimized.stl",
+      "sha256": "df4580c0805278907059392d4792a9c5b269ef3eb02f79bc1d432c5b3357d265"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_rev_link1_optimized.stl",
+      "file": "meshes/db91a8e9ed0b_robot_head_rev_link1_optimized.stl",
+      "sha256": "db91a8e9ed0b5e066b7dcbd6b9e91029228706d3d5de5e36c4b255e5b084e191"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_rev_link1_optimized.stl",
+      "file": "meshes/db91a8e9ed0b_robot_head_rev_link1_optimized.stl",
+      "sha256": "db91a8e9ed0b5e066b7dcbd6b9e91029228706d3d5de5e36c4b255e5b084e191"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_rev_link2_optimized.stl",
+      "file": "meshes/7414e8f9ebb1_robot_head_rev_link2_optimized.stl",
+      "sha256": "7414e8f9ebb1c469ff82148d9570d1122e219d68e0d68e8fe822b16ee17f7c68"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_rev_link2_optimized.stl",
+      "file": "meshes/7414e8f9ebb1_robot_head_rev_link2_optimized.stl",
+      "sha256": "7414e8f9ebb1c469ff82148d9570d1122e219d68e0d68e8fe822b16ee17f7c68"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/helios_link_optimized.stl",
+      "file": "meshes/44f5f47c6c5e_helios_link_optimized.stl",
+      "sha256": "44f5f47c6c5e9615a687a6d1a49068d646e530d880bb11ce50bebbc683bc0624"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/helios_link_optimized.stl",
+      "file": "meshes/44f5f47c6c5e_helios_link_optimized.stl",
+      "sha256": "44f5f47c6c5e9615a687a6d1a49068d646e530d880bb11ce50bebbc683bc0624"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/zed_bracket_link_optimized.stl",
+      "file": "meshes/b6eacce15295_zed_bracket_link_optimized.stl",
+      "sha256": "b6eacce1529526c7f8b321e97ab915066a0567cbe0055367826b7000025b8479"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/zed_bracket_link_optimized.stl",
+      "file": "meshes/b6eacce15295_zed_bracket_link_optimized.stl",
+      "sha256": "b6eacce1529526c7f8b321e97ab915066a0567cbe0055367826b7000025b8479"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/zed2i_link_optimized.stl",
+      "file": "meshes/7bc1999bda13_zed2i_link_optimized.stl",
+      "sha256": "7bc1999bda1355f01fa8663fcdba759b4e64b87e435b80f175c58b2479ad3fba"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/zed2i_link_optimized.stl",
+      "file": "meshes/7bc1999bda13_zed2i_link_optimized.stl",
+      "sha256": "7bc1999bda1355f01fa8663fcdba759b4e64b87e435b80f175c58b2479ad3fba"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/controlbox_link_optimized.stl",
+      "file": "meshes/8bedd9d58826_controlbox_link_optimized.stl",
+      "sha256": "8bedd9d588268ff801acd3c4e9d3cea75b56248986c05747bd8ac76cf4e6e9a1"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/controlbox_link_optimized.stl",
+      "file": "meshes/8bedd9d58826_controlbox_link_optimized.stl",
+      "sha256": "8bedd9d588268ff801acd3c4e9d3cea75b56248986c05747bd8ac76cf4e6e9a1"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/base_link_optimized.stl",
+      "file": "meshes/597181982565_base_link_optimized.stl",
+      "sha256": "597181982565a019166c834d2f8c38b83914a94790164d2e32de47db0c79214d"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/base_link_optimized.stl",
+      "file": "meshes/597181982565_base_link_optimized.stl",
+      "sha256": "597181982565a019166c834d2f8c38b83914a94790164d2e32de47db0c79214d"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_base_link_optimized.stl",
+      "file": "meshes/492c66c60313_robot_base_link_optimized.stl",
+      "sha256": "492c66c6031353c9603380be1e8845fec0e93fff8c9166cb1c04ec6f99aad966"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_base_link_optimized.stl",
+      "file": "meshes/492c66c60313_robot_base_link_optimized.stl",
+      "sha256": "492c66c6031353c9603380be1e8845fec0e93fff8c9166cb1c04ec6f99aad966"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_base_link_optimized.stl",
+      "file": "meshes/38d148b9ff88_left_manipulator_base_link_optimized.stl",
+      "sha256": "38d148b9ff8881931ab90e7288f2ef70a2153e19f5d3362496b7b1a0cadbfb4e"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_base_link_optimized.stl",
+      "file": "meshes/38d148b9ff88_left_manipulator_base_link_optimized.stl",
+      "sha256": "38d148b9ff8881931ab90e7288f2ef70a2153e19f5d3362496b7b1a0cadbfb4e"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link1_optimized.stl",
+      "file": "meshes/e7aa8b4f21e8_left_manipulator_link1_optimized.stl",
+      "sha256": "e7aa8b4f21e89c21a95c5d05938a909d5e6060ba04326f3d8164b02a0deda6b7"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link1_optimized.stl",
+      "file": "meshes/e7aa8b4f21e8_left_manipulator_link1_optimized.stl",
+      "sha256": "e7aa8b4f21e89c21a95c5d05938a909d5e6060ba04326f3d8164b02a0deda6b7"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link2_optimized.stl",
+      "file": "meshes/22abe8354b4e_left_manipulator_link2_optimized.stl",
+      "sha256": "22abe8354b4efa6a4183ea56d6daf429936515597171b49d779c5e59c884ed70"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link2_optimized.stl",
+      "file": "meshes/22abe8354b4e_left_manipulator_link2_optimized.stl",
+      "sha256": "22abe8354b4efa6a4183ea56d6daf429936515597171b49d779c5e59c884ed70"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link3_optimized.stl",
+      "file": "meshes/7cc9603e4aed_left_manipulator_link3_optimized.stl",
+      "sha256": "7cc9603e4aedfe0fc85c074d1b5c8f20c09ef5b14b44d566b74dc5a6bce30438"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link3_optimized.stl",
+      "file": "meshes/7cc9603e4aed_left_manipulator_link3_optimized.stl",
+      "sha256": "7cc9603e4aedfe0fc85c074d1b5c8f20c09ef5b14b44d566b74dc5a6bce30438"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link4_optimized.stl",
+      "file": "meshes/b1ad69a86220_left_manipulator_link4_optimized.stl",
+      "sha256": "b1ad69a8622093e8e3de6ba062ea86e12a7577ce0d599f371319f645ff71faae"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link4_optimized.stl",
+      "file": "meshes/b1ad69a86220_left_manipulator_link4_optimized.stl",
+      "sha256": "b1ad69a8622093e8e3de6ba062ea86e12a7577ce0d599f371319f645ff71faae"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link5_optimized.stl",
+      "file": "meshes/bbfe0115448f_left_manipulator_link5_optimized.stl",
+      "sha256": "bbfe0115448f52ac113bb3e81e17965ad878abcefa915152626c701372d387de"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link5_optimized.stl",
+      "file": "meshes/bbfe0115448f_left_manipulator_link5_optimized.stl",
+      "sha256": "bbfe0115448f52ac113bb3e81e17965ad878abcefa915152626c701372d387de"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link6_optimized.stl",
+      "file": "meshes/cd489b39250a_left_manipulator_link6_optimized.stl",
+      "sha256": "cd489b39250a981b5857dcb8a17abcde966f91251638f14459abf7536ad0da4d"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/left_manipulator_link6_optimized.stl",
+      "file": "meshes/cd489b39250a_left_manipulator_link6_optimized.stl",
+      "sha256": "cd489b39250a981b5857dcb8a17abcde966f91251638f14459abf7536ad0da4d"
+    },
+    {
+      "source": "assets/construct/spray_v2/spray_v2_visual.stl",
+      "file": "meshes/4ec9c8868384_spray_v2_visual.stl",
+      "sha256": "4ec9c886838488b27c705f691f495462271202e32b192dd1e40929446ac4b468"
+    },
+    {
+      "source": "assets/construct/spray_v2/spray_v2_collision.stl",
+      "file": "meshes/1233b5181c82_spray_v2_collision.stl",
+      "sha256": "1233b5181c82581f00d80d521d442a1b7d683a41b7f679f939c166d32f09d71f"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_base_link_optimized.stl",
+      "file": "meshes/2b546519d699_right_manipulator_base_link_optimized.stl",
+      "sha256": "2b546519d699fdb8dada2502a03ab1f86c2f596826aa1455e38fccde4179fc91"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_base_link_optimized.stl",
+      "file": "meshes/2b546519d699_right_manipulator_base_link_optimized.stl",
+      "sha256": "2b546519d699fdb8dada2502a03ab1f86c2f596826aa1455e38fccde4179fc91"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link1_optimized.stl",
+      "file": "meshes/8583ea68aa57_right_manipulator_link1_optimized.stl",
+      "sha256": "8583ea68aa575592f98999d9308ada8320d9abf68d6bc92a57b6e64440541e1d"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link1_optimized.stl",
+      "file": "meshes/8583ea68aa57_right_manipulator_link1_optimized.stl",
+      "sha256": "8583ea68aa575592f98999d9308ada8320d9abf68d6bc92a57b6e64440541e1d"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link2_optimized.stl",
+      "file": "meshes/92ad82083286_right_manipulator_link2_optimized.stl",
+      "sha256": "92ad82083286f65055aad1f591136cc8789f4f220b94837582b47267d9fc9cba"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link2_optimized.stl",
+      "file": "meshes/92ad82083286_right_manipulator_link2_optimized.stl",
+      "sha256": "92ad82083286f65055aad1f591136cc8789f4f220b94837582b47267d9fc9cba"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link3_optimized.stl",
+      "file": "meshes/7a01ab046003_right_manipulator_link3_optimized.stl",
+      "sha256": "7a01ab046003e24b6d66a11b7f6dd69bd30dfb26a97b82a79a96e164ef1010c3"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link3_optimized.stl",
+      "file": "meshes/7a01ab046003_right_manipulator_link3_optimized.stl",
+      "sha256": "7a01ab046003e24b6d66a11b7f6dd69bd30dfb26a97b82a79a96e164ef1010c3"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link4_optimized.stl",
+      "file": "meshes/27902b21eddd_right_manipulator_link4_optimized.stl",
+      "sha256": "27902b21eddde899c61c0c636005dc0bdebf40abe228a24d8e115367c0a209b4"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link4_optimized.stl",
+      "file": "meshes/27902b21eddd_right_manipulator_link4_optimized.stl",
+      "sha256": "27902b21eddde899c61c0c636005dc0bdebf40abe228a24d8e115367c0a209b4"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link5_optimized.stl",
+      "file": "meshes/4b1e87c3a169_right_manipulator_link5_optimized.stl",
+      "sha256": "4b1e87c3a169d21a42def3cdf87bff54fefdaba9b72c753a934fe5f0aac9a2e4"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link5_optimized.stl",
+      "file": "meshes/4b1e87c3a169_right_manipulator_link5_optimized.stl",
+      "sha256": "4b1e87c3a169d21a42def3cdf87bff54fefdaba9b72c753a934fe5f0aac9a2e4"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link6_optimized.stl",
+      "file": "meshes/6a93ca7f8cf9_right_manipulator_link6_optimized.stl",
+      "sha256": "6a93ca7f8cf9dfe2ca1392dc6908e63b405e39a512e5f72bf040e53b757d6e1f"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/right_manipulator_link6_optimized.stl",
+      "file": "meshes/6a93ca7f8cf9_right_manipulator_link6_optimized.stl",
+      "sha256": "6a93ca7f8cf9dfe2ca1392dc6908e63b405e39a512e5f72bf040e53b757d6e1f"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_base_link_optimized.stl",
+      "file": "meshes/df4580c08052_robot_head_base_link_optimized.stl",
+      "sha256": "df4580c0805278907059392d4792a9c5b269ef3eb02f79bc1d432c5b3357d265"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_base_link_optimized.stl",
+      "file": "meshes/df4580c08052_robot_head_base_link_optimized.stl",
+      "sha256": "df4580c0805278907059392d4792a9c5b269ef3eb02f79bc1d432c5b3357d265"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_rev_link1_optimized.stl",
+      "file": "meshes/db91a8e9ed0b_robot_head_rev_link1_optimized.stl",
+      "sha256": "db91a8e9ed0b5e066b7dcbd6b9e91029228706d3d5de5e36c4b255e5b084e191"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_rev_link1_optimized.stl",
+      "file": "meshes/db91a8e9ed0b_robot_head_rev_link1_optimized.stl",
+      "sha256": "db91a8e9ed0b5e066b7dcbd6b9e91029228706d3d5de5e36c4b255e5b084e191"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_rev_link2_optimized.stl",
+      "file": "meshes/7414e8f9ebb1_robot_head_rev_link2_optimized.stl",
+      "sha256": "7414e8f9ebb1c469ff82148d9570d1122e219d68e0d68e8fe822b16ee17f7c68"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/robot_head_rev_link2_optimized.stl",
+      "file": "meshes/7414e8f9ebb1_robot_head_rev_link2_optimized.stl",
+      "sha256": "7414e8f9ebb1c469ff82148d9570d1122e219d68e0d68e8fe822b16ee17f7c68"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/helios_link_optimized.stl",
+      "file": "meshes/44f5f47c6c5e_helios_link_optimized.stl",
+      "sha256": "44f5f47c6c5e9615a687a6d1a49068d646e530d880bb11ce50bebbc683bc0624"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/helios_link_optimized.stl",
+      "file": "meshes/44f5f47c6c5e_helios_link_optimized.stl",
+      "sha256": "44f5f47c6c5e9615a687a6d1a49068d646e530d880bb11ce50bebbc683bc0624"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/zed_bracket_link_optimized.stl",
+      "file": "meshes/b6eacce15295_zed_bracket_link_optimized.stl",
+      "sha256": "b6eacce1529526c7f8b321e97ab915066a0567cbe0055367826b7000025b8479"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/zed_bracket_link_optimized.stl",
+      "file": "meshes/b6eacce15295_zed_bracket_link_optimized.stl",
+      "sha256": "b6eacce1529526c7f8b321e97ab915066a0567cbe0055367826b7000025b8479"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/zed2i_link_optimized.stl",
+      "file": "meshes/7bc1999bda13_zed2i_link_optimized.stl",
+      "sha256": "7bc1999bda1355f01fa8663fcdba759b4e64b87e435b80f175c58b2479ad3fba"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/zed2i_link_optimized.stl",
+      "file": "meshes/7bc1999bda13_zed2i_link_optimized.stl",
+      "sha256": "7bc1999bda1355f01fa8663fcdba759b4e64b87e435b80f175c58b2479ad3fba"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/controlbox_link_optimized.stl",
+      "file": "meshes/8bedd9d58826_controlbox_link_optimized.stl",
+      "sha256": "8bedd9d588268ff801acd3c4e9d3cea75b56248986c05747bd8ac76cf4e6e9a1"
+    },
+    {
+      "source": "src/construct_description/meshes_0528/controlbox_link_optimized.stl",
+      "file": "meshes/8bedd9d58826_controlbox_link_optimized.stl",
+      "sha256": "8bedd9d588268ff801acd3c4e9d3cea75b56248986c05747bd8ac76cf4e6e9a1"
+    },
+    {
+      "source": "assets/construct/hongik_v4/source/construct_description/meshes_0528/hongik_eoat_bracket1_torch_sensor.stl",
+      "file": "meshes/20ca78645520_hongik_eoat_bracket1_torch_sensor.stl",
+      "sha256": "20ca78645520c350a11f3c68d870776098f774805fc135179314ddc9b1778bbd"
+    },
+    {
+      "source": "assets/construct/hongik_v4/source/construct_description/meshes_0528/hongik_eoat_bracket1_torch_sensor_collision.stl",
+      "file": "meshes/92d269406805_hongik_eoat_bracket1_torch_sensor_collision.stl",
+      "sha256": "92d2694068057e000b23890e32fdfa0ffc0d503f9dbe817653cc968402189d1a"
+    }
+  ]
+}

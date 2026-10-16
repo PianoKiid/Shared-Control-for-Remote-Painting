@@ -1,0 +1,132 @@
+{
+  "checks": "XML, connected tree, joint limits, positive mass/inertia, material and mesh resolution, SHA256, ZIP CRC",
+  "runtime_import_tested": false,
+  "models": [
+    {
+      "file": "commercial_platform_description/urdf/platform.ros.urdf",
+      "links": 50,
+      "joints": 49,
+      "root": "World",
+      "mesh_references": 46
+    },
+    {
+      "file": "commercial_platform_description/urdf/platform.urdf",
+      "links": 50,
+      "joints": 49,
+      "root": "World",
+      "mesh_references": 46
+    },
+    {
+      "file": "commercial_platform_description/urdf/platform_spray_weld.ros.urdf",
+      "links": 58,
+      "joints": 57,
+      "root": "World",
+      "mesh_references": 50
+    },
+    {
+      "file": "commercial_platform_description/urdf/platform_spray_weld.urdf",
+      "links": 58,
+      "joints": 57,
+      "root": "World",
+      "mesh_references": 50
+    },
+    {
+      "file": "eoat_paint_roller_d405/urdf/tool.ros.urdf",
+      "links": 18,
+      "joints": 17,
+      "root": "tool_mount",
+      "mesh_references": 5
+    },
+    {
+      "file": "eoat_paint_roller_d405/urdf/tool.urdf",
+      "links": 18,
+      "joints": 17,
+      "root": "tool_mount",
+      "mesh_references": 5
+    },
+    {
+      "file": "eoat_spray_v2/urdf/tool.ros.urdf",
+      "links": 3,
+      "joints": 2,
+      "root": "tool_mount",
+      "mesh_references": 2
+    },
+    {
+      "file": "eoat_spray_v2/urdf/tool.urdf",
+      "links": 3,
+      "joints": 2,
+      "root": "tool_mount",
+      "mesh_references": 2
+    },
+    {
+      "file": "eoat_weld_hongik_v4/urdf/tool.ros.urdf",
+      "links": 7,
+      "joints": 6,
+      "root": "tool_mount",
+      "mesh_references": 2
+    },
+    {
+      "file": "eoat_weld_hongik_v4/urdf/tool.urdf",
+      "links": 7,
+      "joints": 6,
+      "root": "tool_mount",
+      "mesh_references": 2
+    },
+    {
+      "file": "rb10_base_description/urdf/robot.ros.urdf",
+      "links": 10,
+      "joints": 9,
+      "root": "support_world",
+      "mesh_references": 14
+    },
+    {
+      "file": "rb10_base_description/urdf/robot.urdf",
+      "links": 10,
+      "joints": 9,
+      "root": "support_world",
+      "mesh_references": 14
+    },
+    {
+      "file": "rb10_base_description/urdf/robot_paint.ros.urdf",
+      "links": 27,
+      "joints": 26,
+      "root": "support_world",
+      "mesh_references": 19
+    },
+    {
+      "file": "rb10_base_description/urdf/robot_paint.urdf",
+      "links": 27,
+      "joints": 26,
+      "root": "support_world",
+      "mesh_references": 19
+    },
+    {
+      "file": "rb10_base_description/urdf/robot_spray.ros.urdf",
+      "links": 12,
+      "joints": 11,
+      "root": "support_world",
+      "mesh_references": 16
+    },
+    {
+      "file": "rb10_base_description/urdf/robot_spray.urdf",
+      "links": 12,
+      "joints": 11,
+      "root": "support_world",
+      "mesh_references": 16
+    },
+    {
+      "file": "rb10_base_description/urdf/robot_weld.ros.urdf",
+      "links": 16,
+      "joints": 15,
+      "root": "support_world",
+      "mesh_references": 16
+    },
+    {
+      "file": "rb10_base_description/urdf/robot_weld.urdf",
+      "links": 16,
+      "joints": 15,
+      "root": "support_world",
+      "mesh_references": 16
+    }
+  ]
+}

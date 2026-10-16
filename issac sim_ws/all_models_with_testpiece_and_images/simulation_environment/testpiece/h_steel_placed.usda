@@ -1,0 +1,248 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    double3 xformOp:translate = (-0.515, -1.7, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+
+    def Xform "HSteel" (
+        prepend references = @source/Steel_Structure_portable.usdc@
+    )
+    {
+        over "IfcPlate_PLATE"
+        {
+            over "_2_53" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcFastener_WELD"
+        {
+            over "_2_713" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcColumn_COLUMN"
+        {
+            over "_2_750" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcPlate_PLATE_001"
+        {
+            over "_2_305" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcFastener_WELD_001"
+        {
+            over "_2_386" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcPlate_PLATE_002"
+        {
+            over "_2_571" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcFastener_WELD_002"
+        {
+            over "_2_586" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcColumn_COLUMN_001"
+        {
+            over "_2_774" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcMechanicalFastener_C_BOLTM16_50_F10T"
+        {
+            over "_2_366" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcFastener_WELD_003"
+        {
+            over "_2_726" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcFastener_WELD_005"
+        {
+            over "_2_740" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcFastener_WELD_004"
+        {
+            over "_2_734" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcPlate_PLATE_003"
+        {
+            over "_2_798" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcPlate_PLATE_004"
+        {
+            over "_2_86" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcMechanicalFastener_C_BOLTM16_50_F10T_001"
+        {
+            over "_2_578" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcPlate_PLATE_006"
+        {
+            over "_2_208" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcPlate_PLATE_009"
+        {
+            over "_2_442" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcPlate_PLATE_011"
+        {
+            over "_2_528" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcPlate_PLATE_005"
+        {
+            over "_2_161" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcPlate_PLATE_010"
+        {
+            over "_2_485" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcBeam_BEAM"
+        {
+            over "_2_634" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcPlate_PLATE_007"
+        {
+            over "_2_256" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+
+        over "IfcPlate_PLATE_008"
+        {
+            over "_2_399" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "none"
+            }
+        }
+    }
+}
+

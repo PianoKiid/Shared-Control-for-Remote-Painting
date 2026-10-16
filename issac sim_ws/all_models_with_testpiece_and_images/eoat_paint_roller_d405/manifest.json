@@ -1,0 +1,65 @@
+{
+  "models": [
+    "tool"
+  ],
+  "notes": "독립 EOAT. tool_mount는 카탈로그의 기계적 플랜지 좌표계입니다. 도장은 롤러이며 스프레이건 도장이 아닙니다.",
+  "metadata": {
+    "tcp": "tcp",
+    "tcp_basis": "roller_contact_reference",
+    "tcp_calibrated": false,
+    "source_anchor": "link6",
+    "source_flange_transform": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.13
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "meshes": [
+    {
+      "source": "src/eoat_description/meshes/aft200_visual.stl",
+      "file": "meshes/5519bd9d887e_aft200_visual.stl",
+      "sha256": "5519bd9d887eaf630e9b78ffe2b3b4b6b21caa64bbcc0ea44a52c2337c434902"
+    },
+    {
+      "source": "src/eoat_description/meshes/aft200_collision.stl",
+      "file": "meshes/e18fb4e6ed19_aft200_collision.stl",
+      "sha256": "e18fb4e6ed19879083f856f83c4269688549d9690530f3d932cfe6d2fdad6557"
+    },
+    {
+      "source": "src/eoat_description/meshes/rr_00a_b_eoat_no_camera_visual_roller52.stl",
+      "file": "meshes/9cbed5fa8e1c_rr_00a_b_eoat_no_camera_visual_roller52.stl",
+      "sha256": "9cbed5fa8e1c6da245913efa0e817b5850795bbd6968be5c6adeeee1f149b76d"
+    },
+    {
+      "source": "src/eoat_description/meshes/rr_00a_b_eoat_no_camera_collision_support_only.stl",
+      "file": "meshes/35c9231426e8_rr_00a_b_eoat_no_camera_collision_support_only.stl",
+      "sha256": "35c9231426e8b8018804b790f6a2335bfd758344ec7f178cf62a121b4348c25d"
+    },
+    {
+      "source": "src/vendor/realsense-ros/realsense2_description/meshes/d405.stl",
+      "file": "meshes/a248f41149d1_d405.stl",
+      "sha256": "a248f41149d12b28311829feecbe7a80cf1481fd05e0f5df2c4c7ecd556edd48"
+    }
+  ]
+}

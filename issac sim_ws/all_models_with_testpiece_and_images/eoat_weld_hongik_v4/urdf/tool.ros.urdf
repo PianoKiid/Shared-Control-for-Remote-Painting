@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="eoat_weld_hongik_v4">
+  <link name="tool_mount" />
+  <link name="right_manipulator_link_ee">
+    </link>
+  <link name="right_manipulator_ee_point" />
+  <link name="hongik_flange" />
+  <link name="hongik_eoat_base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="2.0" />
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://eoat_weld_hongik_v4/meshes/20ca78645520_hongik_eoat_bracket1_torch_sensor.stl" />
+      </geometry>
+      <material name="hongik_eoat">
+        <color rgba="0.2 0.6 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://eoat_weld_hongik_v4/meshes/92d269406805_hongik_eoat_bracket1_torch_sensor_collision.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="hongik_laser_link" />
+  <link name="hongik_weld_link" />
+  <joint name="right_manipulator_joint_ee" type="fixed">
+    <origin xyz="0.0 0.0 -0.0029999999999999957" rpy="-3.141585307179586 0.0 2.0943951024" />
+    <parent link="tool_mount" />
+    <child link="right_manipulator_link_ee" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="right_ee_point_joint" type="fixed">
+    <origin xyz="0.206216 0.118535 -0.300173" rpy="-3.141585 0.523594 -2.617990" />
+    <parent link="right_manipulator_link_ee" />
+    <child link="right_manipulator_ee_point" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="hongik_flange_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 4.807406715907311e-17" />
+    <parent link="tool_mount" />
+    <child link="hongik_flange" />
+  </joint>
+  <joint name="hongik_eoat_base_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 -1.5707963268" />
+    <parent link="hongik_flange" />
+    <child link="hongik_eoat_base_link" />
+  </joint>
+  <joint name="hongik_laser_joint" type="fixed">
+    <origin xyz="0.057294 0.0 0.023" rpy="3.1416 0.0 3.1416" />
+    <parent link="hongik_eoat_base_link" />
+    <child link="hongik_laser_link" />
+  </joint>
+  <joint name="hongik_weld_joint" type="fixed">
+    <origin xyz="-0.243206 -0.000904 0.023" rpy="-3.141585 -0.0 7e-06" />
+    <parent link="hongik_eoat_base_link" />
+    <child link="hongik_weld_link" />
+  </joint>
+</robot>

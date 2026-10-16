@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="rb10_base_description">
+  <link name="link0">
+    <visual>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/68feb85b2896_link0.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/9911f2935ccc_link0.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="link1">
+    <visual>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/f0aa5469d185_link1.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/1c31b69b2b64_link1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.000021 -0.007855 -0.042537" />
+      <mass value="8.366" />
+      <inertia ixx="0.027403652" ixy="-5.926e-06" ixz="-1.0119e-05" iyy="0.027770573" iyz="0.003030512" izz="0.026140211" />
+    </inertial>
+  </link>
+  <link name="link2">
+    <visual>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/d4fc30bb0555_link2.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/e1176a8c383d_link2.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.000013 -0.155462 0.225241" />
+      <mass value="15.61" />
+      <inertia ixx="1.140650644" ixy="-1.3042e-05" ixz="-6.7084e-05" iyy="1.134398623" iyz="0.024507884" izz="0.050849068" />
+    </inertial>
+  </link>
+  <link name="link3">
+    <visual>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/d4968b5d6c7d_link3.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/d273d20b5382_link3.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.000048 -0.013885 0.325013" />
+      <mass value="5.69" />
+      <inertia ixx="0.312033029" ixy="9.298e-06" ixz="1.169e-05" iyy="0.311287646" iyz="0.005331552" izz="0.011397824" />
+    </inertial>
+  </link>
+  <link name="link4">
+    <visual>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/d38bff2e2b20_link4.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/0a199211c6bd_link4.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.000093 -0.113949 0.026461" />
+      <mass value="2.062" />
+      <inertia ixx="0.0027111" ixy="-8.022e-06" ixz="1.1208e-05" iyy="0.002715407" iyz="0.000144243" izz="0.002157043" />
+    </inertial>
+  </link>
+  <link name="link5">
+    <visual>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/c415fcd24c34_link5.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/043c8c5049f8_link5.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.000093 -0.026434 -0.003233" />
+      <mass value="2.061" />
+      <inertia ixx="0.002706437" ixy="1.1205e-05" ixz="-8.016e-06" iyy="0.002153592" iyz="0.000141528" izz="0.002712272" />
+    </inertial>
+  </link>
+  <link name="link6">
+    <visual>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/5af4a0922317_link6.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://rb10_base_description/meshes/1f2e61b7c7b9_link6.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.000210 -0.092540 -0.000292" />
+      <mass value="0.406" />
+      <inertia ixx="0.000345314" ixy="5.73e-07" ixz="6.61e-07" iyy="0.000532873" iyz="-5.4e-08" izz="0.000340021" />
+    </inertial>
+  </link>
+  <joint name="base" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0" />
+    <parent link="link0" />
+    <child link="link1" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" lower="-3.14" upper="3.14" velocity="3.14" />
+  </joint>
+  <joint name="shoulder" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.197" />
+    <parent link="link1" />
+    <child link="link2" />
+    <axis xyz="0 1 0" />
+    <limit effort="10" lower="-3.14" upper="3.14" velocity="3.14" />
+  </joint>
+  <joint name="elbow" type="revolute">
+    <origin rpy="0 0 0" xyz="0 -0.1875 0.6127" />
+    <parent link="link2" />
+    <child link="link3" />
+    <axis xyz="0 1 0" />
+    <limit effort="10" lower="-3.14" upper="3.14" velocity="3.14" />
+  </joint>
+  <joint name="wrist1" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0.1514 0.57015" />
+    <parent link="link3" />
+    <child link="link4" />
+    <axis xyz="0 1 0" />
+    <limit effort="10" lower="-3.14" upper="3.14" velocity="3.14" />
+  </joint>
+  <joint name="wrist2" type="revolute">
+    <origin rpy="0 0 0" xyz="0 -0.11715 0" />
+    <parent link="link4" />
+    <child link="link5" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" lower="-3.14" upper="3.14" velocity="3.14" />
+  </joint>
+  <joint name="wrist3" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.11715" />
+    <parent link="link5" />
+    <child link="link6" />
+    <axis xyz="0 1 0" />
+    <limit effort="10" lower="-3.14" upper="3.14" velocity="3.14" />
+  </joint>
+  <material name="aluminum">
+    <color rgba="0.5 0.5 0.5 1" />
+  </material>
+  <material name="plastic">
+    <color rgba="0.1 0.1 0.1 1" />
+  </material>
+  <link name="support_world" />
+  <joint name="support_to_rb10" type="fixed">
+    <parent link="support_world" />
+    <child link="link0" />
+    <origin xyz="0 0 0" rpy="0 0 1.5707963267948966" />
+  </joint>
+  <link name="support_table">
+    <visual>
+      <geometry>
+        <box size="0.60 0.80 0.813" />
+      </geometry>
+      <material name="support_table_material">
+        <color rgba="0.25 0.18 0.12 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.60 0.80 0.813" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="support_table_fixed" type="fixed">
+    <parent link="support_world" />
+    <child link="support_table" />
+    <origin xyz="-0.10 0.05 -0.4165" rpy="0 0 0" />
+  </joint>
+  <link name="support_mount_plate">
+    <visual>
+      <geometry>
+        <box size="0.20 0.20 0.010" />
+      </geometry>
+      <material name="support_mount_plate_material">
+        <color rgba="0.75 0.75 0.78 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.20 0.20 0.010" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="support_mount_plate_fixed" type="fixed">
+    <parent link="support_world" />
+    <child link="support_mount_plate" />
+    <origin xyz="0 0 -0.005" rpy="0 0 0" />
+  </joint>
+</robot>

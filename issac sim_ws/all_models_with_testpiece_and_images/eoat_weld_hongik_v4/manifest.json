@@ -1,0 +1,50 @@
+{
+  "models": [
+    "tool"
+  ],
+  "notes": "독립 EOAT. tool_mount는 카탈로그의 기계적 플랜지 좌표계입니다. 도장은 롤러이며 스프레이건 도장이 아닙니다.",
+  "metadata": {
+    "tcp": "right_manipulator_ee_point",
+    "tcp_basis": "contact_tip_face_center",
+    "tcp_calibrated": false,
+    "source_anchor": "right_manipulator_link6",
+    "source_flange_transform": [
+      [
+        -0.5000000000058928,
+        0.8660254037810363,
+        0.0,
+        0.0
+      ],
+      [
+        -0.8660254037810363,
+        -0.5000000000058928,
+        -0.0,
+        0.0
+      ],
+      [
+        -0.0,
+        0.0,
+        1.0,
+        0.0605
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "meshes": [
+    {
+      "source": "assets/construct/hongik_v4/source/construct_description/meshes_0528/hongik_eoat_bracket1_torch_sensor.stl",
+      "file": "meshes/20ca78645520_hongik_eoat_bracket1_torch_sensor.stl",
+      "sha256": "20ca78645520c350a11f3c68d870776098f774805fc135179314ddc9b1778bbd"
+    },
+    {
+      "source": "assets/construct/hongik_v4/source/construct_description/meshes_0528/hongik_eoat_bracket1_torch_sensor_collision.stl",
+      "file": "meshes/92d269406805_hongik_eoat_bracket1_torch_sensor_collision.stl",
+      "sha256": "92d2694068057e000b23890e32fdfa0ffc0d503f9dbe817653cc968402189d1a"
+    }
+  ]
+}

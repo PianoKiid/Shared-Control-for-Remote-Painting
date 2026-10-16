@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="eoat_paint_roller_d405">
+  <link name="tool_mount" />
+  <material name="aluminum">
+    <color rgba="0.5 0.5 0.5 1" />
+  </material>
+  <material name="plastic">
+    <color rgba="0.1 0.1 0.1 1" />
+  </material>
+  <link name="arm_flange" />
+  <link name="ft_link" />
+  <link name="tcp" />
+  <link name="aft200_link">
+    <visual name="aft200_visual">
+      <origin rpy="1.57079632679 -1.57079632679 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/5519bd9d887e_aft200_visual.stl" />
+      </geometry>
+      <material name="aft200_gray">
+        <color rgba="0.72 0.72 0.70 1.0" />
+      </material>
+    </visual>
+    <collision name="aft200_collision">
+      <origin rpy="1.57079632679 -1.57079632679 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/e18fb4e6ed19_aft200_collision.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 -0.0261 -0.0116" />
+      <mass value="0.52" />
+      <inertia ixx="0.00050" ixy="0" ixz="0" iyy="0.00061" iyz="0" izz="0.00031" />
+    </inertial>
+  </link>
+  <link name="aft200_cable_guard_link">
+    <visual name="aft200_connector_vertical_visual">
+      <origin rpy="0 0 0" xyz="-0.008 -0.026 -0.0757" />
+      <geometry>
+        <cylinder length="0.025" radius="0.005" />
+      </geometry>
+      <material name="aft200_connector_metal">
+        <color rgba="0.72 0.72 0.68 1.0" />
+      </material>
+    </visual>
+    <collision name="aft200_connector_vertical_collision">
+      <origin rpy="0 0 0" xyz="-0.008 -0.026 -0.0757" />
+      <geometry>
+        <cylinder length="0.025" radius="0.005" />
+      </geometry>
+    </collision>
+    <visual name="aft200_connector_horizontal_visual">
+      <origin rpy="1.57079632679 0 0" xyz="-0.008 0.005500000000000001 -0.0882" />
+      <geometry>
+        <cylinder length="0.053" radius="0.005" />
+      </geometry>
+      <material name="aft200_connector_black">
+        <color rgba="0.02 0.02 0.02 1.0" />
+      </material>
+    </visual>
+    <collision name="aft200_connector_horizontal_collision">
+      <origin rpy="1.57079632679 0 0" xyz="-0.008 0.005500000000000001 -0.0882" />
+      <geometry>
+        <cylinder length="0.053" radius="0.005" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="paint_eoat_no_camera_link">
+    <visual name="paint_eoat_no_camera_visual">
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/9cbed5fa8e1c_rr_00a_b_eoat_no_camera_visual_roller52.stl" />
+      </geometry>
+      <material name="paint_eoat_no_camera_warm_gray">
+        <color rgba="0.72 0.70 0.66 1.0" />
+      </material>
+    </visual>
+    <collision name="paint_eoat_no_camera_collision">
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/35c9231426e8_rr_00a_b_eoat_no_camera_collision_support_only.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <mass value="1.072" />
+      <inertia ixx="0.005886999666666668" ixy="0" ixz="0" iyy="0.009070035666666667" iyz="0" izz="0.0054644306666666665" />
+    </inertial>
+  </link>
+  <link name="paint_eoat_no_camera_roller_contact_link">
+    <collision name="paint_eoat_no_camera_roller_contact_collision">
+      <origin rpy="0 1.5707963267948966 0" xyz="0 -0.018 0.07675" />
+      <geometry>
+        <cylinder length="0.175" radius="0.026" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="paint_d405_bottom_screw_frame" />
+  <link name="paint_d405_link">
+    <visual>
+      <origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0.0038 -0.009 0" />
+      <geometry>
+        <mesh filename="../meshes/a248f41149d1_d405.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="aluminum" />
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.0078 -0.009 0" />
+      <geometry>
+        <box size="0.023 0.042 0.042" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.072" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.000498940" iyz="0.0" izz="0.003879257" />
+    </inertial>
+  </link>
+  <link name="paint_d405_depth_frame" />
+  <link name="paint_d405_depth_optical_frame" />
+  <link name="paint_d405_infra1_frame" />
+  <link name="paint_d405_infra1_optical_frame" />
+  <link name="paint_d405_infra2_frame" />
+  <link name="paint_d405_infra2_optical_frame" />
+  <link name="paint_d405_color_frame" />
+  <link name="paint_d405_color_optical_frame" />
+  <joint name="arm_flange_joint" type="fixed">
+    <parent link="tool_mount" />
+    <child link="arm_flange" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+  </joint>
+  <joint name="ft_sensor_joint" type="fixed">
+    <parent link="tool_mount" />
+    <child link="ft_link" />
+    <origin rpy="3.141592653589793 0.0 -1.5707963267948963" xyz="0.0 0.0 -0.13" />
+  </joint>
+  <joint name="tcp_joint" type="fixed">
+    <parent link="ft_link" />
+    <child link="tcp" />
+    <origin rpy="1.5707963267948966 0 -1.5707963267948966" xyz="0 0 -0.13" />
+  </joint>
+  <joint name="aft200_fixed_joint" type="fixed">
+    <parent link="tcp" />
+    <child link="aft200_link" />
+    <origin rpy="0 0 0" xyz="0 0 0" />
+  </joint>
+  <joint name="aft200_cable_guard_fixed_joint" type="fixed">
+    <parent link="aft200_link" />
+    <child link="aft200_cable_guard_link" />
+    <origin rpy="0 0 0" xyz="0 0 0" />
+  </joint>
+  <joint name="paint_eoat_no_camera_fixed_joint" type="fixed">
+    <parent link="tcp" />
+    <child link="paint_eoat_no_camera_link" />
+    <origin rpy="1.57079632679 0 0" xyz="0 -0.16745 0" />
+  </joint>
+  <joint name="paint_eoat_no_camera_roller_contact_fixed_joint" type="fixed">
+    <parent link="paint_eoat_no_camera_link" />
+    <child link="paint_eoat_no_camera_roller_contact_link" />
+    <origin rpy="0 0 0" xyz="0 0 0" />
+  </joint>
+  <joint name="paint_d405_joint" type="fixed">
+    <origin rpy="0 -1.57079632679 -1.57079632679" xyz="5e-05 0.02275 -0.1019" />
+    <parent link="paint_eoat_no_camera_link" />
+    <child link="paint_d405_bottom_screw_frame" />
+  </joint>
+  <joint name="paint_d405_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.01085 0.009 0.021" />
+    <parent link="paint_d405_bottom_screw_frame" />
+    <child link="paint_d405_link" />
+  </joint>
+  <joint name="paint_d405_depth_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0" />
+    <parent link="paint_d405_link" />
+    <child link="paint_d405_depth_frame" />
+  </joint>
+  <joint name="paint_d405_depth_optical_joint" type="fixed">
+    <origin rpy="-1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0" />
+    <parent link="paint_d405_depth_frame" />
+    <child link="paint_d405_depth_optical_frame" />
+  </joint>
+  <joint name="paint_d405_infra1_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0.0 0" />
+    <parent link="paint_d405_link" />
+    <child link="paint_d405_infra1_frame" />
+  </joint>
+  <joint name="paint_d405_infra1_optical_joint" type="fixed">
+    <origin rpy="-1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0" />
+    <parent link="paint_d405_infra1_frame" />
+    <child link="paint_d405_infra1_optical_frame" />
+  </joint>
+  <joint name="paint_d405_infra2_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 -0.018 0" />
+    <parent link="paint_d405_link" />
+    <child link="paint_d405_infra2_frame" />
+  </joint>
+  <joint name="paint_d405_infra2_optical_joint" type="fixed">
+    <origin rpy="-1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0" />
+    <parent link="paint_d405_infra2_frame" />
+    <child link="paint_d405_infra2_optical_frame" />
+  </joint>
+  <joint name="paint_d405_color_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0.0 0" />
+    <parent link="paint_d405_link" />
+    <child link="paint_d405_color_frame" />
+  </joint>
+  <joint name="paint_d405_color_optical_joint" type="fixed">
+    <origin rpy="-1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0" />
+    <parent link="paint_d405_color_frame" />
+    <child link="paint_d405_color_optical_frame" />
+  </joint>
+</robot>

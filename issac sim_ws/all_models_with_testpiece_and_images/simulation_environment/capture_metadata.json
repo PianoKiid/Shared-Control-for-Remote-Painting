@@ -1,0 +1,17 @@
+{
+  "source_scene": "/home/minjea/robotics/sketch-robot-runtime-main/.runtime/platform/assets/fb250aa0f56df7ed529b119317045235d5312909d738c945ef46239b496e8754-a3983d5dd743409694c21baa5829f456/scene.usda",
+  "selection": {
+    "schema_version": 2,
+    "execution_mode": "simulation",
+    "platform": "commercial",
+    "active_arm": "right",
+    "process": "weld",
+    "tools": {
+      "left": "spray_v2",
+      "right": "hongik_v4"
+    }
+  },
+  "capture": "Visible meshes and world transforms extracted from saved USD scene, rendered with pyrender; NOT an Isaac viewport screenshot",
+  "visible_mesh_count": 48,
+  "view_azimuth_degrees": -55
+}

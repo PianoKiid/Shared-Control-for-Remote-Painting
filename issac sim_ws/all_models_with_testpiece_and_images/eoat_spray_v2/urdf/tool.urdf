@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="eoat_spray_v2">
+  <link name="tool_mount" />
+  <link name="left_manipulator_link_ee">
+    <inertial>
+      <origin xyz="-0.08200000000004098 -0.009999999999933451 0.11640000000000092" rpy="0 0 0" />
+      <mass value="2.0" />
+      <inertia ixx="0.02072642666666139" ixy="0" ixz="0" iyy="0.029942426666673922" iyz="0" izz="0.014016000000001888" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/4ec9c8868384_spray_v2_visual.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/1233b5181c82_spray_v2_collision.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_manipulator_ee_point" />
+  <joint name="left_manipulator_joint_ee" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    <parent link="tool_mount" />
+    <child link="left_manipulator_link_ee" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_ee_point_joint" type="fixed">
+    <origin xyz="-0.11 0 0.2822" rpy="0 0 0" />
+    <parent link="left_manipulator_link_ee" />
+    <child link="left_manipulator_ee_point" />
+    <axis xyz="0 0 0" />
+  </joint>
+</robot>

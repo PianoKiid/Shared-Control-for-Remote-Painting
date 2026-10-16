@@ -1,0 +1,26 @@
+{
+  "source": "/home/minjea/robotics/sketch-robot-runtime-main/assets/construct/h_steel/source/Steel Structure.usdc",
+  "source_sha256": "d030fd163469b01bcabb6c403d2685b9c3049ec804511e6ac412790e0ba226f8",
+  "meters_per_unit": 1.0,
+  "up_axis": "Z",
+  "translation_m": [
+    -0.515,
+    -1.7,
+    0.0
+  ],
+  "bounds_m": [
+    [
+      -0.515,
+      -1.7000000585895152,
+      0.0
+    ],
+    [
+      0.5150001844426607,
+      -0.8999999587842992,
+      1.5160000007599592
+    ]
+  ],
+  "mesh_count": 23,
+  "triangle_count": 2352,
+  "placement_calibrated": false
+}

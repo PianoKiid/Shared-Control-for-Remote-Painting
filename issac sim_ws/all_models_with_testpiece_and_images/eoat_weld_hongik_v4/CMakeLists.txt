@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.8)
+project(eoat_weld_hongik_v4)
+find_package(ament_cmake REQUIRED)
+install(DIRECTORY urdf meshes DESTINATION share/${PROJECT_NAME})
+ament_package()

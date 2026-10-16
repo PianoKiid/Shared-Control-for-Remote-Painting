@@ -1,0 +1,367 @@
+{
+  "models": [
+    "robot",
+    "robot_spray",
+    "robot_weld",
+    "robot_paint"
+  ],
+  "notes": "RB10-1300E-U + 고정식 받침 테이블(600×800×813 mm) + 마운팅 철판(200×200×10 mm). 기존 Isaac 장면의 실측 치수 기반 box 형상이며 이동대차/바퀴 CAD는 아닙니다. robot은 EOAT 없는 본체, robot_spray/weld/paint는 공정별 장착본입니다.",
+  "metadata": null,
+  "meshes": [
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link0.dae",
+      "file": "meshes/68feb85b2896_link0.dae",
+      "sha256": "68feb85b2896e2ca1b9fcffdf69837fe5280dd1303340f5ba26c5b873b3dfec7"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link0.stl",
+      "file": "meshes/9911f2935ccc_link0.stl",
+      "sha256": "9911f2935ccc11f182de807b76a25088050e9b62c1cf4a4d93f922bfe369d2f4"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link1.dae",
+      "file": "meshes/f0aa5469d185_link1.dae",
+      "sha256": "f0aa5469d185a621f704e48efabed1a0a129ac3a3a0533e728c0de793d6de237"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link1.stl",
+      "file": "meshes/1c31b69b2b64_link1.stl",
+      "sha256": "1c31b69b2b64c0af181fe7260062eca8cdaf41c89fcd802523611ee6ac9d95de"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link2.dae",
+      "file": "meshes/d4fc30bb0555_link2.dae",
+      "sha256": "d4fc30bb05559c75d879858e99299135a055596df2c78514f307fad5316b1905"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link2.stl",
+      "file": "meshes/e1176a8c383d_link2.stl",
+      "sha256": "e1176a8c383d3450efebb32e69cd440bb7adfb8e37f5e5c820bd9c27fbd94684"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link3.dae",
+      "file": "meshes/d4968b5d6c7d_link3.dae",
+      "sha256": "d4968b5d6c7dadb2dacb606afb20f99a60a828806be483e254a810ae45cc816a"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link3.stl",
+      "file": "meshes/d273d20b5382_link3.stl",
+      "sha256": "d273d20b5382f7d9101d7135a4f138d90b2659b9139e4b68441a5d4b6525f424"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link4.dae",
+      "file": "meshes/d38bff2e2b20_link4.dae",
+      "sha256": "d38bff2e2b20e2ee78c8c1d965a30329b2b1d6e127f42d0594a715a07376a097"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link4.stl",
+      "file": "meshes/0a199211c6bd_link4.stl",
+      "sha256": "0a199211c6bd90178edc45b42ff3db42582f11c26e9da630fa89d21866f607b5"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link5.dae",
+      "file": "meshes/c415fcd24c34_link5.dae",
+      "sha256": "c415fcd24c34b0aee86eb07a0fff8cb0843d8d190f24a00735fe471e90b8fe39"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link5.stl",
+      "file": "meshes/043c8c5049f8_link5.stl",
+      "sha256": "043c8c5049f848514128ebb4cc144f34fded58f7e80f05637cdaf749749f6b37"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link6.dae",
+      "file": "meshes/5af4a0922317_link6.dae",
+      "sha256": "5af4a092231710ecf3a5e3840ac313f2a1112dc36e25ddccad8c00a3a6b65792"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link6.stl",
+      "file": "meshes/1f2e61b7c7b9_link6.stl",
+      "sha256": "1f2e61b7c7b99e0259e6a5265d41ad748e7e67f72a8c7a149ebb4bde5dee5d90"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link0.dae",
+      "file": "meshes/68feb85b2896_link0.dae",
+      "sha256": "68feb85b2896e2ca1b9fcffdf69837fe5280dd1303340f5ba26c5b873b3dfec7"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link0.stl",
+      "file": "meshes/9911f2935ccc_link0.stl",
+      "sha256": "9911f2935ccc11f182de807b76a25088050e9b62c1cf4a4d93f922bfe369d2f4"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link1.dae",
+      "file": "meshes/f0aa5469d185_link1.dae",
+      "sha256": "f0aa5469d185a621f704e48efabed1a0a129ac3a3a0533e728c0de793d6de237"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link1.stl",
+      "file": "meshes/1c31b69b2b64_link1.stl",
+      "sha256": "1c31b69b2b64c0af181fe7260062eca8cdaf41c89fcd802523611ee6ac9d95de"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link2.dae",
+      "file": "meshes/d4fc30bb0555_link2.dae",
+      "sha256": "d4fc30bb05559c75d879858e99299135a055596df2c78514f307fad5316b1905"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link2.stl",
+      "file": "meshes/e1176a8c383d_link2.stl",
+      "sha256": "e1176a8c383d3450efebb32e69cd440bb7adfb8e37f5e5c820bd9c27fbd94684"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link3.dae",
+      "file": "meshes/d4968b5d6c7d_link3.dae",
+      "sha256": "d4968b5d6c7dadb2dacb606afb20f99a60a828806be483e254a810ae45cc816a"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link3.stl",
+      "file": "meshes/d273d20b5382_link3.stl",
+      "sha256": "d273d20b5382f7d9101d7135a4f138d90b2659b9139e4b68441a5d4b6525f424"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link4.dae",
+      "file": "meshes/d38bff2e2b20_link4.dae",
+      "sha256": "d38bff2e2b20e2ee78c8c1d965a30329b2b1d6e127f42d0594a715a07376a097"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link4.stl",
+      "file": "meshes/0a199211c6bd_link4.stl",
+      "sha256": "0a199211c6bd90178edc45b42ff3db42582f11c26e9da630fa89d21866f607b5"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link5.dae",
+      "file": "meshes/c415fcd24c34_link5.dae",
+      "sha256": "c415fcd24c34b0aee86eb07a0fff8cb0843d8d190f24a00735fe471e90b8fe39"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link5.stl",
+      "file": "meshes/043c8c5049f8_link5.stl",
+      "sha256": "043c8c5049f848514128ebb4cc144f34fded58f7e80f05637cdaf749749f6b37"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link6.dae",
+      "file": "meshes/5af4a0922317_link6.dae",
+      "sha256": "5af4a092231710ecf3a5e3840ac313f2a1112dc36e25ddccad8c00a3a6b65792"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link6.stl",
+      "file": "meshes/1f2e61b7c7b9_link6.stl",
+      "sha256": "1f2e61b7c7b99e0259e6a5265d41ad748e7e67f72a8c7a149ebb4bde5dee5d90"
+    },
+    {
+      "source": "assets/construct/spray_v2/spray_v2_visual.stl",
+      "file": "meshes/4ec9c8868384_spray_v2_visual.stl",
+      "sha256": "4ec9c886838488b27c705f691f495462271202e32b192dd1e40929446ac4b468"
+    },
+    {
+      "source": "assets/construct/spray_v2/spray_v2_collision.stl",
+      "file": "meshes/1233b5181c82_spray_v2_collision.stl",
+      "sha256": "1233b5181c82581f00d80d521d442a1b7d683a41b7f679f939c166d32f09d71f"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link0.dae",
+      "file": "meshes/68feb85b2896_link0.dae",
+      "sha256": "68feb85b2896e2ca1b9fcffdf69837fe5280dd1303340f5ba26c5b873b3dfec7"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link0.stl",
+      "file": "meshes/9911f2935ccc_link0.stl",
+      "sha256": "9911f2935ccc11f182de807b76a25088050e9b62c1cf4a4d93f922bfe369d2f4"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link1.dae",
+      "file": "meshes/f0aa5469d185_link1.dae",
+      "sha256": "f0aa5469d185a621f704e48efabed1a0a129ac3a3a0533e728c0de793d6de237"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link1.stl",
+      "file": "meshes/1c31b69b2b64_link1.stl",
+      "sha256": "1c31b69b2b64c0af181fe7260062eca8cdaf41c89fcd802523611ee6ac9d95de"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link2.dae",
+      "file": "meshes/d4fc30bb0555_link2.dae",
+      "sha256": "d4fc30bb05559c75d879858e99299135a055596df2c78514f307fad5316b1905"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link2.stl",
+      "file": "meshes/e1176a8c383d_link2.stl",
+      "sha256": "e1176a8c383d3450efebb32e69cd440bb7adfb8e37f5e5c820bd9c27fbd94684"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link3.dae",
+      "file": "meshes/d4968b5d6c7d_link3.dae",
+      "sha256": "d4968b5d6c7dadb2dacb606afb20f99a60a828806be483e254a810ae45cc816a"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link3.stl",
+      "file": "meshes/d273d20b5382_link3.stl",
+      "sha256": "d273d20b5382f7d9101d7135a4f138d90b2659b9139e4b68441a5d4b6525f424"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link4.dae",
+      "file": "meshes/d38bff2e2b20_link4.dae",
+      "sha256": "d38bff2e2b20e2ee78c8c1d965a30329b2b1d6e127f42d0594a715a07376a097"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link4.stl",
+      "file": "meshes/0a199211c6bd_link4.stl",
+      "sha256": "0a199211c6bd90178edc45b42ff3db42582f11c26e9da630fa89d21866f607b5"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link5.dae",
+      "file": "meshes/c415fcd24c34_link5.dae",
+      "sha256": "c415fcd24c34b0aee86eb07a0fff8cb0843d8d190f24a00735fe471e90b8fe39"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link5.stl",
+      "file": "meshes/043c8c5049f8_link5.stl",
+      "sha256": "043c8c5049f848514128ebb4cc144f34fded58f7e80f05637cdaf749749f6b37"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link6.dae",
+      "file": "meshes/5af4a0922317_link6.dae",
+      "sha256": "5af4a092231710ecf3a5e3840ac313f2a1112dc36e25ddccad8c00a3a6b65792"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link6.stl",
+      "file": "meshes/1f2e61b7c7b9_link6.stl",
+      "sha256": "1f2e61b7c7b99e0259e6a5265d41ad748e7e67f72a8c7a149ebb4bde5dee5d90"
+    },
+    {
+      "source": "assets/construct/hongik_v4/source/construct_description/meshes_0528/hongik_eoat_bracket1_torch_sensor.stl",
+      "file": "meshes/20ca78645520_hongik_eoat_bracket1_torch_sensor.stl",
+      "sha256": "20ca78645520c350a11f3c68d870776098f774805fc135179314ddc9b1778bbd"
+    },
+    {
+      "source": "assets/construct/hongik_v4/source/construct_description/meshes_0528/hongik_eoat_bracket1_torch_sensor_collision.stl",
+      "file": "meshes/92d269406805_hongik_eoat_bracket1_torch_sensor_collision.stl",
+      "sha256": "92d2694068057e000b23890e32fdfa0ffc0d503f9dbe817653cc968402189d1a"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link0.dae",
+      "file": "meshes/68feb85b2896_link0.dae",
+      "sha256": "68feb85b2896e2ca1b9fcffdf69837fe5280dd1303340f5ba26c5b873b3dfec7"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link0.stl",
+      "file": "meshes/9911f2935ccc_link0.stl",
+      "sha256": "9911f2935ccc11f182de807b76a25088050e9b62c1cf4a4d93f922bfe369d2f4"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link1.dae",
+      "file": "meshes/f0aa5469d185_link1.dae",
+      "sha256": "f0aa5469d185a621f704e48efabed1a0a129ac3a3a0533e728c0de793d6de237"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link1.stl",
+      "file": "meshes/1c31b69b2b64_link1.stl",
+      "sha256": "1c31b69b2b64c0af181fe7260062eca8cdaf41c89fcd802523611ee6ac9d95de"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link2.dae",
+      "file": "meshes/d4fc30bb0555_link2.dae",
+      "sha256": "d4fc30bb05559c75d879858e99299135a055596df2c78514f307fad5316b1905"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link2.stl",
+      "file": "meshes/e1176a8c383d_link2.stl",
+      "sha256": "e1176a8c383d3450efebb32e69cd440bb7adfb8e37f5e5c820bd9c27fbd94684"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link3.dae",
+      "file": "meshes/d4968b5d6c7d_link3.dae",
+      "sha256": "d4968b5d6c7dadb2dacb606afb20f99a60a828806be483e254a810ae45cc816a"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link3.stl",
+      "file": "meshes/d273d20b5382_link3.stl",
+      "sha256": "d273d20b5382f7d9101d7135a4f138d90b2659b9139e4b68441a5d4b6525f424"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link4.dae",
+      "file": "meshes/d38bff2e2b20_link4.dae",
+      "sha256": "d38bff2e2b20e2ee78c8c1d965a30329b2b1d6e127f42d0594a715a07376a097"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link4.stl",
+      "file": "meshes/0a199211c6bd_link4.stl",
+      "sha256": "0a199211c6bd90178edc45b42ff3db42582f11c26e9da630fa89d21866f607b5"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link5.dae",
+      "file": "meshes/c415fcd24c34_link5.dae",
+      "sha256": "c415fcd24c34b0aee86eb07a0fff8cb0843d8d190f24a00735fe471e90b8fe39"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link5.stl",
+      "file": "meshes/043c8c5049f8_link5.stl",
+      "sha256": "043c8c5049f848514128ebb4cc144f34fded58f7e80f05637cdaf749749f6b37"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/visual/link6.dae",
+      "file": "meshes/5af4a0922317_link6.dae",
+      "sha256": "5af4a092231710ecf3a5e3840ac313f2a1112dc36e25ddccad8c00a3a6b65792"
+    },
+    {
+      "source": "src/rbpodo_ros2/rbpodo_description/meshes/rb10_1300e_u/collision/link6.stl",
+      "file": "meshes/1f2e61b7c7b9_link6.stl",
+      "sha256": "1f2e61b7c7b99e0259e6a5265d41ad748e7e67f72a8c7a149ebb4bde5dee5d90"
+    },
+    {
+      "source": "src/eoat_description/meshes/aft200_visual.stl",
+      "file": "meshes/5519bd9d887e_aft200_visual.stl",
+      "sha256": "5519bd9d887eaf630e9b78ffe2b3b4b6b21caa64bbcc0ea44a52c2337c434902"
+    },
+    {
+      "source": "src/eoat_description/meshes/aft200_collision.stl",
+      "file": "meshes/e18fb4e6ed19_aft200_collision.stl",
+      "sha256": "e18fb4e6ed19879083f856f83c4269688549d9690530f3d932cfe6d2fdad6557"
+    },
+    {
+      "source": "src/eoat_description/meshes/rr_00a_b_eoat_no_camera_visual_roller52.stl",
+      "file": "meshes/9cbed5fa8e1c_rr_00a_b_eoat_no_camera_visual_roller52.stl",
+      "sha256": "9cbed5fa8e1c6da245913efa0e817b5850795bbd6968be5c6adeeee1f149b76d"
+    },
+    {
+      "source": "src/eoat_description/meshes/rr_00a_b_eoat_no_camera_collision_support_only.stl",
+      "file": "meshes/35c9231426e8_rr_00a_b_eoat_no_camera_collision_support_only.stl",
+      "sha256": "35c9231426e8b8018804b790f6a2335bfd758344ec7f178cf62a121b4348c25d"
+    },
+    {
+      "source": "src/vendor/realsense-ros/realsense2_description/meshes/d405.stl",
+      "file": "meshes/a248f41149d1_d405.stl",
+      "sha256": "a248f41149d12b28311829feecbe7a80cf1481fd05e0f5df2c4c7ecd556edd48"
+    }
+  ],
+  "support": {
+    "source_document": "docs/phase4_session4_environment.md",
+    "source_scene": "src/sketch_control/sketch_control/isaac_sim_rb10.py",
+    "root": "support_world",
+    "root_origin": "real RB10 base at mounting plate top",
+    "ground_z_m": -0.823,
+    "link0_yaw_rad": 1.5707963267948966,
+    "table_center_m": [
+      -0.1,
+      0.05,
+      -0.4165
+    ],
+    "table_size_m": [
+      0.6,
+      0.8,
+      0.813
+    ],
+    "plate_center_m": [
+      0,
+      0,
+      -0.005
+    ],
+    "plate_size_m": [
+      0.2,
+      0.2,
+      0.01
+    ],
+    "mass_inertia": "not measured; omitted for fixed support geometry",
+    "mobile_cart": false
+  }
+}
