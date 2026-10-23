@@ -20,7 +20,34 @@ from pxr import Usd, UsdGeom, UsdPhysics, Gf
 # =============================================================================
 # 0. 여기만 바꾸기: 저장한 로봇 USD 경로
 # =============================================================================
-ROBOT_USD = "/home/jungho/Desktop/rb10.....usd"   # 롤러 EOAT + 힘센서 + D405 달린 새 로봇 USD
+#    rb10.usd 는 레포 안 이 스크립트와 같은 sources 폴더에 있다 (롤러 EOAT + 힘센서 + D405 달린 로봇 USD).
+#    Script Editor 에 붙여넣어 실행하면 __file__ 이 없어서, 레포를 흔히 두는 위치에서 찾는다.
+#    못 찾으면 아래 ROBOT_USD_OVERRIDE 에 rb10.usd 전체 경로를 직접 넣기.
+import os
+
+ROBOT_USD_OVERRIDE = ""
+_REPO_SUBPATH = os.path.join("Shared-Control-for-Remote-Painting", "issac sim_ws",
+                             "all_models_with_testpiece_and_images", "rb10_base_description",
+                             "sources", "rb10.usd")
+
+
+def _find_robot_usd():
+    if ROBOT_USD_OVERRIDE:
+        return ROBOT_USD_OVERRIDE
+    try:                                                   # python 으로 파일 실행한 경우
+        _cand = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rb10.usd")
+        if os.path.isfile(_cand):                          # Script Editor 는 /tmp 에서 실행해서 여기 없음
+            return _cand
+    except NameError:
+        pass
+    for _base in ["~/Desktop", "~", "~/Documents", "~/workspace", "~/바탕화면"]:
+        _cand = os.path.join(os.path.expanduser(_base), _REPO_SUBPATH)
+        if os.path.isfile(_cand):
+            return _cand
+    return os.path.join(os.path.expanduser("~/Desktop"), _REPO_SUBPATH)
+
+
+ROBOT_USD = _find_robot_usd()
 
 # 로봇 받침대가 +90도 돌아가 있는 만큼 base 관절을 반대로 돌려서 상쇄 (도구가 벽 +X 를 향하게)
 # 원래 동작(보정 없음)으로 되돌리려면 0.0
@@ -39,7 +66,53 @@ ctx = omni.usd.get_context()
 
 # (1) rb10.usd 를 매번 새로 연다 (이전 실행의 찌꺼기 제거)
 if not os.path.isfile(ROBOT_USD):
-    raise RuntimeError(f"로봇 USD 파일이 없음: {ROBOT_USD}  → 터미널에서 ls ~/Desktop 으로 확인")
+    raise RuntimeError(f"로봇 USD 파일이 없음: {ROBOT_USD}  → 맨 위 ROBOT_USD_OVERRIDE 에 rb10.usd 전체 경로 넣기")
+
+
+# (0) rb10.usd 안의 깨진 파일 경로를 레포 기준으로 자동 수정
+#     rb10.usd 는 원래 바탕화면에서 "Shared-Control-for-Remote-Painting/..." 경로로 레포 파일을 불러오게 저장돼 있었다.
+#     레포 안(sources)으로 옮기면 그 경로가 깨지므로, 레포 안에서 같은 파일을 찾아 상대경로로 바꿔 저장한다.
+#     한 번 고치면 rb10.usd 파일 자체가 바뀌므로 다음부터는 아무것도 안 바꾼다.
+def _fix_robot_usd_paths(usd_path):
+    from pxr import Sdf, UsdUtils
+    usd_dir = os.path.dirname(os.path.abspath(usd_path))
+    root = usd_dir                                        # 레포 최상위 폴더 찾기
+    while os.path.basename(root) != "Shared-Control-for-Remote-Painting" and root != os.path.dirname(root):
+        root = os.path.dirname(root)
+    if os.path.basename(root) != "Shared-Control-for-Remote-Painting":
+        print("[WARN] rb10.usd is outside the repo folder - skip path fix")
+        return
+    layer = Sdf.Layer.FindOrOpen(usd_path)
+    changed, missing = [], []
+
+    def _fix(p):
+        if not p or "://" in p:
+            return p
+        full = p if os.path.isabs(p) else os.path.normpath(os.path.join(usd_dir, p))
+        if os.path.exists(full):
+            return p                                      # 이미 정상
+        parts = [s for s in p.replace("\\", "/").split("/") if s not in ("", ".")]
+        for i in range(len(parts)):                       # 앞쪽 폴더를 하나씩 떼면서 레포 안에서 찾기
+            cand = os.path.join(root, *parts[i:])
+            if os.path.exists(cand):
+                new = os.path.relpath(cand, usd_dir).replace(os.sep, "/")
+                new = new if new.startswith(".") else "./" + new
+                changed.append((p, new))
+                return new
+        missing.append(p)
+        return p
+
+    UsdUtils.ModifyAssetPaths(layer, _fix)
+    for _old, _new in changed:
+        print(f"[FIX] {_old}  ->  {_new}")
+    for _m in missing:
+        print(f"[WARN] path not found in repo: {_m}")
+    if changed:
+        layer.Save()
+        print(f"[OK] rb10.usd paths fixed ({len(changed)}) and saved - commit rb10.usd and the folders above")
+
+
+_fix_robot_usd_paths(ROBOT_USD)
 ctx.open_stage(ROBOT_USD)
 stage = ctx.get_stage()
 print(f"[OK] rb10.usd 새로 열기: {stage.GetRootLayer().identifier}")
@@ -64,8 +137,8 @@ _n_rev = sum(1 for p in stage.Traverse() if p.IsA(UsdPhysics.RevoluteJoint))
 print(f"[DIAG] link0 {_n_link0}개, 회전 관절 {_n_rev}개  ← 1개, 6개면 정상")
 if _n_link0 == 0:
     raise RuntimeError(
-        "로봇 모양을 못 불러옴 → rb10.usd 옆에 Shared-Control-for-Remote-Painting 폴더가 있는지 확인 "
-        "(rb10.usd 가 그 폴더 안의 파일들을 불러옴)")
+        "로봇 모양을 못 불러옴 → rb10.usd 가 다른 파일을 상대경로로 불러오는 버전일 수 있음. "
+        "원래 위치의 rb10.usd 를 열어 File → Save Flattened As 로 sources/rb10.usd 에 다시 저장")
 if _n_rev == 0:
     raise RuntimeError("로봇 관절을 못 불러옴 → 위 Physics variant 줄 확인 (PHYSICS_VARIANT 를 'physics' 로 바꿔보기)")
 

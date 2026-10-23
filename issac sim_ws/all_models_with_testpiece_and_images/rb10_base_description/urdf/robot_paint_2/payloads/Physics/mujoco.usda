@@ -1,0 +1,112 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.2"
+    }
+    defaultPrim = "rb10_base_description"
+    endTimeCode = 1000000
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "rb10_base_description"
+{
+    over "Physics"
+    {
+        over "base" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "shoulder" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "elbow" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "wrist1" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "wrist2" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "wrist3" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        def MjcActuator "base_actuator"
+        {
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            custom rel mjc:target
+            append rel mjc:target = </rb10_base_description/Physics/base>
+        }
+
+        def MjcActuator "shoulder_actuator"
+        {
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            custom rel mjc:target
+            append rel mjc:target = </rb10_base_description/Physics/shoulder>
+        }
+
+        def MjcActuator "elbow_actuator"
+        {
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            custom rel mjc:target
+            append rel mjc:target = </rb10_base_description/Physics/elbow>
+        }
+
+        def MjcActuator "wrist1_actuator"
+        {
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            custom rel mjc:target
+            append rel mjc:target = </rb10_base_description/Physics/wrist1>
+        }
+
+        def MjcActuator "wrist2_actuator"
+        {
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            custom rel mjc:target
+            append rel mjc:target = </rb10_base_description/Physics/wrist2>
+        }
+
+        def MjcActuator "wrist3_actuator"
+        {
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            custom rel mjc:target
+            append rel mjc:target = </rb10_base_description/Physics/wrist3>
+        }
+    }
+}
+
