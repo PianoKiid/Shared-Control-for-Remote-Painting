@@ -23,13 +23,12 @@ node_modules/
 .idea/
 .vscode/*.local.json
 
-# Local datasets (manual annotations remain trackable)
-/data/raw/
+# Generated/local datasets (raw MCAP and manual annotations remain trackable)
 /data/processed/
 /data/interim/
 /data/interviews/
 /data/spreadsheets/source_snapshots/
-*.mcap
+# Completed MCAP files are tracked with Git LFS (see .gitattributes).
 *.mcap.*
 *.bag
 *.bag.*

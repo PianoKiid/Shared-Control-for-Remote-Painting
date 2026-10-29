@@ -1,0 +1,2 @@
+# Store MCAP recordings with Git LFS, including files above GitHub's regular file limit.
+*.mcap filter=lfs diff=lfs merge=lfs -text
