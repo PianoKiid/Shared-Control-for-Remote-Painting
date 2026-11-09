@@ -1,23 +1,12 @@
-# Isaac Sim
+# Isaac Sim + Haply 원격 도장
 
-현재 보유한 로컬 자료는 [환경 구축 계획](../docs/isaac_sim/environment_setup_plan.html)입니다.
-로봇·EOAT·베이스 모델과 장면 USD는 아직 이 작업 폴더에 없습니다.
+RB10과 롤러를 Isaac Sim 5.1에서 움직이고, Haply 입력과 기존 LSTM을 사용해 공유제어를 비교하는 실행기입니다.
 
-멘티가 환경을 만들면 다음 위치에 저장합니다.
+- **설치·실행·평가:** [USAGE_ko.md](USAGE_ko.md)
+- **실행 명령:** [teleop.py](teleop.py)
+- **설정:** [config/painting.json](config/painting.json)
+- **알고리즘 수정:** [controller.py](../src/painting_teleop/controller.py)
+- **포함 모델:** [모델 출처](models/provenance.json)
+- **검증 기록:** [VALIDATION.md](VALIDATION.md)
 
-```text
-simulation/
-  assets/
-    robot/
-    base/
-    eoat/
-  scenes/
-    painting_scene.usd
-  scripts/
-    joint_demo.py
-  README.md
-```
-
-USD가 참조하는 메시·재질·텍스처를 함께 포함하고, 프로젝트 안에서는 상대경로를 사용합니다.
-사용한 Isaac Sim 버전과 장면을 여는 방법을 이 README에 추가합니다.
-Isaac Sim 설치 폴더와 캐시는 프로젝트에 포함하지 않습니다.
+장면은 프로젝트의 `issac sim_ws/all_models_with_testpiece_and_images/rb10_base_description/urdf/robot_paint.urdf`와 연결된 메시로 생성합니다. ROS2와 외부 USD 파일은 필요하지 않습니다. 결과는 `results/teleop/`, 임시 URDF는 `.cache/painting/`에 저장합니다.

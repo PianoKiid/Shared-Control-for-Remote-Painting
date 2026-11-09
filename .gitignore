@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 .venv/
+.venv-teleop/
 venv/
 env/
 /.analysis_deps/
@@ -50,6 +51,7 @@ events.out.tfevents.*
 /cache/
 /.cache/
 /logs/
+/results/teleop/
 *.log
 
 # Regenerable previews and temporary files

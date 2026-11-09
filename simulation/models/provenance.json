@@ -1,0 +1,28 @@
+{
+  "source": "results\\phase_learning\\final_lopo\\models\\held_out_09\\lopo_holdout_09_causal_lstm.npz",
+  "sha256": "96a7c54c66fedb2bac23420d0bba7eac424b8c52b858ee9902c635b1a8f8aaf8",
+  "training_trials": [
+    "06_01",
+    "06_02",
+    "06_03",
+    "06_04",
+    "07_01",
+    "07_02",
+    "07_03",
+    "07_04",
+    "08_01",
+    "08_02",
+    "08_04",
+    "10_01",
+    "10_02",
+    "10_03",
+    "10_04",
+    "11_01",
+    "11_02",
+    "11_03",
+    "11_04"
+  ],
+  "training_performed_for_this_integration": false,
+  "feature_contract": "12 causal features, original scaler, original signed FT force convention",
+  "reference_fixture": "100 seeded synthetic feature frames, original PyTorch model output"
+}

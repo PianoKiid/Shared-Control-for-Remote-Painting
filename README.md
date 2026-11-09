@@ -1,7 +1,9 @@
 # Shared Control for Remote Painting
 
 원격 도장 작업의 상태 인식과 shared control 연구를 위한 작업 폴더입니다.
-현재는 실험 데이터, 수동 라벨, phase learning 코드와 결과, 연구 문서, Isaac Sim 환경 구축 계획을 보관합니다.
+실험 데이터, phase learning 코드와 결과, 연구 문서, Isaac Sim + Haply 원격 도장 실행기를 보관합니다.
+
+**가상 원격 도장 실행:** [Isaac Sim + Haply 사용법](simulation/USAGE_ko.md) — LSTM 공유제어, 조건별 기록·재생·평가.
 
 ## 폴더 안내
 
@@ -12,7 +14,7 @@
 | [scripts/](scripts/README.md) | 라벨링, 분석, 엑셀 처리, 보고서 생성 도구 |
 | [results/](results/README.md) | 학습·평가 결과, 저장된 모델, 최종 엑셀과 분석 보고서 |
 | [docs/](docs/README.md) | 연구 방향, 논문 초안, 문헌 정리, 검토 의견, 개발 계획 |
-| [simulation/](simulation/README.md) | 앞으로 구축할 Isaac Sim 장면·모델·실행 코드 |
+| [simulation/](simulation/README.md) | Isaac Sim + Haply 실행기, 설정, 선택한 LSTM 모델 |
 
 ```text
 data/
@@ -24,6 +26,7 @@ data/
   spreadsheets/             # 엑셀 처리에 사용한 원본 사본
 src/
   phase_modeling/           # FSM, GMM/HMM 계열, Random Forest, Causal LSTM
+  painting_teleop/          # 공유제어, Haply 입력, Isaac 연결과 실험 기록
 scripts/
   analysis/                 # 상태 전환 분석
   labeling/                 # WORK/MOVE/IDLE 라벨링 서버와 화면
@@ -42,7 +45,8 @@ docs/
   isaac_sim/                # 환경 구축 계획
   project/                  # 폴더 이동 안내
 simulation/
-  README.md                 # Isaac Sim 파일 배치 규칙
+  teleop.py                 # bridge / isaac / smoke / compare
+  USAGE_ko.md                # 설치·조종·알고리즘 수정·평가
 ```
 
 ## 자주 찾는 자료
@@ -80,7 +84,7 @@ python scripts/labeling/work_move_idle_labeler.py serve
 - `scripts/node_modules`는 현재 PC의 공용 Node 라이브러리 폴더를 가리키는 연결입니다. Git에서는 제외합니다.
 - 원본·전처리·중간 데이터, 인터뷰 원본 사본, 모델 가중치와 캐시는 `.gitignore`로 제외합니다.
 - 수동 라벨, 코드, 문서, 지표와 최종 결과물은 따로 추적할 수 있게 구성했습니다.
-- 모델 학습용 공통 구현과 저장된 모델은 있지만, 과거 문서에 나오는 `train_*.py` 실행 파일은 현재 폴더에 없습니다. [모델 코드 안내](src/phase_modeling/README.md)를 참고하세요.
+- 실행기에 사용하는 선택 모델은 `simulation/models/`에 포함합니다. 모델 학습용 공통 구현과 저장된 모델은 있지만, 과거 문서에 나오는 `train_*.py` 실행 파일은 현재 폴더에 없습니다. [모델 코드 안내](src/phase_modeling/README.md)를 참고하세요.
 - 이전 분석 기록의 JSON·CSV·NPZ와 연구 문서에는 생성 당시 경로가 남아 있을 수 있습니다. 원본 기록은 보존하고, 현재 실행에 사용하는 코드와 라벨링 경로 정보는 새 위치로 갱신했습니다.
 
 ## 새 파일을 저장할 때
