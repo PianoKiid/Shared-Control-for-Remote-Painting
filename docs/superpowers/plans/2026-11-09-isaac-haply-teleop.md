@@ -34,7 +34,7 @@
 - [x] 1. Core and inference: failing behavior tests first; implement controller dataclasses/step, portable causal preprocessing, NumPy checkpoint inference, URDF FK/IK and configuration. Verify withdrawal, recovery bounds, disable, finite values, FK/IK and parity with existing model.
 - [x] 2. Input and sessions: test packet validation, clutch edge, freshness/reconnect and metric denominators; implement Haply parser/bridge, UDP receiver, trial logging and metrics/replay utilities.
 - [x] 3. Isaac runner: create imported physical scene, drive joint targets from IK, collect roller-wall forces at physics rate, update core at 30 Hz, add operator controls/task markers and display; add scripted/recorded-input modes for repeatable evaluation and a no-Isaac core smoke runner.
-- [ ] 4. Documentation and release: Korean setup/run/edit/evaluate Markdown, configs and selected model provenance, root README link; run full relevant tests, offline end-to-end smoke and source/API review; commit explicit files and push feature branch, verify remote SHA.
+- [x] 4. Documentation and release: Korean setup/run/edit/evaluate Markdown, configs and selected model provenance, root README link; run full relevant tests, offline end-to-end smoke and source/API review; commit explicit files and push main as requested, verify remote SHA.
 
 ## Progress ledger
 
@@ -46,4 +46,4 @@
 - Ruling: retain the supplied script's axis mapping, scale and clutch conventions; use direct Inverse Service cursor input because its external PybindTeleopAgent is absent. Physical response will require target-system calibration. No physical RB10 driver is invoked.
 - Ruling: keep input-only Haply zero-force streaming and a portable NumPy model; hardware force-feedback is outside this integration. User can revise the controller independently.
 - Ruling: local Isaac runtime is absent. PhysX and actual device acceptance steps are documented in simulation/VALIDATION.md; local verification covers the executable core and protocol, not completed hardware validation.
-- Release preparation: origin/main verified at baseline 39c3b349665be4d4e1abad4393d9774a8f2a2304. Explicit task files will be committed and pushed to codex/isaac-haply-shared-control as already authorized; unrelated untracked research remains untouched.
+- Release completed on 2026-11-09: user explicitly requested main instead of a feature branch. Fast-forwarded main from 39c3b349665be4d4e1abad4393d9774a8f2a2304 to implementation commit 053d4f78690fc6eaa690263950a3ebbff0e08d59, pushed origin/main and verified the matching remote SHA. No remote feature branch was created. Unrelated untracked research remains untouched.
